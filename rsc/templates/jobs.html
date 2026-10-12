@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block title %}Jobs{% endblock %}
+{% block body %}
+<div class="page-head"><div><div class="eyebrow">Every job, one number</div><h1>Jobs</h1></div><div class="actions"><a class="btn secondary" href="{{ url_for('playbook_page') }}">Playbook</a><a class="btn" href="{{ url_for('job_new') }}">New estimate</a></div></div>
+<table>
+  <tr><th>Job ID</th><th>Client</th><th class="hide-sm">Type</th><th>Status</th><th class="num">Contract</th>
+      <th class="num">Paid</th><th class="num">Still owed</th><th class="num hide-sm">Expenses</th><th class="num hide-sm">Profit</th><th class="hide-sm">Schedule</th><th>Room</th></tr>
+  {% for j in jobs %}
+  <tr>
+    <td><a class="id" href="{{ url_for('job_detail', number=j.number) }}">{{ j.job_id }}</a></td>
+    <td>{{ j.first_name }} {{ j.last_name }}</td><td class="hide-sm">{{ j.job_type }}</td><td><span class="pill s-{{ j.status|lower|replace(' ', '-') }}">{{ j.status }}</span></td>
+    <td class="num">{{ money(j.contract_total) }}</td><td class="num">{{ money(j.paid) }}</td><td class="num">{{ money(j.owed) }}</td>
+    <td class="num hide-sm">{{ money(j.expenses) }}</td><td class="num hide-sm">{{ money(j.profit) }}</td>
+    <td class="hide-sm">{% if j.schedule_ok is none %}{% elif j.schedule_ok %}<span class="ok">OK</span>{% else %}<span class="bad">CHECK</span>{% endif %}</td>
+    <td><a href="{{ url_for('job_model', number=j.number) }}">Model</a></td>
+  </tr>
+  {% else %}<tr><td colspan="11" class="muted">No jobs yet.</td></tr>{% endfor %}
+</table>
+{% endblock %}

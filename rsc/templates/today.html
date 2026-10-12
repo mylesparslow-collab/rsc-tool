@@ -1,0 +1,27 @@
+{% extends "base.html" %}{% block title %}Today{% endblock %}
+{% block body %}
+<div class="page-head"><div><div class="eyebrow">{{ d.date.strftime('%A, %B') }} {{ d.date.day }}</div><h1>Today's work</h1></div>
+  <form method="post" action="{{ url_for('today_send') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn secondary">Email this sheet now</button></form></div>
+<p class="muted">{% if recipients %}Goes out every weekday at 6 AM to {{ recipients|join(', ') }}.{% else %}No one is set to receive it yet. Add emails on the <a href="{{ url_for('setup_page') }}">Setup page</a> or give crew members an email on the <a href="{{ url_for('crew_page') }}">Crew page</a>.{% endif %}
+  Tick a step when it's finished.</p>
+
+{% for p in d.jobs %}
+<form method="post" action="{{ url_for('today_job', number=p.job.number) }}" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="back" value="{{ url_for('today_page') }}">
+  <strong><a class="id" href="{{ url_for('job_detail', number=p.job.number) }}">{{ p.job.job_id }}</a> {{ p.job.first_name }} {{ p.job.last_name }}</strong>
+  <div class="muted">{{ p.job.address }}{% if p.job.phone %} · {{ p.job.phone }}{% endif %}{% if p.people %} · On it lately: {{ p.people|join(', ') }}{% endif %}</div>
+  {% if p.finished %}<div class="ok" style="margin-top:8px">Every step is checked off. Walk the job with the client, then mark it Complete.</div>
+  {% else %}
+  <div style="margin:8px 0 4px"><b>{{ p.phase }}</b> <span class="muted">{{ p.done }} of {{ p.total }} steps done</span></div>
+  {% for s in p.steps %}<label style="display:block;font-weight:normal"><input type="hidden" name="shown" value="{{ s.n }}"><input type="checkbox" name="done" value="{{ s.n }}"> <b>{{ s.n }}.</b> {{ s.text }}</label>{% endfor %}
+  {% if p.more %}<div class="muted">...and {{ p.more }} more in this phase</div>{% endif %}
+  {% if p.inspection %}<div class="muted">When this phase is done, call in: {{ p.inspection }}</div>{% endif %}
+  {% if p.materials %}<details class="more"><summary>Make sure these are on site</summary><ul class="note-list">{% for m in p.materials %}<li>{{ m }}</li>{% endfor %}</ul></details>{% endif %}
+  {% endif %}
+  <div style="margin-top:10px"><label>Note for the crew today</label><input name="note" data-voice value="{{ p.note }}" placeholder="Homeowner is home until noon. Dumpster arrives at 9."></div>
+  <div class="actions"><button class="btn secondary small">Save</button> <a class="btn secondary small" href="{{ url_for('job_progress', number=p.job.number) }}">All steps</a></div>
+</form>
+{% else %}<div class="card muted">No jobs are in progress. When a signed job starts, set its status to In Progress and it shows up here.</div>{% endfor %}
+
+{% if d.coming %}<h2>Coming up</h2>{% for c in d.coming %}<div class="muted"><a class="id" href="{{ url_for('job_detail', number=c.job.number) }}">{{ c.job.job_id }}</a> {{ c.job.last_name }}: starts with {{ c.phase }}</div>{% endfor %}{% endif %}
+{% endblock %}

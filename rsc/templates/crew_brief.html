@@ -1,0 +1,29 @@
+{% extends "print_base.html" %}
+{% block title %}Crew brief {{ job.job_id }}{% endblock %}
+{% block toolbar %}<a href="{{ url_for('job_detail', number=job.number) }}">&larr; Back to the job</a>{% endblock %}
+{% block body %}
+<h1>Crew brief · {{ job.job_id }}</h1>
+<div><b>{{ job.first_name }} {{ job.last_name }}</b> · {{ job.address }}{% if job.phone %} · {{ job.phone }}{% endif %}</div>
+<div class="muted">{{ est.template }}{% if est.duration %} · {{ est.duration }}{% endif %}{% if est.crew %} · Crew: {{ est.crew }}{% endif %}{% if crew_hours %} · about {{ '%g'|format(crew_hours) }} crew-hours{% endif %}</div>
+{% if est.project %}<p>{{ est.project }}</p>{% endif %}
+
+<h2>Before you start</h2>
+<ul style="margin:4px 0;padding-left:18px">
+  <li>First payment received and materials ordered. Call Nick if not.</li>
+  <li>Photos of the work area before you touch anything.</li>
+  <li>Any subcontractor on site has a current insurance certificate{% if subs %} ({{ subs|join(', ') }}){% endif %}.</li>
+  <li>Daily: who worked and how many hours goes into the Crew tab.</li>
+</ul>
+
+<h2>Work, step by step</h2>
+{% for p in phases %}<h3>PHASE {{ loop.index }}: {{ p.title|upper }}</h3>
+<div>{% for n, text in p.steps %}<div style="margin:2px 0">&#9744; <b>{{ n }}.</b> {{ text }}</div>{% endfor %}</div>
+{% if p.inspection %}<div><i>&#9744; Inspection: {{ p.inspection }}. Call it in before closing up.</i></div>{% endif %}
+{% endfor %}
+
+{% if materials %}<h2>Materials (RSC buys)</h2><ul style="margin:4px 0;padding-left:18px">{% for m in materials %}<li>&#9744; {{ m }}</li>{% endfor %}</ul>{% endif %}
+{% if not_included %}<h2>Not included: don't do these without a change order</h2><ul style="margin:4px 0;padding-left:18px">{% for x in not_included %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+{% if decisions %}<h2>Client still has to decide</h2><ul style="margin:4px 0;padding-left:18px">{% for x in decisions %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+{% if schedule %}<h2>When to tell Nick to invoice</h2><table>{% for p in schedule %}<tr><td>{{ loop.index }}</td><td>{{ p.due_when }}</td></tr>{% endfor %}</table>{% endif %}
+<p class="muted">Anything the client asks for that isn't in the steps above is a change order: write it down, tell Nick, and wait for the signed change before doing it.</p>
+{% endblock %}

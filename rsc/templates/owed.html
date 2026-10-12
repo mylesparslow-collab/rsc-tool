@@ -1,0 +1,27 @@
+{% extends "base.html" %}{% block title %}Money owed{% endblock %}
+{% block body %}
+<h1>Money owed</h1>
+<p class="muted">Invoices that have been sent and not paid yet. Anything past {{ terms }} days can get a polite reminder; nothing is sent for you. It opens in Mail.</p>
+<div class="card"><div class="muted">Total waiting</div><div class="big-number">{{ money(total) }}</div></div>
+
+{% for b in buckets if b.rows %}
+<h2>{{ b.label }} <span class="muted">· {{ money(b.total) }}</span></h2>
+<table>
+  <tr><th>Invoice</th><th>Client</th><th class="num">Owed</th><th class="num">Days</th><th>Last reminder</th><th></th></tr>
+  {% for r in b.rows %}<tr id="p{{ r.id }}">
+    <td class="id">{{ r.payment_id }}<div class="muted">{{ r.description }}</div></td>
+    <td>{{ r.job.first_name }} {{ r.last_name }}<div class="muted">{{ r.job.phone }}</div></td>
+    <td class="num">{{ money(r.owed) }}</td><td class="num">{{ r.days }}</td>
+    <td class="muted">{{ r.last_reminder or '-' }}</td>
+    <td>{% if r.needs_reminder %}<form method="post" action="{{ url_for('owed_draft', payment_pk=r.id) }}" class="inline" data-busy="Writing..."><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small">Write a reminder</button></form>{% elif r.days >= terms %}<span class="muted">reminded recently</span>{% endif %}</td></tr>
+  {% if drafts.get(r.id) %}{% set d = drafts[r.id] %}<tr><td colspan="6">
+    <textarea rows="8" readonly onclick="this.select()">{{ d.text }}</textarea>
+    <div class="actions">
+      {% if r.email %}<a class="btn" href="mailto:{{ r.email }}?subject={{ d.subject|urlencode }}&body={{ d.text|urlencode }}">Open in Mail</a>{% else %}<span class="muted">No email on file for this client. Copy the note above.</span>{% endif %}
+      <form method="post" action="{{ url_for('owed_sent', payment_pk=r.id) }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="text" value="{{ d.text }}"><button class="btn secondary">I sent it</button></form>
+    </div></td></tr>{% endif %}
+  {% endfor %}
+</table>
+{% endfor %}
+{% if not rows %}<div class="card muted">Nothing is waiting. When you mark an invoice sent on a job, it shows up here until it's paid.</div>{% endif %}
+{% endblock %}

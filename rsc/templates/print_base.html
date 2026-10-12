@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+  <style>
+    body { font: 12pt/1.45 Georgia, "Times New Roman", serif; color:#111; margin:0; background:#eee; }
+    .sheet { max-width:8.5in; margin:16px auto; background:#fff; padding:0.7in; box-shadow:0 1px 6px rgba(0,0,0,.2); }
+    .toolbar { max-width:8.5in; margin:12px auto 0; padding:0 8px; font:14px -apple-system, Arial, sans-serif; display:flex; gap:12px; align-items:center; }
+    .toolbar button, .toolbar a.btn { padding:8px 14px; border:0; border-radius:6px; background:#2F5D46; color:#fff; font:600 14px Arial; cursor:pointer; text-decoration:none; }
+    .toolbar a { color:#2F5D46; }
+    h1 { font-size:20pt; margin:0 0 2px; } h2 { font-size:13pt; margin:20px 0 6px; border-bottom:1px solid #999; padding-bottom:2px; }
+    h3 { font-size:12pt; margin:14px 0 4px; }
+    .muted { color:#555; font-size:10.5pt; }
+    table { width:100%; border-collapse:collapse; margin:6px 0; font-size:11pt; }
+    th, td { border:1px solid #999; padding:4px 8px; text-align:left; vertical-align:top; }
+    th { background:#eee; } td.num, th.num { text-align:right; }
+    ol.steps { margin:4px 0 4px 0; padding-left:0; list-style:none; }
+    ol.steps li { margin:1px 0; } ol.steps b { display:inline-block; width:2.2em; }
+    .draft { border:2px solid #B42318; color:#B42318; padding:8px 12px; margin:0 0 14px; font:bold 10.5pt Arial; }
+    .open { border:1px dashed #B26A00; background:#FFF8E1; padding:6px 12px; font:10.5pt Arial; margin:10px 0; }
+    .sig { display:flex; gap:40px; margin-top:34px; } .sig div { flex:1; border-top:1px solid #000; padding-top:4px; font-size:10.5pt; }
+    .pagebreak { page-break-before:always; }
+    @media print { body { background:#fff; } .sheet { box-shadow:none; margin:0; padding:0; max-width:none; } .toolbar { display:none; } }
+  </style>
+</head>
+<body>
+<div class="toolbar"><button onclick="window.print()">Print or save as PDF</button>{% block toolbar %}{% endblock %}</div>
+<div class="sheet">{% block body %}{% endblock %}</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+{% extends "base.html" %}{% block title %}{{ job.job_id }}{% endblock %}
+{% block body %}
+<div class="page-head"><div><div class="eyebrow">Job</div><h1><span class="id">{{ job.job_id }}</span> · {{ job.first_name }} {{ job.last_name }}</h1></div>
+  <span class="pill s-{{ job.status|lower|replace(' ', '-') }}">{{ job.status }}</span></div>
+<div class="stats">
+  <div class="card"><div class="muted">Contract</div><div class="big-number">{{ money(job.contract_total) or '-' }}</div></div>
+  <div class="card"><div class="muted">Paid</div><div class="big-number">{{ money(job.paid) }}</div></div>
+  <div class="card"><div class="muted">Still owed</div><div class="big-number">{{ money(job.owed) or '-' }}</div></div>
+  <div class="card"><div class="muted">Expenses</div><div class="big-number">{{ money(job.expenses) }}</div></div>
+  <div class="card"><div class="muted">Profit so far</div><div class="big-number">{{ money(job.profit) or '-' }}</div></div>
+</div>
+
+<form method="post" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="grid">
+    <div><label>Status</label><select name="status">{% for s in statuses %}<option {{ 'selected' if job.status == s }}>{{ s }}</option>{% endfor %}</select></div>
+    <div style="grid-column:span 3"><label>Notes</label><input name="notes" data-voice value="{{ job.notes }}"></div>
+  </div>
+  <details class="more"><summary>Client details and dates</summary>
+  <div class="grid">
+    <div><label>First name</label><input name="first_name" value="{{ job.first_name }}"></div>
+    <div><label>Phone</label><input name="phone" value="{{ job.phone }}"></div>
+    <div><label>Email</label><input name="email" value="{{ job.email }}"></div>
+    <div style="grid-column:span 2"><label>Job address</label><input name="address" value="{{ job.address }}"></div>
+    <div><label>Job type</label><select name="job_type"><option></option>{% for t in job_types %}<option {{ 'selected' if job.job_type == t }}>{{ t }}</option>{% endfor %}</select></div>
+    <div><label>Estimate sent</label><input type="date" name="estimate_sent" value="{{ job.estimate_sent or '' }}"></div>
+    <div><label>Contract signed</label><input type="date" name="contract_signed" value="{{ job.contract_signed or '' }}"></div>
+    <div><label>Contract total</label><input name="contract_total" value="{{ '%.2f'|format(job.contract_total) if job.contract_total is not none }}"></div>
+  </div>
+  </details>
+  <div class="actions"><button class="btn">Save</button></div>
+</form>
+
+{% if guide_next %}<div class="card tone-accent"><strong>Next: {{ guide_next.title }}</strong>
+  <div class="muted">{{ guide_next.why }}</div>
+  <div class="muted" style="margin-top:6px">{% for label, done in guide_steps.list %}<span class="{{ 'ok' if done else '' }}">{{ '&#10003;'|safe if done else '&#9675;'|safe }} {{ label }}</span>{{ ' &middot; '|safe if not loop.last }}{% endfor %}</div>
+  <div class="actions"><a class="btn secondary small" href="{{ url_for(guide_next.endpoint, **guide_next.args) }}">{{ guide_next.label }}</a></div></div>{% endif %}
+<p class="actions" style="flex-wrap:wrap">
+  <a class="btn secondary small" href="{{ url_for('estimate_edit', number=job.number) }}">Estimate &amp; contract</a>
+  <a class="btn secondary small" href="{{ url_for('change_orders', number=job.number) }}">Change orders</a>
+  <a class="btn secondary small" href="{{ url_for('job_model', number=job.number) }}">Room model</a>
+  <a class="btn secondary small" href="{{ url_for('assessment', number=job.number) }}">Safety assessment</a>
+  <a class="btn secondary small" href="{{ url_for('crew_brief', number=job.number) }}">Crew brief</a>
+  <a class="btn secondary small" href="{{ url_for('job_progress', number=job.number) }}">Progress</a>
+  <a class="btn secondary small" href="{{ url_for('client_update_page', number=job.number) }}">Client update</a>
+</p>
+
+
+<h2 id="hours">Crew hours{% if job_hours_total %} <span class="muted">· {{ '%g'|format(job_hours_total) }} hours{% if job_labor_cost %} · about {{ money(job_labor_cost) }} in labor{% endif %}</span>{% endif %}</h2>
+<form method="post" action="{{ url_for('crew_hours_add') }}" class="card ask" data-busy="Reading... a few seconds">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="job" value="{{ job.number }}"><input type="hidden" name="back" value="{{ url_for('job_detail', number=job.number) }}#hours">
+  <input name="text" data-voice placeholder="Tue Mike 8, Dave 6">
+  <div class="actions"><button class="btn secondary">Log hours for this job</button></div>
+</form>
+{% if job_hours %}<table>{% for h in job_hours %}<tr><td>{{ h.work_date }}</td><td>{{ h.name }}</td><td class="num">{{ '%g'|format(h.hours) }} h</td></tr>{% endfor %}</table>
+<p class="muted"><a href="{{ url_for('crew_page') }}">All hours and the crew</a></p>{% endif %}
+
+<h2 id="payments">Payment schedule
+  {% if job.schedule_ok is not none %}{% if job.schedule_ok %}<span class="ok"> · adds up to the contract</span>{% else %}<span class="bad"> · {{ money(job.scheduled) }} scheduled vs {{ money(job.contract_total) }} contract</span>{% endif %}{% endif %}</h2>
+<div class="scroll"><table class="pay">
+  <tr><th>Payment ID (QB invoice #)</th><th>What it's for</th><th class="num">Amount</th><th>Invoice sent</th><th>Date paid</th><th>Amount paid</th><th></th></tr>
+  {% for p in payments %}
+  <tr>
+    <td class="id">{{ p.payment_id }}<br><span class="status {{ p.status.split()[0] }}">{{ p.status }}</span></td>
+    <td>{{ p.description }}<div class="muted">{{ p.due_when }}</div></td><td class="num">{{ money(p.amount) }}</td>
+    <td><input type="date" form="pay-{{ p.id }}" name="invoice_sent" value="{{ p.invoice_sent or '' }}"></td>
+    <td><input type="date" form="pay-{{ p.id }}" name="date_paid" value="{{ p.date_paid or '' }}"></td>
+    <td><input form="pay-{{ p.id }}" name="amount_paid" value="{{ '%.2f'|format(p.amount_paid) if p.amount_paid is not none }}" style="width:110px"></td>
+    <td><button class="btn small" form="pay-{{ p.id }}">Save</button></td>
+  </tr>
+  {% else %}<tr><td colspan="7" class="muted">No payments yet. Add them from the contract's payment schedule below.</td></tr>{% endfor %}
+</table></div>
+<form method="post" action="{{ url_for('payment_add', number=job.number) }}" class="card" style="margin-top:10px">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Add payment {{ job.job_id }}-{{ payments|length + 1 }}</strong>
+  <div class="grid" style="margin-top:8px">
+    <div style="grid-column:span 2"><label>What it's for</label><input name="description" placeholder="10% of labor: Phase 2, Framing"></div>
+    <div><label>Due when</label><input name="due_when" placeholder="When Phase 2 is complete"></div>
+    <div><label>Amount</label><input name="amount" required></div>
+  </div>
+  <div class="actions"><button class="btn secondary">Add payment</button></div>
+  <p class="muted">Change order? Add it here as the next payment and raise the contract total above.</p>
+</form>
+
+{% for p in payments %}<form id="pay-{{ p.id }}" method="post" action="{{ url_for('payment_update', pk=p.id) }}"><input type="hidden" name="csrf" value="{{ csrf }}"></form>{% endfor %}
+
+<h2>Expenses on this job</h2>
+<table>
+  <tr><th>Date</th><th>Vendor</th><th>What</th><th class="hide-sm">Category</th><th class="num">Amount</th><th class="hide-sm">From</th></tr>
+  {% for e in expenses %}
+  <tr><td>{{ e.date }}</td><td>{{ e.vendor }}</td><td>{{ e.description }}</td><td class="hide-sm">{{ e.category }}</td>
+      <td class="num">{{ money(e.amount) }}</td><td class="hide-sm muted">{{ e.source }}</td></tr>
+  {% else %}<tr><td colspan="6" class="muted">No expenses yet.</td></tr>{% endfor %}
+</table>
+{% endblock %}

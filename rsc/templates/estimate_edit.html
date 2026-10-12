@@ -1,0 +1,165 @@
+{% extends "base.html" %}{% block title %}Estimate {{ job.job_id }}{% endblock %}
+{% block body %}
+<h1><span class="id">{{ job.job_id }}</span> · Estimate and scope of work</h1>
+<p class="muted"><a href="{{ url_for('job_detail', number=job.number) }}">&larr; Back to the job</a> · {{ job.first_name }} {{ job.last_name }} · {{ job.address }}</p>
+
+{% if not est %}
+<form method="post" action="{{ url_for('estimate_draft', number=job.number) }}" class="card ask" data-busy="Drafting the estimate... a minute or two">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Tell me about the job</strong>
+  <p class="muted" style="margin:4px 0 10px">Type or paste whatever you know: what the client wants, sizes, anything you've already priced. The assistant writes the scope of work, phases and prices. Numbers you give are used as written; anything it has to guess is listed for you to check.</p>
+  <textarea name="description" data-voice autofocus placeholder="Kitchen gut and redo, about 12x14. New cabinets and quartz counters, move the sink under the window, new electrical for the range. Cabinets are around $9,000.">{{ job.notes }}</textarea>
+  <div class="actions"><button class="btn">Draft the estimate</button></div>
+</form>
+<details class="more"><summary>Or start from a blank template</summary>
+<form method="post" action="{{ url_for('estimate_new', number=job.number) }}" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <p class="muted">Pick the closest job type to start from the standard phases. The Addition / Enclosure phases come from the Whitcomb job; the others are drafts.</p>
+  <div class="grid"><div><label>Job type</label><select name="template">{% for t in templates %}<option {{ 'selected' if t == job.job_type }}>{{ t }}</option>{% endfor %}</select></div></div>
+  <div class="actions"><button class="btn secondary">Start estimate</button></div>
+</form>
+</details>
+{% else %}
+
+<div class="grid" style="margin-bottom:14px">
+  <div class="card"><div class="muted">Estimate total</div><div class="big-number">{{ money(totals.total) }}</div></div>
+  <div class="card"><div class="muted">Your direct costs</div><div class="big-number">{{ money(totals.direct_cost) }}</div></div>
+  <div class="card"><div class="muted">Materials markup</div><div class="big-number">{{ money(totals.markup) }}</div></div>
+</div>
+
+{% if check %}
+<div class="card tone-{{ {'above': 'ok', 'below': 'bad', 'impossible': 'bad'}.get(check.status, 'warn') }}">
+  <strong>Pricing check</strong>
+  {% if check.status == 'above' %}
+    <div><span class="ok">Above your floor.</span> The lowest price that works is {{ money(check.floor) }}. You're {{ money(check.cushion) }} over it.</div>
+  {% elif check.status == 'below' %}
+    <div><span class="bad">Below your floor.</span> The lowest price that works is {{ money(check.floor) }}. This estimate is {{ money(-check.cushion) }} under it.</div>
+  {% elif check.status == 'impossible' %}
+    <div class="bad">Overhead plus target margin add up to 100% or more, so no price works. Check the numbers on the <a href="{{ url_for('pricing_page') }}">Pricing page</a>.</div>
+  {% else %}
+    <div class="muted">To see your floor price, set a target margin{% if check.overhead.pct is none %} and an overhead % (or log enough jobs and RSC expenses for it to work out by itself){% endif %} on the <a href="{{ url_for('pricing_page') }}">Pricing page</a>.</div>
+  {% endif %}
+  {% if check.gross_margin_pct is not none %}<div class="muted">Before overhead, this estimate leaves {{ '%.0f'|format(check.gross_margin_pct * 100) }}% over your direct costs.</div>{% endif %}
+</div>
+{% endif %}
+
+{% if check and check.rates.crew_hours %}
+<div class="card tone-{{ check.rates.level }}">
+  <strong>Is the labor priced right?</strong>
+  <div>{{ '%g'|format(check.rates.crew_hours) }} crew-hours{% if not check.rates.hours_are_logged %} <span class="muted">(figured from the crew and days below)</span>{% else %} <span class="muted">(hours logged on this job)</span>{% endif %}
+    · labor {{ money(check.rates.labor) }} · <b>${{ '%.0f'|format(check.rates.rate or 0) }} per crew-hour</b>
+    {% if check.rates.gross_pct is not none %}· about {{ '%.0f'|format(check.rates.gross_pct * 100) }}% gross margin{% endif %}</div>
+  {% for w in check.rates.warnings %}<div style="margin-top:6px">{{ w }}</div>{% else %}<div class="ok" style="margin-top:6px">Looks healthy.</div>{% endfor %}
+</div>
+{% elif check and check.rates.warnings %}
+<div class="card tone-warn">{% for w in check.rates.warnings %}<div>{{ w }}</div>{% endfor %}</div>
+{% endif %}
+
+{% if est.assumptions %}
+<div class="card tone-warn">
+  <strong>Please check these</strong>
+  <div class="muted">The assistant had to guess here. Fix anything that's off by asking for a change below.</div>
+  <ul class="note-list">{% for a in est.assumptions.splitlines() %}<li>{{ a }}</li>{% endfor %}</ul>
+</div>
+{% endif %}
+
+<h2>Scope of work{% if est.duration %} <span class="muted">{{ est.duration }}</span>{% endif %}</h2>
+<div class="phase-summary">
+  {% for p in est.phases %}<div class="card"><div class="ph">{{ loop.index }}. {{ p.title }}</div>
+    <ol start="{{ ranges[loop.index0][0] if ranges[loop.index0] else 1 }}">{% for st in p.steps %}<li>{{ st }}</li>{% endfor %}</ol>
+    {% if p.inspection %}<div class="muted" style="margin-top:6px">Inspection: {{ p.inspection }}</div>{% endif %}</div>{% endfor %}
+</div>
+
+<form method="post" action="{{ url_for('estimate_revise', number=job.number) }}" class="card ask" style="margin-top:16px" data-busy="Making the change... a minute or two">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Want something different?</strong>
+  <p class="muted" style="margin:4px 0 8px">Just say it: "labor is $11,000", "add a bathroom fan", "split framing into two phases".</p>
+  <input name="instruction" data-voice placeholder="What should change?">
+  <div class="actions"><button class="btn">Make the change</button></div>
+</form>
+
+<details class="more"><summary>Edit every number and step by hand</summary>
+<form method="post" action="{{ url_for('estimate_save', number=job.number) }}" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Prices</strong>
+  <div class="grid" style="margin-top:8px">
+    <div><label>Materials (your cost)</label><input name="materials" value="{{ '%.2f'|format(est.materials) }}"></div>
+    <div><label>Markup on materials %</label><input name="markup_pct" value="{{ '%g'|format(est.markup_pct) }}"></div>
+    <div><label>Windows &amp; door</label><input name="windows_doors" value="{{ '%.2f'|format(est.windows_doors) }}"></div>
+    <div><label>Labor</label><input name="labor" value="{{ '%.2f'|format(est.labor) }}"></div>
+    <div><label>Debris / dump fee</label><input name="debris" value="{{ '%.2f'|format(est.debris) }}"></div>
+    <div><label>Hired labor / subs you pay (cost)</label><input name="hired_labor" value="{{ '%.2f'|format(est.hired_labor) }}"></div>
+  </div>
+  <p class="muted" style="margin:6px 0">Other items paid up front with the first payment (optional):</p>
+  <div class="grid">
+    {% for i in range(3) %}{% set o = est.others[i] if i < est.others|length else {'label': '', 'amount': 0} %}
+    <div><label>Item</label><input name="other_label" value="{{ o.label }}"></div>
+    <div><label>Amount</label><input name="other_amount" value="{{ '%.2f'|format(o.amount) if o.amount else '' }}"></div>
+    {% endfor %}
+  </div>
+  <div class="grid" style="margin-top:12px">
+    <div><label>Labor paid up front %</label><input name="upfront_pct" value="{{ '%g'|format(est.upfront_pct) }}"></div>
+    <div><label>Labor paid at the end %</label><input name="final_pct" value="{{ '%g'|format(est.final_pct) }}"></div>
+    <div style="grid-column:span 2"><label>Estimated duration</label><input name="duration" value="{{ est.duration }}" placeholder="7 to 8 weeks, 8am to 4pm, 5 days a week"></div>
+  </div>
+  <p class="muted">The rest of labor is split evenly across the phases. Materials and windows &amp; doors are due with the first payment.</p>
+
+  <h2 style="margin-top:20px">Wording and payments</h2>
+  <div class="grid">
+    <div style="grid-column:1/-1"><label>Project (the paragraph at the top of the estimate)</label><textarea name="project" rows="3">{{ est.project }}</textarea></div>
+    <div style="grid-column:span 2"><label>Crew</label><input name="crew" value="{{ est.crew }}" placeholder="1 general contractor, 1 skilled laborer"></div>
+    <div style="grid-column:span 2"><label>Note under Labor (discounts)</label><input name="labor_note" value="{{ est.labor_note }}" placeholder="$9,450 less 10% neighbor discount"></div>
+    <div style="grid-column:span 2"><label>Payment groups (optional)</label><input name="milestones" value="{{ est.milestones }}" placeholder="1-3; 4; 5-7"></div>
+    <div style="grid-column:1/-1"><label>Materials list (one per line, with quantities if you like)</label><textarea name="materials_list" rows="5">{{ est.materials_list }}</textarea></div>
+  </div>
+  <p class="muted">Payment groups: leave empty for one payment per phase with 10% of labor up front and 10% at the end (the Whitcomb way). Or list which phases each payment covers, like <b>1-3; 4; 5-7</b>: labor is split in equal shares, one with the first payment and one per group, with materials in the first. Add <b>+ dumpster</b> to a group to bill the dump fee with it.</p>
+
+  <h2 style="margin-top:20px">Phases</h2>
+  <p class="muted">One step per line; numbering is automatic and runs through the whole job. To remove a phase, clear its name.</p>
+  {% for p in est.phases %}
+  <div class="card" style="background:#FAFAF7">
+    <div class="grid"><div style="grid-column:span 2"><label>Phase {{ loop.index }}</label><input name="phase_title" value="{{ p.title }}"></div>
+      <div style="grid-column:span 2"><label>Inspection (optional)</label><input name="phase_inspection" value="{{ p.inspection }}"></div></div>
+    <label style="margin-top:8px">Steps{% if ranges[loop.index0] %} (Steps {{ ranges[loop.index0][0] }}&ndash;{{ ranges[loop.index0][1] }}){% endif %}</label>
+    <textarea name="phase_steps" rows="{{ [3, p.steps|length + 1]|max }}">{{ p.steps|join('\n') }}</textarea>
+  </div>
+  {% endfor %}
+  <div class="card" style="background:#FAFAF7">
+    <div class="grid"><div style="grid-column:span 2"><label>Add a phase</label><input name="phase_title" placeholder="Phase name"></div>
+      <div style="grid-column:span 2"><label>Inspection (optional)</label><input name="phase_inspection"></div></div>
+    <label style="margin-top:8px">Steps</label><textarea name="phase_steps" rows="3"></textarea>
+  </div>
+
+  <h2>Not included, and open decisions</h2>
+  <div class="grid">
+    <div style="grid-column:span 2"><label>Labor not included (one per line)</label><textarea name="labor_not_included" rows="5">{{ est.labor_not_included }}</textarea></div>
+    <div style="grid-column:span 2"><label>Materials not included</label><textarea name="materials_not_included" rows="5">{{ est.materials_not_included }}</textarea></div>
+    <div style="grid-column:1/-1"><label>Open decisions for the client</label><textarea name="open_decisions" rows="3">{{ est.open_decisions }}</textarea></div>
+  </div>
+  <div class="actions"><button class="btn">Save</button></div>
+</form>
+</details>
+
+<h2 id="schedule">Payment schedule {% if payments %}<span class="muted">(created)</span>{% else %}<span class="muted">(preview)</span>{% endif %}</h2>
+<table>
+  <tr><th>Payment ID</th><th>For</th><th>Due</th><th class="num">Amount</th></tr>
+  {% if payments %}
+    {% for p in payments %}<tr><td class="id">{{ p.payment_id }}</td><td>{{ p.description }}</td><td>{{ p.due_when }}</td><td class="num">{{ money(p.amount) }}</td></tr>{% endfor %}
+  {% else %}
+    {% for s in schedule %}<tr><td class="id">{{ job.job_id }}-{{ loop.index }}</td><td>{{ s.description }}</td><td>{{ s.due_when }}</td><td class="num">{{ money(s.amount) }}</td></tr>
+    {% else %}<tr><td colspan="4" class="muted">Enter prices and save to see the payments.</td></tr>{% endfor %}
+  {% endif %}
+</table>
+<div class="actions" style="margin-top:12px;flex-wrap:wrap">
+  <a class="btn secondary" href="{{ url_for('sow', number=job.number) }}">Print the estimate (SOW)</a>
+  <a class="btn secondary" href="{{ url_for('contract_view', number=job.number) }}">View the contract (draft)</a>
+  {% if not payments %}
+  <form method="post" action="{{ url_for('estimate_schedule', number=job.number) }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn secondary">Create the payments</button></form>
+  {% endif %}
+  {% if job.status in ['Estimate', 'On Hold'] %}
+  <form method="post" action="{{ url_for('estimate_approve', number=job.number) }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn">Contract signed</button></form>
+  {% endif %}
+</div>
+<p class="muted">"Contract signed" creates the payments, sets the contract total, and marks the job Signed. Save your changes first. The contract is a draft, not legal advice: have a New York attorney review it before it goes to a client.</p>
+{% endif %}
+{% endblock %}

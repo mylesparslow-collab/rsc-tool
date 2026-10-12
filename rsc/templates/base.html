@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ biz.short }}{% endblock %} · {{ biz.name }}</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F5D46'/%3E%3Crect y='25' width='32' height='4' fill='%23C9A66B'/%3E%3Ctext x='16' y='20' font-family='Arial' font-weight='800' font-size='13' text-anchor='middle' fill='white'%3ERSC%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="{{ url_for('static', filename='tokens.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  {% if mail_status.running %}<meta http-equiv="refresh" content="8">{% endif %}
+</head>
+<body>
+{% set ep = request.endpoint or '' %}
+<a class="skip" href="#main">Skip to content</a>
+{% set bad_alerts = crew_alerts()|selectattr('level', 'equalto', 'bad')|list|length %}
+{% set inbox_n = review_count + followups_due() %}
+{% set grp = {
+  'inbox': ['review', 'followups_page'],
+  'jobs': ['jobs', 'job_new', 'job_detail', 'estimate_edit', 'change_orders', 'change_order_view', 'sow', 'contract_view', 'room_models', 'job_model', 'playbook_page'],
+  'money': ['expenses', 'owed_page', 'pricing_page', 'margins_page', 'report_page', 'quickbooks_page', 'codes'],
+  'crew': ['crew_page', 'week_page']} %}
+<header id="top">
+  <div class="bar">
+    <a class="brand" href="{{ url_for('home') }}"><span class="mark">{{ biz.short[:4] }}</span><span class="name">{{ biz.name }}<small>{{ biz.tagline }}</small></span></a>
+    <button class="btn secondary small menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var h=document.getElementById('top');var o=h.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu{% if inbox_n or bad_alerts %} <span class="badge">{{ inbox_n + bad_alerts }}</span>{% endif %}</button>
+    <nav class="main" id="nav" aria-label="Main">
+      <a href="{{ url_for('home') }}" class="{{ 'active' if ep == 'home' }}">Home</a>
+      <a href="{{ url_for('today_page') }}" class="{{ 'active' if ep == 'today_page' }}">Today</a>
+      <details class="{{ 'active' if ep in grp.inbox }}"><summary>Inbox{% if inbox_n %} <span class="badge">{{ inbox_n }}</span>{% endif %}</summary>
+        <div class="drop">
+          <a href="{{ url_for('review') }}" class="{{ 'active' if ep == 'review' }}">To review{% if review_count %}<span class="badge">{{ review_count }}</span>{% endif %}</a>
+          <a href="{{ url_for('followups_page') }}" class="{{ 'active' if ep == 'followups_page' }}">Follow-ups{% if followups_due() %}<span class="badge">{{ followups_due() }}</span>{% endif %}</a>
+        </div></details>
+      <details class="{{ 'active' if ep in grp.jobs }}"><summary>Jobs</summary>
+        <div class="drop">
+          <a href="{{ url_for('jobs') }}" class="{{ 'active' if ep in ['jobs', 'job_new', 'job_detail', 'estimate_edit', 'change_orders', 'change_order_view', 'sow', 'contract_view'] }}">All jobs</a>
+          <a href="{{ url_for('room_models') }}" class="{{ 'active' if ep in ['room_models', 'job_model'] }}">Room modeler</a>
+          <a href="{{ url_for('playbook_page') }}" class="{{ 'active' if ep == 'playbook_page' }}">Playbook</a>
+        </div></details>
+      <details class="{{ 'active' if ep in grp.money }}"><summary>Money</summary>
+        <div class="drop">
+          <a href="{{ url_for('owed_page') }}" class="{{ 'active' if ep == 'owed_page' }}">Money owed</a>
+          <a href="{{ url_for('expenses') }}" class="{{ 'active' if ep == 'expenses' }}">Expenses</a>
+          <a href="{{ url_for('pricing_page') }}" class="{{ 'active' if ep in ['pricing_page', 'margins_page', 'report_page'] }}">Pricing and margins</a>
+          <a href="{{ url_for('quickbooks_page') }}" class="{{ 'active' if ep == 'quickbooks_page' }}">QuickBooks</a>
+          <a href="{{ url_for('codes') }}" class="{{ 'active' if ep == 'codes' }}">{{ biz.short }} codes</a>
+        </div></details>
+      <details class="{{ 'active' if ep in grp.crew }}"><summary>Crew{% if bad_alerts %} <span class="badge">{{ bad_alerts }}</span>{% endif %}</summary>
+        <div class="drop">
+          <a href="{{ url_for('crew_page') }}" class="{{ 'active' if ep == 'crew_page' }}">Crew and hours{% if bad_alerts %}<span class="badge">{{ bad_alerts }}</span>{% endif %}</a>
+          <a href="{{ url_for('week_page') }}" class="{{ 'active' if ep == 'week_page' }}">The week</a>
+        </div></details>
+      <a href="{{ url_for('setup_page') }}" class="push {{ 'active' if ep == 'setup_page' }}">Setup</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  {% for cat, msg in get_flashed_messages(with_categories=true) %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}
+  {% if mail_status.running %}<div class="flash">Checking email... this page refreshes by itself.</div>{% endif %}
+  {% block body %}{% endblock %}
+</main>
+<footer><span>{{ biz.name }} &middot; {{ address_line }}</span><span>Everything stays on this computer. <a href="{{ url_for('export') }}">Download as Excel</a></span></footer>
+{% if voice_ready %}<script src="{{ url_for('static', filename='voice.js') }}" defer></script>{% endif %}
+<script>
+(function () {  // one dropdown open at a time; click elsewhere or press Escape to close
+  var menus = document.querySelectorAll('nav.main details');
+  menus.forEach(function (d) { d.addEventListener('toggle', function () { if (d.open) menus.forEach(function (o) { if (o !== d) o.open = false; }); }); });
+  document.addEventListener('click', function (e) { menus.forEach(function (d) { if (!d.contains(e.target)) d.open = false; }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') menus.forEach(function (d) { d.open = false; }); });
+})();
+document.addEventListener('submit', function (e) {
+  var f = e.target, msg = f.getAttribute('data-busy');
+  if (!msg) return;
+  var btn = f.querySelector('button.btn'); if (btn) { btn.disabled = true; btn.textContent = msg; }
+  f.classList.add('busy');
+});
+</script>
+</body>
+</html>

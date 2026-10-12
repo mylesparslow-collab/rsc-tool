@@ -1,0 +1,45 @@
+{% extends "base.html" %}{% block title %}QuickBooks{% endblock %}
+{% block body %}
+<h1>QuickBooks</h1>
+<div class="card">
+  <strong>Files for QuickBooks</strong>
+  <p class="muted" style="margin:4px 0 10px">The Payment ID is the invoice number, so these line up with no retyping. In QuickBooks Online use Sales &rarr; Invoices &rarr; Import, Banking &rarr; Upload from file, and Customers &rarr; Import.</p>
+  <div class="actions" style="flex-wrap:wrap">
+    <a class="btn" href="{{ url_for('qb_invoices') }}">Invoices (unpaid)</a>
+    <a class="btn secondary" href="{{ url_for('qb_invoices', all=1) }}">Invoices (all)</a>
+    <a class="btn secondary" href="{{ url_for('qb_expenses') }}">Expenses</a>
+    <a class="btn secondary" href="{{ url_for('qb_customers') }}">Customers</a>
+    <a class="btn secondary" href="{{ url_for('export') }}">Everything in Excel</a>
+  </div>
+</div>
+
+<div class="card">
+  <strong>Direct connection {% if connected %}<span class="muted">&mdash; connected ({{ env }})</span>{% endif %}</strong>
+  {% if not configured %}
+  <p class="muted" style="margin:4px 0 0">Optional. To send invoices straight into QuickBooks Online, create an app at developer.intuit.com, add <code>{{ redirect_uri }}</code> as its Redirect URI, and put its Client ID and Secret in <code>config.toml</code> under <code>[quickbooks]</code>. Start with <code>environment = "sandbox"</code>. Step by step: docs/quickbooks-setup.md.</p>
+  {% elif not connected %}
+  <form method="post" action="{{ url_for('qb_connect') }}"><input type="hidden" name="csrf" value="{{ csrf }}">
+    <p class="muted" style="margin:4px 0 10px">Ready to connect to a {{ env }} company. Nothing is sent until you press Send on a payment below.</p>
+    <div class="actions"><button class="btn">Connect to QuickBooks</button></div></form>
+  {% else %}
+  <form method="post" action="{{ url_for('qb_disconnect') }}"><input type="hidden" name="csrf" value="{{ csrf }}">
+    <p class="muted" style="margin:4px 0 10px">Nothing is sent automatically. Press Send on a payment to create that invoice in QuickBooks, and Paid once the money arrives.</p>
+    <button class="btn secondary">Disconnect</button></form>
+  {% endif %}
+</div>
+
+{% if connected %}
+<table>
+  <tr><th>Payment ID</th><th>Client</th><th>For</th><th class="num">Amount</th><th>Status</th><th></th></tr>
+  {% for p in payments %}{% set s = synced.get(p.id) %}
+  <tr><td class="id">{{ p.payment_id }}</td><td>{{ p.last_name }}</td><td>{{ p.description }}</td><td class="num">{{ money(p.amount) }}</td><td>{{ p.status }}</td>
+    <td>
+      {% if not s %}<form method="post" action="{{ url_for('qb_send', pk=p.id) }}" style="display:inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small">Send invoice</button></form>
+      {% elif s[1] %}<span class="muted">In QuickBooks, paid</span>
+      {% elif p.amount_paid %}<form method="post" action="{{ url_for('qb_paid', pk=p.id) }}" style="display:inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small">Record payment</button></form>
+      {% else %}<span class="muted">In QuickBooks</span>{% endif %}
+    </td></tr>
+  {% else %}<tr><td colspan="6" class="muted">No payments yet.</td></tr>{% endfor %}
+</table>
+{% endif %}
+{% endblock %}

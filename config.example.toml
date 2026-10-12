@@ -1,0 +1,36 @@
+# Copy to ~/RSC/config.toml (or run `rsc setup`, which writes it for you).
+first_job_number = 1001          # Whitcomb is 1001 in the tracker, so the next new job is 1002
+
+[mail]
+address = "nfparslow@gmail.com"
+mailboxes = ["INBOX"]
+first_run_days = 30              # how far back the very first check looks
+max_per_run = 200
+# Senders that never need reading (newsletters, family, etc.)
+ignore_senders = []
+
+[model]
+url = "http://localhost:11434"   # Ollama, on this computer
+name = "llama3.1:8b"             # 16 GB Mac. On an 8 GB Mac use "llama3.2:3b".
+timeout_seconds = 180
+
+[voice]
+model = "base.en"             # speech-to-text for the microphone buttons; "tiny.en" is faster, "small.en" more accurate
+
+# Optional: send invoices straight into QuickBooks Online (see docs/quickbooks-setup.md).
+# The CSV downloads on the QuickBooks page work without any of this.
+# [quickbooks]
+# client_id = ""
+# client_secret = ""
+# environment = "sandbox"     # "sandbox" (fake company) or "production"
+
+# Business details. These pre-fill Setup -> "Your business" on a new install; change them there afterwards.
+[business]
+name = "Reclaimed Space Crafters"
+short = "RSC"
+owner = "Nick"
+address = "4 Briar Lane"
+city = "Saratoga Springs, NY 12866"
+region = "Saratoga Springs, NY"
+county = "Saratoga County, New York"
+phone = "518-932-9919"

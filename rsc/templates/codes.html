@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block title %}RSC Codes{% endblock %}
+{% block body %}
+<h1>RSC operations codes</h1>
+<p class="muted">For business costs that don't belong to one job. Jobs are plain numbers (1002); these always start with RSC-.</p>
+<table>
+  <tr><th>Code</th><th>What it's for</th><th class="hide-sm">QuickBooks account</th><th class="num">Spent to date</th></tr>
+  {% for c in codes %}<tr><td class="id">{{ c.code }}</td><td>{{ c.description }}</td><td class="hide-sm">{{ c.qb_account }}</td><td class="num">{{ money(c.spent) }}</td></tr>{% endfor %}
+</table>
+{% endblock %}

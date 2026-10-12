@@ -1,0 +1,170 @@
+{
+ "source": "Nick's estimate, Version 2, 9/21/26",
+ "job": {
+  "last_name": "Hartwell",
+  "first_name": "Paul & Ruth",
+  "address": "12 Elm Court & 14 Elm Court, Saratoga Springs, NY 12866",
+  "job_type": "Carpentry / Repair",
+  "estimate_sent": "2026-09-21",
+  "status": "Estimate"
+ },
+ "estimate": {
+  "template": "Other",
+  "version": 2,
+  "version_date": "2026-09-21",
+  "materials": 1780,
+  "markup_pct": 0,
+  "windows_doors": 0,
+  "labor": 8500,
+  "debris": 375,
+  "hired_labor": 0,
+  "project": "Repair deteriorated exterior porch and screen-porch trim using PVC materials where appropriate; complete bathroom drywall, sink, faucet, shower fixture, drain and vanity-light replacement; repair damaged kitchen ceiling drywall; and finish the existing wood staircase and landing with new oak landing and stain.\nExterior repairs are based on currently visible conditions. Where deteriorated exterior trim or cladding is removed, concealed framing will be inspected. Any structural framing, posts, headers, sills, or other load-bearing wood found to be deteriorated will require appropriate wood replacement rather than PVC. Significant concealed structural repairs are not included in the base estimate and will require client approval as additional work.",
+  "duration": "9-11 days on-site. Monday-Friday (possibly some weekend days)",
+  "crew": "1 general contractor, 1 skilled laborer",
+  "labor_note": "List price $9,450, less 10% neighbor discount",
+  "milestones": "1-3; 4; 5-7",
+  "materials_list": "PVC trim boards — assorted 1x4, 1x6, 1x8\nPVC sheet/trim stock for custom cladding\nPVC cement/adhesive\nExterior stainless/composite trim screws & fasteners\nExterior premium paintable sealant/caulk\nPVC filler/plug material\nMisc. flashing/tape/weatherproofing materials\nRound white drop-in vitreous-china sink\nBathroom faucet\nTub/shower trim set\nTub waste/overflow & drain assembly\n4-light vanity light\nThree LED vanity bulbs\n1/2” drywall\nDrywall backing lumber\nJoint compound & tape\nPlumbing supply connectors/fittings\nPlumber’s putty/silicone/Teflon tape/etc\nPlastic, masking and sanding materials\nOak 1/4” x 4’ x 8’ plywood for landing\nFlooring/construction adhesive\nOak edging/trim as necessary\nWood stain\nPolyurethane/clear floor finish\nWhite semi-gloss high-quality 1 -gallon\nSandpaper/abrasives\nPainter’s tape/masking\nMisc. fasteners/filler\nCleanup bags, protection & miscellaneous consumables",
+  "phases": [
+   {
+    "title": "EXTERIOR PORCH POST PVC REPAIR - 14 Elm Court",
+    "steps": [
+     "Protect adjacent porch, siding, and landscaping as necessary.",
+     "Remove loose, deteriorated, and rotted material from the damaged exterior porch post area.",
+     "Inspect exposed post material to determine whether remaining wood is sound enough to receive the repair.",
+     "Repair and rebuild the damaged exterior finish using exterior-grade PVC trim/cladding.",
+     "Fit PVC to match the existing post profile as closely as practical.",
+     "Fasten with exterior-rated fasteners and PVC-compatible adhesive where appropriate.",
+     "Fill fastener holes, seal joints, and caulk transitions for a weather-resistant finished"
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "SCREEN PORCH PVC REPAIRS - 14 Elm Court",
+    "steps": [
+     "Remove deteriorated trim and cladding at the damaged lower screen-panel and screen-door areas.",
+     "Carefully expose enough of the underlying construction to determine the extent of deterioration.",
+     "Remove loose and deteriorated nonstructural material.",
+     "Fabricate new PVC trim pieces to replace deteriorated wood along the lower screen openings.",
+     "Repair deteriorated areas adjacent to the screen-door opening with PVC trim/cladding.",
+     "Repair lower corner trim and transitions where deterioration is visible.",
+     "Fit new PVC material to integrate with the existing screen-porch construction.",
+     "Refasten or adjust adjacent screen material as necessary where disturbed by the repairs.",
+     "Fill fasteners and seal PVC joints and transitions.",
+     "Caulk repaired areas for weather resistance."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "UPPER PORCH ROOF & LOWER POST REPAIRS - 14 Elm Court",
+    "steps": [
+     "Set up ladders and work area for safe access to the upper porch/roof intersection.",
+     "Remove deteriorated material at the visibly damaged upper porch roof/fascia/header cladding.",
+     "Inspect exposed wood and framing after removal.",
+     "Replace appropriate nonstructural deteriorated exterior material with exterior-grade PVC trim/cladding.",
+     "Repair deteriorated lower post-cladding areas using PVC where conditions allow.",
+     "Fit new material to match the dimensions and appearance of the existing trim as closely as practical.",
+     "Fasten PVC using appropriate exterior fasteners and adhesives.",
+     "Fill fastener holes and seal joints.",
+     "Caulk transitions to reduce future water infiltration."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "BATHROOM REPAIRS - 14 Elm Court",
+    "steps": [
+     "Protect vanity, countertop, floor, shower/tub, and surrounding bathroom surfaces.",
+     "Remove damaged drywall above the vanity/light area where mouse damage occurred.",
+     "Open approximately 2’ × 4’ of the affected drywall as required to create clean repair edges.",
+     "Inspect the exposed cavity for obvious additional damage.",
+     "Install backing/blocking as necessary for the drywall repair.",
+     "Install approximately 2’ × 4’ of new drywall.",
+     "Tape new drywall seams.",
+     "Apply multiple coats of joint compound.",
+     "Sand and prepare the repaired area for paint.",
+     "Disconnect and remove the existing vanity light fixture.",
+     "Inspect the existing electrical box and accessible wiring for suitability for the replacement fixture.",
+     "Install a new good-to-better-quality bathroom-rated vanity light fixture.",
+     "Install appropriate LED bulbs and test the new vanity light for proper operation.",
+     "Remove the existing bathroom faucet.",
+     "Install a new good-to-better-quality bathroom faucet.",
+     "Remove the existing round drop-in bathroom sink.",
+     "Prepare and clean the existing countertop opening.",
+     "Install a new white round vitreous-china bathroom sink.",
+     "Seal the sink perimeter as required.",
+     "Reconnect the sink drain, faucet supplies, and related accessible plumbing.",
+     "Test sink and faucet for proper operation and leakage.",
+     "Remove existing shower/tub control trim.",
+     "Remove existing showerhead and shower arm as necessary.",
+     "Remove existing tub spout.",
+     "Remove accessible existing tub/shower drain components.",
+     "Install new coordinated tub/shower control trim and fittings compatible with the existing plumbing.",
+     "Install new shower arm and showerhead.",
+     "Install new tub spout.",
+     "Install new tub/shower drain components.",
+     "Seal fixture penetrations and trim as appropriate.",
+     "Restore water service and test all newly installed bathroom fixtures for proper operation and leakage.",
+     "Clean bathroom work area and remove construction debris."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "KITCHEN CEILING DRYWALL REPAIR - 12 Elm Court",
+    "steps": [
+     "Protect kitchen cabinets, countertops, appliances, flooring, and surrounding surfaces beneath the work area.",
+     "Cut out the damaged ceiling area to clean repair edges and appropriate framing/backing locations.",
+     "Install additional backing where required.",
+     "Install approximately 2’ × 3’ of new ceiling drywall.",
+     "Tape the new drywall seams.",
+     "Repair and retape the approximately 6” × 6’ affected ceiling seam/area.",
+     "Apply multiple coats of joint compound and feather the repair into the surrounding ceiling.",
+     "Sand repaired areas smooth and paint.",
+     "Clean the work area and remove drywall debris."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "STAIR & LANDING OAK FINISH WORK - 12 Elm Court",
+    "steps": [
+     "Protect surrounding walls, floors, trim, and adjacent finished surfaces.",
+     "Prepare the existing stair landing for installation of the new oak surface.",
+     "Sand and flatten the landing substrate as necessary to receive the new material.",
+     "Template the irregularly shaped stair landing.",
+     "Cut and fit thick oak veneer/overlay over the existing landing.",
+     "Fit the new oak plywood tightly around the stair geometry and adjacent trim.",
+     "Secure the oak plywood using appropriate wood-flooring adhesive and mechanical fastening where necessary.",
+     "Install and finish oak edging or transition material where required.",
+     "Sand the new oak landing as necessary to blend with the existing staircase.",
+     "Prepare the existing stair treads and other exposed stain-grade stair wood for refinishing.",
+     "Protect adjacent walls, trim, flooring, and other surfaces during stair refinishing.",
+     "Sand and prepare the stair treads and landing to receive stain.",
+     "Apply stain to the existing stair treads and new oak landing.",
+     "Allow stain to dry appropriately before application of the protective finish.",
+     "Apply the first coat of clear protective floor-grade finish to the stained stair surfaces.",
+     "Lightly sand and prepare between finish coats as required.",
+     "Apply final protective finish coat.",
+     "Allow finish to cure as required before proceeding with riser painting.",
+     "Protect the newly finished stair treads, landing, stringers, and walls before painting the risers.",
+     "Fill minor nail holes, dents, and surface imperfections in the stair risers as necessary.",
+     "Sand and prepare the stair risers for paint.",
+     "Spot-prime repaired or bare areas and apply primer to the risers where necessary for uniform coverage.",
+     "Apply two finish coats of quality white trim/enamel paint to the stair risers.",
+     "Remove masking carefully after the riser paint has sufficiently dried.",
+     "Inspect the completed stairs and perform minor stain, clear-finish, or paint touch-ups as necessary.",
+     "Clean the stair and landing work area."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "FINAL CLEANUP & DISPOSAL - 12 Elm Court & 14 Elm Court",
+    "steps": [
+     "Remove construction debris generated by the included repairs.",
+     "Remove remaining masking and temporary protection.",
+     "Clean repaired work areas.",
+     "Complete final inspection of the included work.",
+     "Touch up caulk, filler, and other minor finish items where required."
+    ],
+    "inspection": ""
+   }
+  ]
+ }
+}

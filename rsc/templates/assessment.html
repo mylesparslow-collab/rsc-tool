@@ -1,0 +1,43 @@
+{% extends "base.html" %}{% block title %}Safety assessment {{ job.job_id }}{% endblock %}
+{% block body %}
+<h1><span class="id">{{ job.job_id }}</span> · Home safety assessment</h1>
+<p class="muted"><a href="{{ url_for('job_detail', number=job.number) }}">&larr; Back to the job</a> · {{ job.first_name }} {{ job.last_name }} · {{ job.address }}</p>
+
+<form method="post" class="card" enctype="multipart/form-data" data-busy="Writing it up... a few seconds">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Walk through the house and tick what you see</strong>
+  <p class="muted" style="margin:4px 0 8px">Quantities are filled in for you and you can change them after. Prices come from the price list, not from the AI.</p>
+  {% for room, items in checklist %}<div style="margin:10px 0 2px"><b>{{ room }}</b></div>
+    {% for id, label, key, qty in items %}<label style="display:block;font-weight:normal"><input type="checkbox" name="check" value="{{ id }}"> {{ label }}</label>{% endfor %}{% endfor %}
+  <div style="margin:12px 0 2px"><b>Anything else</b> <span class="muted">(type or say it)</span></div>
+  <textarea name="notes" data-voice rows="3" placeholder="Hallway is narrow. Loose rug at the top of the stairs. Wants a seat in the shower.">{{ a.notes if a else '' }}</textarea>
+  <div class="actions"><button class="btn" name="action" value="write">Write the assessment</button></div>
+</form>
+
+<h2 id="photos">Photos</h2>
+<form method="post" class="card" enctype="multipart/form-data">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="grid">
+    <div><label>Room</label><select name="photo_room">{% for r in rooms %}<option>{{ r }}</option>{% endfor %}<option>Other</option></select></div>
+    <div style="grid-column:span 2"><label>Photos (several at once is fine)</label><input type="file" name="photos" accept="image/*" multiple></div>
+  </div>
+  <div class="actions"><button class="btn secondary" name="action" value="photos">Add photos</button></div>
+  {% if photos %}<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px">
+    {% for p in photos %}<div style="width:140px"><img src="{{ url_for('assessment_photo', number=job.number, photo_id=p.id) }}" style="width:140px;height:100px;object-fit:cover;border-radius:6px"><div class="muted">{{ p.room }}</div></div>{% endfor %}</div>{% endif %}
+</form>
+
+{% if a %}
+<h2>Recommended work</h2>
+<table>
+  <tr><th>Fix</th><th>Where</th><th class="num">Qty</th><th class="num">Price range</th></tr>
+  {% for r in a.priced.rows %}<tr><td>{{ r.label }}<div class="muted">{{ r.note }}</div></td><td>{{ r.where }}</td><td class="num">{{ r.qty }}</td>
+    <td class="num">{% if r.priced %}{{ money(r.low) }} &ndash; {{ money(r.high) }}{% else %}price on site{% endif %}</td></tr>{% endfor %}
+  <tr><td colspan="3"><b>Total</b></td><td class="num"><b>{{ money(a.priced.low) }} &ndash; {{ money(a.priced.high) }}</b>{% if a.priced.has_open_price %}<div class="muted">plus items priced on site</div>{% endif %}</td></tr>
+</table>
+{% if a.concerns %}<div class="card"><strong>Also noticed</strong><ul class="note-list">{% for c in a.concerns %}<li>{{ c }}</li>{% endfor %}</ul></div>{% endif %}
+<p class="muted">Assessment fee ${{ fee[0] }}&ndash;${{ fee[1] }}, credited toward any job over {{ money(credit_over) }}{% if a.priced.fee_credited %} (this one qualifies){% endif %}. These ranges are national averages; Capital Region prices and your {{ '$65-72' }} per crew-hour are checked when you write the estimate.</p>
+<div class="actions"><a class="btn" href="{{ url_for('assessment_print', number=job.number) }}" target="_blank">Print for the client</a>
+  <a class="btn secondary" href="{{ url_for('estimate_edit', number=job.number) }}">Turn this into an estimate</a></div>
+<details class="more"><summary>Measurements to check on site</summary><ul class="note-list">{% for d in dimensions %}<li>{{ d.lstrip('- ') }}</li>{% endfor %}</ul></details>
+{% endif %}
+{% endblock %}

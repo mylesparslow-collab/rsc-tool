@@ -1,0 +1,54 @@
+{% extends "base.html" %}{% block title %}To Review{% endblock %}
+{% block body %}
+<h1>To review</h1>
+<p class="muted">Found in your email by the assistant on this computer. Nothing is added until you press the green button. Fix anything that's wrong first.</p>
+{% if not items %}<div class="card">Nothing to review right now.</div>{% endif %}
+{% for s in items %}{% set d = s.data %}
+<form method="post" action="{{ url_for('review_decide', sid=s.id) }}" class="card review-item {{ s.kind }}">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="tag">{{ {'expense': 'Receipt / expense', 'payment': 'Client payment', 'lead': 'New lead'}[s.kind] if not d.applicant else 'Job applicant' }}</div>
+  <div><strong>{{ s.subject }}</strong> <span class="muted">from {{ s.sender }} · {{ s.received_at }}</span></div>
+  <div class="muted">Why: {{ s.match_note }}{% if s.confidence < 0.6 %} · <span class="bad">assistant wasn't sure, check carefully</span>{% endif %}</div>
+  <div class="grid" style="margin-top:12px">
+  {% if s.kind == 'expense' %}
+    <div><label>Charge to</label>
+      <select name="charge_to">
+        <option value="">-- pick a job or RSC code --</option>
+        <optgroup label="Jobs">{% for j in jobs %}<option value="{{ j.number }}" {{ 'selected' if d.charge_to == j.number|string }}>{{ j.job_id }} {{ j.first_name }} {{ j.last_name }}</option>{% endfor %}</optgroup>
+        <optgroup label="Operations">{% for c in codes %}<option value="{{ c.code }}" {{ 'selected' if d.charge_to == c.code }}>{{ c.code }} {{ c.description }}</option>{% endfor %}</optgroup>
+      </select></div>
+    <div><label>Date</label><input type="date" name="date" value="{{ d.date }}"></div>
+    <div><label>Vendor</label><input name="vendor" value="{{ d.vendor }}"></div>
+    <div><label>What was bought</label><input name="description" value="{{ d.description }}"></div>
+    <div><label>Category</label><select name="category">{% for c in categories %}<option {{ 'selected' if d.category == c }}>{{ c }}</option>{% endfor %}</select></div>
+    <div><label>Amount</label><input name="amount" value="{{ '%.2f'|format(d.amount) }}"></div>
+    <div><label>Paid with</label><select name="paid_with"><option></option>{% for p in paid_with %}<option {{ 'selected' if d.paid_with == p }}>{{ p }}</option>{% endfor %}</select></div>
+  {% elif s.kind == 'payment' %}
+    <div><label>Which payment</label>
+      <select name="payment_pk">
+        <option value="">-- pick a payment --</option>
+        {% for p in payments %}<option value="{{ p.id }}" {{ 'selected' if d.payment_pk == p.id }}>{{ p.payment_id }} · {{ money(p.amount) }} · {{ p.description }}</option>{% endfor %}
+      </select></div>
+    <div><label>From</label><input value="{{ d.payer }}" disabled></div>
+    <div><label>Date received</label><input type="date" name="date" value="{{ d.date }}"></div>
+    <div><label>Amount</label><input name="amount" value="{{ '%.2f'|format(d.amount) }}"></div>
+    <div><label>Reference</label><input value="{{ d.reference }}" disabled></div>
+  {% else %}
+    <div><label>Name</label><input name="name" value="{{ d.name }}"></div>
+    <div><label>Email</label><input name="email" value="{{ d.email }}"></div>
+    <div><label>Phone</label><input name="phone" value="{{ d.phone }}"></div>
+    <div><label>Address</label><input name="address" value="{{ d.address }}"></div>
+    <div style="grid-column:1/-1"><label>{{ 'About them' if d.applicant else 'What they want' }}</label><input name="project" value="{{ d.project }}"></div>
+    {% if d.reply %}<div style="grid-column:1/-1"><label>{{ 'Reply, ready to send' if d.applicant else 'Reply, ready to send (offers your visit times)' }}</label>
+      <textarea name="reply" rows="8">{{ d.reply }}</textarea>
+      <div class="actions" style="margin-top:6px"><a class="btn secondary" href="mailto:{{ d.reply_to }}?subject={{ d.reply_subject|urlencode }}&body={{ d.reply|urlencode }}">Open reply in Mail</a>
+      <button type="button" class="btn quiet" onclick="var t=this.closest('.grid').querySelector('textarea[name=reply]');t.select();navigator.clipboard&&navigator.clipboard.writeText(t.value);this.textContent='Copied'">Copy</button></div></div>{% endif %}
+  {% endif %}
+  </div>
+  <div class="actions">
+    <button class="btn" name="action" value="approve">{{ {'expense': 'Add expense', 'payment': 'Mark paid', 'lead': 'Start estimate'}[s.kind] if not d.applicant else 'Save applicant' }}</button>
+    <button class="btn quiet" name="action" value="dismiss">Skip</button>
+  </div>
+</form>
+{% endfor %}
+{% endblock %}

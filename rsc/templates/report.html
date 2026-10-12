@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Weekly report{% endblock %}
+{% block body %}
+<div class="page-head"><div><div class="eyebrow">Goes out every Monday morning</div><h1>Weekly report</h1></div></div>
+<div class="card">
+  <p class="muted" style="margin:0 0 8px">Subject: <strong>{{ subject }}</strong><br>To: {% if recipients %}{{ recipients|join(', ') }}{% else %}<span class="bad">nobody yet</span>. Add the addresses on the <a href="{{ url_for('setup_page') }}">Setup page</a>.{% endif %}</p>
+  <pre style="white-space:pre-wrap;font:14px/1.55 ui-monospace,Menlo,monospace;margin:0">{{ text }}</pre>
+  <form method="post" action="{{ url_for('report_send') }}" data-busy="Sending..."><input type="hidden" name="csrf" value="{{ csrf }}">
+    <div class="actions"><button class="btn" {{ 'disabled' if not recipients }}>Send it now</button></div></form>
+</div>
+{% endblock %}

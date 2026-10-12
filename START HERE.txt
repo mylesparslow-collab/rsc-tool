@@ -1,0 +1,19 @@
+RECLAIMED SPACE CRAFTERS - ONE-CLICK SET UP
+
+1. Double-click  "Install RSC.command"  in this folder.
+   The first time, macOS may say it can't verify the file. If so, right-click (or
+   Control-click) it, choose Open, then Open again. That is the only extra step.
+
+2. Wait. The first install downloads the AI models (a few GB), so let it run.
+   It asks nothing and needs no administrator password.
+
+3. When it finishes, the app opens in your browser on the Setup page. Type the
+   business Gmail address, paste its app password (the page links to where to make
+   one), and the email addresses that should get the Monday report. Press Save.
+
+After that, double-click RSC on the Desktop any time. The app also starts by itself
+when you log in, checks your email every 30 minutes, and sends the weekly report
+Monday mornings.
+
+Everything runs on this Mac. Your jobs and receipts stay here.
+If anything stops, send Myles a picture of the Terminal window.

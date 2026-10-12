@@ -1,0 +1,10 @@
+__pycache__/
+*.egg-info/
+.venv/
+*.db
+*.db-*
+config.toml
+.pytest_cache/
+*.zip
+*.mp4
+.DS_Store

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Setup Guide</title>
+<style>
+  :root { --ink:#1d2420; --muted:#55605a; --green:#2F5D46; --gold:#C9A66B; --line:#d9ddd8; --paper:#ffffff; --warn:#8C2F22; --tint:#f3f6f3; }
+  @page { size: letter; margin: 0.45in; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font: 13pt/1.33 Georgia, "Times New Roman", serif; }
+  .page { max-width: 7.5in; margin: 0 auto; padding: 16px; }
+  .sheet + .sheet { break-before: page; margin-top: 40px; }
+  header { display:flex; align-items:baseline; justify-content:space-between; border-bottom:4px solid var(--gold); padding-bottom:6px; margin-bottom:12px; gap:12px; }
+  h1 { font: 800 24pt/1.1 Arial, Helvetica, sans-serif; color:var(--green); margin:0; }
+  header span { font: 11pt Arial, sans-serif; color:var(--muted); white-space:nowrap; }
+  h2 { font: 800 16pt/1.2 Arial, Helvetica, sans-serif; color:var(--green); margin: 12px 0 6px; }
+  p { margin: 0 0 10px; }
+  ol.steps { list-style:none; margin:0; padding:0; counter-reset:s; }
+  ol.steps > li { break-inside:avoid; margin:0 0 8px; padding-left:40px; position:relative; }
+  ol.steps > li::before { counter-increment:s; content:counter(s); position:absolute; left:0; top:1px; width:30px; height:30px; border-radius:50%; background:var(--green); color:#fff; font:700 14pt/30px Arial, sans-serif; text-align:center; }
+  b.t { display:block; font:700 14pt/1.25 Arial, Helvetica, sans-serif; color:var(--green); }
+  .btn { font:700 12.5pt Arial, sans-serif; background:#eef3ef; border:1px solid #b9cbbf; border-radius:4px; padding:0 5px; white-space:nowrap; }
+  .say { display:block; font: 12.5pt/1.3 "Courier New", monospace; background:var(--tint); border-left:4px solid var(--green); padding:6px 10px; margin:6px 0 2px; }
+  .box { border:2px solid var(--line); border-radius:6px; padding:8px 14px; margin: 8px 0; break-inside:avoid; }
+  .box.warn { border-color: var(--warn); }
+  .box.warn h2 { color: var(--warn); margin-top:2px; }
+  table { width:100%; border-collapse:collapse; font-size:13pt; margin: 6px 0 10px; }
+  th, td { text-align:left; vertical-align:top; padding:6px 8px; border-bottom:1px solid var(--line); }
+  th { font:700 12.5pt Arial, sans-serif; color:var(--green); }
+  ul { margin: 4px 0 10px; padding-left: 24px; }
+  ul li { margin: 0 0 6px; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap: 0 24px; }
+  .small { font-size: 12pt; color: var(--muted); }
+  @media (max-width: 640px) { .two { grid-template-columns:1fr; } header { display:block; } body { font-size: 13pt; } }
+  @media print { .page { padding:0; max-width:none; } .sheet + .sheet { margin-top:0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ================= PAGE 1 ================= -->
+<section class="sheet">
+<header><h1>Setting up Claude on your Mac</h1><span>Reclaimed Space Crafters</span></header>
+<p>Claude is an AI helper. Once it is set up, you can type a request in plain English, like <i>"the phone number on the website is wrong"</i> or <i>"the Expenses page shows the wrong total"</i>, and Claude makes the fix on your computer. <b>It asks you before it changes anything.</b> Do this setup once, ideally with Myles on the phone.</p>
+
+<h2>Set it up (once)</h2>
+<ol class="steps">
+  <li><b class="t">Have a paid Claude account</b>
+    Claude needs a <b>Pro</b> or <b>Max</b> plan for this. Myles will tell you which account and email to use.</li>
+  <li><b class="t">Download the Claude app</b>
+    In Safari or Chrome go to <b>claude.com/download</b> and press the Mac download. Open the file that downloads, then drag the <b>Claude</b> icon into the <b>Applications</b> folder.</li>
+  <li><b class="t">Open Claude and sign in</b>
+    Open <b>Claude</b> from Applications (or the Launchpad). Sign in with the email Myles gave you. You can drag the icon to your Dock so it is easy to find.</li>
+  <li><b class="t">Put the website on your Mac</b>
+    In the email from Myles, double-click <b>rsc-website.zip</b>. A folder called <b>rsc-website</b> appears. Drag it into your <b>Documents</b> folder.</li>
+  <li><b class="t">Know where the RSC app lives</b>
+    The RSC app's folder is called <b>rsc-tool</b>. It is wherever you unzipped it when you installed the app (often your home folder or Downloads). <b>Leave it where it is.</b> Moving it breaks the app.</li>
+</ol>
+
+<div class="box">
+<h2 style="margin-top:2px">Two kinds of access</h2>
+<table>
+  <tr><th style="width:32%">Kind</th><th>What Claude can do</th></tr>
+  <tr><td><b>Folder access</b><br><span class="small">(what you'll use)</span></td><td>Read and change files only inside the one folder you pick: <b>rsc-tool</b> or <b>rsc-website</b>. It can't see your email, photos or other files.</td></tr>
+  <tr><td><b>Computer use</b><br><span class="small">(off; not needed)</span></td><td>Sees your screen and clicks in other apps. It asks before using each app. Leave it off unless Myles says otherwise (see page 3).</td></tr>
+</table>
+</div>
+</section>
+
+<!-- ================= PAGE 2 ================= -->
+<section class="sheet">
+<header><h1>Asking Claude for a fix</h1><span>Same steps for the app and the website</span></header>
+
+<ol class="steps">
+  <li><b class="t">Open Claude and press the <span class="btn">Code</span> tab</b> (top of the window, next to Chat and Cowork)</li>
+  <li><b class="t">Pick where it works</b>
+    Below the message box, make sure it says <span class="btn">Local</span> (your Mac). Then pick the folder:
+    <b>rsc-tool</b> to fix the RSC app, or <b>rsc-website</b> (in Documents) to change the website. Claude only touches that folder.</li>
+  <li><b class="t">Set it to ask first</b>
+    Next to the send button, set the mode to <span class="btn">Manual</span>. Claude then asks before every change, and you can say yes or no.</li>
+  <li><b class="t">Say what you want, in plain words</b>
+    Start with this line, then describe the problem:
+    <span class="say">Read CLAUDE.md first, back up, and explain each step to me simply. Here's the problem:</span>
+    Then, for example: <i>"The weekly report says $0 collected but Hartwell paid last week."</i> or <i>"On the website, change the hours to Monday to Friday, 7 to 4."</i></li>
+  <li><b class="t">Approve or say no</b>
+    Claude shows what it wants to do and waits. Press <span class="btn">Allow</span> (or Accept) if it makes sense. Press <span class="btn">Deny</span> (or Reject) if you're not sure, and ask it to explain. Press <b>Esc</b> to stop it any time.</li>
+  <li><b class="t">Finish the job</b>
+    For the <b>RSC app</b>, end with:
+    <span class="say">Run the tests, run rsc doctor, restart the app, and tell me what you changed and where the backup is.</span>
+    For the <b>website</b>, ask Claude to <i>"open the page so I can look."</i> When you like it, text Myles. <b>Myles puts website changes online</b>; changes on your Mac don't show on the live site until he does.</li>
+</ol>
+
+<div class="box">
+<h2 style="margin-top:2px">Good things to ask for</h2>
+<div class="two">
+<ul>
+  <li>Fix a wrong word, number or button</li>
+  <li>"Why does this page look wrong?"</li>
+  <li>"Make this page easier to read"</li>
+  <li>Add a step to an estimate template</li>
+</ul>
+<ul>
+  <li>Website: phone, hours, text, a new photo</li>
+  <li>Website: answer a "What to confirm" item</li>
+  <li>"The app won't open. What's wrong?"</li>
+  <li>"Undo what you just did."</li>
+</ul>
+</div>
+<p class="small" style="margin:0"><b>Ask Myles first</b> before changing contract wording (a lawyer still needs to review it), your 43% markup, or anything that would send email or connect to QuickBooks.</p>
+</div>
+</section>
+
+<!-- ================= PAGE 3 ================= -->
+<section class="sheet">
+<header><h1>Staying safe</h1><span>Keep this list by the computer</span></header>
+
+<div class="box warn">
+<h2>Six rules</h2>
+<ol class="steps">
+  <li><b class="t">Back up first</b>
+    Every request starts with "back up" (the line on page 2 does it). If something goes wrong, the backup puts it back.</li>
+  <li><b class="t">Never share a password</b>
+    Don't type or paste your Gmail app password, bank logins or QuickBooks login into Claude. The RSC app keeps the Gmail one locked in the Mac's Keychain; it never needs it again.</li>
+  <li><b class="t">Nothing goes out without you</b>
+    Don't let Claude send email to clients or crew for you. Emails should open in Mail so you read them and press Send yourself.</li>
+  <li><b class="t">Read before you press Allow</b>
+    If you don't understand what it wants to do, press Deny and ask, "Explain that in plain words."</li>
+  <li><b class="t">Delete only with a reason</b>
+    If Claude asks to delete a file, say no unless Myles told you to expect it.</li>
+  <li><b class="t">When in doubt, stop</b>
+    Press Esc, take a picture of the screen, and text it to Myles.</li>
+</ol>
+</div>
+
+<h2>Turning things off</h2>
+<ul>
+  <li><b>Stop Claude right now:</b> press <b>Esc</b> or the stop button. Closing the Claude window also stops it.</li>
+  <li><b>Folder access:</b> each conversation works in only the one folder you picked for it. To be done, close the conversation; nothing else on your Mac was opened.</li>
+  <li><b>Computer use</b> (screen control) is off unless someone turns it on in <b>Claude &rsaquo; Settings &rsaquo; General &rsaquo; Enable computer use</b>. To take it away, turn that switch off. If it is ever on, Claude asks before using each app: don't allow Mail, your bank or QuickBooks.</li>
+</ul>
+
+<h2>If you're stuck</h2>
+<p>Ask Claude, <i>"What's going on? Explain it simply."</i> If that doesn't help, quit Claude, take a picture of the screen and text Myles. Your jobs and money records are safe in the RSC folder in your home folder, with a backup made every day.</p>
+<p class="small">Steps checked against Anthropic's Claude help pages, October 2026. Button names can change a little between app updates.</p>
+</section>
+
+</div>
+</body>
+</html>

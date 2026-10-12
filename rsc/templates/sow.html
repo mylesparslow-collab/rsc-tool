@@ -1,0 +1,53 @@
+{% extends "print_base.html" %}
+{% block title %}Scope of Work / Estimate {{ job.job_id }}{% endblock %}
+{% block toolbar %}<a href="{{ url_for('estimate_edit', number=job.number) }}">&larr; Back to the estimate</a>{% endblock %}
+{% block body %}
+<div style="text-align:center;border-bottom:2px solid #2F5D46;padding-bottom:8px;margin-bottom:14px">
+  <div style="font:700 17pt Georgia,serif;letter-spacing:.28em;text-transform:uppercase;color:#1F3A2E">{{ biz.name }}</div>
+  <div class="muted">{{ address_line }} &bull; {{ biz.email }} &bull; {{ biz.phone }}</div>
+</div>
+<div><b>{{ job.first_name }} {{ job.last_name }}</b><br>{{ job.address }}</div>
+<h2 style="font-size:16pt;border:0;margin:14px 0 0">SCOPE OF WORK / ESTIMATE</h2>
+<div class="muted">Version {{ est.version }} &ndash; {{ version_date }} &middot; Job <b>{{ job.job_id }}</b></div>
+
+{% if est.project %}<h2>PROJECT</h2>{% for para in lines(est.project) %}<p style="margin:4px 0">{{ para }}</p>{% endfor %}{% endif %}
+
+<h2>LABOR</h2>
+{% for p in phases %}
+<h3>PHASE {{ loop.index }} &mdash; {{ p.title|upper }}</h3>
+<ol class="steps">{% for n, text in p.numbered %}<li><b>{{ n }}.</b> {{ text }}</li>{% endfor %}</ol>
+{% if p.inspection %}<div><i>Inspection: {{ p.inspection }}</i></div>{% endif %}
+{% endfor %}
+
+{% if lines(est.materials_list) %}<h2>MATERIALS &ndash; {{ biz.short }}</h2>
+<ul style="margin:4px 0;padding-left:18px">{% for x in lines(est.materials_list) %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+
+{% if est.duration or est.crew %}<h2>SCHEDULE / CREW</h2>
+{% if est.duration %}<div>Business days on site: {{ est.duration }}</div>{% endif %}
+{% if est.crew %}<div>Crew: {{ est.crew }}</div>{% endif %}{% endif %}
+
+<h2>FEES</h2>
+<table>
+  <tr><td>LABOR{% if est.labor_note %}<div class="muted">{{ est.labor_note }}</div>{% endif %}</td><td class="num">{{ money(est.labor) }}</td></tr>
+  {% if est.materials %}<tr><td>MATERIALS</td><td class="num">{{ money(totals.materials_price) }}</td></tr>{% endif %}
+  {% if est.windows_doors %}<tr><td>WINDOWS &amp; DOORS</td><td class="num">{{ money(est.windows_doors) }}</td></tr>{% endif %}
+  {% for o in est.others %}<tr><td>{{ o.label|upper }}</td><td class="num">{{ money(o.amount) }}</td></tr>{% endfor %}
+  {% if est.debris %}<tr><td>DEBRIS DISPOSAL / DUMP FEES</td><td class="num">{{ money(est.debris) }}</td></tr>{% endif %}
+  <tr><th>TOTAL FEES</th><th class="num">{{ money(totals.total) }}</th></tr>
+</table>
+
+<h2>PAYMENT SCHEDULE</h2>
+<table>
+  <tr><th>Payment</th><th>For</th><th>Due</th><th class="num">Amount</th></tr>
+  {% if payments %}
+    {% for p in payments %}<tr><td><b>{{ p.payment_id }}</b></td><td>{{ p.description }}</td><td>{{ p.due_when }}</td><td class="num">{{ money(p.amount) }}</td></tr>{% endfor %}
+  {% else %}
+    {% for s in schedule %}<tr><td><b>{{ job.job_id }}-{{ loop.index }}</b></td><td>{{ s.description }}</td><td>{{ s.due_when }}</td><td class="num">{{ money(s.amount) }}</td></tr>{% endfor %}
+  {% endif %}
+</table>
+
+{% if lines(est.labor_not_included) %}<h2>Labor not included</h2><ul>{% for x in lines(est.labor_not_included) %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+{% if lines(est.materials_not_included) %}<h2>Materials not included</h2><ul>{% for x in lines(est.materials_not_included) %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+{% if lines(est.open_decisions) %}<h2>Open decisions for the client</h2><ul>{% for x in lines(est.open_decisions) %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+<div class="muted" style="margin-top:12px">Changes to this scope or price require a written, signed Change Order.</div>
+{% endblock %}

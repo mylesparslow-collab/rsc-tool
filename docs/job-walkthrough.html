@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How a Job Goes</title>
+<style>
+  :root { --ink:#1d2420; --muted:#55605a; --green:#2F5D46; --gold:#C9A66B; --line:#d9ddd8; --paper:#ffffff; }
+  @page { size: letter; margin: 0.4in; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font: 12pt/1.28 Georgia, "Times New Roman", serif; }
+  .page { max-width: 7.6in; margin: 0 auto; padding: 16px; }
+  header { display:flex; align-items:baseline; justify-content:space-between; border-bottom:4px solid var(--gold); padding-bottom:6px; margin-bottom:10px; }
+  h1 { font: 800 22pt/1.1 Arial, Helvetica, sans-serif; color:var(--green); margin:0; }
+  header span { font: 10.5pt Arial, sans-serif; color:var(--muted); }
+  .intro { margin:0 0 10px; }
+  ol { list-style:none; margin:0; padding:0; columns:2; column-gap:22px; }
+  li { break-inside:avoid; margin:0 0 7px; padding-left:32px; position:relative; }
+  li::before { counter-increment: s; content: counter(s); position:absolute; left:0; top:1px; width:25px; height:25px; border-radius:50%; background:var(--green); color:#fff; font:700 12.5pt/25px Arial, sans-serif; text-align:center; }
+  ol { counter-reset: s; }
+  li b.t { display:block; font:700 12.5pt/1.2 Arial, Helvetica, sans-serif; color:var(--green); }
+  .btn { font:700 11pt Arial, sans-serif; background:#eef3ef; border:1px solid #b9cbbf; border-radius:4px; padding:0 4px; white-space:nowrap; }
+  .rules { margin-top:6px; border-top:2px solid var(--line); padding-top:8px; display:grid; grid-template-columns:1fr 1fr; gap:4px 22px; font-size:11.5pt; }
+  .rules b { font-family: Arial, sans-serif; }
+  @media (max-width: 640px) { ol { columns:1; } .rules { grid-template-columns:1fr; } header { display:block; } }
+  @media print { .page { padding:0; max-width:none; } }
+</style>
+</head>
+<body>
+<div class="page">
+<header><h1>How a job goes, start to finish</h1><span>Reclaimed Space Crafters</span></header>
+<p class="intro">Open the app by double-clicking <b>RSC</b> on the Desktop. Gray boxes like <span class="btn">this</span> are the buttons you press. Nothing goes to a client until you press a button.</p>
+
+<ol>
+  <li><b class="t">A new customer writes in</b>
+    The app checks your email every 30 minutes. A new inquiry shows up under <b>Inbox &rsaquo; To review</b> with a reply already written that offers your next visit times.</li>
+  <li><b class="t">Answer them</b>
+    Read the reply, change anything you want, and press <span class="btn">Open reply in Mail</span>. Send it from Mail as usual.</li>
+  <li><b class="t">Make the job</b>
+    On the same card press <span class="btn">Start estimate</span>. Or go to <b>Jobs &rsaquo; All jobs &rsaquo; New job</b> and paste their email or type a few lines. The job gets a number like <span style="white-space:nowrap">1003-DEL</span>.</li>
+  <li><b class="t">The estimate</b>
+    On <b>Estimate &amp; contract</b>, type your notes and press <span class="btn">Draft the estimate</span>. Read <b>Please check these</b> at the top: those are guesses. To fix anything, type it in the change box, like "labor is $11,000", and press <span class="btn">Make the change</span>.</li>
+  <li><b class="t">Check the price</b>
+    A colored box says <b>Above your floor</b> or <b>Below your floor</b>. It also warns you if the work comes in under $65 a crew-hour. Red means raise the price.</li>
+  <li><b class="t">Contract and signature</b>
+    Press <span class="btn">Print the estimate (SOW)</span> and <span class="btn">View the contract (draft)</span>, print them, and have the client sign on paper. Then press <span class="btn">Contract signed</span>.</li>
+  <li><b class="t">Payment schedule</b>
+    "Contract signed" makes the payments, like <span style="white-space:nowrap">1003-DEL-1, -2, -3</span>. Use that number as the QuickBooks invoice number. When money arrives, press <span class="btn">Mark paid</span> in To review.</li>
+  <li><b class="t">Start the work</b>
+    On the job page set <b>Status</b> to <b>In Progress</b> and press <span class="btn">Save</span>. Now the job shows on the <b>Today</b> tab, and the crew gets that sheet by email at 6 AM on weekdays. Tick steps off as they're done.</li>
+  <li><b class="t">Hours, expenses, receipts</b>
+    Hours: type "Tue Mike 8, Dave 6 on Delano" and press <span class="btn">Log hours</span>. Expenses: type "Home Depot 109.91 for Delano" and press <span class="btn">Read it</span>, or take a picture of the receipt and press <span class="btn">Read the photo</span>. Check it, then press <span class="btn">Add expense</span>.</li>
+  <li><b class="t">The client changes something</b>
+    On the job press <span class="btn">Change orders</span>, type what changed with the price, and press <span class="btn">Write it up</span>. The client signs on the screen with <span class="btn">Sign change order</span>, and the total and payments update.</li>
+  <li><b class="t">Keep the client posted</b>
+    On the job press <span class="btn">Client update</span>, add photos, press <span class="btn">Write this week's update</span>, then <span class="btn">Open in Mail</span>. For late payments, <b>Money &rsaquo; Money owed</b> &rsaquo; <span class="btn">Write a reminder</span>.</li>
+  <li><b class="t">Monday report</b>
+    Every Monday at 7 AM you and Myles get an email with the money and any jobs losing money. Those jobs also show on <b>Home</b> as "watch the margin."</li>
+  <li><b class="t">Finish the job</b>
+    Walk it with the client, set <b>Status</b> to <b>Complete</b>, and press <span class="btn">Save</span>. Under <b>Inbox &rsaquo; Follow-ups</b> a review request and a one-year check-in wait for you: <span class="btn">Write the message</span>, send it, then <span class="btn">Mark sent</span>.</li>
+</ol>
+
+<div class="rules">
+  <div><b>Always check the prices.</b> The assistant's numbers are guesses unless you gave them.</div>
+  <div><b>Talk instead of typing:</b> tap the round microphone on any big box.</div>
+  <div><b>Not sure what's next?</b> Home lists the next step for each job.</div>
+  <div><b>Stuck?</b> Close the black window and double-click RSC again.</div>
+</div>
+</div>
+</body>
+</html>

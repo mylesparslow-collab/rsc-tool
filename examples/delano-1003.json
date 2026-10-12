@@ -1,0 +1,119 @@
+{
+ "source": "Nick's estimate, Version 3, 10/10/26",
+ "job": {
+  "last_name": "Delano",
+  "first_name": "Karen",
+  "address": "27 Maple Ridge Dr., Saratoga Springs, NY 12866",
+  "job_type": "Deck / Exterior",
+  "estimate_sent": "2026-10-10",
+  "status": "Estimate"
+ },
+ "estimate": {
+  "template": "Deck / Exterior",
+  "version": 3,
+  "version_date": "2026-10-10",
+  "materials": 5920,
+  "markup_pct": 0,
+  "windows_doors": 0,
+  "labor": 11400,
+  "debris": 975,
+  "hired_labor": 0,
+  "project": "Replace the existing south deck, north garage-side walkway, and porch-door stairs. All wood, decking, rails, posts, fascia, and stair components are pressure-treated. Build new 30” high x 40” wide descending stairs from the porch door. Install one sloping stair railing on the eastside (left as you look at the door from the outside).",
+  "duration": "15-18 days on-site. Monday-Friday 8/9am - 4/5pm (possibly some Saturdays). This schedule is weather dependent. We do not work during rain, sleet, or heavy snow.",
+  "crew": "1 general contractor full-time, 1 crew manager full-time, 1-2 laborers part-time",
+  "labor_note": "",
+  "milestones": "1-2 + dumpster; 3-4; 5; 6; 7-8",
+  "materials_list": "4x4x12 ground-contact treated support posts — 5\n4x4x8 ground-contact treated support/rail posts, including added landing support stock — 5\n2x8x16 ground-contact treated framing — 8\n2x6x14 ground-contact treated framing — 22\n2x6x12 ground-contact treated framing — 8\n2x6x10 ground-contact treated framing — 8\n2x8x8 ground-contact treated landing rim/frame stock — 4\n2x6x8 ground-contact treated landing joists/blocking — 4\nAdded landing support/frame/post connectors and fasteners various\n2x12x10 ground-contact treated stair stringer stock — 4\n5/4x6x16 treated decking — 44\n5/4x6x12 treated decking/landing stock — 16\n2x8x12 treated perimeter/riser/landing skirt boards — 7\n2x6x8 treated stair tread stock; rail-cap stock — 2\nLovmor 36 in. H x 68 in. with Black Wrought Iron for 4 or 5 Steps Stair Railing Kit\nPost caps and supplemental rail mounting brackets for cut landing sections various\nDiamond Pier DP-50/50 complete foundation kits — 4\nCompatible galvanized support-post bases — 10\nBeam/post bolts, washers and connection hardware; footing anchor bolts\nJoist hangers, framing ties, stair connectors — various\nApproved structural wood-framing screws; excludes foundation anchors — 1\nHouse-foundation attachment assemblies for east-to-west framing — 5\nTreated-wood-compatible deck screws — 1\nLedger flashing, membrane and sealants — 1\nJoist protection tape — 1\nLandscape fabric and drainage stone — 1\nEnd-cut preservative — 1",
+  "phases": [
+   {
+    "title": "Field verification, layout, and procurement",
+    "steps": [
+     "Measure deck, walkway, angled edge, door threshold, and finished grades.",
+     "Confirm replacement limits and document existing house connections.",
+     "Verify beam spans, joist sizes, footing layout, and required approvals before purchasing.",
+     "Measure stair rise and lay out the 4-foot x 4-stairs, of the south to north descending stairs",
+     "Finalize takeoff, order materials, and arrange delivery and dumpster."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "Protection and demolition",
+    "steps": [
+     "Protect siding, doors, windows, lawn, and access routes.",
+     "Remove existing stair railings, wide stairs, decking, and perimeter boards.",
+     "Remove existing deck and walkway.",
+     "Remove framing",
+     "Load demolition debris and secure the work area."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "Site preparation and footings",
+    "steps": [
+     "Set deck and walkway elevations and mark support locations.",
+     "Verify 4 DP-50/50 pier locations, soil suitability, buried utilities, and pin clearance from foundations and obstructions.",
+     "Prepare shallow seats and position and level the four precast Diamond Pier heads.",
+     "Drive four 50-inch bearing pins per pier; install inspection plugs and caps and verify installation.",
+     "Prepare ground beneath deck for drainage",
+     "Install treated support posts and compatible galvanized post bases."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "Structural framing and siding",
+    "steps": [
+     "Verify foundation material and install ledger flashing and five designed foundation attachment assemblies for the east-to-west framing, using substrate-rated anchors and compatible brackets/fasteners.",
+     "Set treated beams with supported splices and approved post connections.",
+     "Install treated joists, rim boards, and hangers to verified layout.",
+     "Frame the approximately 4-foot north walkway and connection to main south deck.",
+     "Frame the new angled yard-side edge and install blocking.",
+     "Install blocking and verify upper stringer attachment and lower bearing for stairs directly from the south door.",
+     "Build framing along the south wall from the west side of the stairs to the southwest corner.",
+     "Sort through the client’s available siding stored on site and select pieces in the best condition and suitable sizes for this area.",
+     "Fit and install the selected siding over the new south-wall framing.",
+     "Check level, fastening, lateral restraint, and framing before covering."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "Pressure-treated decking and perimeter finish",
+    "steps": [
+     "Sort treated decking and select straight boards for exposed surfaces.",
+     "Install 5/4x6 treated decking with appropriate spacing and compatible screws.",
+     "Cut and finish the angled deck edge and walkway transitions.",
+     "Install treated perimeter trim/fascia and exposed riser or closure boards.",
+     "Treat field-cut ends and remove splinters and sharp edges."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "Four-foot stairs directly from south porch door",
+    "steps": [
+     "Verify total rise, door operation and approved threshold transition; cut and install treated stringers for four-foot-wide stairs directly from the south door.",
+     "Install treated treads and risers at uniform dimensions.",
+     "Finish exposed stair skirts and the lower stair-to-deck transition.",
+     "Verify finished width and stair geometry before installing the railing."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "Single-left side stair railing",
+    "steps": [
+     "Fit and install one Lovmor 36 in. H x 68 in. with Black Wrought Iron for 4 or 5 Steps Stair Railing Kit to the east side of the stairs (see samples of this rail kit on page 6)",
+     "Check rail attachment, spacing and finished ends."
+    ],
+    "inspection": ""
+   },
+   {
+    "title": "Final inspection and cleanup",
+    "steps": [
+     "Check decking fasteners, posts, rails, stairs, and visible connections.",
+     "Complete punch-list adjustments and final inspection coordination.",
+     "Remove remaining debris and temporary protection and tidy disturbed areas.",
+     "Walk through the completed work with the client."
+    ],
+    "inspection": ""
+   }
+  ]
+ }
+}

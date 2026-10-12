@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% block title %}Margins{% endblock %}
+{% block body %}
+<div class="page-head"><div><div class="eyebrow">Is each job still making money?</div><h1>Job margins</h1></div></div>
+<p class="muted">Spent so far against what the estimate said it would cost (materials, windows and doors, debris, hired labor). Margin is before overhead and your own pay; crew hours you've logged count as labor cost. Set a target on the <a href="{{ url_for('pricing_page') }}">Pricing page</a> to get warnings when a job drifts under it.</p>
+<table>
+  <tr><th>Job</th><th>Status</th><th class="num">Contract</th><th class="num">Budget</th><th class="num">Spent</th><th class="num">% of budget</th><th class="num">Margin now</th><th class="num">Projected</th><th>Flag</th></tr>
+  {% for m in rows %}<tr>
+    <td><a class="id" href="{{ url_for('job_detail', number=m.job.number) }}">{{ m.job.job_id }}</a> {{ m.job.last_name }}</td><td>{{ m.job.status }}</td>
+    <td class="num">{{ money(m.contract) }}</td><td class="num">{{ money(m.budget) if m.budget else '-' }}</td><td class="num">{{ money(m.spent) }}</td>
+    <td class="num">{{ '%.0f%%'|format(m.spent_pct_of_budget*100) if m.spent_pct_of_budget is not none else '-' }}</td>
+    <td class="num">{{ '%.0f%%'|format(m.margin_now*100) }}</td><td class="num">{{ '%.0f%%'|format(m.margin_projected*100) }}</td>
+    <td>{% if m.status == 'over' %}<span class="bad">{{ m.why }}</span>{% elif m.status == 'watch' %}<span class="bad" style="font-weight:500">{{ m.why }}</span>{% else %}<span class="ok">OK</span>{% endif %}</td></tr>
+  {% else %}<tr><td colspan="9" class="muted">No signed jobs with a contract total yet.</td></tr>{% endfor %}
+</table>
+{% endblock %}

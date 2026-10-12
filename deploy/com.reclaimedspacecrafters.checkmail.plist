@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Checks email every 30 minutes while the Mac is awake.
+     Install: replace USERNAME below, copy to ~/Library/LaunchAgents/, then
+     launchctl load ~/Library/LaunchAgents/com.reclaimedspacecrafters.checkmail.plist -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.reclaimedspacecrafters.checkmail</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/USERNAME/rsc-tool/.venv/bin/rsc</string>
+    <string>check-mail</string>
+  </array>
+  <key>StartInterval</key><integer>1800</integer>
+  <key>RunAtLoad</key><true/>
+  <key>StandardOutPath</key><string>/Users/USERNAME/RSC/check-mail.log</string>
+  <key>StandardErrorPath</key><string>/Users/USERNAME/RSC/check-mail.log</string>
+</dict>
+</plist>

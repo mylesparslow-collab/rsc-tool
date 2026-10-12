@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block title %}Room modeler{% endblock %}
+{% block body %}
+<div class="page-head"><div><div class="eyebrow">Design</div><h1>Room modeler</h1></div>
+  <a class="btn secondary" href="{{ url_for('job_new') }}">New job</a></div>
+<p class="muted" style="margin:0 0 16px">Sketch the rooms, try layouts and finishes, add photos, and show the client. Pick a job to open its model.</p>
+{% if rows %}
+<div class="phase-summary">
+  {% for r in rows %}
+  <div class="card">
+    <div class="ph"><span class="id">{{ r.job.job_id }}</span> {{ r.job.first_name }} {{ r.job.last_name }}</div>
+    <div class="muted">{{ r.job.job_type or 'No job type' }} · <span class="pill s-{{ r.job.status|lower|replace(' ', '-') }}">{{ r.job.status }}</span></div>
+    <div style="margin:8px 0">{% if r.rooms or r.photos %}{{ r.rooms }} room{{ '' if r.rooms == 1 else 's' }}, {{ r.photos }} photo{{ '' if r.photos == 1 else 's' }}{% if r.updated %} <span class="muted">· {{ r.updated }}</span>{% endif %}{% else %}<span class="muted">No model yet</span>{% endif %}</div>
+    <a class="btn small{{ '' if r.rooms or r.photos else ' secondary' }}" href="{{ url_for('job_model', number=r.job.number) }}">{{ 'Open model' if r.rooms or r.photos else 'Start a model' }}</a>
+    {% if r.rooms %}<a class="btn small quiet" href="{{ url_for('job_model', number=r.job.number, view='client') }}">Client view</a>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="card">No jobs yet. Start a job and its model will be here. <a href="{{ url_for('job_new') }}">New job</a></div>
+{% endif %}
+{% endblock %}

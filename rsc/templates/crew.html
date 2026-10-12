@@ -1,0 +1,93 @@
+{% extends "base.html" %}{% block title %}Crew{% endblock %}
+{% block body %}
+<h1>Crew, hours and insurance</h1>
+
+{% if alerts %}<div class="card tone-{{ 'bad' if alerts|selectattr('level', 'equalto', 'bad')|list else 'warn' }}">
+  <strong>Needs attention</strong>
+  {% for a in alerts %}<div style="margin-top:4px"><span class="{{ 'bad' if a.level == 'bad' else 'muted' }}">{{ a.text }}</span></div>{% endfor %}
+</div>{% endif %}
+
+<form method="post" action="{{ url_for('crew_hours_add') }}" class="card ask" data-busy="Reading... a few seconds">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Log hours</strong>
+  <p class="muted" style="margin:4px 0 8px">Say it the way you would to a person: "Tue Mike 8, Dave 6 on Delano" or "Mike and Dave both put in a full day at Hartwell yesterday". Everyone who worked on a job adds to what the job really cost.</p>
+  <textarea name="text" data-voice placeholder="Tue Mike 8, Dave 6 on Delano" rows="2"></textarea>
+  <div class="actions"><button class="btn">Log hours</button></div>
+</form>
+
+<h2>The crew</h2>
+{% if people %}
+<table>
+  <tr><th>Name</th><th>Kind</th><th>Email (for the daily sheet)</th><th class="num">$/hour</th><th class="num">Hours (30 days)</th><th class="num">All time</th><th>Active</th><th></th></tr>
+  {% for p in people %}<tr>
+    <td><input form="p{{ p.id }}" name="name" value="{{ p.name }}"></td>
+    <td><select form="p{{ p.id }}" name="role">{% for k, v in roles.items() %}<option value="{{ k }}" {{ 'selected' if k == p.role }}>{{ v }}</option>{% endfor %}</select></td>
+    <td><input form="p{{ p.id }}" name="email" type="email" value="{{ p.email }}" placeholder="optional"></td>
+    <td class="num"><input form="p{{ p.id }}" name="wage" inputmode="decimal" style="width:80px" value="{{ '%g'|format(p.wage) }}"></td>
+    <td class="num">{{ '%g'|format(p.recent_hours) }}</td><td class="num">{{ '%g'|format(p.total_hours) }}</td>
+    <td><input type="checkbox" form="p{{ p.id }}" name="active" value="1" {{ 'checked' if p.active }}></td>
+    <td><button class="btn small" form="p{{ p.id }}">Save</button></td></tr>{% endfor %}
+</table>
+{% for p in people %}<form id="p{{ p.id }}" method="post" action="{{ url_for('crew_person_update', crew_id=p.id) }}"><input type="hidden" name="csrf" value="{{ csrf }}"></form>{% endfor %}
+<p class="muted">Pay is what each person earns per hour (for a subcontractor, what they charge). It is used to work out what each job really cost. Log either the payment as an expense or the hours here, not both, or the cost counts twice.</p>
+{% else %}<p class="muted">No one yet. Add the people who work with you, or just log hours and they're added by name.</p>{% endif %}
+<form method="post" action="{{ url_for('crew_person_add') }}" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="grid">
+    <div><label>Add a person</label><input name="name" placeholder="Name"></div>
+    <div><label>Kind</label><select name="role">{% for k, v in roles.items() %}<option value="{{ k }}">{{ v }}</option>{% endfor %}</select></div>
+    <div><label>$ per hour</label><input name="wage" inputmode="decimal" placeholder="28"></div>
+    <div><label>Email (gets the daily sheet)</label><input name="email" type="email" placeholder="optional"></div>
+  </div>
+  <div class="actions"><button class="btn secondary">Add</button></div>
+</form>
+
+<h2>Recent hours</h2>
+{% if hours %}<table>
+  <tr><th>Date</th><th>Who</th><th>Job</th><th class="num">Hours</th><th>Note</th><th></th></tr>
+  {% for h in hours %}<tr><td>{{ h.work_date }}</td><td>{{ h.name }}</td><td><a class="id" href="{{ url_for('job_detail', number=h.job_number) }}">{{ h.job_id }}</a></td>
+    <td class="num">{{ '%g'|format(h.hours) }}</td><td class="muted">{{ h.note }}</td>
+    <td><form method="post" action="{{ url_for('crew_hours_delete', hours_id=h.id) }}"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn secondary small">Remove</button></form></td></tr>{% endfor %}
+</table>{% else %}<p class="muted">No hours logged yet.</p>{% endif %}
+
+<h2>Insurance certificates</h2>
+<p class="muted">Ask every subcontractor for a certificate of insurance before they start, and keep your own handy for clients. Take a photo or upload a PDF; I read the insurer and expiry date and warn you 30 days before it runs out.</p>
+{% if certs %}<table>
+  <tr><th>Whose</th><th>Kind</th><th>Insurer</th><th>Expires</th><th></th></tr>
+  {% for c in certs %}<tr>
+    <td>{{ c.holder }}</td><td>{{ c.kind }}{% if c.has_file %} · <a href="{{ url_for('crew_cert_file', cert_id=c.id) }}" target="_blank">view</a>{% endif %}</td>
+    <td><input form="c{{ c.id }}" name="insurer" value="{{ c.insurer }}"></td>
+    <td><input type="date" form="c{{ c.id }}" name="expires" value="{{ c.expires }}">
+      {% if c.state == 'expired' %}<span class="bad"> expired</span>{% elif c.state == 'soon' %}<span class="muted"> {{ c.days_left }} days left</span>{% elif c.state == 'no date' %}<span class="bad"> no date</span>{% endif %}</td>
+    <td style="white-space:nowrap"><button class="btn small" form="c{{ c.id }}">Save</button>
+      <form method="post" action="{{ url_for('crew_cert_delete', cert_id=c.id) }}" style="display:inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn secondary small">Remove</button></form></td></tr>{% endfor %}
+</table>
+{% for c in certs %}<form id="c{{ c.id }}" method="post" action="{{ url_for('crew_cert_update', cert_id=c.id) }}"><input type="hidden" name="csrf" value="{{ csrf }}"></form>{% endfor %}{% endif %}
+<form method="post" action="{{ url_for('crew_cert_add') }}" enctype="multipart/form-data" class="card" data-busy="Reading the certificate... a few seconds">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="grid">
+    <div><label>Whose certificate</label><select name="holder"><option value="">Our business</option>{% for p in people if p.active %}<option value="{{ p.id }}">{{ p.name }}</option>{% endfor %}</select></div>
+    <div><label>Photo or PDF</label><input type="file" name="file" accept="image/*,application/pdf"></div>
+    <div><label>Expires (only if I can't read it)</label><input type="date" name="expires"></div>
+  </div>
+  <div class="actions"><button class="btn secondary">Add certificate</button></div>
+</form>
+
+<h2>What would payroll cost?</h2>
+<p class="muted">A planning estimate for putting regular workers on payroll with workers' comp, unemployment and disability coverage. Not a quote; ask an insurance agent and an accountant.</p>
+<form method="get" class="card">
+  <div class="grid">
+    <div><label>People</label><input name="workers" inputmode="numeric" value="{{ calc_args.workers }}"></div>
+    <div><label>$ per hour</label><input name="wage" inputmode="decimal" value="{{ calc_args.wage }}"></div>
+    <div><label>Hours each per year</label><input name="hours" inputmode="numeric" value="{{ calc_args.hours }}"></div>
+    <div><label>Workers comp, $ per $100 of pay</label><input name="wc" inputmode="decimal" value="{{ calc_args.wc }}"></div>
+  </div>
+  <div class="actions"><button class="btn secondary">Work it out</button></div>
+</form>
+{% if calc %}<div class="card"><table>
+  <tr><td>Wages</td><td class="num">{{ money(calc.wages) }}</td></tr>
+  {% for k, v in calc['items'].items() %}<tr><td class="muted">{{ k }}</td><td class="num">{{ money(v) }}</td></tr>{% endfor %}
+  <tr><td><b>Extra cost of doing it right</b></td><td class="num"><b>{{ money(calc.extra_total) }}</b></td></tr>
+</table>
+<p>That is about <b>${{ '%.2f'|format(calc.per_hour) }} on top of every worked hour</b>. A crew-hour that costs ${{ '%g'|format(calc.wage) }} in wages really costs about ${{ '%.0f'|format(calc.wage + calc.per_hour) }} on payroll.</p></div>{% endif %}
+{% endblock %}

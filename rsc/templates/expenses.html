@@ -1,0 +1,71 @@
+{% extends "base.html" %}{% block title %}Expenses{% endblock %}
+{% block body %}
+<h1>Expenses</h1>
+<form method="post" action="{{ url_for('expenses_read') }}" class="card ask" data-busy="Reading it...">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Add an expense</strong>
+  <p class="muted" style="margin:4px 0 10px">Type one line or paste a receipt. The assistant fills in the vendor, amount, date and which job it belongs to.</p>
+  <textarea name="typed" data-voice rows="3" style="min-height:80px" placeholder="Home Depot 109.91 studs for Smith">{{ typed }}</textarea>
+  <div class="actions"><button class="btn">Read it</button></div>
+</form>
+<form method="post" action="{{ url_for('expenses_photo') }}" enctype="multipart/form-data" class="card ask" data-busy="Reading the photo (this takes a minute)...">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Or snap a photo of the receipt</strong>
+  <p class="muted" style="margin:4px 0 10px">Take a picture, or choose one that was texted to you. Add a few words if it helps ("for Smith").</p>
+  <input type="file" name="photo" accept="image/*" capture="environment" required>
+  <input name="typed" data-voice placeholder="Optional: which job, what for" style="margin-top:8px">
+  <div class="actions"><button class="btn">Read the photo</button></div>
+</form>
+{% if prefill %}
+<form method="post" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  {% if prefill and prefill.photo_token %}<input type="hidden" name="photo_token" value="{{ prefill.photo_token }}">{% endif %}
+  <strong>{% if prefill %}Check this, then add it{% else %}Add a receipt{% endif %}</strong>{% if prefill_note %}<div class="muted">{{ prefill_note|capitalize }}.</div>{% endif %}
+  <div class="grid" style="margin-top:8px">
+    <div><label>Charge to *</label>
+      <select name="charge_to" required>
+        <option value="">-- pick --</option>
+        <optgroup label="Jobs">{% for j in jobs %}<option value="{{ j.number }}" {{ 'selected' if prefill and prefill.charge_to == j.number|string }}>{{ j.job_id }} {{ j.last_name }}</option>{% endfor %}</optgroup>
+        <optgroup label="Operations">{% for c in codes %}<option value="{{ c.code }}" {{ 'selected' if prefill and prefill.charge_to == c.code }}>{{ c.code }} {{ c.description }}</option>{% endfor %}</optgroup>
+      </select></div>
+    <div><label>Date *</label><input type="date" name="date" value="{{ prefill.date if prefill and prefill.date else today }}" required></div>
+    <div><label>Vendor</label><input name="vendor" value="{{ prefill.vendor if prefill }}"></div>
+    <div><label>What was bought</label><input name="description" value="{{ prefill.description if prefill }}"></div>
+    <div><label>Category</label><select name="category"><option></option>{% for c in categories %}<option {{ 'selected' if prefill and prefill.category == c }}>{{ c }}</option>{% endfor %}</select></div>
+    <div><label>Amount *</label><input name="amount" required value="{{ '%.2f'|format(prefill.amount) if prefill }}"></div>
+    <div><label>Paid with</label><select name="paid_with"><option></option>{% for p in paid_with %}<option>{{ p }}</option>{% endfor %}</select></div>
+    <div><label>Notes</label><input name="notes"></div>
+  </div>
+  <div class="actions"><button class="btn">Add expense</button></div>
+</form>
+{% endif %}
+<details class="more"><summary>Or fill in the form by hand</summary>
+<form method="post" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Add a receipt</strong>
+  <div class="grid" style="margin-top:8px">
+    <div><label>Charge to *</label>
+      <select name="charge_to" required>
+        <option value="">-- pick --</option>
+        <optgroup label="Jobs">{% for j in jobs %}<option value="{{ j.number }}">{{ j.job_id }} {{ j.last_name }}</option>{% endfor %}</optgroup>
+        <optgroup label="Operations">{% for c in codes %}<option value="{{ c.code }}">{{ c.code }} {{ c.description }}</option>{% endfor %}</optgroup>
+      </select></div>
+    <div><label>Date *</label><input type="date" name="date" value="{{ today }}" required></div>
+    <div><label>Vendor</label><input name="vendor" value=""></div>
+    <div><label>What was bought</label><input name="description" value=""></div>
+    <div><label>Category</label><select name="category"><option></option>{% for c in categories %}<option>{{ c }}</option>{% endfor %}</select></div>
+    <div><label>Amount *</label><input name="amount" required value=""></div>
+    <div><label>Paid with</label><select name="paid_with"><option></option>{% for p in paid_with %}<option>{{ p }}</option>{% endfor %}</select></div>
+    <div><label>Notes</label><input name="notes"></div>
+  </div>
+  <div class="actions"><button class="btn">Add expense</button></div>
+</form>
+</details>
+<table>
+  <tr><th>Date</th><th>Charge to</th><th class="hide-sm">Goes to</th><th>Vendor</th><th>What</th><th class="num">Amount</th><th class="hide-sm">From</th></tr>
+  {% for e in expenses %}
+  <tr><td>{{ e.date }}</td><td class="id">{{ e.charge_to }}</td><td class="hide-sm">{{ e.goes_to }}</td><td>{{ e.vendor }}</td>
+      <td>{{ e.description }}{% if e.id in photos %} <a href="{{ url_for('expense_photo', expense_id=e.id) }}" target="_blank">photo</a>{% endif %}</td><td class="num">{{ money(e.amount) }}</td><td class="hide-sm muted">{{ e.source }}</td></tr>
+  {% else %}<tr><td colspan="7" class="muted">No expenses yet.</td></tr>{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% block body %}
+{% set st = setup_state() %}
+{% set ca = crew_alerts() %}
+{% set owed_total = jobs|map(attribute='owed')|select|sum %}
+<div class="page-head">
+  <div><h1>Home</h1><p class="muted" style="margin:0">{% if mail_status.message or last_report %}Last email check: {{ mail_status.message or last_report }}{% else %}Everything stays on this computer.{% endif %}</p></div>
+  <div class="btns">
+    <a class="btn" href="{{ url_for('job_new') }}">New estimate</a>
+    <form method="post" action="{{ url_for('check_mail') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn secondary" {{ 'disabled' if mail_status.running }}>Check email</button></form>
+  </div>
+</div>
+
+{% if not all_jobs_count %}
+<div class="card tone-accent"><strong>Welcome. Here's how a job goes.</strong>
+  <ol class="note-list">
+    <li>{% if st.email and st.password %}<s>Connect the business Gmail</s>{% else %}<a href="{{ url_for('setup_page') }}">Connect the business Gmail</a> (two minutes){% endif %}</li>
+    <li><a href="{{ url_for('job_new') }}">Add your first job</a>: type or paste what the customer asked for. I draft the estimate.</li>
+    <li>Check the price, print it, send it. When they say yes, press "Contract signed".</li>
+    <li>Forward receipts to the business email as you buy things. They show up under To review.</li>
+  </ol>
+  <div class="actions"><a class="btn" href="{{ url_for('job_new') }}">Add the first job</a></div></div>
+{% endif %}
+
+{% set bad_ins = ca|selectattr('level', 'equalto', 'bad')|list %}
+{% set has_todo = review_count or late_invoices or due_followups or ca or watch or next_steps or not (st.email and st.password) %}
+<h2 style="margin-top:0">Needs your attention</h2>
+{% if has_todo %}
+<div class="card todo">
+  {% if not (st.email and st.password) %}<div class="row"><span class="dot"></span><div class="what"><b>Finish setup</b><span class="muted">Add the business Gmail and its app password so the assistant can read receipts and emails. Takes two minutes.</span></div><a class="btn" href="{{ url_for('setup_page') }}">Open Setup</a></div>{% endif %}
+  {% if review_count %}<div class="row"><span class="dot"></span><div class="what"><b>{{ review_count }} to review</b><span class="muted">Receipts, payments and new leads found in your email.</span></div><a class="btn" href="{{ url_for('review') }}">Review now</a></div>{% endif %}
+  {% if late_invoices %}<div class="row warn"><span class="dot"></span><div class="what"><b>{{ late_invoices|length }} late invoice{{ 's' if late_invoices|length != 1 }}</b><span class="muted">{% for r in late_invoices[:3] %}{{ r.last_name }} {{ money(r.owed) }}, {{ r.days }} days{{ '; ' if not loop.last }}{% endfor %}</span></div><a class="btn" href="{{ url_for('owed_page') }}">Send reminders</a></div>{% endif %}
+  {% if due_followups %}<div class="row"><span class="dot"></span><div class="what"><b>{{ due_followups|length }} follow-up{{ 's' if due_followups|length != 1 }} to send</b><span class="muted">{% for f in due_followups[:3] %}{{ f.first_name }} {{ f.last_name }}{{ '; ' if not loop.last }}{% endfor %}</span></div><a class="btn" href="{{ url_for('followups_page') }}">Open follow-ups</a></div>{% endif %}
+  {% for n in next_steps %}<div class="row"><span class="dot"></span><div class="what"><b>{{ n.job.last_name }}: {{ n.step.title }}</b><span class="muted">{{ n.step.why }}</span></div><a class="btn secondary" href="{{ url_for(n.step.endpoint, **n.step.args) }}">{{ n.step.label }}</a></div>{% endfor %}
+  {% if ca %}<div class="row {{ 'bad' if bad_ins else 'warn' }}"><span class="dot"></span><div class="what"><b>Insurance</b>{% for a in ca[:3] %}<span class="muted">{{ a.text }}</span>{% endfor %}</div><a class="btn secondary" href="{{ url_for('crew_page') }}">Open Crew</a></div>{% endif %}
+  {% for m in watch %}<div class="row bad"><span class="dot"></span><div class="what"><b>{{ m.job.last_name }}: watch the margin</b><span class="muted">{{ m.why }}</span></div><a class="btn secondary" href="{{ url_for('job_detail', number=m.job.number) }}">Open job</a></div>{% endfor %}
+</div>
+{% else %}
+<div class="card"><b>All caught up.</b> <span class="muted">Nothing needs you right now.</span></div>
+{% endif %}
+
+<h2>Open jobs</h2>
+{% if jobs %}
+<div class="stats">
+  <div class="card"><div class="muted">Open jobs</div><div class="big-number">{{ jobs|length }}</div></div>
+  <div class="card"><div class="muted">Still to collect</div><div class="big-number">{{ money(owed_total) }}</div></div>
+</div>
+<div class="scroll"><table>
+  <tr><th>Job</th><th>Client</th><th class="hide-sm">Status</th><th class="num hide-sm">Contract</th><th class="num">Still owed</th><th class="num hide-sm">Profit so far</th><th class="hide-sm"></th></tr>
+  {% for j in jobs %}
+  <tr>
+    <td><a class="id" href="{{ url_for('job_detail', number=j.number) }}">{{ j.job_id }}</a></td>
+    <td>{{ j.first_name }} {{ j.last_name }}</td><td class="hide-sm"><span class="pill s-{{ j.status|lower|replace(' ', '-') }}">{{ j.status }}</span></td>
+    <td class="num hide-sm">{{ money(j.contract_total) }}</td><td class="num">{{ money(j.owed) }}</td>
+    <td class="num hide-sm">{{ money(j.profit) }}</td>
+    <td class="hide-sm"><a href="{{ url_for('job_model', number=j.number) }}">Room model</a></td>
+  </tr>
+  {% endfor %}
+</table></div>
+{% else %}<p class="muted">No open jobs.</p>{% endif %}
+
+{% if open_payments %}
+<details class="fold"><summary>Payments not yet received <span class="muted">{{ open_payments|length }} · {{ money(open_payments|sum(attribute='amount')) }}</span></summary>
+<div class="scroll"><table>
+  <tr><th>Payment</th><th>What it's for</th><th class="hide-sm">Due when</th><th class="num">Amount</th><th>Status</th></tr>
+  {% for p in open_payments %}
+  <tr><td><a class="id" href="{{ url_for('job_detail', number=p.job_number) }}#payments">{{ p.payment_id }}</a></td>
+      <td>{{ p.description }}</td><td class="hide-sm">{{ p.due_when }}</td><td class="num">{{ money(p.amount) }}</td>
+      <td><span class="status {{ p.status.split()[0] }}">{{ p.status }}</span></td></tr>
+  {% endfor %}
+</table></div></details>
+{% endif %}
+<p class="muted" style="margin-top:var(--s-5)"><a href="{{ url_for('margins_page') }}">Job margins</a> &middot; <a href="{{ url_for('report_page') }}">Weekly report</a> &middot; <a href="{{ url_for('export') }}">Download everything as Excel</a> (for QuickBooks or the accountant)</p>
+{% endblock %}

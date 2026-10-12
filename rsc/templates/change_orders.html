@@ -1,0 +1,30 @@
+{% extends "base.html" %}{% block title %}Change orders {{ job.job_id }}{% endblock %}
+{% block body %}
+<h1><span class="id">{{ job.job_id }}</span> · Change orders</h1>
+<p class="muted"><a href="{{ url_for('job_detail', number=job.number) }}">&larr; Back to the job</a> · Contract now {{ money(job.contract_total) or 'not set' }}</p>
+{% if job.contract_total is not none %}
+<form method="post" class="card ask" data-busy="Writing it up...">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>What's changing?</strong>
+  <p class="muted" style="margin:4px 0 10px">Say it in a sentence with the price. The assistant writes it up for the client to sign.</p>
+  <textarea name="description" data-voice required rows="3" placeholder="Add a second window on the east wall, with framing and trim, for $1,200. Adds 2 days."></textarea>
+  <details class="more"><summary>Type the price and days myself</summary>
+    <div class="grid">
+      <div><label>Price</label><select name="direction"><option value="add">Adds to the price</option><option value="credit">Credit (lowers the price)</option></select></div>
+      <div><label>Amount</label><input name="amount" inputmode="decimal"></div>
+      <div><label>Extra days</label><input name="days_added" inputmode="numeric" value="0"></div>
+    </div>
+  </details>
+  <div class="actions"><button class="btn">Write it up</button></div>
+</form>
+{% else %}
+<div class="card">This job has no contract total yet. Finish the estimate first; change orders are for changes after signing.</div>
+{% endif %}
+<table>
+  <tr><th>Change order</th><th>Work</th><th class="num">Price</th><th>Status</th></tr>
+  {% for co in orders %}
+  <tr><td><a class="id" href="{{ url_for('change_order_view', co_id=co.id) }}">{{ co.label }}</a></td><td>{{ co.description }}</td>
+      <td class="num">{{ money(co.amount) }}</td><td>{{ co.status|capitalize }}{% if co.signed_at %}<br><span class="muted">{{ co.signed_at[:10] }}</span>{% endif %}</td></tr>
+  {% else %}<tr><td colspan="4" class="muted">No change orders yet.</td></tr>{% endfor %}
+</table>
+{% endblock %}

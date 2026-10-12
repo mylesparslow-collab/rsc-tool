@@ -1,0 +1,128 @@
+{% extends "base.html" %}{% block title %}{{ job.job_id }} room model{% endblock %}
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='modeler.css') }}">
+<div class="noprint modeler-top">
+  <h1><span class="id">{{ job.job_id }}</span> · {{ job.first_name }} {{ job.last_name }} · {{ 'Client view' if present else 'Room model' }}</h1>
+  <p class="muted"><a href="{{ url_for('job_detail', number=job.number) }}">&larr; Back to the job</a>{% if job.address %} · {{ job.address }}{% endif %}
+    · {% if present %}<a href="{{ url_for('job_model', number=job.number) }}">Back to editing</a>{% else %}<a href="{{ url_for('job_model', number=job.number, view='client') }}">Client view</a>{% endif %}</p>
+</div>
+<div class="rsc-modeler{{ ' present' if present }}">
+<div class="wrap">
+
+  <div class="presenthead">
+    <div class="ph-brand">{{ biz.name }}</div>
+    <div class="ph-title">Concept layout{% if job.address %} · {{ job.address }}{% endif %}</div>
+    <div class="ph-sub">Prepared for {{ job.first_name }} {{ job.last_name }} · {{ today }}</div>
+  </div>
+
+  <div class="mgrid">
+    <div class="col editonly">
+      <section class="mcard" aria-labelledby="h-room">
+        <h2 id="h-room">Rooms</h2>
+        <p class="hint">Add a room for each space. Click a room name here or on the plan to edit it. Type feet and inches like 14'6" or just inches like 174. Fractions work too: 6 1/2.</p>
+        <div class="rtabs" id="rtabs"></div>
+        <div class="fields">
+          <label for="f-name" style="grid-column:1/-1">Room name<input id="f-name" autocomplete="off" maxlength="40"></label>
+          <label for="f-w">East to west<input id="f-w" inputmode="text" autocomplete="off"></label>
+          <label for="f-d">North to south<input id="f-d" inputmode="text" autocomplete="off"></label>
+          <label for="f-h">Wall height<input id="f-h" inputmode="text" autocomplete="off"></label>
+          <label for="f-t">Wall thickness<input id="f-t" inputmode="text" autocomplete="off"></label>
+        </div>
+        <div class="fields" id="pos-wrap" style="margin-top:12px" hidden>
+          <label for="f-x">Southwest corner, east of the first room's corner<input id="f-x" inputmode="text" autocomplete="off"></label>
+          <label for="f-y">Southwest corner, north of the first room's corner<input id="f-y" inputmode="text" autocomplete="off"></label>
+        </div>
+        <div class="btns">
+          <button type="button" id="add-room">Add room</button>
+          <button type="button" id="rm-room" class="ghost" hidden>Remove room</button>
+        </div>
+      </section>
+
+      <section class="mcard" aria-labelledby="open-title">
+        <h2 id="open-title">Windows and doors</h2>
+        <p class="hint">"From corner" is measured along the wall, starting at the left corner as you stand outside facing that wall. North wall starts at the NE corner, east at SE, south at SW, west at NW. To connect two rooms, put a doorway in each room's wall.</p>
+        <div id="rows"></div>
+        <div class="btns">
+          <button type="button" id="add-win">Add window</button>
+          <button type="button" id="add-door" class="ghost">Add door</button>
+          <button type="button" id="reset" class="ghost">Load example</button>
+        </div>
+        <ul class="warn" id="warns" aria-live="polite"></ul>
+        <div class="savemsg" id="savemsg" aria-live="polite">Saved automatically with this job.</div>
+      </section>
+
+      <section class="mcard" aria-labelledby="h-fin">
+        <h2 id="h-fin">Finishes</h2>
+        <p class="hint">Colors show in the 3D view and in the client view.</p>
+        <div id="fin"></div>
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="mcard" aria-labelledby="h-plan">
+        <h2 id="h-plan">Plan view</h2>
+        <svg id="plan" class="plan" role="img" aria-label="Dimensioned floor plan"></svg>
+      </section>
+
+      <section class="mcard" aria-labelledby="h-3d">
+        <h2 id="h-3d">3D view</h2>
+        <div class="viewbar noprint">
+          <button type="button" class="ghost" data-view="SW">From SW</button>
+          <button type="button" class="ghost" data-view="SE">From SE</button>
+          <button type="button" class="ghost" data-view="NE">From NE</button>
+          <button type="button" class="ghost" data-view="NW">From NW</button>
+          <button type="button" class="ghost" data-view="TOP">Top</button>
+          <label class="chk" for="cut"><input type="checkbox" id="cut" checked>Hide near walls</label>
+        </div>
+        <div class="stage" id="stage"><canvas id="gl"></canvas></div>
+        <img id="glprint" alt="3D view" hidden>
+        <p class="hint noprint" style="margin-top:10px">Drag to rotate, scroll or pinch to zoom.</p>
+      </section>
+
+      <section class="mcard" id="ba-card" aria-labelledby="h-ba">
+        <h2 id="h-ba">Before and after</h2>
+        <div class="ba" id="ba-view" hidden>
+          <img id="ba-after" alt="The idea" hidden>
+          <img id="ba-before" alt="The space today" hidden>
+        </div>
+        <div class="ba-labels" id="ba-labels" hidden><span>Today</span><span>The idea</span></div>
+        <input type="range" id="ba-range" min="0" max="100" value="50" aria-label="Slide between today and the idea" hidden>
+        <p class="hint" id="ba-cap"></p>
+        <div class="editonly">
+          <p class="hint">Take a photo of the space and use ChatGPT or Gemini to make a picture of the idea, then add both here.</p>
+          <div class="fields">
+            <label for="ph-before">Photo of the space today<input type="file" id="ph-before" accept="image/*"></label>
+            <label for="ph-after">Picture of the idea<input type="file" id="ph-after" accept="image/*"></label>
+          </div>
+          <div class="btns"><button type="button" class="ghost" id="ba-rm-before" hidden>Remove today photo</button><button type="button" class="ghost" id="ba-rm-after" hidden>Remove idea picture</button><span class="savemsg" id="ba-msg" aria-live="polite"></span></div>
+        </div>
+      </section>
+
+      <section class="mcard" aria-labelledby="h-sch">
+        <h2 id="h-sch">Finishes and rooms</h2>
+        <div id="sched"></div>
+        <p class="disclaimer">Concept drawing for discussion. Not for construction. All dimensions and finishes are confirmed on site before work starts.</p>
+      </section>
+    </div>
+  </div>
+
+  <section class="mcard editonly" aria-labelledby="h-ai">
+    <h2 id="h-ai">Hand it to ChatGPT</h2>
+    <p class="hint">Use this when you want a photo-style picture. The model fixes the geometry, the AI only adds the look.</p>
+    <ol class="steps">
+      <li>Spin the 3D view to the angle you want and take a screenshot.</li>
+      <li>Give ChatGPT the screenshot and paste the text below.</li>
+      <li>Ask for one change at a time, like flooring first, then cabinets. Add the result above as the picture of the idea.</li>
+    </ol>
+    <div style="height:12px"></div>
+    <textarea id="spec" readonly aria-label="Room description for ChatGPT"></textarea>
+    <div class="btns"><button type="button" id="copy">Copy text</button><span class="copied" id="copied" aria-live="polite"></span></div>
+  </section>
+
+  {% if present %}<div class="btns noprint"><button type="button" id="print">Print or save as PDF</button></div>{% endif %}
+</div>
+</div>
+<script>window.RSC_MODEL = {{ {"state": state, "saveUrl": url_for("job_model", number=job.number), "photoBase": url_for("job_model", number=job.number) ~ "/photo", "photos": photos, "csrf": csrf}|tojson }};</script>
+<script src="{{ url_for('static', filename='vendor/three.min.js') }}"></script>
+<script src="{{ url_for('static', filename='modeler.js') }}"></script>
+{% endblock %}

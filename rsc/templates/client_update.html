@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% block title %}Client update{% endblock %}
+{% block body %}
+<h1>Weekly update for {{ job.first_name }} {{ job.last_name }}</h1>
+<p class="muted">A short note on what got finished this week and what's next, built from the steps you've checked off. You read it, change anything, and it opens in Mail.</p>
+
+<div class="card">
+  <h2>Site photos</h2>
+  <form method="post" action="{{ url_for('client_update_photos', number=job.number) }}" enctype="multipart/form-data" class="inline">
+    <input type="hidden" name="csrf" value="{{ csrf }}"><input type="file" name="photos" accept="image/*" multiple>
+    <button class="btn secondary small">Add photos</button></form>
+  {% if photos %}<div class="thumbs">{% for p in photos %}<figure><img src="{{ url_for('client_update_photo', number=job.number, photo_id=p.id) }}" alt="Site photo from {{ p.taken_on }}" width="140">
+    <figcaption class="muted">{{ p.taken_on }}</figcaption>
+    <form method="post" action="{{ url_for('client_update_photo_delete', number=job.number, photo_id=p.id) }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn secondary small">Remove</button></form></figure>{% endfor %}</div>{% endif %}
+</div>
+
+<form method="post" action="{{ url_for('client_update_draft', number=job.number) }}" data-busy="Writing..."><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn">Write this week's update</button></form>
+
+{% if d %}<div class="card">
+  <p class="muted">Finished this week: {{ d.facts.this_week|length }} step(s) · {{ d.facts.percent }}% of the plan done{% if d.facts.photos %} · {{ d.facts.photos|length }} new photo(s) to attach by dragging them from above into the email{% endif %}</p>
+  <textarea rows="12" id="msg">{{ d.text }}</textarea>
+  <div class="actions">
+    {% if job.email %}<a class="btn" id="mail" href="mailto:{{ job.email }}?subject={{ d.subject|urlencode }}&body={{ d.text|urlencode }}">Open in Mail</a>
+    <script>document.getElementById('msg').addEventListener('input',function(){document.getElementById('mail').href='mailto:{{ job.email }}?subject={{ d.subject|urlencode }}&body='+encodeURIComponent(this.value)})</script>
+    {% else %}<span class="muted">No email on file for this client. Copy the note above.</span>{% endif %}
+  </div></div>{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+From: The Home Depot <HomeDepotReceipt@email.homedepot.com>
+To: nfparslow@gmail.com
+Subject: Your Electronic Receipt
+Date: Mon, 05 Oct 2026 14:12:00 -0400
+Message-ID: <receipt-001@homedepot.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="b1"
+
+--b1
+Content-Type: text/html; charset=utf-8
+
+<html><body><p>Thank you for shopping at The Home Depot</p>
+<table><tr><td>PO/JOB NAME:</td><td>1002-SMI</td></tr>
+<tr><td>2X4-8 PREM STUD (24 @ 4.28)</td><td>102.72</td></tr>
+<tr><td>SUBTOTAL</td><td>102.72</td></tr><tr><td>SALES TAX</td><td>7.19</td></tr>
+<tr><td>TOTAL</td><td>$109.91</td></tr></table></body></html>
+--b1--

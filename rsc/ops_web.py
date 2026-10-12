@@ -1,0 +1,120 @@
+"""Setup, follow-ups and the weekly report: the pages that keep the business running between jobs."""
+import imaplib
+import smtplib
+
+from flask import flash, redirect, render_template, request, url_for
+
+from . import brand, config, doctor, followups, leads, margins, models, prefs, report
+from .llm import ModelUnavailable
+from .mail import GmailReader
+
+
+def register(app, cfg, conn, get_model):
+    def _password_ok():
+        try:
+            config.mail_password(cfg.mail.address)
+            return True
+        except RuntimeError:
+            return False
+
+    def setup_state(c):
+        return {"email": bool(cfg.mail.address), "password": bool(cfg.mail.address) and _password_ok(),
+                "recipients": bool(prefs.report_recipients(c))}
+
+    app.jinja_env.globals["setup_state"] = lambda: setup_state(conn())
+    app.jinja_env.globals["followups_due"] = lambda: len(followups.due(conn()))
+
+    @app.route("/setup", methods=["GET", "POST"])
+    def setup_page():
+        c = conn()
+        if request.method == "POST":
+            f = request.form
+            address = f.get("address", "").strip()
+            password = f.get("password", "").replace(" ", "")
+            if address and address != cfg.mail.address:
+                config.update_config(cfg.home, address)
+                cfg.mail.address = address
+            if "brand_name" in f:
+                brand.save(c, {k: f.get("brand_" + k, "") for k, _ in brand.LABELS})
+                brand.use(c, cfg)
+            for key in ("report_to", "daily_to", "review_url", "visit_when", "owner_name"):
+                if key in f:
+                    prefs.put(c, key, f[key])
+            if password and cfg.mail.address:
+                try:
+                    config.save_mail_password(cfg.mail.address, password)
+                except RuntimeError as exc:
+                    flash(f"Couldn't save the password: {exc}", "error")
+                    return redirect(url_for("setup_page"))
+            if cfg.mail.address and _password_ok():
+                try:
+                    GmailReader(cfg.mail.address, config.mail_password(cfg.mail.address), cfg.mail.host).check()
+                    flash("Saved. Gmail is connected.")
+                except (imaplib.IMAP4.error, OSError):
+                    flash("Saved, but Gmail said no. Check the address and make a fresh app password "
+                          "(myaccount.google.com/apppasswords).", "error")
+            else:
+                flash("Saved.")
+            return redirect(url_for("setup_page"))
+        return render_template("setup.html", address=cfg.mail.address, state=setup_state(c), models=models.status(cfg),
+                               vals={k: prefs.get(c, k) for k in ("report_to", "daily_to", "review_url", "visit_when", "owner_name")},
+                               slots=leads.visit_slots(prefs.get(c, "visit_when")),
+                               health=doctor.run(cfg, include_app=False),
+                               brand_fields=[(k, label, brand.current()[k]) for k, label in brand.LABELS])
+
+    # ------------------------------------------------------------ follow-ups
+    @app.get("/followups")
+    def followups_page():
+        c = conn()
+        items = followups.upcoming(c)
+        return render_template("followups.html", items=items, today=__import__("datetime").date.today().isoformat(),
+                               review_url=prefs.get(c, "review_url"))
+
+    @app.post("/followups/<int:fid>/draft")
+    def followup_draft(fid):
+        c = conn()
+        try:
+            followups.draft(get_model(), c, fid, cfg.business_phone)
+        except ModelUnavailable:
+            followups.draft(None, c, fid, cfg.business_phone)  # falls back to the plain template
+        return redirect(url_for("followups_page") + f"#f{fid}")
+
+    @app.post("/followups/<int:fid>/<status>")
+    def followup_mark(fid, status):
+        if status in ("sent", "skipped"):
+            followups.mark(conn(), fid, status)
+            flash("Marked " + status + ".")
+        return redirect(url_for("followups_page"))
+
+    # ------------------------------------------------------------ weekly report
+    def _report(c, with_model):
+        r = report.build(c)
+        model = None
+        if with_model:
+            try:
+                model = get_model()
+            except ModelUnavailable:
+                model = None
+        text = report.render_text(r, report.opening(model, r))
+        return r, text
+
+    @app.get("/report")
+    def report_page():
+        c = conn()
+        r, text = _report(c, with_model=False)
+        return render_template("report.html", text=text, recipients=prefs.report_recipients(c), subject=report.subject(r))
+
+    @app.post("/report/send")
+    def report_send():
+        c = conn()
+        r, text = _report(c, with_model=True)
+        try:
+            to = report.send(c, cfg.mail.address, config.mail_password(cfg.mail.address), text, report.subject(r))
+            flash("Sent to " + ", ".join(to) + ".")
+        except (ValueError, RuntimeError, smtplib.SMTPException, OSError) as exc:
+            flash(f"Not sent: {exc}", "error")
+        return redirect(url_for("report_page"))
+
+    @app.get("/margins")
+    def margins_page():
+        return render_template("margins.html", rows=margins.all_margins(conn()))

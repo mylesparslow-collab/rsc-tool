@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Progress {{ job.job_id }}{% endblock %}
+{% block body %}
+<h1><span class="id">{{ job.job_id }}</span> · Progress</h1>
+<p class="muted"><a href="{{ url_for('job_detail', number=job.number) }}">&larr; Back to the job</a> · {{ done }} of {{ total }} steps done</p>
+<form method="post" action="{{ url_for('today_job', number=job.number) }}">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="back" value="{{ url_for('job_progress', number=job.number) }}">
+  {% for p in phases %}<div class="card"><div class="ph">{{ loop.index }}. {{ p.title }}</div>
+    {% for n, text, d in p.steps %}<label style="display:block;font-weight:normal"><input type="hidden" name="shown" value="{{ n }}"><input type="checkbox" name="done" value="{{ n }}" {{ 'checked' if d }}> <b>{{ n }}.</b> {{ text }}</label>{% endfor %}</div>{% endfor %}
+  <div class="actions"><button class="btn">Save</button></div>
+</form>
+{% endblock %}

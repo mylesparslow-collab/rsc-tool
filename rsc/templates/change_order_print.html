@@ -1,0 +1,23 @@
+{% extends "print_base.html" %}
+{% block title %}Change Order {{ co.label }}{% endblock %}
+{% block toolbar %}<a href="{{ url_for('change_order_view', co_id=co.id) }}">&larr; Back</a>{% endblock %}
+{% block body %}
+<h1>Change Order {{ co.label }}</h1>
+<div class="muted">{{ biz.legal }} &middot; {{ address_line }}</div>
+<table style="margin-top:14px">
+  <tr><th style="width:24%">Client</th><td>{{ job.first_name }} {{ job.last_name }}</td></tr>
+  <tr><th>Job</th><td>{{ job.job_id }} &middot; {{ job.address }}</td></tr>
+  <tr><th>Date signed</th><td>{{ co.signed_at[:10] }}</td></tr>
+</table>
+<h2>Change</h2><p>{{ co.description }}</p>
+<table>
+  <tr><td>Price change</td><td class="num"><b>{{ money(co.amount) }}</b></td></tr>
+  {% if co.days_added %}<tr><td>Schedule change</td><td class="num">{{ '%+d'|format(co.days_added) }} days</td></tr>{% endif %}
+  <tr><td>Contract total after this change</td><td class="num"><b>{{ money(job.contract_total) }}</b></td></tr>
+</table>
+<p class="muted">This Change Order is made under the Change section of the Contract. All other terms are unchanged.</p>
+<div class="sig">
+  <div>Client: {{ co.signer_name }}<br><img src="{{ co.signature }}" alt="signature" style="height:60px"><br>{{ co.signed_at[:10] }}</div>
+  <div>{{ biz.name }}<br><br>Signature / date</div>
+</div>
+{% endblock %}

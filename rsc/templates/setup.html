@@ -1,0 +1,48 @@
+{% extends "base.html" %}{% block title %}Setup{% endblock %}
+{% block body %}
+<div class="page-head"><div><div class="eyebrow">Once, then forget it</div><h1>Setup</h1></div></div>
+<form method="post" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Email</strong>
+  <p class="muted" style="margin:4px 0 10px">The business Gmail. The app reads it to find receipts, payments and new customers, and sends the weekly report from it. It needs an <em>app password</em> (not the real password): <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener">make one here</a>, name it "RSC Tool", and paste it below. It is kept in this Mac's Keychain.</p>
+  <div class="grid">
+    <div><label>Gmail address</label><input name="address" type="email" value="{{ address }}" placeholder="you@gmail.com"></div>
+    <div><label>App password {% if state.password %}<span class="ok">saved</span>{% endif %}</label><input name="password" type="password" autocomplete="off" placeholder="{{ 'leave blank to keep the saved one' if state.password else '16 letters, spaces are fine' }}"></div>
+  </div>
+  <details class="more" style="margin-top:18px"><summary>Your business: name, address, phone (shown on estimates, contracts and emails)</summary>
+    <div class="grid" style="margin-top:8px">
+    {% for k, label, value in brand_fields %}<div{% if k in ('legal', 'name') %} style="grid-column:span 2"{% endif %}><label>{{ label }}</label><input name="brand_{{ k }}" value="{{ value }}"></div>{% endfor %}
+    </div>
+    <p class="muted">Contract wording is written for New York. A different state needs its own lawyer-reviewed contract.</p>
+  </details>
+  <p style="margin:22px 0 4px"><strong>Your name and the weekly report</strong></p>
+  <p class="muted" style="margin:0 0 10px">Every Monday morning the app emails a one-page report (money collected, who owes what, jobs to watch). List everyone who should get it.</p>
+  <div class="grid">
+    <div><label>Your first name (signs the emails)</label><input name="owner_name" value="{{ vals.owner_name }}"></div>
+    <div style="grid-column:span 2"><label>Send the weekly report to</label><input name="report_to" value="{{ vals.report_to }}" placeholder="nick@gmail.com, myles@gmail.com"></div>
+  </div>
+  <p style="margin:22px 0 4px"><strong>The daily work sheet</strong></p>
+  <p class="muted" style="margin:0 0 10px">Every weekday at 6 AM the crew gets a short sheet: what to work on today on each job, who's on it, and what to call in. It goes to everyone below plus every crew member with an email on the Crew page.</p>
+  <div class="grid"><div style="grid-column:span 3"><label>Also send the daily sheet to</label><input name="daily_to" value="{{ vals.daily_to }}" placeholder="nick@gmail.com, mike@gmail.com"></div></div>
+  <p style="margin:22px 0 4px"><strong>New customers and reviews</strong></p>
+  <div class="grid">
+    <div style="grid-column:span 2"><label>When can you do free site visits?</label><input name="visit_when" data-voice value="{{ vals.visit_when }}" placeholder="Tuesdays and Thursdays at 4pm or 5:30pm"></div>
+    <div><label>Your Google review link</label><input name="review_url" value="{{ vals.review_url }}" placeholder="https://g.page/r/..."></div>
+  </div>
+  <p class="muted" style="margin-top:6px">Replies to new inquiries will offer: {% for s in slots %}{{ s }}{{ '; ' if not loop.last }}{% endfor %}.</p>
+  <div class="actions"><button class="btn">Save</button></div>
+</form>
+<div class="card">
+  <strong>The AI on this Mac</strong>
+  <table style="margin-top:8px"><tr><th>Job</th><th>Model</th><th>Status</th></tr>
+  {% for m in models %}<tr><td>{{ m.what }}</td><td class="id">{{ m.model or '-' }}</td><td>{% if m.ready %}<span class="ok">ready</span>{% else %}<span class="bad">not downloaded</span>{% endif %}</td></tr>{% endfor %}
+  </table>
+  <p class="muted" style="margin-top:8px">If something says not downloaded, open the Ollama app and run Install RSC again; it picks up where it left off.</p>
+</div>
+<div class="card">
+  <strong>Health check</strong>
+  <table style="margin-top:8px">
+  {% for h in health %}<tr><td>{{ h.name }}</td><td>{% if h.level == 'ok' %}<span class="ok">{{ h.detail }}</span>{% else %}<span class="bad">{{ h.detail }}</span>{% endif %}{% if h.fix %}<br><span class="muted">{{ h.fix }}</span>{% endif %}</td></tr>{% endfor %}
+  </table>
+</div>
+{% endblock %}

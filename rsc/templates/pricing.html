@@ -1,0 +1,80 @@
+{% extends "base.html" %}{% block title %}Pricing{% endblock %}
+{% block body %}
+<h1>Pricing check</h1>
+<p class="muted">Shows what jobs really cost against what you estimated, and the lowest price that still pays you. Nothing here is a guess: it only uses numbers you enter and what's logged in the app.</p>
+
+<form method="post" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <input type="hidden" name="which" value="rates">
+  <strong>Standard rates</strong>
+  <p class="muted" style="margin:4px 0 8px">Starting points from the market research. Every new estimate is checked against them. Change any that don't fit.</p>
+  <div class="grid">
+    <div><label>Never bill labor below ($ per crew-hour)</label><input name="floor_rate" inputmode="decimal" value="{{ '%g'|format(rates.floor_rate) }}"></div>
+    <div><label>Aim for ($ per crew-hour)</label><input name="target_rate" inputmode="decimal" value="{{ '%g'|format(rates.target_rate) }}"></div>
+    <div><label>What a crew hour really costs you ($)</label><input name="loaded_cost" inputmode="decimal" value="{{ '%g'|format(rates.loaded_cost) }}"></div>
+    <div><label>Usual markup on materials %</label><input name="default_markup" inputmode="decimal" value="{{ '%g'|format(rates.default_markup) }}"></div>
+    <div><label>Gross margin goal %</label><input name="gross_target" inputmode="decimal" value="{{ '%g'|format(rates.gross_target) }}"></div>
+    <div><label>Smallest job worth doing ($)</label><input name="job_minimum" inputmode="decimal" value="{{ '%g'|format(rates.job_minimum) }}"></div>
+  </div>
+  <div class="actions"><button class="btn">Save</button></div>
+</form>
+
+<form method="post" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Your numbers</strong>
+  <div class="grid" style="margin-top:8px">
+    <div><label>Target margin % (what you want left after costs and overhead)</label><input name="target_margin" inputmode="decimal" value="{{ '%g'|format(settings.target_margin) if settings.target_margin is not none }}"></div>
+    <div><label>Overhead % (leave blank to use your history)</label><input name="overhead_override" inputmode="decimal" value="{{ '%g'|format(settings.overhead_override) if settings.overhead_override is not none }}"></div>
+  </div>
+  <div class="actions"><button class="btn">Save</button></div>
+</form>
+
+<h2>Overhead</h2>
+<div class="card">
+  <div>Business costs logged under RSC codes, last 12 months: <b>{{ money(overhead.spend) }}</b></div>
+  <div>Contracts signed in that time: <b>{{ money(overhead.revenue) }}</b> across {{ overhead.jobs }} job{{ '' if overhead.jobs == 1 else 's' }}</div>
+  {% if overhead.history_pct is not none %}<div>That works out to <b>{{ '%.1f'|format(overhead.history_pct * 100) }}%</b> of what you sell.</div>
+  {% else %}<div class="muted">Not enough history yet: this needs {{ min_jobs }} or more signed jobs and some RSC expenses logged. Until then, enter an overhead % above.</div>{% endif %}
+  {% if overhead.source == 'entered' %}<div class="muted">Using the overhead % you entered ({{ '%.1f'|format(overhead.pct * 100) }}%).</div>{% endif %}
+</div>
+
+<h2>Open jobs against your floor price</h2>
+{% if open_estimates %}
+<table>
+  <tr><th>Job</th><th class="num">Estimate</th><th class="num">Floor</th><th>Result</th></tr>
+  {% for o in open_estimates %}<tr>
+    <td><a class="id" href="{{ url_for('estimate_edit', number=o.job.number) }}">{{ o.job.job_id }}</a> {{ o.job.last_name }}</td>
+    <td class="num">{{ money(o.check.price) }}</td><td class="num">{{ money(o.check.floor) or '-' }}</td>
+    <td>{% if o.check.status == 'above' %}<span class="ok">{{ money(o.check.cushion) }} over</span>
+        {% elif o.check.status == 'below' %}<span class="bad">{{ money(-o.check.cushion) }} under</span>
+        {% else %}<span class="muted">needs your numbers above</span>{% endif %}</td></tr>{% endfor %}
+</table>
+{% else %}<p class="muted">No open jobs have an estimate yet.</p>{% endif %}
+
+<h2>Labor rate on open estimates</h2>
+<table>
+  <tr><th>Job</th><th class="num">Crew-hours</th><th class="num">Labor</th><th class="num">$/crew-hour</th><th>Note</th></tr>
+  {% for o in open_estimates if o.check.rates.crew_hours %}<tr>
+    <td><a class="id" href="{{ url_for('estimate_edit', number=o.job.number) }}">{{ o.job.job_id }}</a> {{ o.job.last_name }}</td>
+    <td class="num">{{ '%g'|format(o.check.rates.crew_hours) }}</td><td class="num">{{ money(o.check.rates.labor) }}</td>
+    <td class="num"><span class="{{ {'ok': 'ok', 'warn': 'muted', 'bad': 'bad'}[o.check.rates.level] }}">${{ '%.0f'|format(o.check.rates.rate or 0) }}</span></td>
+    <td class="muted">{{ 'Under the floor' if o.check.rates.level == 'bad' else 'Under the target' if o.check.rates.level == 'warn' else 'Good' }}</td></tr>{% endfor %}
+</table>
+
+<h2>Estimate vs. what it cost</h2>
+{% if accuracy.rows %}
+<table>
+  <tr><th>Job</th><th class="num">Estimated costs</th><th class="num">Spent</th><th class="num">Difference</th><th>Status</th></tr>
+  {% for r in accuracy.rows %}<tr>
+    <td><a class="id" href="{{ url_for('job_detail', number=r.job.number) }}">{{ r.job.job_id }}</a></td>
+    <td class="num">{{ money(r.estimated) }}</td><td class="num">{{ money(r.actual) }}</td>
+    <td class="num"><span class="{{ 'bad' if r.variance > 0 else 'ok' }}">{{ money(r.variance) }}{% if r.variance_pct is not none %} ({{ '%+.0f'|format(r.variance_pct * 100) }}%){% endif %}</span></td>
+    <td>{{ 'Finished' if r.finished else r.job.status }}</td></tr>{% endfor %}
+</table>
+{% if accuracy.average_variance_pct is not none %}
+<p>On {{ accuracy.finished_count }} finished job{{ '' if accuracy.finished_count == 1 else 's' }}, costs came in
+  <b>{{ '%.0f'|format((accuracy.average_variance_pct|abs) * 100) }}% {{ 'over' if accuracy.average_variance_pct > 0 else 'under' }}</b> the estimate.
+  {% if accuracy.average_variance_pct > 0.02 %}Consider adding that much to the cost side of new estimates.{% endif %}</p>
+{% else %}<p class="muted">Mark jobs Complete to see how your estimates hold up.</p>{% endif %}
+{% else %}<p class="muted">Once a job has an estimate and expenses logged against its number, it shows up here.</p>{% endif %}
+{% endblock %}

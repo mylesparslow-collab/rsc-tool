@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block title %}Playbook{% endblock %}
+{% block body %}
+<h1>How we build it</h1>
+<p class="muted">Written from your own estimates and scopes of work, so a lead carpenter can see how RSC does each kind of job, step by step. It gets better with every estimate you write.</p>
+{% for k in kinds %}
+<h2>{{ k.kind }} <span class="muted">· {{ k.count }} job{{ 's' if k.count != 1 }}</span></h2>
+<div class="card">
+  <div class="muted">{% if k.crew %}Usual crew: {{ k.crew }}. {% endif %}{% if k.duration %}Example schedule: {{ k.duration[0][:90] }}. {% endif %}{% if k.avg_labor %}Labor averages ${{ '{:,.0f}'.format(k.avg_labor) }}{% if k.avg_hours %} over about {{ k.avg_hours }} crew-hours{% endif %}.{% endif %}</div>
+  <div class="muted">Jobs: {% for j in k.jobs %}<a class="id" href="{{ url_for('crew_brief', number=j.number) }}">{{ j.job_id }}</a>{{ ' ' }}{% endfor %}(open one for its printable crew brief)</div>
+</div>
+<div class="phase-summary">
+  {% for p in k.phases %}<div class="card"><div class="ph">{{ loop.index }}. {{ p.title }}</div>
+    <ul class="note-list">{% for s, c in p.steps %}<li>{{ s }}{% if k.count > 1 and c > 1 %} <span class="muted">({{ c }} of {{ k.count }} jobs)</span>{% endif %}</li>{% endfor %}</ul>
+    {% if p.inspection %}<div class="muted">Inspection: {{ p.inspection }}</div>{% endif %}</div>{% endfor %}
+</div>
+{% if k.excluded %}<p class="muted"><b>Usually not included:</b> {{ k.excluded|join('; ') }}</p>{% endif %}
+{% else %}<div class="card muted">Nothing here yet. Write an estimate and its scope of work shows up here.</div>{% endfor %}
+{% endblock %}

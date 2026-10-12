@@ -1,0 +1,52 @@
+/* Design tokens: the only place colors, type sizes, spacing and radii are defined.
+   Change a value here and every page follows. Spacing runs on an 8px grid (--s-1 is 4px, the half step).
+   Type is sized for comfortable reading at arm's length: 18px body, nothing smaller than 15px.
+   One accent (green) for actions and "you are here"; red/amber/green only ever mean problem/watch/ok. */
+:root {
+  color-scheme: light;
+
+  /* neutrals (warm gray) */
+  --bg: #F7F6F3;          /* page */
+  --surface: #FFFFFF;     /* cards, tables, inputs */
+  --surface-2: #F1EFEA;   /* quiet fills: table headers, secondary buttons */
+  --line: #E3E0D8;        /* hairlines */
+  --line-strong: #C9C5BA; /* input borders */
+  --ink: #1C211E;         /* body text, 15:1 on --bg */
+  --ink-2: #454C47;       /* secondary text, 8:1 */
+  --muted: #5F675F;       /* captions, 5.6:1 */
+
+  /* accent */
+  --accent: #2F5D46;
+  --accent-strong: #1F4130;
+  --accent-soft: #E7F0EA;
+  --accent-line: #BFD3C6;
+
+  /* meaning, used sparingly */
+  --ok: #1F7A3A;   --ok-soft: #E4F3E8;
+  --warn: #8F5600; --warn-soft: #FBF0DA; --warn-line: #E8CF9B;
+  --bad: #B42318;  --bad-soft: #FDECEA;  --bad-line: #F3BDB7;
+  --info: #1F4E8C; --info-soft: #E5EDF8;
+
+  /* type */
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --text-sm: 15px;   /* captions, table headers */
+  --text-base: 18px; /* body, inputs, buttons */
+  --text-lg: 20px;   /* card titles */
+  --text-xl: 24px;   /* section headings */
+  --text-2xl: 32px;  /* page title, big numbers */
+  --leading: 1.55;
+
+  /* spacing (8px grid) */
+  --s-1: 4px; --s-2: 8px; --s-3: 16px; --s-4: 24px; --s-5: 32px; --s-6: 48px; --s-7: 64px;
+
+  /* shape */
+  --radius: 12px; --radius-sm: 8px;
+  --shadow: 0 1px 2px rgba(28, 33, 30, .05);
+  --tap: 48px;        /* minimum height of anything you press */
+  --page: 1120px;     /* content width */
+
+  /* names older templates still use */
+  --green: var(--accent); --green-dark: var(--accent-strong); --green-soft: var(--accent-soft); --green-line: var(--accent-line);
+  --gold: var(--warn); --yellow: var(--warn); --paper: var(--bg); --card: var(--surface);
+}

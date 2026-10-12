@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · {{ biz.name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='tokens.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main style="max-width:420px;margin-top:60px">
+  <div class="card">
+    <div class="eyebrow">{{ biz.name }}</div>
+    <h1>Sign in</h1>
+    <p class="muted">Enter the PIN to open the app.</p>
+    {% if error %}<div class="flash error">{{ error }}</div>{% endif %}
+    <form method="post">
+      <input type="hidden" name="csrf" value="{{ session.get('csrf', '') }}">
+      <label>PIN</label>
+      <input type="password" name="pin" autofocus autocomplete="current-password" inputmode="text">
+      <div class="actions"><button class="btn">Open</button></div>
+    </form>
+  </div>
+</main>
+</body>
+</html>

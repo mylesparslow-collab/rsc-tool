@@ -1,0 +1,28 @@
+{% extends "base.html" %}{% block title %}The week{% endblock %}
+{% block body %}
+<h1>The week <span class="muted">· {{ w.days[0].strftime('%b %-d') }} to {{ w.days[6].strftime('%b %-d') }}</span></h1>
+<div class="actions">
+  <a class="btn secondary small" href="{{ url_for('week_page', start=w.prev.isoformat()) }}">&larr; Last week</a>
+  <a class="btn secondary small" href="{{ url_for('week_page') }}">This week</a>
+  <a class="btn secondary small" href="{{ url_for('week_page', start=w.next.isoformat()) }}">Next week &rarr;</a>
+</div>
+{% if w.conflicts %}<div class="card tone-warn"><strong>Double-booked:</strong>
+  {% for name, d in w.conflicts %}{{ name }} on {{ d }}{{ '; ' if not loop.last }}{% endfor %}</div>{% endif %}
+
+<div class="card">
+<form method="post" action="{{ url_for('week_plan') }}" data-busy="Saving..."><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="start" value="{{ w.start.isoformat() }}">
+  <label>Who is where this week <span class="muted">(example: Mon-Wed Delano Mike Dave; Thu Hartwell Mike)</span>
+  <textarea name="plan" rows="2" placeholder="Mon-Wed Delano Mike Dave; Thu-Fri Hartwell Mike"></textarea></label>
+  <button class="btn">Add to the week</button></form>
+</div>
+
+{% if w.jobs %}<div class="scroll"><table class="week">
+  <tr><th>Job</th>{% for d in w.days %}<th class="{{ 'today' if d.isoformat() == today }}">{{ d.strftime('%a %-d') }}</th>{% endfor %}</tr>
+  {% for j in w.jobs %}<tr><td><a href="{{ url_for('job_detail', number=j.job.number) }}">{{ j.job.last_name }}</a><div class="muted">{{ j.job.job_id }}</div></td>
+    {% for d in w.days %}{% set k = d.isoformat() %}<td class="{{ 'today' if k == today }}">
+      {% for e in j.cells[k] %}<form method="post" action="{{ url_for('week_remove', entry_id=e.id) }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="start" value="{{ w.start.isoformat() }}"><button class="chip" title="Remove {{ e.name }}">{{ e.name }} &times;</button></form> {% endfor %}
+      {% if j.hours[k] %}<div class="muted">{{ '%g' % j.hours[k] }} h logged</div>{% endif %}</td>{% endfor %}</tr>{% endfor %}
+</table></div>
+{% else %}<div class="card muted">Nothing planned for this week yet. Type it in the box above in your own words.</div>{% endif %}
+<p class="muted">The plan also shows on the Today page and the morning crew sheet when the days arrive. Hours the crew logs appear here beside the plan.</p>
+{% endblock %}

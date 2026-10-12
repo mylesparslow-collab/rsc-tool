@@ -1,0 +1,56 @@
+{% extends "base.html" %}{% block title %}{{ co.label }}{% endblock %}
+{% block body %}
+<h1><span class="id">{{ co.label }}</span> · Change order</h1>
+<p class="muted"><a href="{{ url_for('change_orders', number=job.number) }}">&larr; All change orders for {{ job.job_id }}</a></p>
+<div class="card" style="font-size:18px">
+  <div class="muted">{{ job.first_name }} {{ job.last_name }} · {{ job.address }}</div>
+  <p style="margin:10px 0">{{ co.description }}</p>
+  <table style="font-size:16px">
+    <tr><td>Price change</td><td class="num"><b>{{ money(co.amount) }}</b></td></tr>
+    {% if co.days_added %}<tr><td>Schedule change</td><td class="num">{{ '%+d'|format(co.days_added) }} days</td></tr>{% endif %}
+    <tr><td>Contract total {{ 'after this change' if co.status == 'draft' else 'now' }}</td><td class="num"><b>{{ money(new_total) }}</b></td></tr>
+  </table>
+  <p class="muted" style="margin-top:10px">Under the contract, no changed work starts, and no price or schedule changes, until this is signed by the client and Contractor.</p>
+</div>
+
+{% if co.status == 'draft' %}
+<form method="post" action="{{ url_for('change_order_sign', co_id=co.id) }}" class="card" id="signform">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <input type="hidden" name="signature" id="signature">
+  <strong>Client signature</strong>
+  <p class="muted">Hand the screen to the client. They type their name and sign with a finger or the mouse.</p>
+  <div><label>Client's name</label><input name="signer_name" value="{{ (job.first_name ~ ' ' ~ job.last_name).strip() }}" required></div>
+  <label style="margin-top:10px">Sign here</label>
+  <canvas id="pad" width="700" height="220" style="width:100%;max-width:700px;height:auto;border:2px dashed #999;border-radius:8px;background:#fff;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none"></canvas>
+  <div class="actions"><button type="button" class="btn quiet" id="clear">Clear</button><button class="btn" id="submit">Sign change order</button></div>
+</form>
+<div class="actions">
+  <form method="post" action="{{ url_for('change_order_action', co_id=co.id, action='decline') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn quiet">Client declined</button></form>
+  <form method="post" action="{{ url_for('change_order_action', co_id=co.id, action='delete') }}" class="inline" onsubmit="return confirm('Delete this change order?')"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn quiet">Delete</button></form>
+</div>
+<script>
+(function () {
+  var pad = document.getElementById('pad'), ctx = pad.getContext('2d'), drawing = false, inked = false;
+  ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.strokeStyle = '#111';
+  function pos(e) { var r = pad.getBoundingClientRect(); return [(e.clientX - r.left) * pad.width / r.width, (e.clientY - r.top) * pad.height / r.height]; }
+  pad.addEventListener('pointerdown', function (e) { drawing = true; pad.setPointerCapture(e.pointerId); var p = pos(e); ctx.beginPath(); ctx.moveTo(p[0], p[1]); e.preventDefault(); });
+  pad.addEventListener('pointermove', function (e) { if (!drawing) return; var p = pos(e); ctx.lineTo(p[0], p[1]); ctx.stroke(); inked = true; e.preventDefault(); });
+  ['pointerup', 'pointercancel'].forEach(function (n) { pad.addEventListener(n, function () { drawing = false; }); });
+  document.getElementById('clear').onclick = function () { ctx.clearRect(0, 0, pad.width, pad.height); inked = false; };
+  document.getElementById('signform').onsubmit = function (e) {
+    if (!inked) { alert('Please sign in the box first.'); e.preventDefault(); return; }
+    var flat = document.createElement('canvas'); flat.width = pad.width; flat.height = pad.height;
+    var f = flat.getContext('2d'); f.fillStyle = '#fff'; f.fillRect(0, 0, flat.width, flat.height); f.drawImage(pad, 0, 0);
+    document.getElementById('signature').value = flat.toDataURL('image/png');
+  };
+})();
+</script>
+{% elif co.status == 'signed' %}
+<div class="card"><span class="ok">Signed</span> by {{ co.signer_name }} on {{ co.signed_at[:10] }}.<br>
+  <img src="{{ co.signature }}" alt="Client signature" style="max-width:100%;width:360px;border-bottom:1px solid #999;margin-top:8px"></div>
+<p><a class="btn secondary" href="{{ url_for('job_detail', number=job.number) }}#payments">See the payment schedule</a>
+   <a class="btn secondary" href="{{ url_for('change_order_print', co_id=co.id) }}">Print or save as PDF</a></p>
+{% else %}
+<div class="card">This change order was declined. No changes were made to the contract.</div>
+{% endif %}
+{% endblock %}

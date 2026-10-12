@@ -1,0 +1,96 @@
+/* Room model. Scoped so it cannot change the rest of the app. */
+.rsc-modeler{--m-bg:#F6F5F1; --m-panel:#fff; --m-ink:#222; --m-muted:#6B6B6B; --m-line:#DDD9D0;
+  --m-accent:#2F5D46; --m-accent-ink:#fff; --m-wall:#D9C8A5; --m-glass:#7FB4CF; --m-door:#8B6A45;
+  --m-dim:#8A5A00; --m-warn:#B42318; --m-floor:#E4E1D8;
+  --m-f-mono:ui-monospace,Menlo,Consolas,monospace; --m-f-body:inherit;}
+.rsc-modeler, .rsc-modeler *{box-sizing:border-box}
+.rsc-modeler .wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+.rsc-modeler header{display:flex;flex-direction:column;gap:6px}
+.rsc-modeler .kicker{font-family:var(--m-f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--m-muted)}
+.rsc-modeler h1{font-family:var(--m-f-body);font-weight:700;font-size:clamp(34px,6vw,52px);line-height:1;margin:0;letter-spacing:.01em;text-wrap:balance}
+.rsc-modeler .lede{margin:0;max-width:62ch;color:var(--m-muted)}
+.rsc-modeler .sample{align-self:flex-start;font-family:var(--m-f-mono);font-size:12px;color:var(--m-warn);border:1px solid var(--m-warn);padding:3px 8px;border-radius:3px}
+.rsc-modeler .mgrid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:20px;align-items:start}
+.rsc-modeler .col{display:flex;flex-direction:column;gap:20px;min-width:0}
+.rsc-modeler .mcard{background:var(--m-panel);border:1px solid var(--m-line);border-radius:6px;padding:16px;min-width:0}
+.rsc-modeler h2{font-family:var(--m-f-body);font-weight:600;font-size:22px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 10px}
+.rsc-modeler .hint{font-size:13px;color:var(--m-muted);margin:0 0 12px}
+.rsc-modeler .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rsc-modeler label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--m-muted);letter-spacing:.04em;text-transform:uppercase;min-width:0}
+.rsc-modeler input,.rsc-modeler select{font:inherit;font-family:var(--m-f-mono);font-size:15px;color:var(--m-ink);background:var(--m-bg);border:1px solid var(--m-line);border-radius:4px;padding:7px 8px;width:100%;min-width:0;text-transform:none;letter-spacing:0}
+.rsc-modeler input:focus-visible,.rsc-modeler select:focus-visible,.rsc-modeler button:focus-visible,.rsc-modeler textarea:focus-visible{outline:2px solid var(--m-accent);outline-offset:1px}
+.rsc-modeler input.bad{border-color:var(--m-warn)}
+.rsc-modeler input:disabled{opacity:.5}
+.rsc-modeler .orow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:12px 0;border-top:1px solid var(--m-line);align-items:end}
+.rsc-modeler .orow .otag{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;font-family:var(--m-f-body);font-weight:700;font-size:20px;letter-spacing:.04em}
+.rsc-modeler .orow .wallsel{grid-column:span 2}
+.rsc-modeler .orow .otag span.k{color:var(--m-muted);font-weight:600;font-size:14px;margin-left:8px;letter-spacing:.06em;text-transform:uppercase}
+.rsc-modeler button{font:inherit;font-size:14px;font-weight:600;border-radius:4px;padding:8px 12px;cursor:pointer;border:1px solid var(--m-accent);background:var(--m-accent);color:var(--m-accent-ink)}
+.rsc-modeler button.ghost{background:transparent;color:var(--m-accent)}
+.rsc-modeler button.del{padding:3px 10px;font-size:13px;border-color:var(--m-line);color:var(--m-muted);background:transparent}
+.rsc-modeler .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.rsc-modeler .warn{margin:10px 0 0;padding:0;list-style:none;font-size:13px;color:var(--m-warn);display:flex;flex-direction:column;gap:3px}
+.rsc-modeler .plan{width:100%;height:auto;display:block;max-height:640px}
+.rsc-modeler .plan text{font-family:var(--m-f-mono);fill:var(--m-ink)}
+.rsc-modeler .plan .dimtxt{fill:var(--m-dim)}
+.rsc-modeler .plan .mutedt{fill:var(--m-muted)}
+.rsc-modeler .plan .wall{fill:var(--m-wall);stroke:var(--m-ink);stroke-width:1.2}
+.rsc-modeler .plan .gap{fill:var(--m-panel)}
+.rsc-modeler .plan .jamb{stroke:var(--m-ink);stroke-width:1.2}
+.rsc-modeler .plan .glassln{stroke:var(--m-glass);stroke-width:2.4}
+.rsc-modeler .plan .thin{stroke:var(--m-ink);stroke-width:.8}
+.rsc-modeler .plan .dimln{stroke:var(--m-dim);stroke-width:.8;fill:none}
+.rsc-modeler .plan .leaf{stroke:var(--m-accent);stroke-width:1.6}
+.rsc-modeler .plan .swing{stroke:var(--m-muted);stroke-width:.8;fill:none;stroke-dasharray:3 3}
+.rsc-modeler .plan .tagc{fill:var(--m-panel);stroke:var(--m-accent);stroke-width:1}
+.rsc-modeler .plan .tagt{fill:var(--m-accent)}
+.rsc-modeler .viewbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
+.rsc-modeler .viewbar button{padding:5px 10px;font-size:13px}
+.rsc-modeler .viewbar .chk{flex-direction:row;align-items:center;gap:6px;margin-left:auto;text-transform:none;letter-spacing:0;font-size:13px;color:var(--m-ink)}
+.rsc-modeler .viewbar .chk input{width:auto}
+.rsc-modeler .stage{position:relative;border:1px solid var(--m-line);border-radius:4px;background:var(--m-bg);overflow:hidden}
+.rsc-modeler canvas{display:block;width:100%;touch-action:none;cursor:grab}
+.rsc-modeler canvas:active{cursor:grabbing}
+.rsc-modeler .nogl{padding:24px;color:var(--m-muted)}
+.rsc-modeler textarea{width:100%;min-height:150px;font-family:var(--m-f-mono);font-size:13px;line-height:1.5;color:var(--m-ink);background:var(--m-bg);border:1px solid var(--m-line);border-radius:4px;padding:10px;resize:vertical}
+.rsc-modeler ol.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;max-width:68ch}
+.rsc-modeler .copied{font-size:13px;color:var(--m-muted);align-self:center}
+.rsc-modeler .wrap{display:flex;flex-direction:column;gap:16px}
+.rsc-modeler h2{font-size:17px;margin:0 0 8px;font-family:inherit;text-transform:none;letter-spacing:0}
+.rsc-modeler button{border-radius:8px}
+.rsc-modeler input,.rsc-modeler select{background:#fff}
+.rsc-modeler .savemsg{font-size:13px;color:var(--m-muted)}
+
+@media (max-width:900px){.rsc-modeler .mgrid{grid-template-columns:minmax(0,1fr)}}
+
+/* ---- rooms, finishes, photos, client view ---- */
+.rsc-modeler .rtabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.rsc-modeler .rtab{background:transparent;color:var(--m-accent);border:1px solid var(--m-line);padding:5px 12px;font-size:14px}
+.rsc-modeler .rtab[aria-pressed="true"]{background:var(--m-accent);color:var(--m-accent-ink);border-color:var(--m-accent)}
+.rsc-modeler .finrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-bottom:10px;align-items:end}
+.rsc-modeler .finsel{display:flex;gap:8px;align-items:center}
+.rsc-modeler .sw{display:inline-block;width:20px;height:20px;border-radius:4px;border:1px solid rgba(0,0,0,.25);flex:none;vertical-align:middle}
+.rsc-modeler .rgrp .hit{fill:transparent;cursor:pointer}
+.rsc-modeler .plan .selbox{fill:none;stroke:var(--m-accent);stroke-width:1.5;stroke-dasharray:5 4}
+.rsc-modeler .ba{position:relative;aspect-ratio:4/3;max-width:100%;overflow:hidden;border-radius:4px;background:var(--m-line)}
+.rsc-modeler .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rsc-modeler .ba-labels{display:flex;justify-content:space-between;font-size:13px;color:var(--m-muted);margin-top:6px}
+.rsc-modeler #ba-range{padding:0;border:0;margin-top:4px}
+.rsc-modeler .stbl{margin-bottom:14px;font-size:14px}
+.rsc-modeler .stbl td,.rsc-modeler .stbl th{padding:6px 10px}
+.rsc-modeler .disclaimer{font-size:13px;color:var(--m-muted);margin:6px 0 0}
+.rsc-modeler #glprint{width:100%;height:auto}
+.rsc-modeler .presenthead{display:none}
+.rsc-modeler.present .editonly{display:none}
+.rsc-modeler.present .mgrid{grid-template-columns:minmax(0,1fr)}
+.rsc-modeler.present .presenthead{display:block;border-bottom:3px solid var(--m-accent);padding-bottom:10px}
+.rsc-modeler .ph-brand{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--m-accent);font-weight:700}
+.rsc-modeler .ph-title{font-size:26px;font-weight:700;line-height:1.2}
+.rsc-modeler .ph-sub{color:var(--m-muted);font-size:14px}
+@media print{
+  header,.noprint,.modeler-top{display:none !important}
+  body{background:#fff}
+  main{max-width:none;padding:0}
+  .rsc-modeler .mcard{break-inside:avoid;border-color:#ccc}
+}
+.rsc-modeler [hidden]{display:none !important}
