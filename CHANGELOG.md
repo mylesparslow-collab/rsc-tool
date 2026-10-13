@@ -2,6 +2,11 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## Unreleased
+
+- New look, borrowed from the Conflara app: warm paper background, serif headings, a sidebar instead of the top menu, soft shadows, a dark mode that follows the Mac's setting, and gentle motion. Fonts are bundled, so nothing is fetched from the internet. All colors and sizes are still only in `static/tokens.css`. Every page, button and number is where it was.
+- RSC.app: the same app in its own window (`rsc desktop`), built into a downloadable `.dmg` by GitHub (`.github/workflows/mac-app.yml`). Not signed with an Apple Developer ID yet; see `docs/mac-app.md`. The existing installer and background jobs are unchanged.
+
 ## 0.1.0 (2026-10-12)
 
 First version in GitHub. What the app does at this point:

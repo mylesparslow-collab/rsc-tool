@@ -1,52 +1,79 @@
 /* Design tokens: the only place colors, type sizes, spacing and radii are defined.
    Change a value here and every page follows. Spacing runs on an 8px grid (--s-1 is 4px, the half step).
-   Type is sized for comfortable reading at arm's length: 18px body, nothing smaller than 15px.
+   Look borrowed from the Conflara app: warm paper, serif headings, one deep accent, a brass detail, soft shadows, dark mode.
+   Type stays large for easy reading at arm's length (17px body, nothing under 15px).
    One accent (green) for actions and "you are here"; red/amber/green only ever mean problem/watch/ok. */
+@import url("fonts/fonts.css");
 :root {
   color-scheme: light;
 
-  /* neutrals (warm gray) */
-  --bg: #F7F6F3;          /* page */
+  /* neutrals (warm paper) */
+  --bg: #F6F5F1;          /* page */
   --surface: #FFFFFF;     /* cards, tables, inputs */
-  --surface-2: #F1EFEA;   /* quiet fills: table headers, secondary buttons */
-  --line: #E3E0D8;        /* hairlines */
+  --surface-2: #EFEDE7;   /* quiet fills: table headers, secondary buttons */
+  --line: #E0DDD4;        /* hairlines */
   --line-strong: #C9C5BA; /* input borders */
-  --ink: #1C211E;         /* body text, 15:1 on --bg */
-  --ink-2: #454C47;       /* secondary text, 8:1 */
-  --muted: #5F675F;       /* captions, 5.6:1 */
+  --ink: #1A1F1C;         /* body text */
+  --ink-2: #444B46;       /* secondary text */
+  --muted: #5F675F;       /* captions */
 
-  /* accent */
-  --accent: #2F5D46;
-  --accent-strong: #1F4130;
-  --accent-soft: #E7F0EA;
-  --accent-line: #BFD3C6;
+  /* accent (deep green) and a brass detail */
+  --accent: #2B5A43;
+  --accent-strong: #1B3F2D;
+  --accent-soft: #E4EEE8;
+  --accent-line: #B9D0C2;
+  --accent-ink: #FFFFFF;  /* text on an accent fill */
+  --brass: #A0792F;
 
   /* meaning, used sparingly */
-  --ok: #1F7A3A;   --ok-soft: #E4F3E8;
+  --ok: #1F7A3A;   --ok-soft: #E4F3E8;   --ok-line: #B7DFC1;
   --warn: #8F5600; --warn-soft: #FBF0DA; --warn-line: #E8CF9B;
-  --bad: #B42318;  --bad-soft: #FDECEA;  --bad-line: #F3BDB7;
+  --bad: #B42318;  --bad-soft: #FDECEA;  --bad-line: #F3BDB7;  --bad-ink: #7A1A12;
   --info: #1F4E8C; --info-soft: #E5EDF8;
+  --hover-row: #FBFAF7;
 
   /* type */
-  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font: "Source Sans 3", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --text-sm: 15px;   /* captions, table headers */
-  --text-base: 18px; /* body, inputs, buttons */
+  --text-base: 17px; /* body, inputs, buttons */
   --text-lg: 20px;   /* card titles */
   --text-xl: 24px;   /* section headings */
-  --text-2xl: 32px;  /* page title, big numbers */
+  --text-2xl: 34px;  /* page title, big numbers */
   --leading: 1.55;
 
   /* spacing (8px grid) */
   --s-1: 4px; --s-2: 8px; --s-3: 16px; --s-4: 24px; --s-5: 32px; --s-6: 48px; --s-7: 64px;
 
-  /* shape */
+  /* shape and depth */
   --radius: 12px; --radius-sm: 8px;
-  --shadow: 0 1px 2px rgba(28, 33, 30, .05);
+  --shadow: 0 1px 2px rgba(26, 31, 28, .04), 0 1px 1px rgba(26, 31, 28, .03);
+  --shadow-lift: 0 2px 6px rgba(26, 31, 28, .06), 0 10px 24px rgba(26, 31, 28, .07);
+  --overlay: rgba(26, 31, 28, .35);
   --tap: 48px;        /* minimum height of anything you press */
   --page: 1120px;     /* content width */
+  --rail: 248px;      /* sidebar width */
+  --ease: 140ms ease-out;
 
   /* names older templates still use */
   --green: var(--accent); --green-dark: var(--accent-strong); --green-soft: var(--accent-soft); --green-line: var(--accent-line);
   --gold: var(--warn); --yellow: var(--warn); --paper: var(--bg); --card: var(--surface);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #13161A; --surface: #1B1F24; --surface-2: #252A31; --line: #313840; --line-strong: #444C57;
+    --ink: #E9ECEA; --ink-2: #BAC1BC; --muted: #8F9892;
+    --accent: #7FBF9C; --accent-strong: #A5D8BB; --accent-soft: #1F3329; --accent-line: #2F5241; --accent-ink: #0E1A13;
+    --brass: #D2AD6A;
+    --ok: #7FCF9E; --ok-soft: #17301F; --ok-line: #25492F;
+    --warn: #E7B65A; --warn-soft: #36290F; --warn-line: #5A4416;
+    --bad: #F2867C; --bad-soft: #3C1D1C; --bad-line: #62302D; --bad-ink: #F5B3AC;
+    --info: #8FB4E8; --info-soft: #1E2B42;
+    --hover-row: #20252B;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .25);
+    --shadow-lift: 0 2px 6px rgba(0, 0, 0, .3), 0 12px 28px rgba(0, 0, 0, .3);
+    --overlay: rgba(0, 0, 0, .55);
+  }
 }

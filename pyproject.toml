@@ -12,6 +12,7 @@ dependencies = ["flask>=3.0", "openpyxl>=3.1", "pypdf>=4.0"]
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 voice = ["faster-whisper>=1.0"]
+desktop = ["pywebview>=5.3"]
 
 [project.scripts]
 rsc = "rsc.cli:main"
@@ -20,7 +21,7 @@ rsc = "rsc.cli:main"
 packages = ["rsc"]
 
 [tool.setuptools.package-data]
-rsc = ["templates/*.html", "static/*.css", "static/*.js", "static/vendor/*.js"]
+rsc = ["templates/*.html", "static/*.css", "static/*.js", "static/vendor/*.js", "static/fonts/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
