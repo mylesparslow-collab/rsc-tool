@@ -27,7 +27,7 @@ It is built for Apple-silicon Macs (M1 and later), which includes Nick's iMac.
   drafts use plain templates.
 - Mail drafts open in Mail, as before. Printing and "save as PDF" pages work better in a browser: use the menu
   **Page, Open this page in the browser**.
-- If the background app from the installer is already running, the window just shows it.
+- The window runs its own copy of the app on this Mac only, even if the installer's background app is running (they share the same data). The window never asks for the phone PIN.
 
 ## Status
 

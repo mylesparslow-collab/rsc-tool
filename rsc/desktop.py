@@ -2,8 +2,9 @@
 
 `rsc desktop` (or double-clicking RSC.app) does this:
   1. First launch only: makes ~/RSC with a settings file and an empty database (the same thing `rsc setup` does).
-  2. If the app is already running in the background (the installer sets that up), the window just shows it.
-     Otherwise it starts the server inside this process, on this Mac only.
+  2. Starts its own copy of the server inside this process, on this Mac only (the settings' port if it is free, otherwise any
+     free one). It never attaches to a server that is already running, so it can't land on a PIN page left by a phone or
+     Tailscale setup. The window itself needs no PIN: nothing outside this Mac can reach it. Your settings file is not changed.
   3. Opens a window. Mail drafts (mailto:) and anything outside the app open in the normal apps.
 Nothing here talks to the internet; the window only ever shows http://127.0.0.1.
 """
@@ -51,9 +52,11 @@ def first_run_setup(cfg: config.Config) -> config.Config:
 
 
 def start_server(cfg: config.Config, port: int):
-    """Serve the app in a background thread of this process. Returns the server so it can be shut down."""
+    """Serve the app in a background thread of this process, on this Mac only. Returns the server so it can be shut down.
+    The PIN is for phones and other computers; this server can't be reached from them, so the window skips it."""
     from werkzeug.serving import make_server
     from .web import create_app
+    cfg.access_pin = ""  # in memory only; config.toml keeps the PIN for the background app that serves the phone
     server = make_server("127.0.0.1", port, create_app(cfg), threaded=True)
     threading.Thread(target=server.serve_forever, daemon=True).start()
     return server
@@ -73,8 +76,8 @@ def main(home=None) -> int:
               "(Or just run  rsc open  to use it in the browser.)")
         return 1
     cfg = first_run_setup(config.load(home))
-    url = f"http://127.0.0.1:{cfg.port}"
-    server = None if is_up(url) else start_server(cfg, cfg.port)
+    server = start_server(cfg, cfg.port if not is_up(f"http://127.0.0.1:{cfg.port}") else 0)
+    url = f"http://127.0.0.1:{server.server_port}"
     if os.environ.get("RSC_DESKTOP_SELFTEST"):  # used when building RSC.app: prove the packaged pieces are all there, then quit
         ok = is_up(url) and b"stylesheet" in urllib.request.urlopen(url, timeout=5).read() \
             and urllib.request.urlopen(url + "/static/fonts/fonts.css", timeout=5).status == 200
@@ -93,6 +96,5 @@ def main(home=None) -> int:
     window.events.loaded += lambda: window.evaluate_js(LINK_HANDLER)
     menu = [webview.menu.Menu("Page", [webview.menu.MenuAction("Open this page in the browser (to print or save)", api.open_in_browser)])]
     webview.start(menu=menu)
-    if server:
-        server.shutdown()
+    server.shutdown()
     return 0

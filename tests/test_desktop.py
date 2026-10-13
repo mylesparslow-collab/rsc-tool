@@ -31,3 +31,17 @@ def test_only_mail_phone_and_web_links_leave_the_window(monkeypatch):
     assert opened == []
     desktop.open_outside("mailto:a@b.com?subject=Hi")
     assert len(opened) == 1 and opened[0][-1].startswith("mailto:")
+
+
+def test_window_skips_the_pin_but_the_settings_file_keeps_it(tmp_path):
+    cfg = desktop.first_run_setup(config.load(tmp_path / "RSC"))
+    (cfg.home / "config.toml").write_text('access_pin = "phone-pin-1"\n' + (cfg.home / "config.toml").read_text())
+    cfg = config.load(cfg.home)
+    assert cfg.access_pin == "phone-pin-1"
+    server = desktop.start_server(cfg, 0)
+    try:
+        page = urllib.request.urlopen(f"http://127.0.0.1:{server.server_port}/").read()
+        assert b"Enter the PIN" not in page and b"Reclaimed Space Crafters" in page
+    finally:
+        server.shutdown()
+    assert 'access_pin = "phone-pin-1"' in (cfg.home / "config.toml").read_text()
