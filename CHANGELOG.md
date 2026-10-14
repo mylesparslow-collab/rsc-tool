@@ -2,6 +2,16 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## Unreleased (2026-10-14): client funnel
+
+- Website quote requests that give only a phone number now land in To Review as leads (before, a lead needed an email).
+  A "Text the reply" button opens the drafted reply in Messages.
+- Website leads show where the person found Nick (Google, Nextdoor, Facebook...). The site passes this along by itself.
+- A quote sent from the person's own mail app replies to their address.
+- An estimate with no answer after 7 days gets a polite follow-up note on the job page, ready to open in Mail or Messages.
+  After 21 days the note becomes a last, no-pressure check-in. No prices, nothing sent automatically.
+- 211 tests pass.
+
 ## 0.1.0 (2026-10-12)
 
 First version in GitHub. What the app does at this point:

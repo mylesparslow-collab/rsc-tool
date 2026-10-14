@@ -6,7 +6,7 @@ first payment, do the work (receipts and hours), invoice each phase, final payme
 import sqlite3
 from datetime import date
 
-from . import books, crew, estimates, pricing
+from . import books, brand, crew, estimates, pricing
 
 
 def _days_since(iso: str | None) -> int | None:
@@ -66,8 +66,9 @@ def next_step(conn: sqlite3.Connection, job: dict) -> dict | None:
                     "endpoint": "sow", "args": {"number": n}, "label": "Print the estimate"}
         days = _days_since(job["estimate_sent"])
         if days is not None and days >= 7:
-            return {"title": f"Follow up with {name}", "why": f"The estimate went out {days} days ago with no answer yet.",
-                    "endpoint": "job_detail", "args": {"number": n}, "label": "Open the job"}
+            return {"title": f"Follow up with {name}", "why": f"The estimate went out {days} days ago with no answer yet. A short note is ready below.",
+                    "endpoint": "job_detail", "args": {"number": n}, "label": "Open the job",
+                    "draft": estimate_followup(job, days), "subject": f"Your {(job.get('job_type') or 'project').lower()} estimate"}
         return {"title": f"Waiting on {name}", "why": "When they say yes, open the estimate and press 'Contract signed'. That sets up the payments.",
                 "endpoint": "estimate_edit", "args": {"number": n}, "label": "Open the estimate"}
     payments = books.list_payments(conn, n)
@@ -97,3 +98,19 @@ def next_step(conn: sqlite3.Connection, job: dict) -> dict | None:
                 "endpoint": "job_detail", "args": {"number": n}, "label": "Open the job"}
     return {"title": "Mark the job Complete", "why": "Everything is paid. Completing it schedules the review request and the one-year check-in.",
             "endpoint": "job_detail", "args": {"number": n}, "label": "Open the job"}
+
+
+def estimate_followup(job: dict, days: int) -> str:
+    """A polite check-in on an estimate that has had no answer. Plain template: it names no price and never pushes."""
+    b = brand.current()
+    first = job.get("first_name") or job.get("last_name") or "there"
+    what = (job.get("job_type") or "project").lower()
+    if days < 21:
+        body = (f"I wanted to make sure the estimate for your {what} reached you, and see if any questions came up. "
+                f"Happy to go over it by phone or walk through it again in person, and to adjust the scope if something "
+                f"doesn't fit your budget or timing.")
+    else:
+        body = (f"Checking in one last time on the estimate for your {what}. If the timing isn't right or you've gone another "
+                f"way, no problem at all, just let me know so I can plan my schedule. If you'd still like to go ahead, "
+                f"I can hold a spot for you.")
+    return f"Hi {first},\n\n{body}\n\n{b['owner']}\n{b['name']}\n{b['phone']}"

@@ -57,7 +57,7 @@ def process(conn: sqlite3.Connection, cfg: Config, mails: list[Mail], model: Mod
             form.data.setdefault("reply", "")
             if not form.data["reply"]:
                 form.data["reply"] = leads.draft_reply(model, conn, form.data, cfg.business_phone)
-            form.data["reply_to"] = form.data["email"]
+            form.data["reply_to"] = form.data.get("email", "")
             form.data["reply_subject"] = "Re: " + mail.subject
             email_id = _record_email(conn, mail, None)
             conn.execute("INSERT INTO suggestions (email_id, kind, data, match_note, confidence) VALUES (?, ?, ?, ?, ?)",
