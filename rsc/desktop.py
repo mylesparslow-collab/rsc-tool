@@ -102,7 +102,13 @@ def main(home=None) -> int:
     menu = [webview.menu.Menu("Page", [
         webview.menu.MenuAction("Check for updates", lambda: window.load_url(url + "/update")),
         webview.menu.MenuAction("Open this page in the browser (to print or save)", api.open_in_browser)])]
+    from . import autocheck
+    from .web import run_mail_check
+    server.app.config["AUTO_MAIL"] = True   # Setup and Home then describe the automatic email check
+    checker = autocheck.Scheduler(cfg, run_mail_check)
+    checker.start()
     server.app.config["CHECK_UPDATES"]()   # one quiet look at GitHub for a newer version; the banner appears if there is one
     webview.start(menu=menu)
+    checker.stop()
     server.shutdown()
     return 0

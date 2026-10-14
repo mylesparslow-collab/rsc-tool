@@ -92,6 +92,12 @@ def register(app, cfg, conn, get_model):
         flash(f"Saved. Reading and writing now uses {cfg.model.name}.")
         return redirect(url_for("setup_page") + "#ai")
 
+    @app.post("/setup/auto-mail")
+    def setup_auto_mail():
+        prefs.put(conn(), "auto_mail", "on" if request.form.get("auto") else "off")
+        flash("Saved.")
+        return redirect(url_for("setup_page") + "#email")
+
     @app.post("/setup/models/download")
     def setup_models_download():
         """One-click download of a suggested model, in the background; the page shows progress."""
