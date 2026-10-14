@@ -4,7 +4,7 @@ A small app for Reclaimed Space Crafters that runs entirely on one Mac. It keeps
 
 > **Quick install on a Mac:** double-click `Install RSC.command` (or run `./deploy/install.sh`); it does every setup step below, including downloading the models. See docs/launch-checklist.md and docs/nick-quick-start.md.
 
-> **Code and updates:** this folder is the private GitHub repo `mylesparslow-collab/rsc-tool`. Myles pushes changes
+> **Code and updates:** this folder is the GitHub repo `mylesparslow-collab/rsc-tool`. Myles pushes changes
 > there; on Nick's Mac, Claude pulls them in following "Updating from GitHub" in `CLAUDE.md`. Real data (`~/RSC`),
 > `config.toml`, passwords, the website and the social videos are never in the repo. Changes are listed in `CHANGELOG.md`.
 
