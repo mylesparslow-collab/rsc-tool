@@ -32,11 +32,31 @@
   <p class="muted" style="margin-top:6px">Replies to new inquiries will offer: {% for s in slots %}{{ s }}{{ '; ' if not loop.last }}{% endfor %}.</p>
   <div class="actions"><button class="btn">Save</button></div>
 </form>
-<div class="card">
+<div class="card" id="ai">
   <strong>The AI on this Mac</strong>
   <table style="margin-top:8px"><tr><th>Job</th><th>Model</th><th>Status</th></tr>
   {% for m in models %}<tr><td>{{ m.what }}</td><td class="id">{{ m.model or '-' }}</td><td>{% if m.ready %}<span class="ok">ready</span>{% else %}<span class="bad">not downloaded</span>{% endif %}</td></tr>{% endfor %}
   </table>
+  {% set mc = model_choices %}
+  {% if mc.running %}
+  <form method="post" action="{{ url_for('setup_models') }}" style="margin-top:var(--s-3)">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <p style="margin:0 0 var(--s-2)"><strong>Choose from the models on this Mac</strong></p>
+    <div class="grid">
+      <div style="grid-column:span 2"><label for="text_model">Reads email, writes estimates, fills in forms</label>
+        <select id="text_model" name="text_model">
+          <option value="" {{ 'selected' if mc.text == mc.auto_text }}>Automatic ({{ mc.auto_text or 'none' }})</option>
+          {% for n in mc.installed if n != mc.auto_text %}<option value="{{ n }}" {{ 'selected' if n == mc.text }}>{{ n }}</option>{% endfor %}
+        </select></div>
+      <div style="grid-column:span 2"><label for="vision_model">Reads photos of receipts</label>
+        <select id="vision_model" name="vision_model">
+          <option value="" {{ 'selected' if mc.vision == mc.auto_vision }}>Automatic ({{ mc.auto_vision or 'none' }})</option>
+          {% for n in mc.installed if n != mc.auto_vision %}<option value="{{ n }}" {{ 'selected' if n == mc.vision }}>{{ n }}</option>{% endfor %}
+        </select></div>
+    </div>
+    <div class="actions"><button class="btn">Use these</button><span class="muted">Takes effect right away. Bigger models write better and take longer. Photos need a model that can see images.</span></div>
+  </form>
+  {% else %}<p class="muted" style="margin-top:var(--s-3)">To choose a different model, open the Ollama app first, then come back to this page.</p>{% endif %}
   <p class="muted" style="margin-top:8px">If something says not downloaded, open the Ollama app and run Install RSC again; it picks up where it left off.</p>
 </div>
 <div class="card">

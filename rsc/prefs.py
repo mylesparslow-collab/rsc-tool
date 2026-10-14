@@ -5,6 +5,20 @@ import sqlite3
 DEFAULTS = {"report_to": "", "daily_to": "", "review_url": "", "visit_when": "weekdays at 4pm", "owner_name": "Nick"}
 
 
+# The Look panel: what each choice is called and which values are allowed. The first value is the default.
+LOOK = {"font": ("jobsite", "plain", "easy", "classic"), "size": ("normal", "large", "xlarge"),
+        "theme": ("auto", "light", "dark"), "accent": ("amber", "blue", "green"), "density": ("standard", "roomy")}
+
+
+def look(conn: sqlite3.Connection) -> dict:
+    """The saved look as {"font": "jobsite", ...}. Anything missing or not allowed falls back to the default."""
+    out = {}
+    for key, allowed in LOOK.items():
+        v = get(conn, "look_" + key)
+        out[key] = v if v in allowed else allowed[0]
+    return out
+
+
 def get(conn: sqlite3.Connection, key: str) -> str:
     row = conn.execute("SELECT value FROM settings WHERE key = ?", (key,)).fetchone()
     return row[0] if row else DEFAULTS.get(key, "")

@@ -1,0 +1,54 @@
+{# The Look panel: font pack, text size, colors, spacing. Each tap changes the page at once and is saved for everyone on this computer. #}
+<dialog class="look" id="look" aria-labelledby="look-title">
+  <form method="dialog" id="look-form">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <div class="look-head">
+      <h2 id="look-title">Look</h2>
+      <button class="btn small" value="close">Done</button>
+    </div>
+    <div class="look-body">
+      <fieldset><legend>Text size</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="size" value="normal" {{ 'checked' if look.size == 'normal' }}><span><span class="sample" style="font-size:18px">Aa</span>Normal</span></label>
+          <label class="opt"><input type="radio" name="size" value="large" {{ 'checked' if look.size == 'large' }}><span><span class="sample" style="font-size:23px">Aa</span>Large</span></label>
+          <label class="opt"><input type="radio" name="size" value="xlarge" {{ 'checked' if look.size == 'xlarge' }}><span><span class="sample" style="font-size:29px">Aa</span>Extra large</span></label>
+        </div></fieldset>
+      <fieldset><legend>Letter style</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="font" value="jobsite" {{ 'checked' if look.font == 'jobsite' }}><span><span class="sample" style="font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase">Jobsite</span><small>Bold signage</small></span></label>
+          <label class="opt"><input type="radio" name="font" value="plain" {{ 'checked' if look.font == 'plain' }}><span><span class="sample" style="font-family:'Inter';font-weight:600">Plain</span><small>Clean and modern</small></span></label>
+          <label class="opt"><input type="radio" name="font" value="easy" {{ 'checked' if look.font == 'easy' }}><span><span class="sample" style="font-family:'Atkinson Hyperlegible';font-weight:700">Easy read</span><small>Made for low vision</small></span></label>
+          <label class="opt"><input type="radio" name="font" value="classic" {{ 'checked' if look.font == 'classic' }}><span><span class="sample" style="font-family:'Source Serif 4';font-weight:600">Classic</span><small>Serif headings</small></span></label>
+        </div></fieldset>
+      <fieldset><legend>Light or dark</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="theme" value="auto" {{ 'checked' if look.theme == 'auto' }}><span>Match my Mac</span></label>
+          <label class="opt"><input type="radio" name="theme" value="light" {{ 'checked' if look.theme == 'light' }}><span>Light</span></label>
+          <label class="opt"><input type="radio" name="theme" value="dark" {{ 'checked' if look.theme == 'dark' }}><span>Dark</span></label>
+        </div></fieldset>
+      <fieldset><legend>Highlight color</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="accent" value="amber" {{ 'checked' if look.accent == 'amber' }}><span><i class="sw" style="background:#FFB400"></i>Safety yellow</span></label>
+          <label class="opt"><input type="radio" name="accent" value="blue" {{ 'checked' if look.accent == 'blue' }}><span><i class="sw" style="background:#2F6FD0"></i>Blue</span></label>
+          <label class="opt"><input type="radio" name="accent" value="green" {{ 'checked' if look.accent == 'green' }}><span><i class="sw" style="background:#2E8B57"></i>Green</span></label>
+        </div></fieldset>
+      <fieldset><legend>Spacing</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="density" value="standard" {{ 'checked' if look.density == 'standard' }}><span>Standard</span></label>
+          <label class="opt"><input type="radio" name="density" value="roomy" {{ 'checked' if look.density == 'roomy' }}><span>Roomy<small>Bigger buttons, more space</small></span></label>
+        </div></fieldset>
+      <p class="look-note">Changes happen right away and are kept for everyone who uses the app on this computer.</p>
+    </div>
+  </form>
+</dialog>
+<script>
+(function () {  // apply each Look choice to the page as it is made, then save it
+  var form = document.getElementById('look-form'), root = document.documentElement, token = form.elements.csrf.value;
+  form.addEventListener('change', function (e) {
+    var el = e.target; if (!el.name || el.name === 'csrf') return;
+    root.setAttribute('data-' + el.name, el.value);
+    var body = new FormData(); body.append('csrf', token); body.append(el.name, el.value);
+    fetch('{{ url_for("save_look") }}', { method: 'POST', body: body, credentials: 'same-origin' }).catch(function () {});
+  });
+})();
+</script>

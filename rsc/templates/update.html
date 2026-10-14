@@ -1,0 +1,25 @@
+{% extends "base.html" %}{% block title %}Updates{% endblock %}
+{% block body %}
+<div class="page-head"><div><div class="eyebrow">RSC app</div><h1>Updates</h1></div></div>
+{% if installing %}
+<div class="card tone-ok"><strong>Installing {{ info.latest }}...</strong>
+  <p class="muted" style="margin:0">RSC will close and open again by itself in a few seconds. Your jobs and settings are not touched.</p></div>
+{% elif info.error %}
+<div class="card tone-warn"><strong>Couldn't check</strong><p style="margin:0">{{ info.error }}</p></div>
+{% elif info.newer %}
+<div class="card tone-accent"><strong>Version {{ info.latest }} is ready</strong>
+  <p class="muted">You have {{ current }}.</p>
+  {% if info.notes %}<p style="white-space:pre-wrap">{{ info.notes }}</p>{% endif %}
+  {% if can_install %}
+  <form method="post" action="{{ url_for('update_install') }}" data-busy="Downloading..."><input type="hidden" name="csrf" value="{{ csrf }}">
+    <div class="actions"><button class="btn">Install update</button><span class="muted">RSC closes and reopens. Your data stays where it is.</span></div></form>
+  {% else %}<p class="muted">This copy of RSC isn't the installed Mac app, so it can't update itself. Run Install RSC again to update it.</p>{% endif %}
+</div>
+{% else %}
+<div class="card tone-ok"><strong>You have the newest version ({{ current }}).</strong></div>
+{% endif %}
+<form method="post" class="card" style="margin-top:var(--s-3)"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="action" value="toggle">
+  <strong>Checking for updates</strong>
+  <p class="muted">When RSC opens, it asks GitHub whether a newer version exists. Nothing about your business is sent. It never installs without you pressing the button.</p>
+  <div class="actions"><span>{{ 'On' if auto else 'Off' }}</span><button class="btn secondary">{{ 'Turn off' if auto else 'Turn on' }}</button></div></form>
+{% endblock %}

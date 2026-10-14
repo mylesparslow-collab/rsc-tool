@@ -148,11 +148,11 @@ If pytest is missing: `.venv/bin/pip install pytest` (or `uv pip install --pytho
 
 ## Updating from GitHub
 
-The code lives in a private GitHub repo: `https://github.com/mylesparslow-collab/rsc-tool`. Myles pushes changes
+The code lives in a public GitHub repo (no client data in it): `https://github.com/mylesparslow-collab/rsc-tool`. Myles pushes changes
 there and lists them in `CHANGELOG.md`. Data never goes in the repo (`~/RSC`, `config.toml`, `.venv` are ignored).
 When Nick or Myles asks you to update the app:
 
-1. **Check access.** This Mac needs read access to the private repo (Myles sets this up, for example `gh auth login`
+1. **Check access.** This Mac needs to reach the repo (public, so normally nothing to set up; if Myles ever makes it private, `gh auth login`
    or a read-only token). If `git fetch` asks for a password or says "not found", stop and tell Nick to ask Myles.
 2. **Back up first:** `.venv/bin/rsc backup`, and also copy the whole data folder:
    `cp -R ~/RSC ~/RSC-before-update-$(date +%Y-%m-%d)`. Tell Nick where the copy is.

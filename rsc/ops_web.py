@@ -56,11 +56,40 @@ def register(app, cfg, conn, get_model):
             else:
                 flash("Saved.")
             return redirect(url_for("setup_page"))
-        return render_template("setup.html", address=cfg.mail.address, state=setup_state(c), models=models.status(cfg),
+        models.apply_choice(cfg)
+        return render_template("setup.html", address=cfg.mail.address, model_choices=models.choices(cfg), state=setup_state(c), models=models.status(cfg),
                                vals={k: prefs.get(c, k) for k in ("report_to", "daily_to", "review_url", "visit_when", "owner_name")},
                                slots=leads.visit_slots(prefs.get(c, "visit_when")),
                                health=doctor.run(cfg, include_app=False),
                                brand_fields=[(k, label, brand.current()[k]) for k, label in brand.LABELS])
+
+    @app.post("/look")
+    def save_look():
+        """The Look panel saves each choice as it is made. The page already changed itself; this makes it stick."""
+        c = conn()
+        for key, allowed in prefs.LOOK.items():
+            v = request.form.get(key)
+            if v in allowed:
+                prefs.put(c, "look_" + key, v)
+        return ("", 204)
+
+    @app.post("/setup/models")
+    def setup_models():
+        """Pick which of the models already on this Mac does each job. Blank means automatic. Takes effect at once."""
+        c = conn()
+        have = models.ollama_installed(cfg.model.url)
+        if have is None:
+            flash("Ollama isn't running, so I can't see your models. Open the Ollama app and try again.", "error")
+            return redirect(url_for("setup_page") + "#ai")
+        for key, field_name in (("model_text", "text_model"), ("model_vision", "vision_model")):
+            pick = request.form.get(field_name, "").strip()
+            if pick and not models._has(have, pick):
+                flash(f"{pick} isn't one of the models on this Mac.", "error")
+                return redirect(url_for("setup_page") + "#ai")
+            prefs.put(c, key, pick)
+        models.apply_choice(cfg)
+        flash(f"Saved. Reading and writing now uses {cfg.model.name}.")
+        return redirect(url_for("setup_page") + "#ai")
 
     # ------------------------------------------------------------ follow-ups
     @app.get("/followups")

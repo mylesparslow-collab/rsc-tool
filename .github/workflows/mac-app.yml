@@ -1,0 +1,37 @@
+name: Mac app
+# Builds RSC.app inside a .dmg on a GitHub macOS machine. Download it from the run's "Artifacts", or from the Release when a tag
+# like v0.2.0 is pushed. Not signed with an Apple Developer ID (see docs/mac-app.md).
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+  pull_request:
+    paths: ["packaging/**", "rsc/desktop.py", ".github/workflows/mac-app.yml", "pyproject.toml"]
+jobs:
+  build:
+    runs-on: macos-14   # Apple silicon, matching Nick's and Myles's Macs
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: ./packaging/build_mac.sh
+      - name: Smoke test the built app (it starts its server and serves a page and the fonts, without opening a window)
+        run: |
+          export RSC_HOME="$RUNNER_TEMP/rsc-smoke" RSC_DESKTOP_SELFTEST=1
+          "dist/RSC.app/Contents/MacOS/RSC" | tee "$RUNNER_TEMP/selftest.txt"
+          grep -q "selftest ok" "$RUNNER_TEMP/selftest.txt"
+      - name: Make the update files (the app, zipped, and its fingerprint)
+        run: |
+          ditto -c -k --keepParent dist/RSC.app dist/RSC-mac.zip
+          (cd dist && shasum -a 256 RSC-mac.zip > RSC-mac.zip.sha256)
+      - name: On a release tag, the tag must match the app's version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          V="$(sed -n 's/^version *= *"\(.*\)"/\1/p' pyproject.toml | head -1)"
+          [ "${GITHUB_REF_NAME#v}" = "$V" ] || { echo "Tag $GITHUB_REF_NAME doesn't match version $V in pyproject.toml and rsc/__init__.py"; exit 1; }
+      - uses: actions/upload-artifact@v4
+        with: { name: RSC-mac, path: "dist/*.dmg" }
+      - name: Attach to the release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with: { files: "dist/*.dmg\ndist/RSC-mac.zip\ndist/RSC-mac.zip.sha256" }

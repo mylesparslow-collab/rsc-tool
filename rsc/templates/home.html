@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% block title %}Home{% endblock %}
+{% extends "base.html" %}{% from "_icons.html" import icon %}{% block title %}Home{% endblock %}
 {% block body %}
 {% set st = setup_state() %}
 {% set ca = crew_alerts() %}
@@ -6,9 +6,16 @@
 <div class="page-head">
   <div><h1>Home</h1><p class="muted" style="margin:0">{% if mail_status.message or last_report %}Last email check: {{ mail_status.message or last_report }}{% else %}Everything stays on this computer.{% endif %}</p></div>
   <div class="btns">
-    <a class="btn" href="{{ url_for('job_new') }}">New estimate</a>
     <form method="post" action="{{ url_for('check_mail') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn secondary" {{ 'disabled' if mail_status.running }}>Check email</button></form>
   </div>
+</div>
+
+<div class="tiles">
+  <a class="tile main" href="{{ url_for('job_new') }}">{{ icon('plus') }}<span class="t">New estimate</span><span class="s">Type or say what the customer wants</span></a>
+  <a class="tile" href="{{ url_for('expenses') }}">{{ icon('expenses') }}<span class="t">Add an expense</span><span class="s">Receipts and materials</span></a>
+  <a class="tile" href="{{ url_for('crew_page') }}">{{ icon('clock') }}<span class="t">Log hours</span><span class="s">Who worked where today</span></a>
+  <a class="tile" href="{{ url_for('today_page') }}">{{ icon('today') }}<span class="t">Today's crew sheet</span><span class="s">What each job needs today</span></a>
+  <a class="tile" href="{{ url_for('owed_page') }}">{{ icon('owed') }}<span class="t">Who owes us</span><span class="s">Invoices and reminders</span></a>
 </div>
 
 {% if not all_jobs_count %}

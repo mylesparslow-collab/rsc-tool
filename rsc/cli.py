@@ -252,6 +252,11 @@ def cmd_open(cfg: config.Config, _args) -> int:
     return 0
 
 
+def cmd_desktop(cfg: config.Config, _args) -> int:
+    from . import desktop
+    return desktop.main(cfg.home)
+
+
 def cmd_import(cfg: config.Config, args) -> int:
     conn = db.connect(cfg.db_path)
     db.init(conn, cfg.first_job_number)
@@ -290,6 +295,7 @@ def main(argv=None) -> int:
     sub.add_parser("doctor", help="check that everything works and say how to fix what doesn't")
     sub.add_parser("backup", help="copy the database into the backups folder (done automatically each day)")
     sub.add_parser("open", help="open the app in the browser, starting it first if needed")
+    sub.add_parser("desktop", help="open the app in its own window (what RSC.app runs)")
     sub.add_parser("check-mail", help="read new email and queue suggestions (for the schedule)")
     p = sub.add_parser("import", help="import an RSC Job Tracker.xlsx")
     p.add_argument("path", type=Path)
@@ -301,8 +307,9 @@ def main(argv=None) -> int:
     for noisy in ("httpx", "httpcore", "huggingface_hub", "urllib3"):
         logging.getLogger(noisy).setLevel(logging.WARNING)
     cfg = config.load(args.home)
+    models.apply_choice(cfg)   # models picked on the Setup page win over config.toml
     handler = {"setup": cmd_setup, "set-password": cmd_set_password, "load-example": cmd_load_example, "voice-setup": cmd_voice_setup, "models": cmd_models, "serve": cmd_serve,
-               "check-mail": cmd_check_mail, "doctor": cmd_doctor, "daily-sheet": cmd_daily_sheet, "backup": cmd_backup, "open": cmd_open, "weekly-report": cmd_weekly_report, "import": cmd_import, "export": cmd_export}[args.cmd]
+               "check-mail": cmd_check_mail, "doctor": cmd_doctor, "daily-sheet": cmd_daily_sheet, "backup": cmd_backup, "open": cmd_open, "desktop": cmd_desktop, "weekly-report": cmd_weekly_report, "import": cmd_import, "export": cmd_export}[args.cmd]
     return handler(cfg, args)
 
 

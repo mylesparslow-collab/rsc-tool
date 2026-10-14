@@ -61,6 +61,7 @@ class Config:
     model: ModelConfig = field(default_factory=ModelConfig)
     voice: VoiceConfig = field(default_factory=VoiceConfig)
     quickbooks: QuickBooksConfig = field(default_factory=QuickBooksConfig)
+    file_models: tuple | None = None   # (text, photo) model named in config.toml, remembered before a Setup-page pick overrides it
 
     @property
     def qb_redirect_uri(self) -> str:

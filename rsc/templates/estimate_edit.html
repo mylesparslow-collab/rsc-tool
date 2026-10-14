@@ -117,14 +117,14 @@
   <h2 style="margin-top:20px">Phases</h2>
   <p class="muted">One step per line; numbering is automatic and runs through the whole job. To remove a phase, clear its name.</p>
   {% for p in est.phases %}
-  <div class="card" style="background:#FAFAF7">
+  <div class="card" style="background:var(--surface-2)">
     <div class="grid"><div style="grid-column:span 2"><label>Phase {{ loop.index }}</label><input name="phase_title" value="{{ p.title }}"></div>
       <div style="grid-column:span 2"><label>Inspection (optional)</label><input name="phase_inspection" value="{{ p.inspection }}"></div></div>
     <label style="margin-top:8px">Steps{% if ranges[loop.index0] %} (Steps {{ ranges[loop.index0][0] }}&ndash;{{ ranges[loop.index0][1] }}){% endif %}</label>
     <textarea name="phase_steps" rows="{{ [3, p.steps|length + 1]|max }}">{{ p.steps|join('\n') }}</textarea>
   </div>
   {% endfor %}
-  <div class="card" style="background:#FAFAF7">
+  <div class="card" style="background:var(--surface-2)">
     <div class="grid"><div style="grid-column:span 2"><label>Add a phase</label><input name="phase_title" placeholder="Phase name"></div>
       <div style="grid-column:span 2"><label>Inspection (optional)</label><input name="phase_inspection"></div></div>
     <label style="margin-top:8px">Steps</label><textarea name="phase_steps" rows="3"></textarea>

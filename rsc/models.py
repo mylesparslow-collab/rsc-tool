@@ -56,6 +56,35 @@ def wanted(cfg) -> dict:
     return {"text": cfg.model.name, "vision": cfg.model.vision, "speech": cfg.voice.model}
 
 
+def apply_choice(cfg) -> None:
+    """Use the models picked on the Setup page (kept in the database) instead of the ones in config.toml.
+    Nothing picked means the automatic choice in config.toml stands. Cheap, so callers do it each time they need a model:
+    that is how a pick made in one window reaches the background jobs without a restart."""
+    import sqlite3
+    cfg.file_models = cfg.file_models or (cfg.model.name, cfg.model.vision)
+    cfg.model.name, cfg.model.vision = cfg.file_models
+    if not cfg.db_path.exists():
+        return
+    try:
+        conn = sqlite3.connect(f"file:{cfg.db_path}?mode=ro", uri=True, timeout=3)
+        try:
+            picks = dict(conn.execute("SELECT key, value FROM settings WHERE key IN ('model_text', 'model_vision')").fetchall())
+        finally:
+            conn.close()
+    except sqlite3.Error:
+        return
+    cfg.model.name = picks.get("model_text") or cfg.model.name
+    cfg.model.vision = picks.get("model_vision") or cfg.model.vision
+
+
+def choices(cfg) -> dict:
+    """What the Setup page needs for the pickers: models Ollama has, what's in use, what's automatic."""
+    installed = ollama_installed(cfg.model.url)
+    auto_text, auto_vision = cfg.file_models or (cfg.model.name, cfg.model.vision)
+    return {"running": installed is not None, "installed": sorted(installed or ()),
+            "text": cfg.model.name, "vision": cfg.model.vision, "auto_text": auto_text, "auto_vision": auto_vision}
+
+
 def ollama_installed(url: str) -> set[str] | None:
     """Names Ollama has downloaded, or None if Ollama isn't running."""
     try:
