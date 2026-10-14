@@ -11,7 +11,7 @@ from pathlib import Path
 
 from flask import Flask, abort, flash, g, jsonify, redirect, render_template, request, send_file, session, url_for
 
-from . import receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, ops_web, pipeline, qb_web, receipts, sheets, voice, workflow
+from . import receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, ops_web, pipeline, prefs, qb_web, receipts, sheets, voice, workflow
 from .config import Config, mail_password
 from .llm import ModelUnavailable, OllamaModel
 from .mail import GmailReader
@@ -123,7 +123,7 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
 
     @app.context_processor
     def _globals():
-        return {"csrf": session.get("csrf", ""), "review_count": len(pipeline.pending(conn())),
+        return {"look": prefs.look(conn()), "csrf": session.get("csrf", ""), "review_count": len(pipeline.pending(conn())),
                 "mail_status": app.config["MAIL_STATUS"], "voice_ready": voice.available(),
                 "biz": brand.current(), "address_line": brand.address_line(), "today": date.today().isoformat(),
                 "money": lambda v: "" if v is None else (f"-${-v:,.2f}" if v < 0 else f"${v:,.2f}")}

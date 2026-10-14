@@ -1,79 +1,135 @@
 /* Design tokens: the only place colors, type sizes, spacing and radii are defined.
    Change a value here and every page follows. Spacing runs on an 8px grid (--s-1 is 4px, the half step).
-   Look borrowed from the Conflara app: warm paper, serif headings, one deep accent, a brass detail, soft shadows, dark mode.
-   Type stays large for easy reading at arm's length (17px body, nothing under 15px).
-   One accent (green) for actions and "you are here"; red/amber/green only ever mean problem/watch/ok. */
+
+   Direction: a jobsite tool. Charcoal sidebar, concrete-gray page, safety-amber for the one thing to press, signage-style
+   condensed headings, big type and big tap targets. Red/amber/green status colors only ever mean problem/watch/ok.
+
+   The Look panel changes these without editing any file, by setting attributes on <html>:
+     data-font    jobsite | plain | easy | classic      (font pack)
+     data-size    normal | large | xlarge                (text size, multiplies every type size)
+     data-theme   auto | light | dark
+     data-accent  amber | blue | green                  (the highlight color)
+     data-density standard | roomy                       (spacing and button height) */
 @import url("fonts/fonts.css");
 :root {
   color-scheme: light;
+  --scale: 1;      /* text size multiplier, set by data-size */
+  --roomy: 1;      /* spacing and tap-height multiplier, set by data-density */
 
-  /* neutrals (warm paper) */
-  --bg: #F6F5F1;          /* page */
+  /* neutrals (cool concrete) */
+  --bg: #E8E9EA;          /* page */
   --surface: #FFFFFF;     /* cards, tables, inputs */
-  --surface-2: #EFEDE7;   /* quiet fills: table headers, secondary buttons */
-  --line: #E0DDD4;        /* hairlines */
-  --line-strong: #C9C5BA; /* input borders */
-  --ink: #1A1F1C;         /* body text */
-  --ink-2: #444B46;       /* secondary text */
-  --muted: #5F675F;       /* captions */
+  --surface-2: #F1F2F3;   /* quiet fills: table headers, secondary buttons */
+  --line: #D3D6D9;        /* hairlines */
+  --line-strong: #A9AEB3; /* input borders */
+  --ink: #1B1F23;         /* body text */
+  --ink-2: #3D444B;       /* secondary text */
+  --muted: #59616A;       /* captions */
+  --rail: #22272C;        /* sidebar */
+  --rail-2: #2E343A;      /* sidebar hover */
+  --rail-ink: #E9ECEE;    /* sidebar text */
+  --rail-muted: #9AA3AB;  /* sidebar section labels */
 
-  /* accent (deep green) and a brass detail */
-  --accent: #2B5A43;
-  --accent-strong: #1B3F2D;
-  --accent-soft: #E4EEE8;
-  --accent-line: #B9D0C2;
-  --accent-ink: #FFFFFF;  /* text on an accent fill */
-  --brass: #A0792F;
+  /* highlight color: the one thing to press, and "you are here" */
+  --accent: #FFB400;         /* fills */
+  --accent-strong: #E5A100;  /* hover */
+  --accent-ink: #1B1F23;     /* text on a fill */
+  --accent-soft: #FFF3D1;    /* tinted backgrounds */
+  --accent-line: #F0D27A;
+  --accent-text: #8A5A00;    /* the highlight as readable text or an outline on white */
+
+  /* links and "info" */
+  --link: #1D5DA8;
+  --info: #1D5DA8; --info-soft: #E3EDF9;
 
   /* meaning, used sparingly */
-  --ok: #1F7A3A;   --ok-soft: #E4F3E8;   --ok-line: #B7DFC1;
-  --warn: #8F5600; --warn-soft: #FBF0DA; --warn-line: #E8CF9B;
+  --ok: #1F7A3A;   --ok-soft: #E1F3E6;   --ok-line: #B1DDBC;
+  --warn: #9A5200; --warn-soft: #FCEBCB; --warn-line: #E8C98C;
   --bad: #B42318;  --bad-soft: #FDECEA;  --bad-line: #F3BDB7;  --bad-ink: #7A1A12;
-  --info: #1F4E8C; --info-soft: #E5EDF8;
-  --hover-row: #FBFAF7;
+  --hover-row: #F7F8F8;
 
-  /* type */
-  --font: "Source Sans 3", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-display: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  /* type: the Jobsite pack by default */
+  --font: "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Barlow Condensed", "Barlow", system-ui, "Arial Narrow", sans-serif;
+  --display-case: uppercase; --display-track: .02em; --display-weight: 700;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --text-sm: 15px;   /* captions, table headers */
-  --text-base: 17px; /* body, inputs, buttons */
-  --text-lg: 20px;   /* card titles */
-  --text-xl: 24px;   /* section headings */
-  --text-2xl: 34px;  /* page title, big numbers */
-  --leading: 1.55;
+  --text-sm: calc(16px * var(--scale));   /* captions, table headers */
+  --text-base: calc(18px * var(--scale)); /* body, inputs, buttons */
+  --text-lg: calc(21px * var(--scale));   /* card titles */
+  --text-xl: calc(28px * var(--scale));   /* section headings */
+  --text-2xl: calc(42px * var(--scale));  /* page title, big numbers */
+  --leading: 1.5;
 
   /* spacing (8px grid) */
-  --s-1: 4px; --s-2: 8px; --s-3: 16px; --s-4: 24px; --s-5: 32px; --s-6: 48px; --s-7: 64px;
+  --s-1: calc(4px * var(--roomy)); --s-2: calc(8px * var(--roomy)); --s-3: calc(16px * var(--roomy)); --s-4: calc(24px * var(--roomy));
+  --s-5: calc(32px * var(--roomy)); --s-6: calc(48px * var(--roomy)); --s-7: calc(64px * var(--roomy));
 
-  /* shape and depth */
-  --radius: 12px; --radius-sm: 8px;
-  --shadow: 0 1px 2px rgba(26, 31, 28, .04), 0 1px 1px rgba(26, 31, 28, .03);
-  --shadow-lift: 0 2px 6px rgba(26, 31, 28, .06), 0 10px 24px rgba(26, 31, 28, .07);
-  --overlay: rgba(26, 31, 28, .35);
-  --tap: 48px;        /* minimum height of anything you press */
-  --page: 1120px;     /* content width */
-  --rail: 248px;      /* sidebar width */
+  /* shape and depth: squarer than a consumer app, like a tool */
+  --radius: 10px; --radius-sm: 6px;
+  --shadow: 0 1px 0 rgba(27, 31, 35, .06), 0 1px 3px rgba(27, 31, 35, .08);
+  --shadow-lift: 0 4px 10px rgba(27, 31, 35, .12), 0 14px 32px rgba(27, 31, 35, .14);
+  --overlay: rgba(15, 18, 20, .55);
+  --tap: calc(52px * var(--roomy));   /* minimum height of anything you press */
+  --page: 1160px;     /* content width */
+  --rail-w: 272px;    /* sidebar width */
   --ease: 140ms ease-out;
 
   /* names older templates still use */
   --green: var(--accent); --green-dark: var(--accent-strong); --green-soft: var(--accent-soft); --green-line: var(--accent-line);
   --gold: var(--warn); --yellow: var(--warn); --paper: var(--bg); --card: var(--surface);
 }
+
+/* ---- dark: follows the Mac unless the Look panel says light */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #13161A; --surface: #1B1F24; --surface-2: #252A31; --line: #313840; --line-strong: #444C57;
-    --ink: #E9ECEA; --ink-2: #BAC1BC; --muted: #8F9892;
-    --accent: #7FBF9C; --accent-strong: #A5D8BB; --accent-soft: #1F3329; --accent-line: #2F5241; --accent-ink: #0E1A13;
-    --brass: #D2AD6A;
-    --ok: #7FCF9E; --ok-soft: #17301F; --ok-line: #25492F;
-    --warn: #E7B65A; --warn-soft: #36290F; --warn-line: #5A4416;
+    --bg: #14171A; --surface: #1D2226; --surface-2: #272D32; --line: #343B42; --line-strong: #566069;
+    --ink: #EEF0F1; --ink-2: #C4CACF; --muted: #98A1A9;
+    --rail: #0F1214; --rail-2: #1C2125; --rail-ink: #E9ECEE; --rail-muted: #8A949C;
+    --accent-soft: #3A3010; --accent-line: #6B5617; --accent-text: #FFC63D;
+    --link: #7DB4F0; --info: #7DB4F0; --info-soft: #1B2B40;
+    --ok: #6FCF8E; --ok-soft: #14301D; --ok-line: #25492F;
+    --warn: #F0B04A; --warn-soft: #382A0E; --warn-line: #5C4616;
     --bad: #F2867C; --bad-soft: #3C1D1C; --bad-line: #62302D; --bad-ink: #F5B3AC;
-    --info: #8FB4E8; --info-soft: #1E2B42;
-    --hover-row: #20252B;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .25);
-    --shadow-lift: 0 2px 6px rgba(0, 0, 0, .3), 0 12px 28px rgba(0, 0, 0, .3);
-    --overlay: rgba(0, 0, 0, .55);
+    --hover-row: #222829;
+    --shadow: 0 1px 0 rgba(0, 0, 0, .3); --shadow-lift: 0 4px 10px rgba(0, 0, 0, .4), 0 14px 32px rgba(0, 0, 0, .4);
+    --overlay: rgba(0, 0, 0, .65);
   }
 }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #14171A; --surface: #1D2226; --surface-2: #272D32; --line: #343B42; --line-strong: #566069;
+  --ink: #EEF0F1; --ink-2: #C4CACF; --muted: #98A1A9;
+  --rail: #0F1214; --rail-2: #1C2125; --rail-ink: #E9ECEE; --rail-muted: #8A949C;
+  --accent-soft: #3A3010; --accent-line: #6B5617; --accent-text: #FFC63D;
+  --link: #7DB4F0; --info: #7DB4F0; --info-soft: #1B2B40;
+  --ok: #6FCF8E; --ok-soft: #14301D; --ok-line: #25492F;
+  --warn: #F0B04A; --warn-soft: #382A0E; --warn-line: #5C4616;
+  --bad: #F2867C; --bad-soft: #3C1D1C; --bad-line: #62302D; --bad-ink: #F5B3AC;
+  --hover-row: #222829;
+  --shadow: 0 1px 0 rgba(0, 0, 0, .3); --shadow-lift: 0 4px 10px rgba(0, 0, 0, .4), 0 14px 32px rgba(0, 0, 0, .4);
+  --overlay: rgba(0, 0, 0, .65);
+}
+
+/* ---- highlight colors (light and dark values; each sets a fill and readable text on it) */
+:root[data-accent="blue"] { --accent: #2F6FD0; --accent-strong: #2459AB; --accent-ink: #FFFFFF; --accent-soft: #E3EDF9; --accent-line: #A9C4EA; --accent-text: #1D5DA8; }
+:root[data-accent="green"] { --accent: #2E8B57; --accent-strong: #236C43; --accent-ink: #FFFFFF; --accent-soft: #E1F3E6; --accent-line: #A9D7B9; --accent-text: #1F6B40; }
+@media (prefers-color-scheme: dark) {
+  :root[data-accent="blue"]:not([data-theme="light"]) { --accent: #5B9BF0; --accent-strong: #7DB4F0; --accent-ink: #0B1B33; --accent-soft: #1B2B40; --accent-line: #2F4F7A; --accent-text: #8DBBF5; }
+  :root[data-accent="green"]:not([data-theme="light"]) { --accent: #4CBF7D; --accent-strong: #6FCF8E; --accent-ink: #0B2415; --accent-soft: #14301D; --accent-line: #25492F; --accent-text: #7FD79E; }
+}
+:root[data-theme="dark"][data-accent="blue"] { --accent: #5B9BF0; --accent-strong: #7DB4F0; --accent-ink: #0B1B33; --accent-soft: #1B2B40; --accent-line: #2F4F7A; --accent-text: #8DBBF5; }
+:root[data-theme="dark"][data-accent="green"] { --accent: #4CBF7D; --accent-strong: #6FCF8E; --accent-ink: #0B2415; --accent-soft: #14301D; --accent-line: #25492F; --accent-text: #7FD79E; }
+
+/* ---- text size and spacing */
+:root[data-size="large"] { --scale: 1.15; }
+:root[data-size="xlarge"] { --scale: 1.3; }
+:root[data-density="roomy"] { --roomy: 1.2; }
+
+/* ---- font packs */
+:root[data-font="plain"] { --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; --font-display: var(--font);
+  --display-case: none; --display-track: -.015em; --display-weight: 700; }
+:root[data-font="easy"] { --font: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; --font-display: var(--font);
+  --display-case: none; --display-track: 0; --display-weight: 700; }
+:root[data-font="classic"] { --font: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Source Serif 4", "Iowan Old Style", Georgia, serif; --display-case: none; --display-track: -.01em; --display-weight: 600; }

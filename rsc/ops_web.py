@@ -63,6 +63,16 @@ def register(app, cfg, conn, get_model):
                                health=doctor.run(cfg, include_app=False),
                                brand_fields=[(k, label, brand.current()[k]) for k, label in brand.LABELS])
 
+    @app.post("/look")
+    def save_look():
+        """The Look panel saves each choice as it is made. The page already changed itself; this makes it stick."""
+        c = conn()
+        for key, allowed in prefs.LOOK.items():
+            v = request.form.get(key)
+            if v in allowed:
+                prefs.put(c, "look_" + key, v)
+        return ("", 204)
+
     @app.post("/setup/models")
     def setup_models():
         """Pick which of the models already on this Mac does each job. Blank means automatic. Takes effect at once."""

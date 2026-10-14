@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"{% for k, v in look.items() %} data-{{ k }}="{{ v }}"{% endfor %}>
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ biz.short }}{% endblock %} · {{ biz.name }}</title>
@@ -14,42 +14,44 @@
 <a class="skip" href="#main">Skip to content</a>
 {% set bad_alerts = crew_alerts()|selectattr('level', 'equalto', 'bad')|list|length %}
 {% set inbox_n = review_count + followups_due() %}
-{% macro item(endpoint, label, active_in=None, count=0) -%}
-<a class="nav {{ 'active' if ep in (active_in or [endpoint]) }}" href="{{ url_for(endpoint) }}"{% if ep in (active_in or [endpoint]) %} aria-current="page"{% endif %}>{{ label }}{% if count %}<span class="badge">{{ count }}</span>{% endif %}</a>
+{% from "_icons.html" import icon %}
+{% macro item(endpoint, label, ico, active_in=None, count=0) -%}
+<a class="nav {{ 'active' if ep in (active_in or [endpoint]) }}" href="{{ url_for(endpoint) }}"{% if ep in (active_in or [endpoint]) %} aria-current="page"{% endif %}>{{ icon(ico) }}<span>{{ label }}</span>{% if count %}<span class="badge">{{ count }}</span>{% endif %}</a>
 {%- endmacro %}
 <div class="shell">
 <aside class="rail" id="nav" aria-label="Main">
   <a class="brand" href="{{ url_for('home') }}"><span class="mark">{{ biz.short[:4] }}</span><span class="name">{{ biz.name }}<small>{{ biz.tagline }}</small></span></a>
   <nav class="nav-group">
-    {{ item('home', 'Home') }}
-    {{ item('today_page', 'Today') }}
-    {{ item('review', 'To review', count=review_count) }}
-    {{ item('followups_page', 'Follow-ups', count=followups_due()) }}
+    {{ item('home', 'Home', 'home') }}
+    {{ item('today_page', 'Today', 'today') }}
+    {{ item('review', 'To review', 'review', count=review_count) }}
+    {{ item('followups_page', 'Follow-ups', 'followups', count=followups_due()) }}
   </nav>
   <nav class="nav-group"><span class="label">Jobs</span>
-    {{ item('jobs', 'All jobs', ['jobs', 'job_new', 'job_detail', 'estimate_edit', 'change_orders', 'change_order_view', 'sow', 'contract_view']) }}
-    {{ item('room_models', 'Room modeler', ['room_models', 'job_model']) }}
-    {{ item('playbook_page', 'Playbook') }}
+    {{ item('jobs', 'All jobs', 'jobs', ['jobs', 'job_new', 'job_detail', 'estimate_edit', 'change_orders', 'change_order_view', 'sow', 'contract_view']) }}
+    {{ item('room_models', 'Room modeler', 'model', ['room_models', 'job_model']) }}
+    {{ item('playbook_page', 'Playbook', 'playbook') }}
   </nav>
   <nav class="nav-group"><span class="label">Money</span>
-    {{ item('owed_page', 'Money owed') }}
-    {{ item('expenses', 'Expenses') }}
-    {{ item('pricing_page', 'Pricing and margins', ['pricing_page', 'margins_page', 'report_page']) }}
-    {{ item('quickbooks_page', 'QuickBooks') }}
-    {{ item('codes', biz.short ~ ' codes') }}
+    {{ item('owed_page', 'Money owed', 'owed') }}
+    {{ item('expenses', 'Expenses', 'expenses') }}
+    {{ item('pricing_page', 'Pricing and margins', 'pricing', ['pricing_page', 'margins_page', 'report_page']) }}
+    {{ item('quickbooks_page', 'QuickBooks', 'books') }}
+    {{ item('codes', biz.short ~ ' codes', 'codes') }}
   </nav>
   <nav class="nav-group"><span class="label">Crew</span>
-    {{ item('crew_page', 'Crew and hours', count=bad_alerts) }}
-    {{ item('week_page', 'The week') }}
+    {{ item('crew_page', 'Crew and hours', 'crew', count=bad_alerts) }}
+    {{ item('week_page', 'The week', 'week') }}
   </nav>
   <nav class="nav-group rail-foot">
-    {{ item('setup_page', 'Setup') }}
+    {{ item('setup_page', 'Setup', 'setup') }}
+    <button class="nav" type="button" onclick="document.getElementById('look').showModal()">{{ icon('look') }}<span>Look: text and colors</span></button>
   </nav>
 </aside>
 <div class="scrim" onclick="document.body.classList.remove('nav-open')"></div>
 <div class="main-col">
 <div class="topbar">
-  <button class="btn secondary small menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var o=document.body.classList.toggle('nav-open');this.setAttribute('aria-expanded',o)">Menu{% if inbox_n or bad_alerts %} <span class="badge">{{ inbox_n + bad_alerts }}</span>{% endif %}</button>
+  <button class="btn small menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var o=document.body.classList.toggle('nav-open');this.setAttribute('aria-expanded',o)">{{ icon('menu') }}Menu{% if inbox_n or bad_alerts %} <span class="badge">{{ inbox_n + bad_alerts }}</span>{% endif %}</button>
   <span class="title">{{ biz.name }}</span>
 </div>
 <main id="main">
@@ -60,6 +62,7 @@
 <footer><span>{{ biz.name }} &middot; {{ address_line }}</span><span>Everything stays on this computer. <a href="{{ url_for('export') }}">Download as Excel</a></span></footer>
 </div>
 </div>
+{% include "_look.html" %}
 {% if voice_ready %}<script src="{{ url_for('static', filename='voice.js') }}" defer></script>{% endif %}
 <script>
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') document.body.classList.remove('nav-open'); });

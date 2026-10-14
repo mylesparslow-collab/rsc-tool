@@ -4,7 +4,8 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 
 ## Unreleased
 
-- New look, borrowed from the Conflara app: warm paper background, serif headings, a sidebar instead of the top menu, soft shadows, a dark mode that follows the Mac's setting, and gentle motion. Fonts are bundled, so nothing is fetched from the internet. All colors and sizes are still only in `static/tokens.css`. Every page, button and number is where it was.
+- New jobsite look: charcoal sidebar with icons, concrete-gray page, safety-yellow buttons, bold condensed headings, big tap targets. Home opens with five big buttons for the daily jobs (new estimate, add an expense, log hours, today's crew sheet, who owes us).
+- Look panel (sidebar, "Look: text and colors"): four font packs (Jobsite, Plain, Easy read, Classic), three text sizes, light/dark/match the Mac, three highlight colors, and roomy spacing. Each choice applies at once and is saved in the database for everyone using the app on that computer. Fonts are bundled (open licences), so nothing is fetched. All colors and sizes are still only in `static/tokens.css`. Every page, button and number is where it was.
 - RSC.app: the same app in its own window (`rsc desktop`), built into a downloadable `.dmg` by GitHub (`.github/workflows/mac-app.yml`). Not signed with an Apple Developer ID yet; see `docs/mac-app.md`. The existing installer and background jobs are unchanged.
 
 - Setup page: choose which of the models already on this Mac reads email and photos (the list comes from Ollama). "Automatic" keeps the memory-based choice. Takes effect at once, including for the background email check.

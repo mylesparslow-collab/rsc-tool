@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"{% for k, v in look.items() %} data-{{ k }}="{{ v }}"{% endfor %}>
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sign in · {{ biz.name }}</title>

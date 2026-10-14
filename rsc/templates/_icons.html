@@ -1,0 +1,25 @@
+{# One icon set, drawn on a 24px grid with a 2px line. Use: {{ icon('home') }}. Decorative only: the words next to it carry the meaning. #}
+{% macro icon(name) -%}
+<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">{{ {
+  'home': '<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/>',
+  'today': '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14.5h3"/>',
+  'review': '<path d="M3.5 13.5 6 5h12l2.5 8.5"/><path d="M3.5 13.5V19h17v-5.5h-5l-1 2.5h-5l-1-2.5z"/>',
+  'followups': '<path d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15z"/><path d="M10 21h4"/>',
+  'jobs': '<path d="M3 20h18"/><path d="M5 20V9l7-5 7 5v11"/><path d="M9 20v-5h6v5"/>',
+  'model': '<path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M12 12 20 7.5M12 12 4 7.5M12 12v9"/>',
+  'playbook': '<path d="M5 4.5h10a3 3 0 0 1 3 3V20H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h10"/>',
+  'owed': '<circle cx="12" cy="12" r="9"/><path d="M14.8 9.3c-.4-1-1.4-1.6-2.8-1.6-1.6 0-2.8.8-2.8 2.1 0 3 5.8 1.4 5.8 4.4 0 1.3-1.3 2.2-3 2.2-1.5 0-2.6-.7-3-1.8M12 6v1.7M12 16.4V18"/>',
+  'expenses': '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/>',
+  'pricing': '<path d="M3.5 12.5 12 4h7.5V11.5L11 20z"/><circle cx="15.5" cy="8.5" r="1.3"/>',
+  'books': '<rect x="4" y="3.5" width="16" height="17" rx="2"/><path d="M8 8h8M8 12h2M12 12h4M8 16h2M12 16h4"/>',
+  'codes': '<path d="M9 4 7 20M17 4l-2 16M4.5 9h16M3.5 15h16"/>',
+  'crew': '<circle cx="9" cy="8" r="3.2"/><path d="M3 20v-1.5a5.5 5.5 0 0 1 11 0V20"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2a4.6 4.6 0 0 1 5 4.3V20"/>',
+  'week': '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/>',
+  'setup': '<circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"/>',
+  'look': '<path d="M4 19 9.5 5h1L16 19M6.3 14h7.4"/><path d="M17 11h3.5M18.7 11l-1.7 8M18.7 11l1.7 8"/>',
+  'plus': '<path d="M12 5v14M5 12h14"/>',
+  'clock': '<circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/>',
+  'menu': '<path d="M4 7h16M4 12h16M4 17h16"/>',
+  'close': '<path d="M6 6l12 12M18 6 6 18"/>',
+}[name]|safe }}</svg>
+{%- endmacro %}
