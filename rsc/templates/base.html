@@ -48,6 +48,23 @@
     <button class="nav" type="button" onclick="document.getElementById('look').showModal()">{{ icon('look') }}<span>Look: text and colors</span></button>
   </nav>
 </aside>
+<script>
+/* Keep the sidebar where it was across page loads, so the item you just pressed stays under the mouse.
+   Runs before the first paint. Only scrolls if the current page's item is outside the visible area. */
+(function () {
+  var rail = document.getElementById('nav'), KEY = 'rsc-rail-scroll';
+  try { var y = sessionStorage.getItem(KEY); if (y !== null) rail.scrollTop = +y; } catch (e) {}
+  var a = rail.querySelector('a.nav.active');
+  if (a) {
+    var r = rail.getBoundingClientRect(), b = a.getBoundingClientRect();
+    if (b.top < r.top + 8) rail.scrollTop -= (r.top + 8 - b.top);
+    else if (b.bottom > r.bottom - 8) rail.scrollTop += (b.bottom - r.bottom + 8);
+  }
+  function save() { try { sessionStorage.setItem(KEY, rail.scrollTop); } catch (e) {} }
+  rail.addEventListener('scroll', save, { passive: true });
+  window.addEventListener('pagehide', save);
+})();
+</script>
 <div class="scrim" onclick="document.body.classList.remove('nav-open')"></div>
 <div class="main-col">
 <div class="topbar">

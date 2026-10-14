@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     runs-on: macos-14   # Apple silicon, matching Nick's and Myles's Macs
+    permissions:
+      contents: write   # lets the build attach the .dmg and update files to the release
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
