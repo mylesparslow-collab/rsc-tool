@@ -66,3 +66,38 @@ def test_plain_email_application_is_recognised_after_the_model(cfg, conn):
     pipeline.process(conn, cfg, [m], M())
     s = pipeline.pending(conn)[0]
     assert s["data"]["applicant"] and s["match_note"].startswith("someone asking about a job")
+
+
+SITE = """New submission from rscrafters.com
+
+name: Dana Ruiz
+contact: (518) 555-0177
+town: Wilton
+source: Google
+message: Hi Nick, this is Dana Ruiz. I'm planning a bathroom remodel in Wilton, in the next few months."""
+
+
+def test_website_quote_form_with_only_a_phone_becomes_a_lead(cfg, conn):
+    f = intake.parse_form("x", SITE)
+    assert f["phone"] == "(518) 555-0177" and f["email"] == "" and f["address"] == "Wilton"
+    pipeline.process(conn, cfg, [mail(SITE, "New quote request")], NoModel())
+    s = pipeline.pending(conn)[0]
+    assert s["kind"] == "lead" and s["data"]["reply_to"] == "" and "Dana" in s["data"]["reply"]
+    assert "Found us: Google" in s["data"]["project"] and "Google" in s["match_note"]
+    assert "Started job" in pipeline.approve(conn, s["id"], {})
+    assert conn.execute("SELECT phone FROM jobs").fetchone()[0] == "(518) 555-0177"
+
+
+def test_contact_box_with_an_email_fills_the_email():
+    f = intake.parse_form("x", "Name: Al Moe\nContact: al@example.com\nMessage: deck")
+    assert f["email"] == "al@example.com" and f["phone"] == ""
+    assert intake.parse_form("x", "Name: Al Moe\nContact: call me\nMessage: deck") is None
+
+
+def test_quote_sent_from_the_persons_own_mail_app_replies_to_them(cfg, conn):
+    body = "Name: Kim Ode\nPhone: 518-555-0123\nTown: Malta\nSource: Nextdoor\nMessage: Hi Nick, this is Kim Ode. I'm planning a deck."
+    pipeline.process(conn, cfg, [mail(body, "Quote request from the website", sender="kim.ode@example.com")], NoModel())
+    s = pipeline.pending(conn)[0]
+    assert s["data"]["reply_to"] == "kim.ode@example.com" and s["data"]["phone"] == "518-555-0123"
+    pipeline.process(conn, cfg, [mail(SITE, "New quote request", sender="noreply@formspree.io", mid="m2")], NoModel())
+    assert pipeline.pending(conn)[-1]["data"]["reply_to"] == ""
