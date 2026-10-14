@@ -2,7 +2,10 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
-## 0.2.0 (unreleased)
+## 0.2.1 (unreleased)
+
+- First release you can download from the Releases page. (An empty 0.2.0 release was made first; its build was not allowed to attach files. Ignore it.)
+- Release builds can now attach files to the release (`contents: write`).
 
 - Sidebar no longer jumps when you press an item: it keeps its scroll position from page to page, only scrolls if the current item is off screen, and is more compact so everything fits at normal window heights.
 - New jobsite look: charcoal sidebar with icons, concrete-gray page, safety-yellow buttons, bold condensed headings, big tap targets. Home opens with five big buttons for the daily jobs (new estimate, add an expense, log hours, today's crew sheet, who owes us).

@@ -7,7 +7,7 @@ installer version, so the two share one set of jobs and one database. Nothing is
 
 GitHub builds it (`.github/workflows/mac-app.yml`, an Apple-silicon Mac in GitHub's cloud).
 - Any run: open the run on GitHub, then *Artifacts*, then **RSC-mac** (a zip holding `RSC-<version>.dmg`).
-- A release: push a tag like `v0.2.0`; the `.dmg` is attached to the GitHub Release.
+- A release: push a tag like `v0.2.1`; the `.dmg` is attached to the GitHub Release.
 - Or on a Mac: `./packaging/build_mac.sh` makes `dist/RSC.app` and the `.dmg`.
 
 It is built for Apple-silicon Macs (M1 and later), which includes Nick's iMac.
