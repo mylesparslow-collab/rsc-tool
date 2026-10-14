@@ -33,10 +33,26 @@
   <div class="actions"><button class="btn">Save</button></div>
 </form>
 <div class="card" id="ai">
-  <strong>The AI on this Mac</strong>
-  <table style="margin-top:8px"><tr><th>Job</th><th>Model</th><th>Status</th></tr>
-  {% for m in models %}<tr><td>{{ m.what }}</td><td class="id">{{ m.model or '-' }}</td><td>{% if m.ready %}<span class="ok">ready</span>{% else %}<span class="bad">not downloaded</span>{% endif %}</td></tr>{% endfor %}
+  <div class="ai-head"><span class="ai-dot {{ ai.state }}" aria-hidden="true"></span><strong>{{ ai.headline }}</strong></div>
+  <p class="muted" style="margin:4px 0 var(--s-2)">{{ ai.detail }}</p>
+  <table style="margin-top:8px"><tr><th>Job</th><th>In use</th><th>Status</th></tr>
+  {% for m in ai.rows %}<tr><td>{{ m.what }}</td><td class="id">{{ (m.model if (m.ready or m.role == 'speech') else '') or '-' }}</td><td>{% if m.ready %}<span class="ok">ready</span>{% else %}<span class="muted">{{ 'not set up' if m.role != 'speech' else 'off' }}</span>{% endif %}</td></tr>{% endfor %}
   </table>
+  {% if ai.running and ai.rows[0].ready %}
+  <div class="actions" data-ai-test-box><button class="btn secondary" type="button" data-ai-test>Test it</button><span class="muted" data-ai-test-result>Asks the model one tiny question to prove it works.</span></div>
+  {% endif %}
+  {% if download %}<div class="ai-banner inline" data-ai-download><span>Downloading {{ download.model }}: <b data-pct>{{ download.pct }}%</b></span><progress max="100" value="{{ download.pct }}"></progress></div>{% endif %}
+  {% if ai.suggest and not download %}
+  <div class="ai-suggest">
+    {% for role, name in ai.suggest.items() %}
+    <form method="post" action="{{ url_for('setup_models_download') }}" class="inline">
+      <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="model" value="{{ name }}">
+      <span class="muted">Suggested for {{ 'reading email and writing estimates' if role == 'text' else 'reading receipt photos (optional)' }}: <b>{{ name }}</b></span>
+      <button class="btn small secondary">Download</button>
+    </form>
+    {% endfor %}
+  </div>
+  {% endif %}
   {% set mc = model_choices %}
   {% if mc.running %}
   <form method="post" action="{{ url_for('setup_models') }}" style="margin-top:var(--s-3)">
@@ -57,7 +73,10 @@
     <div class="actions"><button class="btn">Use these</button><span class="muted">Takes effect right away. Bigger models write better and take longer. Photos need a model that can see images.</span></div>
   </form>
   {% else %}<p class="muted" style="margin-top:var(--s-3)">To choose a different model, open the Ollama app first, then come back to this page.</p>{% endif %}
-  <p class="muted" style="margin-top:8px">If something says not downloaded, open the Ollama app and run Install RSC again; it picks up where it left off.</p>
+  <form method="post" action="{{ url_for('setup_models_auto') }}" class="auto-row">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <label class="check"><input type="checkbox" name="auto" value="1" {{ 'checked' if auto_models }} onchange="this.form.submit()"> Download a suggested AI model by myself if this Mac has none (progress always shows)</label>
+  </form>
 </div>
 <div class="card">
   <strong>Health check</strong>

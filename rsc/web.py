@@ -125,7 +125,8 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
     def _globals():
         return {"look": prefs.look(conn()), "csrf": session.get("csrf", ""), "review_count": len(pipeline.pending(conn())),
                 "mail_status": app.config["MAIL_STATUS"], "voice_ready": voice.available(),
-                "biz": brand.current(), "address_line": brand.address_line(), "today": date.today().isoformat(),
+                "biz": brand.current(), "address_line": brand.address_line(),
+                "ai_pill": models.pill(cfg), "ai_download": models.downloading(), "today": date.today().isoformat(),
                 "money": lambda v: "" if v is None else (f"-${-v:,.2f}" if v < 0 else f"${v:,.2f}")}
 
     modeler.register(app, conn)
