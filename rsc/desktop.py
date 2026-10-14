@@ -16,7 +16,7 @@ import urllib.error
 import urllib.request
 from types import SimpleNamespace
 
-from . import config, models
+from . import config, db, models
 
 TITLE = "Reclaimed Space Crafters"
 
@@ -51,13 +51,17 @@ def first_run_setup(cfg: config.Config) -> config.Config:
     return config.load(cfg.home)
 
 
-def start_server(cfg: config.Config, port: int):
+def start_server(cfg: config.Config, port: int, quit_app=None):
     """Serve the app in a background thread of this process, on this Mac only. Returns the server so it can be shut down.
     The PIN is for phones and other computers; this server can't be reached from them, so the window skips it."""
     from werkzeug.serving import make_server
+    from . import updater
     from .web import create_app
     cfg.access_pin = ""  # in memory only; config.toml keeps the PIN for the background app that serves the phone
-    server = make_server("127.0.0.1", port, create_app(cfg), threaded=True)
+    app = create_app(cfg)
+    app.config["CHECK_UPDATES"] = updater.register(app, cfg, lambda: db.connect(cfg.db_path), quit_app or (lambda: None))
+    server = make_server("127.0.0.1", port, app, threaded=True)
+    server.app = app
     threading.Thread(target=server.serve_forever, daemon=True).start()
     return server
 
@@ -77,7 +81,7 @@ def main(home=None) -> int:
         return 1
     cfg = first_run_setup(config.load(home))
     models.apply_choice(cfg)
-    server = start_server(cfg, cfg.port if not is_up(f"http://127.0.0.1:{cfg.port}") else 0)
+    server = start_server(cfg, cfg.port if not is_up(f"http://127.0.0.1:{cfg.port}") else 0, quit_app=lambda: window.destroy())
     url = f"http://127.0.0.1:{server.server_port}"
     if os.environ.get("RSC_DESKTOP_SELFTEST"):  # used when building RSC.app: prove the packaged pieces are all there, then quit
         ok = is_up(url) and b"stylesheet" in urllib.request.urlopen(url, timeout=5).read() \
@@ -95,7 +99,10 @@ def main(home=None) -> int:
     api = Api()
     window = webview.create_window(TITLE, url, js_api=api, width=1280, height=860, min_size=(480, 560), text_select=True)
     window.events.loaded += lambda: window.evaluate_js(LINK_HANDLER)
-    menu = [webview.menu.Menu("Page", [webview.menu.MenuAction("Open this page in the browser (to print or save)", api.open_in_browser)])]
+    menu = [webview.menu.Menu("Page", [
+        webview.menu.MenuAction("Check for updates", lambda: window.load_url(url + "/update")),
+        webview.menu.MenuAction("Open this page in the browser (to print or save)", api.open_in_browser)])]
+    server.app.config["CHECK_UPDATES"]()   # one quiet look at GitHub for a newer version; the banner appears if there is one
     webview.start(menu=menu)
     server.shutdown()
     return 0

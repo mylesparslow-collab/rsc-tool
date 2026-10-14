@@ -20,9 +20,18 @@ jobs:
           export RSC_HOME="$RUNNER_TEMP/rsc-smoke" RSC_DESKTOP_SELFTEST=1
           "dist/RSC.app/Contents/MacOS/RSC" | tee "$RUNNER_TEMP/selftest.txt"
           grep -q "selftest ok" "$RUNNER_TEMP/selftest.txt"
+      - name: Make the update files (the app, zipped, and its fingerprint)
+        run: |
+          ditto -c -k --keepParent dist/RSC.app dist/RSC-mac.zip
+          (cd dist && shasum -a 256 RSC-mac.zip > RSC-mac.zip.sha256)
+      - name: On a release tag, the tag must match the app's version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          V="$(sed -n 's/^version *= *"\(.*\)"/\1/p' pyproject.toml | head -1)"
+          [ "${GITHUB_REF_NAME#v}" = "$V" ] || { echo "Tag $GITHUB_REF_NAME doesn't match version $V in pyproject.toml and rsc/__init__.py"; exit 1; }
       - uses: actions/upload-artifact@v4
         with: { name: RSC-mac, path: "dist/*.dmg" }
       - name: Attach to the release
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
-        with: { files: "dist/*.dmg" }
+        with: { files: "dist/*.dmg\ndist/RSC-mac.zip\ndist/RSC-mac.zip.sha256" }

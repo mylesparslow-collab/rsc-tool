@@ -20,6 +20,19 @@ It is built for Apple-silicon Macs (M1 and later), which includes Nick's iMac.
    If that is not offered: System Settings, Privacy & Security, scroll down, **Open Anyway**.
 3. RSC opens. The first launch makes `~/RSC` and an empty database. The Home page then points to Setup (Gmail).
 
+## Updates (no re-downloading)
+
+The app checks GitHub when it opens. If a newer release exists, a yellow **Update now** banner shows on every page; the
+**Page** menu also has **Check for updates**. **Install update** downloads the new app, checks it against its fingerprint, replaces
+itself in Applications and reopens. Jobs and settings are not touched. It never installs without a button press, and the check can be
+turned off on the Updates page. The first copy still has to be downloaded by hand, and it must be in Applications (not run from the `.dmg`).
+
+To publish an update (Myles): bump `version` in `pyproject.toml` and `rsc/__init__.py`, add a line to `CHANGELOG.md`, merge, then
+`git tag v0.2.1 && git push origin v0.2.1`. The "Mac app" workflow builds it and attaches `RSC-mac.zip`, its `.sha256` and the `.dmg` to a
+GitHub Release (it refuses a tag that doesn't match the version). Installed apps pick it up the next time they open.
+The updater reads the Releases page without logging in, so the repository (or at least its releases) must be readable without an account.
+Updates need no Apple signature because the app downloads the file itself, so macOS doesn't flag it.
+
 ## What it does not do
 
 - It does **not** install the local AI (Ollama and the models), the 30-minute email check, the Monday report or the weekday

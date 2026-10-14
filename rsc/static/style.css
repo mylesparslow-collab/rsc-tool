@@ -213,6 +213,9 @@ dialog.look::backdrop { background: var(--overlay); }
 .opt .sw { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #1B1F23; }
 .look-note { color: var(--muted); font-size: var(--text-sm); margin: 0; }
 
+.update-banner { display: flex; align-items: center; justify-content: center; gap: var(--s-3); flex-wrap: wrap; padding: var(--s-2) var(--s-3); background: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.update-banner .btn { background: var(--accent-ink); color: var(--accent); border-color: var(--accent-ink); box-shadow: none; }
+
 /* ------------------------------------------------------------ small touches */
 .todo .row .what b { font-size: var(--text-lg); }
 .todo .row .dot { width: 14px; height: 14px; }

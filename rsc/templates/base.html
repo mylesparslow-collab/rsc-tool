@@ -54,6 +54,8 @@
   <button class="btn small menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var o=document.body.classList.toggle('nav-open');this.setAttribute('aria-expanded',o)">{{ icon('menu') }}Menu{% if inbox_n or bad_alerts %} <span class="badge">{{ inbox_n + bad_alerts }}</span>{% endif %}</button>
   <span class="title">{{ biz.name }}</span>
 </div>
+{% set ub = update_banner() if update_banner is defined else none %}
+{% if ub %}<div class="update-banner"><span>RSC {{ ub.latest }} is ready.</span><a class="btn small" href="{{ url_for('update_page') }}">Update now</a></div>{% endif %}
 <main id="main">
   {% for cat, msg in get_flashed_messages(with_categories=true) %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}
   {% if mail_status.running %}<div class="flash">Checking email... this page refreshes by itself.</div>{% endif %}
