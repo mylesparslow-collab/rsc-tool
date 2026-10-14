@@ -2,7 +2,13 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
-## 0.2.2 (unreleased)
+## 0.2.3 (unreleased)
+
+- Fixed: an email with two or more PDF attachments (for example two estimates) now puts each one in To Review as its own item, labeled with the file name. Before, they were read together and only one came through. Several receipt photos in one email are each read too (up to 6), and PDFs are read up to 5 pages.
+- A PDF that says "invoice" or "estimate" inside, with a plain subject and body, is no longer skipped as "not business".
+- Not changed: scanned (picture-only) PDFs still can't be read; that needs a PDF-to-image step.
+
+## 0.2.2
 
 - RSC.app checks your email by itself: once a few seconds after it opens and then every 30 minutes while it is open, only when Gmail is set up. Home shows when it last checked and what it found; a checkbox on Setup turns it off; it steps aside if the installer's background check is already on this Mac. New items still wait in To Review. When the window is closed the app quits and the checks stop. (The Monday report and daily crew sheet are not part of this; they still need the installer's background jobs.)
 - AI status you can see: Home shows "AI ready · model", the footer says the same, and Setup says plainly whether your models are up and running, with a "Test it" button that asks the model one tiny question.

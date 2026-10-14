@@ -8,13 +8,15 @@ import html
 import imaplib
 import io
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import date, timedelta
 from email.message import EmailMessage
 from email.policy import default as default_policy
 from email.utils import parsedate_to_datetime, parseaddr
 
 MAX_BODY_CHARS = 8000
+MAX_PDF_PAGES = 5
+MAX_PHOTOS = 6
 
 
 @dataclass
@@ -29,6 +31,7 @@ class Mail:
     attachment_text: str = ""
     attachment_names: list[str] = field(default_factory=list)
     attachment_images: list[bytes] = field(default_factory=list)   # photos (receipts) attached to the email
+    documents: list[tuple[str, str]] = field(default_factory=list)  # (file name, text) for each PDF with readable text
 
     def text_for_model(self) -> str:
         parts = [f"From: {self.sender_name} <{self.sender}>", f"Date: {self.received_at or 'unknown'}",
@@ -36,6 +39,14 @@ class Mail:
         if self.attachment_text:
             parts += ["", "--- Attached PDF text ---", self.attachment_text.strip()]
         return "\n".join(parts)[:MAX_BODY_CHARS]
+
+    def split_documents(self) -> list["Mail"]:
+        """One copy of this email per PDF when it carries two or more, so each is read (and reviewed) on its own."""
+        if len(self.documents) < 2:
+            return [self]
+        short_body = self.body.strip()[:1500]
+        return [replace(self, body=short_body, attachment_text=text, documents=[(name, text)])
+                for name, text in self.documents]
 
 
 def _html_to_text(markup: str) -> str:
@@ -54,7 +65,7 @@ def _pdf_text(data: bytes) -> str:
         return ""
     try:
         reader = PdfReader(io.BytesIO(data))
-        return "\n".join((page.extract_text() or "") for page in reader.pages[:3])
+        return "\n".join((page.extract_text() or "") for page in reader.pages[:MAX_PDF_PAGES])
     except Exception:
         return ""
 
@@ -67,7 +78,7 @@ def parse(raw: bytes, mailbox: str = "INBOX") -> Mail:
     except (TypeError, ValueError):
         received = None
 
-    plain, markup, pdf_text, names, images = "", "", [], [], []
+    plain, markup, pdf_text, names, images, docs = "", "", [], [], [], []
     for part in msg.walk():
         if part.is_multipart():
             continue
@@ -76,8 +87,11 @@ def parse(raw: bytes, mailbox: str = "INBOX") -> Mail:
         if filename:
             names.append(filename)
             if ctype == "application/pdf" or filename.lower().endswith(".pdf"):
-                pdf_text.append(_pdf_text(part.get_payload(decode=True) or b""))
-            elif ctype.startswith("image/") and len(images) < 2:
+                text = _pdf_text(part.get_payload(decode=True) or b"")
+                pdf_text.append(text)
+                if text.strip():
+                    docs.append((filename, text))
+            elif ctype.startswith("image/") and len(images) < MAX_PHOTOS:
                 blob = part.get_payload(decode=True) or b""
                 if 5_000 < len(blob) <= 8 * 1024 * 1024:  # skip tiny logos and tracking pixels
                     images.append(blob)
@@ -92,7 +106,7 @@ def parse(raw: bytes, mailbox: str = "INBOX") -> Mail:
     return Mail(message_id=message_id, mailbox=mailbox, sender=addr.lower(), sender_name=name,
                 subject=str(msg.get("Subject", "")), received_at=received, body=body,
                 attachment_text="\n".join(t for t in pdf_text if t), attachment_names=names,
-                attachment_images=images)
+                attachment_images=images, documents=docs)
 
 
 class GmailReader:

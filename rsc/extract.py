@@ -77,7 +77,7 @@ def wants_model(mail: Mail, keywords: list[str], ignore_senders: list[str], own_
         return "sent by RSC"
     if any(s and s.lower() in mail.sender for s in ignore_senders):
         return "ignored sender"
-    haystack = f"{mail.subject}\n{mail.body[:3000]}\n{' '.join(mail.attachment_names)}".lower()
+    haystack = f"{mail.subject}\n{mail.body[:3000]}\n{' '.join(mail.attachment_names)}\n{mail.attachment_text[:3000]}".lower()
     if ids.find_payment_ids(f"{mail.subject}\n{mail.body}") or ids.find_job_numbers(haystack):
         return None
     if any(k.lower() in haystack for k in keywords):

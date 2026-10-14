@@ -72,38 +72,52 @@ def process(conn: sqlite3.Connection, cfg: Config, mails: list[Mail], model: Mod
             conn.commit()
             continue
         try:
-            fields = model.extract(prompt, mail.text_for_model(), extract.SCHEMA)
-            suggestion = extract.build_suggestion(conn, mail, fields)
-            if (suggestion is None or suggestion.kind != "expense" or not suggestion.data["amount"]) and vision and mail.attachment_images:
-                suggestion = _photo_suggestion(conn, mail, vision) or suggestion
+            suggestions = _read_mail(conn, mail, model, vision, prompt)
         except Exception as exc:  # one bad email must not stop the run; it is retried next time
             log.warning("Could not read %r: %s", mail.subject, exc)
             report.errors.append(f"{mail.subject}: {exc}")
             continue
-        if suggestion and suggestion.kind == "lead" and intake.looks_like_application(mail.subject, mail.body):
-            suggestion.data.update(applicant=True, reply=intake.applicant_reply(
-                suggestion.data.get("name", ""), prefs.get(conn, "owner_name") or brand.current()["owner"], cfg.business_phone))
-            suggestion.match_note = "someone asking about a job with you"
-        if suggestion and suggestion.kind == "lead" and not suggestion.data.get("applicant"):  # a reply is ready for Nick to read before the lead goes cold
-            suggestion.data["reply"] = leads.draft_reply(model, conn, suggestion.data, cfg.business_phone)
-        if suggestion and suggestion.kind == "lead":
-            suggestion.data["reply_to"] = suggestion.data.get("email") or mail.sender
-            suggestion.data["reply_subject"] = "Re: " + mail.subject
-        email_id = _record_email(conn, mail, None if suggestion else "model: not business")
-        if suggestion:
+        for suggestion in suggestions:
+            if suggestion.kind == "lead" and intake.looks_like_application(mail.subject, mail.body):
+                suggestion.data.update(applicant=True, reply=intake.applicant_reply(
+                    suggestion.data.get("name", ""), prefs.get(conn, "owner_name") or brand.current()["owner"], cfg.business_phone))
+                suggestion.match_note = "someone asking about a job with you"
+            if suggestion.kind == "lead" and not suggestion.data.get("applicant"):  # a reply is ready for Nick to read before the lead goes cold
+                suggestion.data["reply"] = leads.draft_reply(model, conn, suggestion.data, cfg.business_phone)
+            if suggestion.kind == "lead":
+                suggestion.data["reply_to"] = suggestion.data.get("email") or mail.sender
+                suggestion.data["reply_subject"] = "Re: " + mail.subject
+        email_id = _record_email(conn, mail, None if suggestions else "model: not business")
+        for suggestion in suggestions:
             conn.execute("INSERT INTO suggestions (email_id, kind, data, match_note, confidence) "
                          "VALUES (?, ?, ?, ?, ?)",
                          (email_id, suggestion.kind, json.dumps(suggestion.data), suggestion.match_note,
                           suggestion.confidence))
             report.suggestions += 1
-        else:
+        if not suggestions:
             report.skipped += 1
         conn.commit()
     return report
 
 
-def _photo_suggestion(conn: sqlite3.Connection, mail: Mail, vision: Model):
-    """An emailed photo that is a receipt becomes an expense suggestion, with the photo kept for the paper trail."""
+def _read_mail(conn: sqlite3.Connection, mail: Mail, model: Model, vision: Model | None, prompt: str) -> list:
+    """Every separate thing in one email becomes its own suggestion: each PDF when there are several, each receipt photo."""
+    found = []
+    for view in mail.split_documents():  # a lone PDF stays with its email; two or more are read one at a time
+        fields = model.extract(prompt, view.text_for_model(), extract.SCHEMA)
+        suggestion = extract.build_suggestion(conn, view, fields)
+        if suggestion and view is not mail:
+            suggestion.match_note += f" (from {view.documents[0][0]})"
+        if suggestion:
+            found.append(suggestion)
+    if vision and mail.attachment_images and not any(s.kind == "expense" and s.data["amount"] for s in found):
+        found += _photo_suggestions(conn, mail, vision)
+    return found
+
+
+def _photo_suggestions(conn: sqlite3.Connection, mail: Mail, vision: Model) -> list:
+    """Each emailed photo that is a receipt becomes an expense suggestion, with the photo kept for the paper trail."""
+    out = []
     for image in mail.attachment_images:
         try:
             mime = receipts.check_photo(image)
@@ -113,8 +127,8 @@ def _photo_suggestion(conn: sqlite3.Connection, mail: Mail, vision: Model):
         if found:
             note = found.pop("note", "")
             found["photo_token"] = receipts.save_photo(conn, image, mime)
-            return extract.Suggestion("expense", found, f"read from a photo; {note}", 0.6)
-    return None
+            out.append(extract.Suggestion("expense", found, f"read from a photo; {note}", 0.6))
+    return out
 
 
 def check_mail(conn: sqlite3.Connection, cfg: Config, reader, model: Model, vision: Model | None = None) -> RunReport:
