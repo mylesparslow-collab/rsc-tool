@@ -7,6 +7,8 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 - New look, borrowed from the Conflara app: warm paper background, serif headings, a sidebar instead of the top menu, soft shadows, a dark mode that follows the Mac's setting, and gentle motion. Fonts are bundled, so nothing is fetched from the internet. All colors and sizes are still only in `static/tokens.css`. Every page, button and number is where it was.
 - RSC.app: the same app in its own window (`rsc desktop`), built into a downloadable `.dmg` by GitHub (`.github/workflows/mac-app.yml`). Not signed with an Apple Developer ID yet; see `docs/mac-app.md`. The existing installer and background jobs are unchanged.
 
+- Setup page: choose which of the models already on this Mac reads email and photos (the list comes from Ollama). "Automatic" keeps the memory-based choice. Takes effect at once, including for the background email check.
+
 ## 0.1.0 (2026-10-12)
 
 First version in GitHub. What the app does at this point:

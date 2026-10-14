@@ -307,6 +307,7 @@ def main(argv=None) -> int:
     for noisy in ("httpx", "httpcore", "huggingface_hub", "urllib3"):
         logging.getLogger(noisy).setLevel(logging.WARNING)
     cfg = config.load(args.home)
+    models.apply_choice(cfg)   # models picked on the Setup page win over config.toml
     handler = {"setup": cmd_setup, "set-password": cmd_set_password, "load-example": cmd_load_example, "voice-setup": cmd_voice_setup, "models": cmd_models, "serve": cmd_serve,
                "check-mail": cmd_check_mail, "doctor": cmd_doctor, "daily-sheet": cmd_daily_sheet, "backup": cmd_backup, "open": cmd_open, "desktop": cmd_desktop, "weekly-report": cmd_weekly_report, "import": cmd_import, "export": cmd_export}[args.cmd]
     return handler(cfg, args)

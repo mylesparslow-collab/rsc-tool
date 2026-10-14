@@ -16,7 +16,7 @@ import urllib.error
 import urllib.request
 from types import SimpleNamespace
 
-from . import config
+from . import config, models
 
 TITLE = "Reclaimed Space Crafters"
 
@@ -76,6 +76,7 @@ def main(home=None) -> int:
               "(Or just run  rsc open  to use it in the browser.)")
         return 1
     cfg = first_run_setup(config.load(home))
+    models.apply_choice(cfg)
     server = start_server(cfg, cfg.port if not is_up(f"http://127.0.0.1:{cfg.port}") else 0)
     url = f"http://127.0.0.1:{server.server_port}"
     if os.environ.get("RSC_DESKTOP_SELFTEST"):  # used when building RSC.app: prove the packaged pieces are all there, then quit

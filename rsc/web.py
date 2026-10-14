@@ -11,7 +11,7 @@ from pathlib import Path
 
 from flask import Flask, abort, flash, g, jsonify, redirect, render_template, request, send_file, session, url_for
 
-from . import receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, ops_web, pipeline, qb_web, receipts, sheets, voice, workflow
+from . import receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, ops_web, pipeline, qb_web, receipts, sheets, voice, workflow
 from .config import Config, mail_password
 from .llm import ModelUnavailable, OllamaModel
 from .mail import GmailReader
@@ -28,6 +28,7 @@ def run_mail_check(cfg: Config) -> pipeline.RunReport:
     try:
         conn = db.connect(cfg.db_path)
         try:
+            models.apply_choice(cfg)
             model = OllamaModel(cfg.model.url, cfg.model.name, cfg.model.timeout_seconds)
             model.check()
             vision = None
@@ -132,6 +133,7 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
         """The local model for typed-in text. `model` lets tests pass a stand-in."""
         if model is not None:
             return model
+        models.apply_choice(cfg)
         m = OllamaModel(cfg.model.url, cfg.model.name, cfg.model.timeout_seconds)
         m.check()
         return m
@@ -140,6 +142,7 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
         """The local model that reads photos. `vision` lets tests pass a stand-in."""
         if vision is not None:
             return vision
+        models.apply_choice(cfg)
         if not cfg.model.vision:
             raise ModelUnavailable("No photo-reading model is set up. Run: rsc models --pull")
         m = OllamaModel(cfg.model.url, cfg.model.vision, cfg.model.timeout_seconds)
