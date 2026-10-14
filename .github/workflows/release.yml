@@ -1,0 +1,31 @@
+name: Release on version bump
+# When pyproject.toml's version lands on the main branch and no matching vX.Y.Z tag exists yet, tag it and start the
+# Mac build, which builds RSC.app and attaches the .dmg and update files to the release (see mac-app.yml).
+# To undo: delete this file. Releases made by hand on GitHub keep working exactly as before.
+on:
+  push:
+    branches: [claude/project-thread-9kkubi]
+    paths: ["pyproject.toml"]
+  workflow_dispatch:
+permissions:
+  contents: write   # create the tag
+  actions: write    # start the Mac build on that tag
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tag the new version and start its build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          V="$(sed -n 's/^version *= *"\(.*\)"/\1/p' pyproject.toml | head -1)"
+          case "$V" in [0-9]*.[0-9]*.[0-9]*) ;; *) echo "Odd version '$V'; not tagging"; exit 1;; esac
+          if git ls-remote --exit-code --tags origin "refs/tags/v$V" >/dev/null 2>&1; then
+            echo "v$V already exists; nothing to do"; exit 0
+          fi
+          git tag "v$V"
+          git push origin "v$V"
+          # a tag pushed with the workflow token does not start other workflows by itself, so start the build directly
+          gh workflow run mac-app.yml --ref "v$V"
+          echo "Tagged v$V and started the Mac build"
