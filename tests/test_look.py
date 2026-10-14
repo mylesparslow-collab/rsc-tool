@@ -28,3 +28,9 @@ def test_made_up_values_are_ignored(cfg, conn):
 def test_saving_the_look_needs_the_page_token(cfg):
     c, _ = client_and_token(cfg)
     assert c.post("/look", data={"size": "large"}).status_code in (400, 403)
+
+
+def test_sidebar_keeps_its_scroll_position_between_pages(cfg):
+    from rsc.web import create_app
+    html = create_app(cfg).test_client().get("/").get_data(as_text=True)
+    assert "rsc-rail-scroll" in html and html.index("rsc-rail-scroll") > html.index('id="nav"')

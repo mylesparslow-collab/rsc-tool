@@ -4,6 +4,7 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 
 ## 0.2.0 (unreleased)
 
+- Sidebar no longer jumps when you press an item: it keeps its scroll position from page to page, only scrolls if the current item is off screen, and is more compact so everything fits at normal window heights.
 - New jobsite look: charcoal sidebar with icons, concrete-gray page, safety-yellow buttons, bold condensed headings, big tap targets. Home opens with five big buttons for the daily jobs (new estimate, add an expense, log hours, today's crew sheet, who owes us).
 - Look panel (sidebar, "Look: text and colors"): four font packs (Jobsite, Plain, Easy read, Classic), three text sizes, light/dark/match the Mac, three highlight colors, and roomy spacing. Each choice applies at once and is saved in the database for everyone using the app on that computer. Fonts are bundled (open licences), so nothing is fetched. All colors and sizes are still only in `static/tokens.css`. Every page, button and number is where it was.
 - RSC.app updates itself: it checks GitHub when it opens, shows an "Update now" banner when there is a newer release, and Install update downloads it, checks it, replaces itself in Applications and reopens. Never without a button press. Page menu, Check for updates; can be turned off. Needs a release made by pushing a tag like v0.2.1 (see docs/mac-app.md).
