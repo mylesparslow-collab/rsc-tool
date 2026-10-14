@@ -73,15 +73,17 @@
 </div>
 {% set ub = update_banner() if update_banner is defined else none %}
 {% if ub %}<div class="update-banner"><span>RSC {{ ub.latest }} is ready.</span><a class="btn small" href="{{ url_for('update_page') }}">Update now</a></div>{% endif %}
+{% if ai_download %}<div class="ai-banner" data-ai-download><span>Downloading the AI model {{ ai_download.model }}: <b data-pct>{{ ai_download.pct }}%</b></span><progress max="100" value="{{ ai_download.pct }}"></progress></div>{% endif %}
 <main id="main">
   {% for cat, msg in get_flashed_messages(with_categories=true) %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}
   {% if mail_status.running %}<div class="flash">Checking email... this page refreshes by itself.</div>{% endif %}
   {% block body %}{% endblock %}
 </main>
-<footer><span>{{ biz.name }} &middot; {{ address_line }}</span><span>Everything stays on this computer. <a href="{{ url_for('export') }}">Download as Excel</a></span></footer>
+<footer><span>{{ biz.name }} &middot; {{ address_line }} &middot; <a href="{{ url_for('setup_page') }}#ai" class="ai-foot {{ ai_pill.state }}">{{ ai_pill.short }}{% if ai_pill.model %}: {{ ai_pill.model }}{% endif %}</a></span><span>Everything stays on this computer. <a href="{{ url_for('export') }}">Download as Excel</a></span></footer>
 </div>
 </div>
 {% include "_look.html" %}
+<script src="{{ url_for('static', filename='ai.js') }}" defer></script>
 {% if voice_ready %}<script src="{{ url_for('static', filename='voice.js') }}" defer></script>{% endif %}
 <script>
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') document.body.classList.remove('nav-open'); });

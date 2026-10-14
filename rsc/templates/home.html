@@ -4,8 +4,9 @@
 {% set ca = crew_alerts() %}
 {% set owed_total = jobs|map(attribute='owed')|select|sum %}
 <div class="page-head">
-  <div><h1>Home</h1><p class="muted" style="margin:0">{% if mail_status.message or last_report %}Last email check: {{ mail_status.message or last_report }}{% else %}Everything stays on this computer.{% endif %}</p></div>
+  <div><h1>Home</h1><p class="muted" style="margin:0">{% if mail_status.message or last_report or auto_mail.message %}Last email check: {{ mail_status.message or auto_mail.message or last_report }}{% if auto_mail.last_ago %} ({{ auto_mail.last_ago }}){% endif %}{% else %}Everything stays on this computer.{% endif %}</p></div>
   <div class="btns">
+    <a class="ai-pill {{ ai_pill.state }}" href="{{ url_for('setup_page') }}#ai" title="Which AI model is running">{{ ai_pill.short }}{% if ai_pill.model %} · {{ ai_pill.model }}{% endif %}</a>
     <form method="post" action="{{ url_for('check_mail') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn secondary" {{ 'disabled' if mail_status.running }}>Check email</button></form>
   </div>
 </div>

@@ -11,7 +11,7 @@ from pathlib import Path
 
 from flask import Flask, abort, flash, g, jsonify, redirect, render_template, request, send_file, session, url_for
 
-from . import receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, ops_web, pipeline, prefs, qb_web, receipts, sheets, voice, workflow
+from . import autocheck, receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, ops_web, pipeline, prefs, qb_web, receipts, sheets, voice, workflow
 from .config import Config, mail_password
 from .llm import ModelUnavailable, OllamaModel
 from .mail import GmailReader
@@ -125,7 +125,8 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
     def _globals():
         return {"look": prefs.look(conn()), "csrf": session.get("csrf", ""), "review_count": len(pipeline.pending(conn())),
                 "mail_status": app.config["MAIL_STATUS"], "voice_ready": voice.available(),
-                "biz": brand.current(), "address_line": brand.address_line(), "today": date.today().isoformat(),
+                "biz": brand.current(), "address_line": brand.address_line(),
+                "auto_mail": autocheck.describe(cfg, conn(), bool(app.config.get("AUTO_MAIL"))), "ai_pill": models.pill(cfg), "ai_download": models.downloading(), "today": date.today().isoformat(),
                 "money": lambda v: "" if v is None else (f"-${-v:,.2f}" if v < 0 else f"${v:,.2f}")}
 
     modeler.register(app, conn)
@@ -191,6 +192,7 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
             status.update(running=True, message="Checking email...")
             try:
                 status["message"] = run_mail_check(cfg).summary()
+                autocheck.record(cfg, status["message"])
             except Exception as exc:
                 status["message"] = f"Email check failed: {exc}"
             finally:

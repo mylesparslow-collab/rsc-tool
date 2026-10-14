@@ -36,7 +36,7 @@ class OllamaModel:
             raise ModelUnavailable(f"Can't reach Ollama at {self.url}. Is the Ollama app running?") from exc
         names = {m.get("name") for m in tags.get("models", [])}
         if self.name not in names and f"{self.name}:latest" not in names:
-            raise ModelUnavailable(f"Model {self.name} isn't downloaded. Run: ollama pull {self.name}")
+            raise ModelUnavailable(f"Model {self.name} isn't on this Mac yet. Open Setup and press Download, or run: ollama pull {self.name}")
 
     def extract(self, system: str, user: str, schema: dict, images: list[bytes] | None = None) -> dict:
         message = {"role": "user", "content": user}

@@ -2,7 +2,14 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
-## 0.2.1 (unreleased)
+## 0.2.2 (unreleased)
+
+- RSC.app checks your email by itself: once a few seconds after it opens and then every 30 minutes while it is open, only when Gmail is set up. Home shows when it last checked and what it found; a checkbox on Setup turns it off; it steps aside if the installer's background check is already on this Mac. New items still wait in To Review. When the window is closed the app quits and the checks stop. (The Monday report and daily crew sheet are not part of this; they still need the installer's background jobs.)
+- AI status you can see: Home shows "AI ready · model", the footer says the same, and Setup says plainly whether your models are up and running, with a "Test it" button that asks the model one tiny question.
+- No more warnings about a default model that isn't downloaded when another model on this Mac works. "Automatic" now means the config model if installed, else the best model you already have.
+- One-click "Download" for the suggested models, with a progress bar. If this Mac has no usable text model at all, the suggested one downloads by itself (progress always shows; a checkbox on Setup turns this off).
+
+## 0.2.1
 
 - First release you can download from the Releases page. (An empty 0.2.0 release was made first; its build was not allowed to attach files. Ignore it.)
 - Release builds can now attach files to the release (`contents: write`).

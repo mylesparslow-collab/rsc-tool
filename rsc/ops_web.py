@@ -2,7 +2,7 @@
 import imaplib
 import smtplib
 
-from flask import flash, redirect, render_template, request, url_for
+from flask import flash, jsonify, redirect, render_template, request, url_for
 
 from . import brand, config, doctor, followups, leads, margins, models, prefs, report
 from .llm import ModelUnavailable
@@ -57,7 +57,8 @@ def register(app, cfg, conn, get_model):
                 flash("Saved.")
             return redirect(url_for("setup_page"))
         models.apply_choice(cfg)
-        return render_template("setup.html", address=cfg.mail.address, model_choices=models.choices(cfg), state=setup_state(c), models=models.status(cfg),
+        return render_template("setup.html", address=cfg.mail.address, model_choices=models.choices(cfg), state=setup_state(c), ai=models.health(cfg),
+                               auto_models=prefs.get(c, "auto_models") != "off", download=models.downloading(),
                                vals={k: prefs.get(c, k) for k in ("report_to", "daily_to", "review_url", "visit_when", "owner_name")},
                                slots=leads.visit_slots(prefs.get(c, "visit_when")),
                                health=doctor.run(cfg, include_app=False),
@@ -90,6 +91,54 @@ def register(app, cfg, conn, get_model):
         models.apply_choice(cfg)
         flash(f"Saved. Reading and writing now uses {cfg.model.name}.")
         return redirect(url_for("setup_page") + "#ai")
+
+    @app.post("/setup/auto-mail")
+    def setup_auto_mail():
+        prefs.put(conn(), "auto_mail", "on" if request.form.get("auto") else "off")
+        flash("Saved.")
+        return redirect(url_for("setup_page") + "#email")
+
+    @app.post("/setup/models/download")
+    def setup_models_download():
+        """One-click download of a suggested model, in the background; the page shows progress."""
+        name = request.form.get("model", "")
+        if name not in models.allowed_downloads():
+            flash("That isn't one of the suggested models.", "error")
+        elif models.ollama_installed(cfg.model.url) is None:
+            flash("Ollama isn't running. Open the Ollama app, then press Download again.", "error")
+        else:
+            models.start_download(cfg.model.url, name)
+            flash(f"Downloading {name}. You can keep working; progress shows at the top of the page.")
+        return redirect(url_for("setup_page") + "#ai")
+
+    @app.get("/setup/models/progress")
+    def setup_models_progress():
+        d = models.downloads()
+        running = next(({"model": k, "pct": v["pct"]} for k, v in d.items() if v["state"] == "running"), None)
+        done = [k for k, v in d.items() if v["state"] == "done"]
+        failed = {k: v["error"] for k, v in d.items() if v["state"] == "error"}
+        return jsonify(running=running, done=done, failed=failed)
+
+    @app.post("/setup/models/test")
+    def setup_models_test():
+        """A tiny real question to the text model, so 'working' means it actually answered."""
+        models.apply_choice(cfg)
+        return jsonify(models.test_text(cfg))
+
+    @app.post("/setup/models/auto")
+    def setup_models_auto():
+        prefs.put(conn(), "auto_models", "on" if request.form.get("auto") else "off")
+        flash("Saved.")
+        return redirect(url_for("setup_page") + "#ai")
+
+    @app.before_request
+    def _auto_download_when_nothing_usable():
+        """Home and Setup only: if this Mac has no usable text model at all, start fetching the suggested one."""
+        if request.endpoint in ("home", "setup_page") and request.method == "GET":
+            try:
+                models.auto_download(cfg, prefs.get(conn(), "auto_models") != "off")
+            except Exception:
+                pass   # never let the AI setup break a page
 
     # ------------------------------------------------------------ follow-ups
     @app.get("/followups")

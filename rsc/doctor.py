@@ -79,16 +79,21 @@ def _ollama(cfg):
 
 
 def _models(cfg):
+    """Rows for the AI models. A model that isn't downloaded is only a problem when nothing usable is: if the model
+    in use works, a missing default or extra model is not mentioned at all."""
     out = []
     for r in models.status(cfg):
+        label = f"Model: {r['what'].lower()}"
         if r["ready"]:
-            out.append(_row(f"Model: {r['what'].lower()}", "ok", r["model"]))
-        elif not r["model"]:
-            out.append(_row(f"Model: {r['what'].lower()}", "warn", "None chosen.", "Run Install RSC again to pick one."))
+            out.append(_row(label, "ok", r["model"]))
         elif r["role"] != "speech" and not r["ollama_running"]:
-            out.append(_row(f"Model: {r['what'].lower()}", "warn", f"{r['model']} (can't check: Ollama isn't running)"))
+            out.append(_row(label, "ok", "Can't check while Ollama isn't running."))
+        elif r["role"] == "text":
+            out.append(_row(label, "warn", "No model installed yet.", "Open Setup and press Download on the suggested model."))
+        elif r["role"] == "vision":
+            out.append(_row(label, "ok", "Not set up (optional). Setup can download one for reading receipt photos."))
         else:
-            out.append(_row(f"Model: {r['what'].lower()}", "bad", f"{r['model']} isn't downloaded.", "Run Install RSC again; it resumes the download."))
+            out.append(_row(label, "ok", "Not downloaded (optional). The microphone buttons stay off until it is."))
     return out
 
 
