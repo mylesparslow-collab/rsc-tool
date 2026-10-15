@@ -21,11 +21,12 @@ class RunReport:
     skipped: int = 0
     suggestions: int = 0
     errors: list[str] = field(default_factory=list)
+    note: str = ""
 
     def summary(self) -> str:
         text = (f"Checked {self.new} new emails: {self.suggestions} to review, "
                 f"{self.skipped} skipped as not business.")
-        return text + (f" {len(self.errors)} could not be read." if self.errors else "")
+        return text + (f" {len(self.errors)} could not be read." if self.errors else "") + (f" {self.note}" if self.note else "")
 
 
 def _setting(conn: sqlite3.Connection, key: str) -> str | None:
@@ -227,6 +228,7 @@ def approve(conn: sqlite3.Connection, suggestion_id: int, edits: dict) -> str:
         number = books.create_job(conn, last_name, first_name=first_name, email=data.get("email", ""),
                                   phone=data.get("phone", ""), address=data.get("address", ""),
                                   status="Estimate", notes=data.get("project", ""))
+        data["job_number"] = number
         msg = f"Started job {number}-{books.get_job(conn, number)['code']} for {name}"
 
     _close(conn, suggestion_id, "approved", data)

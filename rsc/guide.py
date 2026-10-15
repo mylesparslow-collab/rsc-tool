@@ -3,10 +3,11 @@
 The same steps run from a lead to a finished job: write the estimate, check the price, send it, get it signed, invoice the
 first payment, do the work (receipts and hours), invoice each phase, final payment, ask for the review.
 """
+import re
 import sqlite3
 from datetime import date
 
-from . import books, crew, estimates, pricing
+from . import books, crew, daily, estimates, pricing
 
 
 def _days_since(iso: str | None) -> int | None:
@@ -14,6 +15,15 @@ def _days_since(iso: str | None) -> int | None:
         return (date.today() - date.fromisoformat((iso or "")[:10])).days
     except ValueError:
         return None
+
+
+def _phase_done(conn: sqlite3.Connection, n: int, payment: dict) -> bool:
+    """True when every step the payment is tied to ('... Steps 4–6') has been ticked on the Today or Progress page."""
+    m = re.search(r"Steps? (\d+)(?:\s*[–-]\s*(\d+))?", payment.get("due_when") or "")
+    if not m:
+        return False
+    first, last = int(m.group(1)), int(m.group(2) or m.group(1))
+    return set(range(first, last + 1)) <= daily.done_steps(conn, n)
 
 
 def steps(conn: sqlite3.Connection, job: dict) -> dict:
@@ -47,6 +57,16 @@ def next_step(conn: sqlite3.Connection, job: dict) -> dict | None:
         return None
     est = estimates.get(conn, n)
     if job["status"] == "Complete":
+        unpaid = [p for p in books.list_payments(conn, n) if p["status"] != "Paid"]
+        if unpaid and not unpaid[0]["invoice_sent"]:  # finished work, money not asked for yet: this comes before the review
+            p = unpaid[0]
+            return {"title": f"Invoice {p['payment_id']} (${p['amount'] - (p['amount_paid'] or 0):,.0f})",
+                    "why": f"{name}'s job is marked Complete but this payment hasn't been invoiced yet.",
+                    "endpoint": "job_detail", "args": {"number": n}, "label": "Open the payments"}
+        if unpaid:
+            p = unpaid[0]
+            return {"title": f"Waiting on payment {p['payment_id']}", "why": f"${p['amount'] - (p['amount_paid'] or 0):,.0f} invoiced. When it arrives, the email check suggests it for approval.",
+                    "endpoint": "job_detail", "args": {"number": n}, "label": "Open the job"}
         pending = conn.execute("SELECT COUNT(*) FROM followups WHERE job_number = ? AND status = 'pending'", (n,)).fetchone()[0]
         if pending:
             return {"title": "Ask for a review", "why": f"{name}'s job is done. A short note now brings reviews and the next job.",
@@ -88,6 +108,10 @@ def next_step(conn: sqlite3.Connection, job: dict) -> dict | None:
     if not job.get("expenses") and crew.hours_for_job(conn, n) == 0:
         return {"title": "Start logging the work", "why": "Forward receipts to the business email or photograph them, and log who worked how many hours. That is how you see if the job is making money.",
                 "endpoint": "job_detail", "args": {"number": n}, "label": "Open the job"}
+    if invoice_next and _phase_done(conn, n, invoice_next):
+        return {"title": f"Invoice {invoice_next['payment_id']} now (${invoice_next['amount']:,.0f})",
+                "why": f"The crew has ticked off every step it covers ({invoice_next['due_when']}).",
+                "endpoint": "job_detail", "args": {"number": n}, "label": "Open the payments"}
     if invoice_next:
         return {"title": f"Next invoice: {invoice_next['payment_id']} (${invoice_next['amount']:,.0f})",
                 "why": f"Due when: {invoice_next['due_when'] or invoice_next['description']}. Invoice it when you get there.",

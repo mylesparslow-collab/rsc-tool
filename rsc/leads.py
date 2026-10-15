@@ -45,9 +45,22 @@ def visit_slots(availability: str, today: date | None = None, n: int = 3) -> lis
     return out
 
 
+TOPICS = [("bath", "bathroom"), ("shower", "bathroom"), ("kitchen", "kitchen"), ("deck", "deck"), ("porch", "porch"),
+          ("basement", "basement"), ("addition", "addition"), ("sunroom", "sunroom"), ("ramp", "ramp"), ("grab bar", "safety"),
+          ("roof", "roof"), ("siding", "siding"), ("window", "window"), ("floor", "flooring"), ("stair", "stairs")]
+
+
+def topic(project: str) -> str:
+    """'Looking for a quote on a new back deck' -> 'your deck project'. Their own words are often a whole sentence, which
+    reads badly pasted into ours, so the template names the kind of work instead."""
+    low = (project or "").lower()
+    kind = next((word for key, word in TOPICS if key in low), "")
+    return f"your {kind} project" if kind else "your project"
+
+
 def fallback_reply(name: str, project: str, slots: list[str], owner: str, phone: str) -> str:
     first = (name or "").split()[0] if name else "there"
-    what = f" about {project.strip().rstrip('.')}" if project.strip() else ""
+    what = f" about {topic(project)}" if project.strip() else ""
     times = "\n".join(f"  - {s}" for s in slots)
     return (f"Hi {first},\n\nThanks for reaching out{what}. I'd be glad to come take a look. The visit is free and takes about "
             f"30 minutes. Would one of these work?\n{times}\n\nIf not, tell me what suits you and I'll fit it in.\n\n"
