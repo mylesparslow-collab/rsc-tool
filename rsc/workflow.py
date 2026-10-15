@@ -1,9 +1,10 @@
 """Pages for the estimate / contract / change order / pricing workflow."""
+import smtplib
 from datetime import date
 
-from flask import abort, flash, redirect, render_template, request, url_for
+from flask import Response, abort, current_app, flash, redirect, render_template, request, url_for
 
-from . import assist, books, changeorders, contract, estimates, pricing, rates
+from . import assist, books, changeorders, config, contract, estimate_mail, estimates, pricing, rates
 from .llm import ModelUnavailable
 
 
@@ -143,6 +144,61 @@ def register(app, conn, get_model):
     @app.get("/jobs/<int:number>/sow")
     def sow(number):
         return render_template("sow.html", **_sow_context(number))
+
+    def _mail_ready():
+        """(ok, why not): is Gmail set up well enough to send from?"""
+        cfg = current_app.config["RSC"]
+        if not cfg.mail.address:
+            return False, "Add your Gmail address on the Setup page first."
+        try:
+            config.mail_password(cfg.mail.address)
+        except RuntimeError:
+            return False, "Save your Gmail app password on the Setup page first."
+        return True, ""
+
+    @app.get("/jobs/<int:number>/sow.pdf")
+    def sow_pdf(number):
+        ctx = _sow_context(number)
+        return Response(estimate_mail.build_pdf(ctx), mimetype="application/pdf",
+                        headers={"Content-Disposition": f'inline; filename="{estimate_mail.filename(ctx["job"])}"'})
+
+    @app.get("/jobs/<int:number>/sow/send")
+    def sow_send_page(number):
+        ctx = _sow_context(number)
+        job = ctx["job"]
+        ready, why = _mail_ready()
+        return render_template("estimate_send.html", job=job, ready=ready, why=why, to=job.get("email") or "",
+                               subject=estimate_mail.default_subject(job),
+                               body=estimate_mail.default_body(job, ctx["totals"]["total"]),
+                               pdf_name=estimate_mail.filename(job), total=ctx["totals"]["total"],
+                               sent=job.get("estimate_sent"))
+
+    @app.post("/jobs/<int:number>/sow/send")
+    def sow_send(number):
+        ctx = _sow_context(number)
+        job, cfg = ctx["job"], current_app.config["RSC"]
+        to = request.form.get("to", "").strip()
+        subject = request.form.get("subject", "").strip() or estimate_mail.default_subject(job)
+        body = request.form.get("body", "").strip()
+        if "@" not in to or any(ch in to for ch in "\r\n,;<> "):
+            flash("Type one email address for the client first.", "error")
+            return redirect(url_for("sow_send_page", number=number))
+        ready, why = _mail_ready()
+        if not ready:
+            flash(why, "error")
+            return redirect(url_for("sow_send_page", number=number))
+        try:
+            estimate_mail.send(cfg.mail.address, config.mail_password(cfg.mail.address), to, subject, body,
+                               estimate_mail.build_pdf(ctx), estimate_mail.filename(job))
+        except (RuntimeError, ValueError, smtplib.SMTPException, OSError) as exc:
+            flash(f"Not sent: {exc}. The job was not marked as sent.", "error")
+            return redirect(url_for("sow_send_page", number=number))
+        fields = {"estimate_sent": date.today().isoformat()}
+        if not job.get("email"):
+            fields["email"] = to   # remember the address for next time
+        books.update_job(conn(), number, **fields)
+        flash(f"Estimate sent to {to} (a copy went to you). The job now shows it as sent today.")
+        return redirect(url_for("job_detail", number=number))
 
     @app.get("/jobs/<int:number>/contract")
     def contract_view(number):

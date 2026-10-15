@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rsc-tool"
-version = "0.2.3"
+version = "0.2.4"
 description = "Reclaimed Space Crafters: jobs, phased billing, expenses, and a local-model email assistant"
 requires-python = ">=3.11"
-dependencies = ["flask>=3.0", "openpyxl>=3.1", "pypdf>=4.0"]
+dependencies = ["flask>=3.0", "openpyxl>=3.1", "pypdf>=4.0", "reportlab>=4.0"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]

@@ -2,7 +2,13 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
-## 0.2.3 (unreleased)
+## 0.2.4 (unreleased)
+
+- One-click Send for estimates. The estimate preview now has "Send to <client>". It opens a short screen with the client's address, a subject and a friendly message already filled in, and the estimate attached as a PDF (Estimate-<job>.pdf). Press "Send to the client" and it goes from your Gmail, with a copy to you; only then is the job marked "Estimate sent" today. If the email fails, nothing is marked. If Gmail isn't set up, the screen says so with a "Set up email first" link. Nothing is ever sent without that press.
+- New: the estimate PDF is made inside the app (adds the small `reportlab` library). The same PDF opens at /jobs/<number>/sow.pdf.
+- "What's next" now says "Preview and send" for an unsent estimate.
+
+## 0.2.3
 
 - Fixed: an email with two or more PDF attachments (for example two estimates) now puts each one in To Review as its own item, labeled with the file name. Before, they were read together and only one came through. Several receipt photos in one email are each read too (up to 6), and PDFs are read up to 5 pages.
 - A PDF that says "invoice" or "estimate" inside, with a plain subject and body, is no longer skipped as "not business".

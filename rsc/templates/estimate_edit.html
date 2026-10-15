@@ -151,7 +151,7 @@
   {% endif %}
 </table>
 <div class="actions" style="margin-top:12px;flex-wrap:wrap">
-  <a class="btn secondary" href="{{ url_for('sow', number=job.number) }}">Print the estimate (SOW)</a>
+  <a class="btn secondary" href="{{ url_for('sow', number=job.number) }}">Preview and send the estimate</a>
   <a class="btn secondary" href="{{ url_for('contract_view', number=job.number) }}">View the contract (draft)</a>
   {% if not payments %}
   <form method="post" action="{{ url_for('estimate_schedule', number=job.number) }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn secondary">Create the payments</button></form>
