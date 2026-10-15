@@ -182,3 +182,19 @@ def test_pin_in_config_gates_even_without_lan_flag(cfg):
     r = c.get("/jobs")
     assert r.status_code == 302 and "/login" in r.headers["Location"]
     assert c.get("/login").status_code == 200
+
+
+def test_payment_quick_buttons(cfg, conn):
+    n = books.create_job(conn, "Quick", first_name="Q", address="1 A St")
+    books.add_payment(conn, n, 1000, "First", "At signing")
+    c = client(cfg)
+    tok = token(c)
+    pk = books.list_payments(conn, n)[0]["id"]
+    assert "Paid in full today" in c.get(f"/jobs/{n}").get_data(as_text=True)
+    c.post(f"/payments/{pk}/quick", data={"csrf": tok, "quick": "invoiced"})
+    p = books.list_payments(conn, n)[0]
+    assert p["invoice_sent"] and p["status"] != "Paid"
+    c.post(f"/payments/{pk}/quick", data={"csrf": tok, "quick": "paid"})
+    p = books.list_payments(conn, n)[0]
+    assert p["status"] == "Paid" and p["amount_paid"] == 1000 and p["date_paid"]
+    assert "Paid in full today" not in c.get(f"/jobs/{n}").get_data(as_text=True)

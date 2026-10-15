@@ -2,6 +2,10 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## 0.2.5 (unreleased)
+
+- Payments: each unpaid row on the job page has one-click "Invoiced today" and "Paid in full today" buttons, so a client who paid outside the app (or a test job) clears the "Invoice payment 1" card without typing dates and amounts.
+
 ## 0.2.4 (unreleased)
 
 - One-click Send for estimates. The estimate preview now has "Send to <client>". It opens a short screen with the client's address, a subject and a friendly message already filled in, and the estimate attached as a PDF (Estimate-<job>.pdf). Press "Send to the client" and it goes from your Gmail, with a copy to you; only then is the job marked "Estimate sent" today. If the email fails, nothing is marked. If Gmail isn't set up, the screen says so with a "Set up email first" link. Nothing is ever sent without that press.
