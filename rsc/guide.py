@@ -62,8 +62,8 @@ def next_step(conn: sqlite3.Connection, job: dict) -> dict | None:
             return {"title": "Check the labor price", "why": rt["warnings"][0], "endpoint": "estimate_edit", "args": {"number": n},
                     "label": "Open the estimate"}
         if not job.get("estimate_sent"):
-            return {"title": f"Send the estimate to {name}", "why": "Print the scope of work, send it, then put today's date in 'Estimate sent' on the job.",
-                    "endpoint": "sow", "args": {"number": n}, "label": "Print the estimate"}
+            return {"title": f"Send the estimate to {name}", "why": "Look it over, then send it from the next screen. The job is marked sent for you.",
+                    "endpoint": "sow", "args": {"number": n}, "label": "Preview and send"}
         days = _days_since(job["estimate_sent"])
         if days is not None and days >= 7:
             return {"title": f"Follow up with {name}", "why": f"The estimate went out {days} days ago with no answer yet.",

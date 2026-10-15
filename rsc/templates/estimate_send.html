@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% block title %}Send the estimate {{ job.job_id }}{% endblock %}
+{% block body %}
+<div class="page-head"><div><div class="eyebrow">Nothing goes out until you press Send</div><h1>Send the estimate</h1></div></div>
+<p class="muted"><a href="{{ url_for('sow', number=job.number) }}">&larr; Back to the estimate preview</a> · {{ job.job_id }} · {{ job.first_name }} {{ job.last_name }} · total {{ money(total) }}</p>
+
+{% if sent %}<div class="card tone-warn">This estimate was already marked sent on {{ sent }}. Sending again is fine; it just updates the date.</div>{% endif %}
+{% if not ready %}
+<div class="card tone-bad"><strong>Email isn't set up yet.</strong> {{ why }} <a class="btn" href="{{ url_for('setup_page') }}">Set up email first</a></div>
+{% endif %}
+
+<form method="post" action="{{ url_for('sow_send', number=job.number) }}" class="card" data-busy="Sending...">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="grid">
+    <div style="grid-column:span 2"><label>To</label><input name="to" type="email" value="{{ to }}" placeholder="client@example.com" required {{ 'autofocus' if not to }}></div>
+    <div style="grid-column:span 3"><label>Subject</label><input name="subject" value="{{ subject }}"></div>
+  </div>
+  <label style="margin-top:10px">Message</label>
+  <textarea name="body" rows="11">{{ body }}</textarea>
+  <p class="muted" style="margin:8px 0 0">Attached: <b>{{ pdf_name }}</b> (the same estimate you just looked at). A copy goes to your own email so you have a record.</p>
+  <div class="actions"><button class="btn" {{ 'disabled' if not ready }}>Send to the client</button>
+    <a class="btn secondary" href="{{ url_for('sow', number=job.number) }}">Not yet</a></div>
+  <p class="muted" style="margin:8px 0 0">The job is marked "Estimate sent" today only after the email goes through.</p>
+</form>
+{% endblock %}

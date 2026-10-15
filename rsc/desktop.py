@@ -86,6 +86,8 @@ def main(home=None) -> int:
     if os.environ.get("RSC_DESKTOP_SELFTEST"):  # used when building RSC.app: prove the packaged pieces are all there, then quit
         ok = is_up(url) and b"stylesheet" in urllib.request.urlopen(url, timeout=5).read() \
             and urllib.request.urlopen(url + "/static/fonts/fonts.css", timeout=5).status == 200
+        from . import estimate_mail
+        ok = ok and estimate_mail.selftest()   # the PDF maker for emailed estimates must be inside the app too
         print("selftest ok" if ok else "selftest FAILED")
         return 0 if ok else 1
 

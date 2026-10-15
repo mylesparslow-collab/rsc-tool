@@ -13,7 +13,7 @@ pip install --quiet --upgrade pip
 pip install --quiet . pywebview pyinstaller pillow
 python packaging/make_icon.py build/icon
 pyinstaller --noconfirm --windowed --name RSC --icon build/icon/RSC.icns \
-  --collect-data rsc --hidden-import rsc.web --osx-bundle-identifier com.reclaimedspacecrafters.app \
+  --collect-data rsc --collect-all reportlab --hidden-import rsc.web --osx-bundle-identifier com.reclaimedspacecrafters.app \
   packaging/rsc_app.py
 codesign --force --deep --sign - dist/RSC.app
 DMG_DIR="$(mktemp -d)"; cp -R dist/RSC.app "$DMG_DIR/"; ln -s /Applications "$DMG_DIR/Applications"

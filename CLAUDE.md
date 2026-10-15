@@ -24,7 +24,7 @@ RSC tool. The app is small and local, and it handles real client money, so chang
 3. **Every suggestion needs Nick's approval.** Email-derived expenses, payments and leads wait in *To Review*.
    Nothing touches the books until he presses the button.
 4. **Nothing is sent for him.** Emails open in Mail (`mailto:`) for him to read and send. The only things the app
-   emails by itself are the Monday report and the weekday crew sheet, both to people he listed on the Setup page.
+   emails by itself are the Monday report and the weekday crew sheet, both to people he listed on the Setup page. One more, only when he presses it (Myles approved 2026-10-15): the **Send** button on the estimate preview emails the estimate PDF to the client from his Gmail, with a copy to him.
    Do not add automatic sending to clients, QuickBooks writes, or anything else that leaves the Mac without asking Myles.
 5. **Local first.** The AI runs in Ollama on this Mac. Nothing is sent to a cloud model. Don't add network calls.
 6. **Professional wording.** Client-facing text is plain, polite, and never threatens (no fees or lawyers in
@@ -136,7 +136,7 @@ If pytest is missing: `.venv/bin/pip install pytest` (or `uv pip install --pytho
 4. **Contract text is not yours to change.** `rsc/contract.py` is a draft awaiting New York attorney review. If a fix
    touches wording, flag it to Nick/Myles as needing attorney review, don't "improve" legal language, and keep the
    `OPEN_ITEMS` list accurate. Don't claim the contract is legally sufficient.
-5. **No automatic sending or outside writes.** No new code that emails clients, posts to QuickBooks, or calls the
+5. **No automatic sending or outside writes.** No new code that emails clients (beyond that one Send button), posts to QuickBooks, or calls the
    internet without Myles's say-so. Email drafts open in Mail.
 6. **Secrets stay in the Keychain.** Never log, print, commit, or paste passwords, app passwords, PINs, or QuickBooks keys.
 7. **Don't edit live data with raw SQL** unless Nick asks and you've backed up. Prefer the app's own pages.
