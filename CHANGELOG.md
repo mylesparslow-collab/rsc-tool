@@ -2,13 +2,13 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
-## Unreleased
+## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.
 - The next thing to press glows. When you're on the page where the next step happens, that field or button pulses with a "Do this next" tag. Only one thing glows per page, and nothing glows while a job is only waiting on the client or a payment.
 - New "Next task" button at the top of the sidebar (in the top bar on a phone). Press it from anywhere and it takes you to the next thing that needs doing, scrolls to it and lights it up. On a job page it means that job's next step; elsewhere it goes in the same order as Home: setup, email to review, late invoices, follow-ups, then each job. Home shows "Your next task" at the top.
 
-## 0.2.6 (unreleased)
+## 0.2.6
 
 - Fixes from a full test job, first email to review request (invented client):
   - Expenses: after "Read it" or "Read the photo", pressing "Add expense" saved nothing. It now saves.
