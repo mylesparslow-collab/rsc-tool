@@ -1,0 +1,22 @@
+{# Where this job is: five stages, "you are here", and the one next thing. Shown at the top of every job page (base.html). #}
+{% set t = job_tracker() %}
+{% if t %}{% set j = t.job %}{% set nx = t.next %}
+<section class="tracker" aria-label="Where this job is">
+  <div class="tracker-top">
+    <a class="tracker-job" href="{{ url_for('job_detail', number=j.number) }}"><span class="id">{{ j.job_id }}</span> {{ j.first_name }} {{ j.last_name }}</a>
+    <span class="tracker-where">{% if t.status == 'Lost' %}This job was lost{% elif t.status == 'On Hold' %}On hold{% else %}Stage {{ t.number }} of {{ t.count }}: <b>{{ t.label }}</b>{% endif %}</span>
+    {% if j.phone or j.email %}<span class="contact">{% if j.phone %}<a href="tel:{{ j.phone }}">Call {{ j.phone }}</a>{% endif %}{% if j.email %}<a href="mailto:{{ j.email }}">Email {{ j.first_name or 'them' }}</a>{% endif %}</span>{% endif %}
+  </div>
+  {% if t.status != 'Lost' %}
+  <ol class="stages">{% for s in t.stages %}<li class="{{ s.state }}"{% if s.state == 'current' %} aria-current="step"{% endif %}><span class="n">{{ '&#10003;'|safe if s.state == 'done' else loop.index }}</span><span class="lbl">{{ s.label }}</span></li>{% endfor %}</ol>
+  {% endif %}
+  {% if nx and t.status != 'Lost' %}
+  <div class="tracker-next{{ ' wait' if nx.wait }}">
+    <div class="what"><b>Next: {{ nx.title }}</b><span class="muted">{% if nx.wait %}Nothing to press until then. {% endif %}{{ nx.why }}</span></div>
+    {% if nx.wait %}{% if not (nx.endpoint == request.endpoint and nx.args == request.view_args) %}<a class="btn secondary" href="{{ url_for(nx.endpoint, **nx.args) }}">{{ nx.label }}</a>{% endif %}
+    {% elif t.here %}<a class="btn secondary" data-glow-fallback href="{{ url_for('next_task', job=j.number) }}">Show me where</a>
+    {% else %}<a class="btn go glow" data-glow-fallback href="{{ url_for('next_task', job=j.number) }}">{{ nx.label }} &rsaquo;</a>{% endif %}
+  </div>
+  {% elif t.status == 'Complete' %}<div class="tracker-next done"><div class="what"><b>All done.</b><span class="muted">Paid in full and the follow-ups are handled.</span></div></div>{% endif %}
+</section>
+{% endif %}

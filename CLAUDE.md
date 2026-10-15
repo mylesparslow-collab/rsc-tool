@@ -46,7 +46,7 @@ Python 3.11+ Flask app with Jinja templates, SQLite (WAL) for data, Ollama for m
 
 ```
 rsc/web.py            create_app(): routes for home, jobs, review, expenses, estimates; registers the *_web.py modules
-rsc/*_web.py          crew_web, daily_web, aging_web, playbook_web, receivables_web, client_update_web, schedule_web, qb_web, ops_web (Setup)
+rsc/*_web.py          crew_web, daily_web, aging_web, playbook_web, receivables_web, client_update_web, schedule_web, qb_web, ops_web (Setup), next_web (job tracker, glow, Next task)
 rsc/db.py             schema (CREATE TABLE IF NOT EXISTS) and _migrate() for added columns. Add tables here.
 rsc/books.py          jobs, payments, expenses, change orders' money effects. IDs: job number + code + payment seq (ids.py)
 rsc/estimates.py      estimate model, templates, SOW. assist.py = model drafts estimates/scopes. pricing.py, rates.py = price checks

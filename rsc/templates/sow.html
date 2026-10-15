@@ -1,6 +1,6 @@
 {% extends "print_base.html" %}
 {% block title %}Scope of Work / Estimate {{ job.job_id }}{% endblock %}
-{% block toolbar %}<a class="btn" href="{{ url_for('sow_send_page', number=job.number) }}">Send to {{ job.first_name or 'the client' }}</a><a href="{{ url_for('estimate_edit', number=job.number) }}">&larr; Back to the estimate</a>{% endblock %}
+{% block toolbar %}<a class="btn send" href="{{ url_for('sow_send_page', number=job.number) }}">Send to {{ job.first_name or 'the client' }}</a><a href="{{ url_for('estimate_edit', number=job.number) }}">&larr; Back to the estimate</a>{% endblock %}
 {% block body %}
 <div style="text-align:center;border-bottom:2px solid #2F5D46;padding-bottom:8px;margin-bottom:14px">
   <div style="font:700 17pt Georgia,serif;letter-spacing:.28em;text-transform:uppercase;color:#1F3A2E">{{ biz.name }}</div>

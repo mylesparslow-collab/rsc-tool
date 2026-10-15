@@ -73,6 +73,9 @@
   --page: 1160px;     /* content width */
   --rail-w: 272px;    /* sidebar width */
   --ease: 140ms ease-out;
+  --glow-ring: 0 0 0 4px var(--accent);   /* "press this next": the one glowing field or button */
+  --glow-halo: 0 0 0 12px color-mix(in srgb, var(--accent) 30%, transparent);
+  --glow-pulse: 1.6s;
 
   /* names older templates still use */
   --green: var(--accent); --green-dark: var(--accent-strong); --green-soft: var(--accent-soft); --green-line: var(--accent-line);

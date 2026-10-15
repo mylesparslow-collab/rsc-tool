@@ -21,11 +21,16 @@
     .open { border:1px dashed #B26A00; background:#FFF8E1; padding:6px 12px; font:10.5pt Arial; margin:10px 0; }
     .sig { display:flex; gap:40px; margin-top:34px; } .sig div { flex:1; border-top:1px solid #000; padding-top:4px; font-size:10.5pt; }
     .pagebreak { page-break-before:always; }
+    .glow { animation: glow 1.6s ease-in-out infinite; box-shadow: 0 0 0 4px #FFB400; }
+    .next-tag { display:inline-block; margin-right:8px; padding:2px 8px; border-radius:999px; background:#FFB400; color:#1B1F23; font:700 12px Arial; text-transform:uppercase; letter-spacing:.06em; }
+    @keyframes glow { 50% { box-shadow: 0 0 0 9px rgba(255,180,0,.35); } }
+    @media (prefers-reduced-motion: reduce) { .glow { animation: none; } }
     @media print { body { background:#fff; } .sheet { box-shadow:none; margin:0; padding:0; max-width:none; } .toolbar { display:none; } }
   </style>
 </head>
 <body>
 <div class="toolbar"><button onclick="window.print()">Print or save as PDF</button>{% block toolbar %}{% endblock %}</div>
 <div class="sheet">{% block body %}{% endblock %}</div>
+{% include "_glow.html" %}
 </body>
 </html>
