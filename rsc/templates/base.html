@@ -18,9 +18,12 @@
 {% macro item(endpoint, label, ico, active_in=None, count=0) -%}
 <a class="nav {{ 'active' if ep in (active_in or [endpoint]) }}" href="{{ url_for(endpoint) }}"{% if ep in (active_in or [endpoint]) %} aria-current="page"{% endif %}>{{ icon(ico) }}<span>{{ label }}</span>{% if count %}<span class="badge">{{ count }}</span>{% endif %}</a>
 {%- endmacro %}
+{% set jt = job_tracker() %}
+{% set next_href = url_for('next_task', job=jt.job.number) if jt else url_for('next_task') %}
 <div class="shell">
 <aside class="rail" id="nav" aria-label="Main">
   <a class="brand" href="{{ url_for('home') }}"><span class="mark">{{ biz.short[:4] }}</span><span class="name">{{ biz.name }}<small>{{ biz.tagline }}</small></span></a>
+  <a class="next-btn" href="{{ next_href }}" title="Takes you to the next thing that needs doing and lights it up">{{ icon('next') }}<span>Next task</span></a>
   <nav class="nav-group">
     {{ item('home', 'Home', 'home') }}
     {{ item('today_page', 'Today', 'today') }}
@@ -57,7 +60,8 @@
   var a = rail.querySelector('a.nav.active');
   if (a) {
     var r = rail.getBoundingClientRect(), b = a.getBoundingClientRect();
-    if (b.top < r.top + 8) rail.scrollTop -= (r.top + 8 - b.top);
+    var nb = rail.querySelector('.next-btn'), top = r.top + 8 + (nb && nb.offsetHeight ? nb.offsetHeight + 16 : 0);  /* Next task sticks at the top */
+    if (b.top < top) rail.scrollTop -= (top - b.top);
     else if (b.bottom > r.bottom - 8) rail.scrollTop += (b.bottom - r.bottom + 8);
   }
   function save() { try { sessionStorage.setItem(KEY, rail.scrollTop); } catch (e) {} }
@@ -70,6 +74,7 @@
 <div class="topbar">
   <button class="btn small menu-btn" type="button" aria-expanded="false" aria-controls="nav" onclick="var o=document.body.classList.toggle('nav-open');this.setAttribute('aria-expanded',o)">{{ icon('menu') }}Menu{% if inbox_n or bad_alerts %} <span class="badge">{{ inbox_n + bad_alerts }}</span>{% endif %}</button>
   <span class="title">{{ biz.name }}</span>
+  <a class="next-btn" href="{{ next_href }}">{{ icon('next') }}<span>Next task</span></a>
 </div>
 {% set ub = update_banner() if update_banner is defined else none %}
 {% if ub %}<div class="update-banner"><span>RSC {{ ub.latest }} is ready.</span><a class="btn small" href="{{ url_for('update_page') }}">Update now</a></div>{% endif %}
@@ -77,12 +82,14 @@
 <main id="main">
   {% for cat, msg in get_flashed_messages(with_categories=true) %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}
   {% if mail_status.running %}<div class="flash">Checking email... this page refreshes by itself.</div>{% endif %}
+  {% include "_tracker.html" %}
   {% block body %}{% endblock %}
 </main>
 <footer><span>{{ biz.name }} &middot; {{ address_line }} &middot; <a href="{{ url_for('setup_page') }}#ai" class="ai-foot {{ ai_pill.state }}">{{ ai_pill.short }}{% if ai_pill.model %}: {{ ai_pill.model }}{% endif %}</a></span><span>Everything stays on this computer. <a href="{{ url_for('export') }}">Download as Excel</a></span></footer>
 </div>
 </div>
 {% include "_look.html" %}
+{% include "_glow.html" %}
 <script src="{{ url_for('static', filename='ai.js') }}" defer></script>
 {% if voice_ready %}<script src="{{ url_for('static', filename='voice.js') }}" defer></script>{% endif %}
 <script>

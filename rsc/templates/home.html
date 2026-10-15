@@ -11,6 +11,11 @@
   </div>
 </div>
 
+{% set nt = next_task_now() %}
+{% if nt %}<div class="card next-hero"><div class="what"><span class="eyebrow">Your next task</span><b>{{ nt.title }}</b><span class="muted">{{ nt.why }}</span></div>
+  <a class="btn go glow" href="{{ url_for('next_task') }}">{{ nt.label }} &rsaquo;</a></div>
+{% elif all_jobs_count %}<div class="card next-hero done"><div class="what"><span class="eyebrow">Your next task</span><b>All caught up.</b><span class="muted">Nothing needs you right now. Jobs that are waiting on a client or a payment are listed below.</span></div></div>{% endif %}
+
 <div class="tiles">
   <a class="tile main" href="{{ url_for('job_new') }}">{{ icon('plus') }}<span class="t">New estimate</span><span class="s">Type or say what the customer wants</span></a>
   <a class="tile" href="{{ url_for('expenses') }}">{{ icon('expenses') }}<span class="t">Add an expense</span><span class="s">Receipts and materials</span></a>

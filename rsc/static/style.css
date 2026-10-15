@@ -239,6 +239,66 @@ dialog.look::backdrop { background: var(--overlay); }
 .flash { border-left: 6px solid var(--accent); }
 .flash.error { border-left-color: var(--bad); }
 
+/* ------------------------------------------------------------ never lost: Next task, the job tracker, the glow */
+/* Next task: always at the top of the sidebar (and in the phone top bar) */
+.next-btn { display: flex; align-items: center; gap: 10px; min-height: calc(48px * var(--roomy)); padding: 8px 14px; border-radius: var(--radius-sm);
+            border: 2px solid var(--accent); color: var(--accent); background: transparent; text-decoration: none; font: 700 var(--text-base)/1.1 var(--font);
+            transition: background var(--ease), color var(--ease); }
+.next-btn:hover { background: var(--accent); color: var(--accent-ink); }
+.rail .next-btn { flex: none; position: sticky; top: calc(-1 * var(--s-3)); z-index: 2; background: var(--rail); box-shadow: 0 -12px 0 4px var(--rail), 0 10px 0 2px var(--rail); }
+.rail .next-btn:hover { background: var(--accent); }
+.topbar .next-btn { min-height: 44px; padding: 6px 12px; white-space: nowrap; }
+
+/* the glow: one field or button per page, the next thing to press */
+.glow { box-shadow: var(--glow-ring); animation: glow var(--glow-pulse) ease-in-out infinite; position: relative; z-index: 1; }
+input.glow, textarea.glow, select.glow { border-color: var(--accent-text); }
+@keyframes glow { 0%, 100% { box-shadow: var(--glow-ring); } 50% { box-shadow: var(--glow-ring), var(--glow-halo); } }
+.next-tag { display: inline-block; margin: 0 var(--s-2) var(--s-1) 0; padding: 2px 10px; border-radius: 999px; background: var(--accent); color: var(--accent-ink);
+            font: 700 14px/1.6 var(--font); letter-spacing: .06em; text-transform: uppercase; vertical-align: middle; white-space: nowrap; }
+td > .next-tag, .grid > div > .next-tag { display: table; }
+
+/* the job tracker: five stages, "you are here", and the next thing */
+.tracker { background: var(--surface); border: 1px solid var(--line); border-top: 6px solid var(--accent); border-radius: var(--radius); box-shadow: var(--shadow);
+           padding: var(--s-3) var(--s-4); margin-bottom: var(--s-4); }
+.tracker-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-3); }
+.tracker-job { font-weight: 700; color: var(--ink); text-decoration: none; }
+.tracker-where { color: var(--ink-2); }
+.tracker .contact { margin-left: auto; display: flex; gap: var(--s-3); font-size: var(--text-sm); }
+.stages { list-style: none; margin: var(--s-3) 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.stages li { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; color: var(--muted); font-size: var(--text-sm); line-height: 1.2; }
+.stages li::before { content: ""; position: absolute; top: 18px; left: -50%; width: 100%; height: 4px; background: var(--line); z-index: 0; }
+.stages li:first-child::before { display: none; }
+.stages li.done::before, .stages li.current::before { background: var(--ok); }
+.stages .n { position: relative; z-index: 1; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 700;
+             background: var(--surface); border: 3px solid var(--line-strong); color: var(--muted); }
+.stages li.done { color: var(--ink-2); }
+.stages li.done .n { background: var(--ok); border-color: var(--ok); color: var(--surface); }
+.stages li.current { color: var(--ink); font-weight: 700; }
+.stages li.current .n { background: var(--accent); border-color: var(--accent-text); color: var(--accent-ink); box-shadow: 0 0 0 4px var(--accent-soft); }
+.tracker-next { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3); border-radius: var(--radius-sm); background: var(--accent-soft); border: 1px solid var(--accent-line); }
+.tracker-next .what, .next-hero .what { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.tracker-next b, .next-hero b { font-size: var(--text-lg); }
+.tracker-next.wait { background: var(--surface-2); border: 2px dashed var(--line-strong); }
+.tracker-next.done { background: var(--ok-soft); border-color: var(--ok-line); }
+.btn.go { font-size: var(--text-lg); padding-left: var(--s-4); padding-right: var(--s-4); white-space: nowrap; }
+
+/* Home: "Your next task" */
+.next-hero { display: flex; align-items: center; gap: var(--s-4); background: var(--accent-soft); border: 2px solid var(--accent); }
+.next-hero b { font-size: var(--text-xl); font-family: var(--font-display); text-transform: var(--display-case); letter-spacing: var(--display-track); }
+.next-hero.done { background: var(--ok-soft); border-color: var(--ok-line); }
+
+@media (max-width: 900px) {
+  .rail .next-btn { display: none; }   /* the top bar carries it on a phone */
+  .tracker { padding: var(--s-3); }
+  .tracker .contact { margin-left: 0; width: 100%; }
+  .stages .n { width: 32px; height: 32px; } .stages li::before { top: 14px; }
+  .stages li { font-size: 13px; }
+  .tracker-next, .next-hero { flex-direction: column; align-items: stretch; }
+  .tracker-next .btn, .next-hero .btn { width: 100%; }
+}
+@media (max-width: 420px) { .topbar .title { display: none; } .topbar .next-btn { margin-left: auto; } }
+@media (prefers-reduced-motion: reduce) { .glow { animation: none; } }
+
 /* ------------------------------------------------------------ footer */
 footer { width: 100%; max-width: var(--page); margin: auto auto 0; padding: 0 var(--s-5) var(--s-5); color: var(--muted); font-size: var(--text-sm); display: flex; justify-content: space-between; gap: var(--s-3); flex-wrap: wrap; }
 footer a { color: var(--muted); }

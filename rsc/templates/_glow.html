@@ -1,0 +1,19 @@
+{# Light up the one thing to press on this page. glow_here() says which (a list of CSS selectors, first match wins) and
+   whether to scroll to it (only when the Next task button brought you here). Opens a folded section if it's inside one. #}
+{% set gl = glow_here() %}
+{% if gl %}<script>
+(function () {
+  var want = {{ gl|tojson }}, el = null;
+  for (var i = 0; i < want.target.length && !el; i++) { try { el = document.querySelector(want.target[i]); } catch (e) {} }
+  if (!el) { var fb = document.querySelector('[data-glow-fallback]'); if (fb) { fb.classList.add('glow'); fb.classList.remove('secondary'); } return; }
+  for (var d = el.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) d.open = true;
+  el.classList.add('glow');
+  var tag = document.createElement('span'); tag.className = 'next-tag'; tag.textContent = 'Do this next'; tag.setAttribute('aria-hidden', 'true');
+  el.parentNode.insertBefore(tag, el);
+  if (want.scroll) {
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ block: 'center', behavior: calm ? 'auto' : 'smooth' });
+    if (el.matches('input, textarea, select')) { try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); } }
+  }
+})();
+</script>{% endif %}
