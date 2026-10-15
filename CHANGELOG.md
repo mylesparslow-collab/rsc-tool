@@ -2,6 +2,17 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## 0.2.6 (unreleased)
+
+- Fixes from a full test job, first email to review request (invented client):
+  - Expenses: after "Read it" or "Read the photo", pressing "Add expense" saved nothing. It now saves.
+  - To Review: "Start estimate" on a new lead now opens that job's estimate instead of staying on To Review.
+  - With the AI program closed, the email check no longer stops: website-form leads still come in (with the plain reply), and the rest waits for the next check.
+  - The plain lead reply says "about your deck project" instead of pasting the customer's whole sentence.
+  - Estimates: a "Walk-through" step no longer gets a "Rough-in inspection" (the last phase gets the final inspection again). A subcontractor price the assistant puts under hired labor is now flagged: it is your cost, not added to the client's price.
+  - Job page: a date paid with the amount left blank counts as paid in full. When the crew ticks off every step of a phase, "What's next" says to invoice that payment now. A job marked Complete with the final payment not yet invoiced says so first (before the review), and stays on Home until it is paid.
+  - QuickBooks invoices file: the description no longer loses its closing parenthesis.
+
 ## 0.2.5 (unreleased)
 
 - Payments: each unpaid row on the job page has one-click "Invoiced today" and "Paid in full today" buttons, so a client who paid outside the app (or a test job) clears the "Invoice payment 1" card without typing dates and amounts.
@@ -11,14 +22,6 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 - One-click Send for estimates. The estimate preview now has "Send to <client>". It opens a short screen with the client's address, a subject and a friendly message already filled in, and the estimate attached as a PDF (Estimate-<job>.pdf). Press "Send to the client" and it goes from your Gmail, with a copy to you; only then is the job marked "Estimate sent" today. If the email fails, nothing is marked. If Gmail isn't set up, the screen says so with a "Set up email first" link. Nothing is ever sent without that press.
 - New: the estimate PDF is made inside the app (adds the small `reportlab` library). The same PDF opens at /jobs/<number>/sow.pdf.
 - "What's next" now says "Preview and send" for an unsent estimate.
-- Fixes from a full test job, first email to review request (invented client):
-  - Expenses: after "Read it" or "Read the photo", pressing "Add expense" saved nothing. It now saves.
-  - To Review: "Start estimate" on a new lead now opens that job's estimate instead of staying on To Review.
-  - With the AI program closed, the email check no longer stops: website-form leads still come in (with the plain reply), and the rest waits for the next check.
-  - The plain lead reply says "about your deck project" instead of pasting the customer's whole sentence.
-  - Estimates: a "Walk-through" step no longer gets a "Rough-in inspection" (the last phase gets the final inspection again). A subcontractor price the assistant puts under hired labor is now flagged: it is your cost, not added to the client's price.
-  - Job page: a date paid with the amount left blank counts as paid in full. When the crew ticks off every step of a phase, "What's next" says to invoice that payment now. A job marked Complete with the final payment not yet invoiced says so first (before the review), and stays on Home until it is paid.
-  - QuickBooks invoices file: the description no longer loses its closing parenthesis.
 
 ## 0.2.3
 
