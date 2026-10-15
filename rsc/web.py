@@ -311,6 +311,22 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
             flash(f"Not saved: {exc}", "error")
         return redirect(url_for("job_detail", number=row[0]) + "#payments")
 
+    @app.post("/payments/<int:pk>/quick")
+    def payment_quick(pk):
+        """One click: 'Invoiced today' or 'Paid in full today' (a client who paid outside the app, or a test job)."""
+        c = conn()
+        row = c.execute("SELECT job_number, amount, invoice_sent FROM payments WHERE id = ?", (pk,)).fetchone()
+        if not row:
+            abort(404)
+        today = date.today().isoformat()
+        if request.form.get("quick") == "paid":
+            books.update_payment(c, pk, invoice_sent=row["invoice_sent"] or today, date_paid=today, amount_paid=row["amount"])
+            flash("Marked paid in full today.")
+        else:
+            books.update_payment(c, pk, invoice_sent=today)
+            flash("Marked invoiced today.")
+        return redirect(url_for("job_detail", number=row["job_number"]) + "#payments")
+
     # ------------------------------------------------------------ expenses
     def _expenses_page(prefill=None, note="", typed=""):
         c = conn()
