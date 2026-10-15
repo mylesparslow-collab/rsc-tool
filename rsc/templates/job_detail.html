@@ -66,7 +66,9 @@
     <td><input type="date" form="pay-{{ p.id }}" name="invoice_sent" value="{{ p.invoice_sent or '' }}"></td>
     <td><input type="date" form="pay-{{ p.id }}" name="date_paid" value="{{ p.date_paid or '' }}"></td>
     <td><input form="pay-{{ p.id }}" name="amount_paid" value="{{ '%.2f'|format(p.amount_paid) if p.amount_paid is not none }}" style="width:110px"></td>
-    <td><button class="btn small" form="pay-{{ p.id }}">Save</button></td>
+    <td><button class="btn small" form="pay-{{ p.id }}">Save</button>
+      {% if not p.invoice_sent and p.status != 'Paid' %}<button class="btn small secondary" form="pay-{{ p.id }}" formaction="{{ url_for('payment_quick', pk=p.id) }}" name="quick" value="invoiced">Invoiced today</button>{% endif %}
+      {% if p.status != 'Paid' %}<button class="btn small secondary" form="pay-{{ p.id }}" formaction="{{ url_for('payment_quick', pk=p.id) }}" name="quick" value="paid">Paid in full today</button>{% endif %}</td>
   </tr>
   {% else %}<tr><td colspan="7" class="muted">No payments yet. Add them from the contract's payment schedule below.</td></tr>{% endfor %}
 </table></div>
