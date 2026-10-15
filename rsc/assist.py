@@ -128,11 +128,11 @@ def _list_or_default(items, default: str) -> str:
 def inspection_for(title: str, steps: list[str], is_last: bool) -> str:
     """Inspections follow from the kind of work, so they are decided here and not left to a small model."""
     text = f"{title} {' '.join(steps)}".lower()
-    if "fram" in text:
+    if re.search(r"\bfram", text):
         return "Framing inspection"
-    if "rough" in text:
+    if re.search(r"\brough", text):  # not "walk-through"
         return "Rough-in inspection"
-    if "insulat" in text:
+    if re.search(r"\binsulat", text):
         return "Insulation inspection"
     return "Final inspection" if is_last else ""
 
@@ -181,6 +181,9 @@ def _clean_prices(raw: dict) -> dict:
     notes = []
     if guesses:
         notes.append("The assistant estimated these prices. Replace any that are off: " + "; ".join(guesses[:8]) + ".")
+    if sums["hired_labor"]:
+        notes.append(f"Subcontractors (${sums['hired_labor']:,.0f}) are your cost and are not added to the client's price "
+                     "by themselves. Make sure Labor covers them, or say 'add the subs to labor'.")
     if not (sums["materials"] or sums["labor"]):
         notes.append("I couldn't work out prices from that. Tell me some, like 'labor is $9,000 and materials about $6,000'.")
     return {"scalars": sums, "others": others[:3], "assumptions": notes}

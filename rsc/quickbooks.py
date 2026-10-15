@@ -44,7 +44,7 @@ def invoices_csv(conn, open_only: bool = True, today: date | None = None) -> str
             due = sent
         rows.append([p["payment_id"], _client(p, jobs), sent, due, "Net 7",
                      f"{jobs.get(p['job_number'], {}).get('address', '')}".strip(), SERVICE_ITEM,
-                     f"{p['description']} ({p['due_when']})".strip(" ()"), 1, f"{p['amount']:.2f}", f"{p['amount']:.2f}"])
+                     f"{p['description']} ({p['due_when']})" if p["due_when"] else p["description"], 1, f"{p['amount']:.2f}", f"{p['amount']:.2f}"])
     return _csv(INVOICE_COLS, rows)
 
 

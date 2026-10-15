@@ -1,6 +1,7 @@
 """The app Nick uses, in his browser at http://localhost:5151. Only reachable from his own computer."""
 import fcntl
 import hmac
+import json
 import secrets
 import sqlite3
 import tempfile
@@ -17,6 +18,16 @@ from .llm import ModelUnavailable, OllamaModel
 from .mail import GmailReader
 
 
+class _ModelOff:
+    """Stands in for the model while Ollama is closed: every read fails, so plain-code paths and fallbacks take over."""
+
+    def __init__(self, why: str):
+        self.why = why
+
+    def extract(self, system, user, schema, images=None):
+        raise ModelUnavailable(self.why)
+
+
 def run_mail_check(cfg: Config) -> pipeline.RunReport:
     """Used by the button and by the scheduled `rsc check-mail`. One run at a time, across processes."""
     lock = open(cfg.home / ".mail-check.lock", "w")
@@ -30,16 +41,25 @@ def run_mail_check(cfg: Config) -> pipeline.RunReport:
         try:
             models.apply_choice(cfg)
             model = OllamaModel(cfg.model.url, cfg.model.name, cfg.model.timeout_seconds)
-            model.check()
+            try:
+                model.check()
+                ai_off = ""
+            except ModelUnavailable as exc:
+                # Website-form leads are read by plain code, so they still come in. Everything else waits for the
+                # model and is read on a later check (the last-checked date only moves when nothing failed).
+                model, ai_off = _ModelOff(str(exc)), str(exc)
             vision = None
-            if cfg.model.vision:  # photos attached to emails; without this model they are simply skipped
+            if cfg.model.vision and not ai_off:  # photos attached to emails; without this model they are simply skipped
                 vision = OllamaModel(cfg.model.url, cfg.model.vision, cfg.model.timeout_seconds)
                 try:
                     vision.check()
                 except ModelUnavailable:
                     vision = None
             reader = GmailReader(cfg.mail.address, mail_password(cfg.mail.address), cfg.mail.host)
-            return pipeline.check_mail(conn, cfg, reader, model, vision)
+            report = pipeline.check_mail(conn, cfg, reader, model, vision)
+            if ai_off and report.errors:
+                report.note = "The AI program isn't running, so those wait until it is. Open the Ollama app."
+            return report
         finally:
             conn.close()
     finally:
@@ -168,6 +188,11 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
         return float(value.replace("$", "").replace(",", "")) if value else None
 
     # ------------------------------------------------------------ home
+    def _needs_a_step(c):
+        """Open jobs, plus finished ones that still have money to collect (so the final invoice isn't forgotten)."""
+        return [j for j in books.list_jobs(c) if j["status"] in books.ACTIVE
+                or (j["status"] == "Complete" and j["paid"] < (j["scheduled"] or 0) - 0.005)]
+
     @app.get("/")
     def home():
         c = conn()
@@ -177,7 +202,7 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
                                last_report=last[0] if last else "", next_number=books.next_job_number(c),
                                watch=[m for m in margins.all_margins(c) if m["status"] != "ok" and m["job"]["status"] != "Complete"],
                                due_followups=followups.due(c), late_invoices=[r for r in receivables.outstanding(c) if r["needs_reminder"]],
-                               next_steps=[{"job": j, "step": guide.next_step(c, j)} for j in books.list_jobs(c, active_only=True)[:6]
+                               next_steps=[{"job": j, "step": guide.next_step(c, j)} for j in _needs_a_step(c)[:6]
                                            if guide.next_step(c, j)][:4],
                                all_jobs_count=len(books.list_jobs(c)))
 
@@ -222,6 +247,10 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
                 if "amount" in edits:
                     edits["amount"] = _num(edits["amount"])
                 flash(pipeline.approve(c, sid, edits))
+                row = c.execute("SELECT data FROM suggestions WHERE id = ?", (sid,)).fetchone()
+                number = json.loads(row[0]).get("job_number") if row else None
+                if number:  # "Start estimate" means start it: go straight to the estimate, with what they asked for filled in
+                    return redirect(url_for("estimate_edit", number=number))
         except (books.BooksError, ValueError) as exc:
             flash(f"Not saved: {exc}", "error")
         return redirect(url_for("review"))
@@ -305,6 +334,8 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
         f = _form("invoice_sent", "date_paid", "amount_paid")
         try:
             f["amount_paid"] = _num(f["amount_paid"]) if f["amount_paid"] else ""
+            if f["date_paid"] and f["amount_paid"] == "":  # a date paid with no amount means paid in full
+                f["amount_paid"] = c.execute("SELECT amount FROM payments WHERE id = ?", (pk,)).fetchone()[0]
             books.update_payment(c, pk, **f)
             flash("Payment updated.")
         except ValueError as exc:
