@@ -253,15 +253,19 @@
       var contact = form.elements.contact.value.trim();
       if (contact.replace(/\D/g, '').length < 10 && contact.indexOf('@') < 1) { say('Add a phone number or email so we can reply.', 'error'); form.elements.contact.focus(); return; }
       if (form.elements.company && form.elements.company.value) { say('Sent. Thank you.', 'ok'); return; }
-      var lines = [];
+      var lines = [], subject = form.getAttribute('data-lead'), fields = { _subject: subject };
       Array.prototype.forEach.call(form.querySelectorAll('[data-label]'), function (el) {
         if ((el.type === 'radio' || el.type === 'checkbox') && !el.checked) return;
-        var v = el.value.trim(); if (v) lines.push(el.getAttribute('data-label') + ': ' + v);
+        var v = el.value.trim(), k = el.getAttribute('data-label'); if (!v) return;
+        lines.push(k + ': ' + v);
+        k = k.toLowerCase(); fields[k] = fields[k] ? fields[k] + ', ' + v : v;
       });
-      var subject = form.getAttribute('data-lead'), text = lines.join('\n');
+      /* one field per label, so the form service's email reads like the email fallback (rsc/intake.py reads both) */
+      if (contact.indexOf('@') > 0) fields.email = contact;
+      var text = lines.join('\n');
       if (LEADS.endpoint) {
         btn.disabled = true; say('Sending…');
-        fetch(LEADS.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ subject: subject, message: text, contact: contact, page: location.href }) })
+        fetch(LEADS.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(fields) })
           .then(function (r) { if (!r.ok) throw new Error(r.status); say('Sent. We will be in touch.', 'ok'); form.reset(); })
           .catch(function () { say('That didn’t go through. Call or text us at (518) 932-9919.', 'error'); })
           .then(function () { btn.disabled = false; });

@@ -5,7 +5,7 @@ Usually run through build.py.
 
 What it does to the copy (dist/ itself is untouched):
 - removes the yellow draft-notes bar and hides draft-only notes (html gets class notes-off)
-- sets the quote form to post to Formspree when --formspree is given
+- sets every form (quote, Safe at Home list) to post to Formspree when --formspree is given
 - leaves out the hiring page and every link to it, and the FAQ insurance answer (Myles, 2026-10-18:
   on ice until Nick's crew and insurance setup is known)
 - refuses to finish while blank placeholders ([Nick to confirm...], $__) are still in the pages
@@ -44,12 +44,14 @@ for f in sorted(OUT.rglob("*.html")):
     s = re.sub(r'<a href="[./]*work-with-us/index\.html">[^<]*</a>', "", s)
     s = re.sub(r'<details class="qa"><summary>Are you licensed and insured\?</summary>.*?</details>', "", s, flags=re.S)
     s = re.sub(r'\s*<a class="btn btn-quiet ph" href="#reviews"[^>]*>Review on Google</a>', "", s)  # until the Google link exists
-    if a.formspree:
-        s = s.replace('"endpoint": ""', f'"endpoint": "{a.formspree}"')
+    if a.formspree:  # every form: the quote form writes "endpoint": "", the Safe at Home list endpoint: ''
+        s = re.sub(r"""(var LEADS = \{\s*"?endpoint"?\s*:\s*)(?:""|'')""", lambda m: f'{m.group(1)}"{a.formspree}"', s)
     f.write_text(s, encoding="utf-8")
     visible = re.sub(r'<[a-z]+ class="[^"]*ph-only.*?</(p|div)>', "", s, flags=re.S)
     for m in BLANKS.finditer(visible):
         problems.append(f"{f.relative_to(OUT)}: {m.group(0)[:70]}")
+    if a.formspree and re.search(r"""var LEADS = \{\s*"?endpoint"?\s*:\s*(?:""|'')""", s):
+        problems.append(f"{f.relative_to(OUT)}: a form is not wired to Formspree")
     if "work-with-us" in s:
         problems.append(f"{f.relative_to(OUT)}: still links to the hiring page")
 

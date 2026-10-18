@@ -101,3 +101,69 @@ def test_quote_sent_from_the_persons_own_mail_app_replies_to_them(cfg, conn):
     assert s["data"]["reply_to"] == "kim.ode@example.com" and s["data"]["phone"] == "518-555-0123"
     pipeline.process(conn, cfg, [mail(SITE, "New quote request", sender="noreply@formspree.io", mid="m2")], NoModel())
     assert pipeline.pending(conn)[-1]["data"]["reply_to"] == ""
+
+
+# What a Formspree notification can look like once mail.py has turned it into text: the label alone on a line with the value
+# under it, or label and value side by side in a table row. The site sends name, email, phone, town, source, message.
+STACKED = """Quote request from the website
+
+Someone just submitted your form on rscrafters.com.
+
+name:
+Dana Ruiz
+
+email:
+
+phone:
+(518) 555-0177
+
+town:
+Wilton
+
+source:
+Google
+
+message:
+Hello, this is Dana Ruiz. I'm planning a bathroom remodel in Wilton, in the next few months. Found you through Google.
+
+Submitted 9:12 PM - 18 October 2026"""
+
+TABLE_HTML = """<html><body><p>Someone just submitted your form on rscrafters.com.</p><table>
+<tr><td><strong>name</strong></td><td>Lee Park</td></tr>
+<tr><td><strong>email</strong></td><td>lee.park@example.com</td></tr>
+<tr><td><strong>phone</strong></td><td></td></tr>
+<tr><td><strong>town</strong></td><td>Malta</td></tr>
+<tr><td><strong>source</strong></td><td>Nextdoor</td></tr>
+<tr><td><strong>message</strong></td><td>Hello, this is Lee Park. I'm planning a deck or stairs project in Malta.</td></tr>
+</table></body></html>"""
+
+
+def test_form_service_with_value_under_the_label():
+    f = intake.parse_form("x", STACKED)
+    assert f["name"] == "Dana Ruiz" and f["phone"] == "(518) 555-0177" and f["email"] == ""
+    assert f["address"] == "Wilton" and f["source"] == "Google" and f["message"].startswith("Hello, this is Dana")
+
+
+def test_form_service_html_table_becomes_a_lead_replying_to_the_person(cfg, conn):
+    from email.message import EmailMessage
+    from rsc import mail as mailmod
+    msg = EmailMessage()
+    msg["From"], msg["To"], msg["Subject"] = "Formspree <noreply@formspree.io>", "nick@example.com", "Quote request from the website"
+    msg["Reply-To"], msg["Message-ID"], msg["Date"] = "lee.park@example.com", "<fs1@formspree.io>", "Sun, 18 Oct 2026 21:00:00 -0400"
+    msg.set_content(TABLE_HTML, subtype="html")
+    m = mailmod.parse(msg.as_bytes())
+    pipeline.process(conn, cfg, [m], NoModel())
+    s = pipeline.pending(conn)[0]
+    assert s["kind"] == "lead" and s["data"]["name"] == "Lee Park" and s["data"]["address"] == "Malta"
+    assert s["data"]["reply_to"] == "lee.park@example.com" and "Found us: Nextdoor" in s["data"]["project"]
+
+
+def test_safe_at_home_list_form_is_a_lead():
+    body = "Name: Ann Holt\nTown: Greenfield\nReply to: 518 555 0110\nConcern: Steep front steps"
+    f = intake.parse_form("Safe at Home list", body)
+    assert f["phone"] == "518 555 0110" and f["message"] == "Steep front steps" and f["address"] == "Greenfield"
+
+
+def test_an_empty_label_does_not_swallow_the_next_label():
+    f = intake.parse_form("x", "name:\nBo Tran\nemail:\nphone:\n518-555-0100\nmessage:\ndeck")
+    assert f["email"] == "" and f["phone"] == "518-555-0100" and f["message"] == "deck"

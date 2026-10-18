@@ -10,7 +10,11 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 - A quote sent from the person's own mail app replies to their address.
 - An estimate with no answer after 7 days gets a polite follow-up note on the job page, ready to open in Mail or Messages.
   After 21 days the note becomes a last, no-pressure check-in. No prices, nothing sent automatically.
-- 211 tests pass.
+- Website form through Formspree (2026-10-18): the tool now reads Formspree's notification emails whichever way they lay
+  out the fields (value under its label, or in a table), and the reply goes to the person, not to Formspree. The Safe at
+  Home list form sends one field per line like the quote form, and the site build wires every form, not only the quote
+  form, when `FORMSPREE_URL` is set. Before Formspree is set up nothing changes: the form still opens an email.
+- 278 tests pass.
 
 ## 0.2.7
 

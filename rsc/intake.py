@@ -1,6 +1,7 @@
 """Website form emails and job applications.
 
-A contact form on the website sends Nick an email like "Name: Jane Smith / Email: jane@x.com / Message: ...". Those are read
+A contact form on the website sends Nick an email like "Name: Jane Smith / Email: jane@x.com / Message: ...". Form services
+lay it out differently (the label alone on one line and the value under it, or both in a table row); all three are read
 by plain code (no model needed, so it works even if Ollama is off) and land in To Review as a lead, or as an applicant when
 the message is about working for him. Applications that arrive as ordinary emails are recognised the same way after the
 model has read them. Nothing is added to the books until Nick approves it.
@@ -19,7 +20,8 @@ LABELS = {
     "source": {"source", "heard from", "found us", "found us through", "how did you hear about us", "how did you find us",
                "referred by", "referral"},
     "message": {"message", "comments", "comment", "details", "project", "project details", "tell us about your project",
-                "how can we help", "how can we help you", "your message", "description", "project description", "notes"},
+                "how can we help", "how can we help you", "your message", "description", "project description", "notes",
+                "concern", "experience"},
 }
 APPLY_WORDS = re.compile(r"\b(resume|résumé|apply(?:ing)?|application|job opening|hiring|looking for (?:work|a job|employment)|"
                          r"open positions?|employment|seeking (?:work|employment|a position)|years of experience|"
@@ -27,13 +29,45 @@ APPLY_WORDS = re.compile(r"\b(resume|résumé|apply(?:ing)?|application|job open
 AUTOMATED = re.compile(r"no-?reply|formspree|forms?@|mailer|notifications?@|wix|squarespace|bounce", re.I)
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
 PHONE = re.compile(r"\+?1?[\s.(-]*\d{3}[\s.)-]*\d{3}[\s.-]*\d{4}\b")
+CELLS = re.compile(r"^\s*([A-Za-z][A-Za-z /_-]{1,30}?)\s{2,}(\S.*?)\s*$")
+
+
+def _label(text: str) -> str | None:
+    text = text.strip().strip("*").strip().rstrip(":").strip().lower().replace("_", " ")
+    return next((k for k, names in LABELS.items() if text in names), None)
+
+
+def _starts_field(line: str) -> bool:
+    m = FIELD.match(line) or CELLS.match(line)
+    return bool(_label(line) or (m and _label(m.group(1))))
+
+
+def _one_line_fields(body: str) -> list[str]:
+    """Lines as "Label: value", also when a form service puts the value under its label or beside it in a table."""
+    lines, out, i = (body or "").splitlines(), [], 0
+    while i < len(lines):
+        line = lines[i]
+        if not FIELD.match(line) and _label(line):
+            j = i + 1
+            while j < len(lines) and not lines[j].strip():
+                j += 1
+            if j < len(lines) and not _starts_field(lines[j]):
+                out.append(f"{line.strip().strip('*').rstrip(':').strip()}: {lines[j].strip()}")
+                i = j + 1
+                continue
+        cells = CELLS.match(line)
+        if cells and not FIELD.match(line) and _label(cells.group(1)):
+            line = f"{cells.group(1)}: {cells.group(2)}"
+        out.append(line)
+        i += 1
+    return out
 
 
 def parse_form(subject: str, body: str) -> dict | None:
     """Fields from a website-form notification, or None when the email isn't one."""
     found: dict[str, str] = {}
     last = None
-    for line in (body or "").splitlines():
+    for line in _one_line_fields(body):
         m = FIELD.match(line)
         if m:
             label = m.group(1).strip().lower().replace("_", " ")
