@@ -6,14 +6,14 @@ the editing for him. Myles (his son) approves what goes live. The rules in the t
 
 ## How it goes live
 
-Cloudflare Pages builds this folder from GitHub. The repo's default branch is the live site; every other branch
-gets its own preview link.
+Cloudflare Pages (project `rscrafters-site`, in Myles's Cloudflare account) builds this folder from GitHub. The
+repo's default branch is the live site; every other branch gets its own preview link.
 
 1. Make the change on a branch (on Nick's Mac: `nick-mac-fixes-YYYY-MM-DD`, never the default branch).
 2. `python3 build.py` (needs `pip install -r requirements.txt` once). It must end without errors.
 3. Open the changed page: `open public/index.html` (or the page's folder). Check a narrow window too.
 4. Commit and push the branch. Cloudflare posts a preview link on the branch's commit in GitHub
-   (or see Workers & Pages › rscrafters › Deployments).
+   (or see Workers & Pages › rscrafters-site › Deployments).
 5. Tell Nick what changed in plain words and give him the preview link. Myles merges it to make it live.
 
 Never push to the default branch and never publish another way (no drag-and-drop uploads, no other hosts).
