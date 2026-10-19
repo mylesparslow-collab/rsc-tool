@@ -98,7 +98,7 @@ is not in `~/RSC`.
 | Re-run installer after an update | double-click *Install RSC.command* (safe to repeat) |
 
 Background jobs (launchd, labels `com.reclaimedspacecrafters.<name>` for app, checkmail, weeklyreport, dailysheet,
-ollama): `launchctl list | grep reclaimed`. Plists are in `~/Library/LaunchAgents`. Restart the app after a code change:
+ollama, and claude-myles if Myles connected his Claude): `launchctl list | grep reclaimed`. Plists are in `~/Library/LaunchAgents`. Restart the app after a code change:
 `launchctl kickstart -k gui/$(id -u)/com.reclaimedspacecrafters.app`. (If it isn't loaded, `rsc open` starts it.)
 Port in use: `lsof -nP -iTCP:5151 -sTCP:LISTEN`. A phone on the same Wi-Fi needs `access_pin` in `config.toml`
 (6+ characters) and `rsc serve --lan`; otherwise the app listens on this Mac only.
@@ -173,6 +173,21 @@ When Nick or Myles asks you to update the app:
    (files), whether tests passed, and anything Myles should check. Commit it with the fix (`git commit -am "..."`).
    If this Mac can push, push to a new branch named `nick-mac-fixes-YYYY-MM-DD`, never to the main branch;
    otherwise leave the commit local and tell Nick to let Myles know there are notes in `LOCAL-FIXES.md`.
+
+## Two Claudes on this Mac
+
+Two Claudes may work here: **Nick's own** (his account, the Code tab) and **Myles's** (Myles's account, from Myles's
+Claude project, connected by `deploy/connect-myles-claude.sh`; see `docs/myles-claude-on-nicks-mac.md`). They can't
+message each other, so they leave notes in **`~/RSC/HANDOFF.md`** (the data folder, so notes never go in the repo and
+both see them at once, even from a worktree).
+
+- **On start, read `~/RSC/HANDOFF.md`** if it exists, and do or relay what's addressed to you.
+- **Leave a note** under `## For Nick's Claude` or `## For Myles's Claude`, newest first: date, one or two plain lines
+  (what changed, what to tell Nick, what to check). Mark a note `(done)` when you've handled it; don't delete others'.
+- To tell which you are: Myles's runs with `CLAUDE_CONFIG_DIR` ending in `.claude-myles`.
+- Same rules for both: back up first, notes in `LOCAL-FIXES.md`, fixes to a `nick-mac-fixes-YYYY-MM-DD` branch.
+  Myles's Claude works in a git worktree, so its fix reaches the running app only after Myles merges it and this Mac
+  updates (Updating from GitHub).
 
 ## Known gaps and open items
 
