@@ -2,6 +2,11 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## 0.2.8
+
+- Optional: Myles's Claude can work in the rsc-tool folder on Nick's Mac, from Myles's Claude project. Myles sets it up once with `deploy/connect-myles-claude.sh` (signs in as Myles, kept separate from Nick's own Claude; `--keep-running` keeps it connected after restarts; `--off` stops it). Nothing changes in the app, and nothing runs unless Myles sets it up. Steps: `docs/myles-claude-on-nicks-mac.md`.
+- The two Claudes leave each other notes in `~/RSC/HANDOFF.md`. CLAUDE.md says how ("Two Claudes on this Mac").
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.

@@ -48,5 +48,5 @@ def test_installer_scripts_parse():
     import subprocess
     from pathlib import Path
     root = Path(__file__).resolve().parents[1]
-    for rel in ("deploy/install.sh", "deploy/uninstall.sh", "Install RSC.command", "Uninstall RSC.command"):
+    for rel in ("deploy/install.sh", "deploy/uninstall.sh", "deploy/connect-myles-claude.sh", "Install RSC.command", "Uninstall RSC.command"):
         assert subprocess.run(["bash", "-n", str(root / rel)]).returncode == 0, rel
