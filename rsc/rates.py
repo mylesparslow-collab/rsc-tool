@@ -136,7 +136,7 @@ def analyze(est: dict, settings: dict | None = None, hours_logged: float | None 
         out["markup_gap"] = round(est["materials"] * (s["default_markup"] - est["markup_pct"]) / 100, 2)
     if out["markup_gap"] and est["markup_pct"] <= 0:
         warn.append(f"There is no markup on the ${est['materials']:,.0f} of materials, so you'd buy, haul and stand behind "
-                    f"them for nothing. At your usual {s['default_markup']:g}% that's ${out['markup_gap']:,.0f} more.")
+                    f"them for nothing. At the industry-standard {s['default_markup']:g}% markup that's ${out['markup_gap']:,.0f} more.")
         out["level"] = "bad"
     elif out["markup_gap"]:
         warn.append(f"Materials markup is {est['markup_pct']:g}%. At {s['default_markup']:g}% you'd keep about a "
@@ -152,7 +152,7 @@ def analyze(est: dict, settings: dict | None = None, hours_logged: float | None 
     if out["labor_gap"] or out["markup_gap"]:
         out["suggested_price"] = round(price + out["labor_gap"] + out["markup_gap"])
         parts = ([f"${s['target_rate']:.0f} a crew-hour"] if out["labor_gap"] else []) + \
-                ([f"your usual {s['default_markup']:g}% on materials"] if out["markup_gap"] else [])
+                ([f"the industry-standard {s['default_markup']:g}% markup on materials"] if out["markup_gap"] else [])
         out["summary"] = (f"At {' and '.join(parts)}, this job would be about ${out['suggested_price']:,.0f}, "
                           f"${out['suggested_price'] - price:,.0f} more than the ${price:,.0f} it says now.")
     if not hours and est["labor"] > 0:

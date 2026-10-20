@@ -5,7 +5,7 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 ## 0.2.8
 
 - Pricing check before you send. The Send screen for an estimate now shows the labor rate per crew-hour (worked out from the Crew and Duration lines, nothing new to type) and any pricing warnings, with a "Change the price first" button. It never stops you sending.
-- A suggested price. When labor is under the target rate (Pricing page, $72 a crew-hour by default) or the materials markup is under your usual one, the estimate page and the Send screen say what the job would be at those numbers and how many dollars more that is.
+- A suggested price. When labor is under the target rate (Pricing page, $72 a crew-hour by default) or the materials markup is under the industry-standard 43% (about a 30% gross margin; change it on the Pricing page), the estimate page and the Send screen say what the job would be at those numbers and how many dollars more that is.
 - Materials with no markup at all are now a red flag, not a gentle note.
 
 ## 0.2.7
