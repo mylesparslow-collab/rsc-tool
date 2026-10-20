@@ -7,82 +7,62 @@ summary: Bookcases, window seats, office walls and mudroom benches built for the
 flags:
 ---
 
-Custom built-ins are cabinets, shelves, benches and desks built into the walls of a room rather than set in front of them. In Saratoga County homes they solve problems freestanding furniture cannot, such as fitting an odd alcove, using space under a stair or window, and handling uneven floors and walls in an older house. Done well, they look like part of the original architecture and add usable storage without taking up more floor space.
+A built-in is a cabinet, bookcase, bench or desk that's fastened into the wall of a room instead of pushed up against it. In Saratoga County houses they fix problems furniture can't: an odd alcove next to a chimney, the dead space under a stair or a window, a floor that slopes an inch across the room. When they're scribed and trimmed right, they look like they came with the house, and they add storage without eating floor space.
 
-## Where built-ins work best
+## Where they earn their keep
 
-Built-ins are most useful in places where furniture either does not fit or wastes space.
+The best spots for a built-in are the places where a piece of furniture won't fit or leaves a gap you can't use.
 
-- **Home offices.** A wall of shelves and cabinets around a desk keeps paperwork, printers and cords out of sight. We built office built-ins with glass French doors, which let the office close off for quiet without feeling boxed in.
-- **Living rooms and libraries.** Bookcases flanking a fireplace or window are a traditional choice in older homes and suit newer houses too.
-- **Window seats.** A bench under a window, with drawers or lift-up storage below, uses a space that otherwise goes empty.
-- **Mudrooms and entries.** Benches, cubbies and hooks give boots, coats and bags a place to land, which matters through a long Capital Region winter.
-- **Under stairs.** Drawers or cabinets can take advantage of the triangular space below a staircase.
-- **Pantries and dining rooms.** Built-in hutches, shelves or a butler's pantry add storage near the kitchen.
+A home office is the obvious one. A wall of shelves and lower cabinets around a desk gets the printer, the files and the cord tangle out of sight. One of the projects on our site is a set of office built-ins with glass French doors, so the room closes off for quiet calls without feeling like a closet.
 
-## Built-ins in older homes
+Bookcases on either side of a fireplace or a window are an old trick in older houses, and they work just as well in a newer living room. A window seat with drawers or a lift-up lid underneath turns an empty bay into storage. Under a staircase, drawers or a cabinet can use that awkward triangle. A built-in hutch or a butler's pantry adds storage between the kitchen and the dining room.
 
-Older homes in Saratoga Springs, Ballston Spa and the surrounding villages often have rooms with irregular dimensions, chimney breasts, deep window openings and walls that are no longer plumb. That makes off-the-shelf storage hard to fit and is exactly where custom work makes the most difference.
+And the mudroom. Bench, cubbies, hooks. Through a long Capital Region winter, wet boots, coats and backpacks need somewhere to land that isn't the kitchen floor.
 
-A built-in for an old house is scribed to the wall and floor, meaning its edges are cut to follow the actual surface so there are no visible gaps. Trim profiles and paneling can be designed to match the existing casings and baseboards, so the new work reads as original. Some older homes already have built-ins, such as china cabinets or bookcases, that can be restored or used as models for new pieces.
+## Old houses: nothing is square
 
-Before cutting into walls in a pre-1978 house, have the painted surfaces tested for lead, and be aware that older plaster, insulation and some other materials can contain asbestos. Our guide to [restoring an old house in Saratoga Springs](/blog/restoring-old-house-saratoga-springs/) covers testing and planning for older homes.
+Older homes in Saratoga Springs, Ballston Spa and the villages around them tend to have rooms that are out of square, chimney breasts poking into the wall, deep window openings and plaster walls that leaned years ago. A store-bought bookcase sits against that wall with a wedge of daylight behind it. That's where custom work pays off.
 
-## Built-ins in newer homes
+We build the boxes a little undersized, set them, then scribe the edges. That means tracing the actual line of the wall or floor onto a filler strip or a scribe molding and cutting to it, so the cabinet follows every hump in the plaster with no gap. Trim profiles and paneling can be matched to the existing casings and baseboard, so the new piece reads as original. Some old houses already have a china cabinet or a pair of bookcases that can be restored, or used as the pattern for new ones.
 
-Newer homes in Malta, Wilton, Clifton Park and Halfmoon usually have straighter walls and more standard dimensions, but they often lack architectural detail. Built-ins can add character and storage to open-plan living rooms, bonus rooms and dens. Pairing a built-in with upgraded trim and solid doors makes a noticeable change in a builder-grade house. Our post on [upgrading trim and interior doors](/blog/upgrade-builder-grade-trim-and-doors/) covers that side of the work.
+Before anybody cuts into walls in a pre-1978 house, get the painted surfaces tested for lead. Old plaster, insulation and some other materials can contain asbestos, so test before you disturb them. Our guide to [restoring an old house in Saratoga Springs](/blog/restoring-old-house-saratoga-springs/) goes into testing and planning.
 
-## Planning the design
+## Newer houses: plenty of square, not much character
 
-A few decisions shape every built-in project.
+Houses in Malta, Wilton, Clifton Park and Halfmoon usually have straighter walls and standard dimensions, which makes installation simpler. What they often lack is detail. A built-in gives an open-plan living room, a bonus room over the garage or a den some shape and a lot of storage. Pair it with heavier trim and solid interior doors and a builder-grade house starts to feel finished. We cover that side in [upgrading trim and interior doors](/blog/upgrade-builder-grade-trim-and-doors/).
 
-### What will it hold?
+## Decide these before anyone draws it
 
-Measure what you plan to store. Books, files, a printer, a television, board games and winter gear all need different shelf depths and heights. Deeper is not always better. Bookshelves that are too deep let books slide back and waste space.
+Measure what's going in. Books, files, a printer, a TV, board games and winter gear each want a different shelf depth and spacing. Deeper isn't better. A bookshelf that's too deep lets paperbacks slide to the back where you can't see them.
 
-### Open shelves or doors?
+Open shelves or doors? Open shelves show things off and keep a room feeling light. Doors and drawers hide the mess. Most of the built-ins we'd draw put closed cabinets low and open shelves above, which covers both.
 
-Open shelves display things and make a room feel lighter. Doors and drawers hide clutter. Many built-ins combine the two, with closed cabinets below and open shelves above.
+Paint or stain. Paint suits most rooms and is far easier to match to existing trim. Stain makes sense when the room already has stained woodwork you're matching, or you want the warmer look. The choice changes the materials, since paint-grade work can use different stock than stain-grade.
 
-### Paint or stain?
+Lights and outlets have to be planned before the cabinets go in: LED strips under the shelves, a couple of outlets in the desk, a charging spot in the mudroom. A licensed electrician should do that wiring, and it's much easier while the wall is still open.
 
-Painted built-ins suit most rooms and are easier to match to existing trim. Stained wood suits rooms with existing stained woodwork or where a warmer look is wanted. The choice affects materials, since paint-grade work can use different materials than stain-grade.
+Don't bury heat. A built-in that covers a heat register, a radiator or a return air grille needs a grille or an opening designed into it so the heat still gets into the room.
 
-### Lighting and power
+## How they get built
 
-Lighting inside shelves, outlets in a desk area and charging stations in a mudroom all need to be planned before the built-in is installed. Electrical work should be done by a licensed electrician, and it is far easier before cabinets go in.
+Most built-ins are cabinet boxes, often cabinet-grade plywood, with solid wood face frames, doors and trim. Some parts get built in a shop and some on site, depending on the room and the design. The boxes are shimmed level and screwed to the wall framing. Then the face frames, crown and base go on and tie it all together, covering the joints between boxes and the gaps at the wall. Shelves are usually adjustable on pins, so they can move when what you store changes.
 
-### Heat and air
+The order on most jobs goes like this. Site visit and measuring, including how far out the walls and floor are. Drawings with the layout, shelf spacing and trim details. Electrical rough-in by a licensed electrician. Building the boxes, shelves and doors. Setting and scribing. Then trim, filling nail holes, sanding, and paint or finish.
 
-Do not cover heat registers, radiators or return air grilles without a plan. Built-ins can be designed with grilles or openings so heat still reaches the room.
-
-## How built-ins are made and installed
-
-Built-ins are usually built as cabinet boxes, often from cabinet-grade plywood, with solid wood face frames, doors and trim. Some parts are built in a shop and some on site, depending on the design and the room. The boxes are fastened to the wall framing and leveled, and then face frames, crown molding and base trim tie everything together and cover the joints. Shelving is typically adjustable so it can change with your needs.
-
-The process tends to follow the same order.
-
-1. Site visit and measurements, including the condition of walls and floors.
-2. Design drawings showing layout, shelf spacing and trim details.
-3. Any electrical rough-in by a licensed electrician.
-4. Fabrication of cabinets, shelves and doors.
-5. Installation and scribing.
-6. Trim, filling, sanding and paint or finish.
-
-Built-ins are cabinetry, so they share many decisions with kitchen cabinets. If you are thinking about the kitchen at the same time, our post on whether to [reface or replace kitchen cabinets](/blog/kitchen-cabinets-reface-or-replace/) covers related choices. And because design and construction overlap so closely on built-ins, it helps when one team handles both, as described in our guide to [design-build vs hiring an architect and contractor](/blog/design-build-vs-architect-and-contractor/).
+Built-ins are cabinetry, so a lot of the decisions overlap with kitchen cabinets. If the kitchen's on your list too, our post on whether to [reface or replace kitchen cabinets](/blog/kitchen-cabinets-reface-or-replace/) covers the same ground. And because the drawing and the building are so tangled together on this kind of work, it goes smoother when one team does both; see [design-build vs hiring an architect and contractor](/blog/design-build-vs-architect-and-contractor/).
 
 ## Frequently asked questions
 
 ### Do built-ins add value to a home?
 
-Well-designed built-ins add usable storage and architectural character, which many buyers appreciate. Their value depends on how well they fit the house and the room. Built-ins that match the home's style tend to be seen as an asset.
+They add storage and character, which plenty of buyers like. How much they help depends on how well they fit the house. Built-ins that match the home's style come across as part of the house. A glossy modern unit in a Victorian parlor can come across as something the next owner has to rip out.
 
-### Can built-ins be installed in an older home with uneven walls?
+### Can built-ins go into an older home with uneven walls?
 
-Yes. Custom built-ins are scribed to follow the actual wall and floor surfaces, so they fit tightly even when walls are out of plumb. Trim can be matched to existing woodwork so the new pieces look original.
+Yes, and that's where they're most useful. They're scribed to the actual wall and floor, so they fit tight even when the walls are out of plumb, and the trim can match the existing woodwork.
 
 ### Should built-ins be painted or stained?
 
-It depends on the room. Painted built-ins match most trim and are easier to blend with existing work. Stained wood suits rooms that already have stained woodwork. The choice also affects which materials are used.
+Paint, in most rooms, because it matches existing trim easily. Go with stain when the room already has stained woodwork you want to match. Your pick also decides which materials we use.
 
-We design and build custom built-ins, office walls, window seats and mudroom storage throughout Saratoga County, with a written scope that lists each phase. See our [restoration and built-ins work](/restoration-and-built-ins/) for examples.
+Office walls, window seats, mudroom benches, bookcases around a fireplace: we design them and build them, and we fit them to whatever the walls are doing. More of that work is on our [restoration and built-ins page](/restoration-and-built-ins/).

@@ -8,7 +8,13 @@ DIST, POSTS = ROOT / "dist", ROOT / "posts"
 BANNED = [r"\$\d", "—", r"\blicensed\b(?! electrician| plumber| professional| contractor| electricians| plumbers| trade| architect| abatement| heating| HVAC| locally)",
           r"\bwe are insured\b", r"\bfully insured\b", r"\bwarrant(?!y information)", r"(?<!not )\bguarantee", r"\bCAPS\b", r"years of experience",
           r"\bstunning\b", r"\bnestled\b", r"\belevate\b", r"\bseamless", r"dream (kitchen|bath|home)", r"peace of mind",
-          r"good bones", r"straight answers", r"transform your", r"\bNick\b", r"testimonial", r"award"]
+          r"good bones", r"straight answers", r"transform your", r"\bNick\b", r"testimonial", r"award",
+          # AI tells (WRITING-BRIEF.md, Voice)
+          r"whether you(?:'|’)re", r"when it comes to", r"\bthe key is\b", r"the good news is", r"worth noting",
+          r"\bcrucial\b", r"\bensure", r"\bultimately\b", r"in conclusion", r"the bottom line", r"attention to detail",
+          r"quality craftsmanship", r"every step of the way", r"\btailored\b", r"\btimeless\b", r"a testament to",
+          r"rich history", r"\bboasts?\b", r"in today(?:'|’)s", r"plays? an? (?:key|crucial|vital|important) role",
+          r"\bdelve", r"\bnavigat(?:e|ing) the"]
 problems = 0
 
 

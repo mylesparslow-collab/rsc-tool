@@ -7,75 +7,66 @@ summary: How wide a door needs to be, what it takes to widen an opening, and sim
 flags:
 ---
 
-Widening a doorway for a wheelchair or walker usually means replacing a 28- or 30-inch door with a 36-inch door, which gives roughly 32 to 34 inches of clear opening once the door stands open. That 32-inch clear width is the common accessibility minimum. The work involves removing the old frame, cutting the wall wider, installing a new header if the wall is load-bearing, and finishing the trim and flooring to match.
+To widen a doorway for a wheelchair or walker, the usual move is to swap a 28- or 30-inch door for a 36-inch one, which leaves roughly 32 to 34 inches of clear opening with the door standing open. Thirty-two inches clear is the common accessibility minimum. Getting there means pulling the old frame, cutting the wall wider, putting in a new header if the wall is load-bearing, and finishing the trim and floor so it looks like it was always that way.
 
-## How wide is wide enough
+## Measure the clear opening, not the door
 
-The number that matters is the **clear opening**: the distance from the face of the open door to the stop on the other side of the frame. Door sizes are named by the slab width, so a "32-inch door" gives only about 28 to 29 inches clear once the thickness of the door and the hinge side are counted.
+The number you care about is the clear opening. That's the distance from the face of the open door to the stop on the far side of the frame. Doors are sold by the width of the slab, so a "32-inch door" only gives you about 28 to 29 inches clear once you take away the door's thickness and the hinge side.
 
-- A typical walker is 24 to 26 inches wide and needs some room for hands on the frame.
-- A standard wheelchair is about 25 to 27 inches wide; hands on the wheels add more.
-- Accessibility guidance calls for a minimum of 32 inches clear. A 36-inch door is the usual way to get there with some margin.
+Now compare that to what has to fit through it. A typical walker is 24 to 26 inches wide, and the person pushing it needs a little room for their hands on the frame. A standard wheelchair runs about 25 to 27 inches, and hands on the wheels add more. Accessibility guidance calls for at least 32 inches clear, and a 36-inch door is the usual way to get it with some room to spare.
 
-Many homes in the Capital Region have 28-inch bathroom doors and 24-inch closet doors, and older houses in Saratoga Springs, Ballston Spa and Glens Falls sometimes have narrower ones still. The bathroom and bedroom doors are usually the first to need attention.
+Plenty of Capital Region houses have 28-inch bathroom doors and 24-inch closet doors. Older houses in Saratoga Springs, Ballston Spa and Glens Falls sometimes go narrower than that. The bathroom and the bedroom are nearly always the first two doors that need work.
 
-## Space around the door matters too
+## The floor around the door
 
-A wide door in a tight hallway still doesn't work. A person in a wheelchair needs room to approach the door, pull it open and get past it. Guidance suggests clear floor space on the pull side beside the latch, often 18 inches or more, so the person can reach the handle without the door hitting their footrests. A hallway of 36 inches is the usual minimum to travel in a wheelchair; turning into a doorway from a narrow hall takes more.
+A wide door at the end of a tight hall still doesn't work. Someone in a wheelchair has to roll up to the door, pull it open and get past it. Guidance calls for clear floor space on the pull side next to the latch, often 18 inches or more, so they can reach the handle without the door banging their footrests. Thirty-six inches of hallway is the usual minimum to travel in a chair, and turning into a doorway off a narrow hall takes more than that.
 
-Inside rooms, a 60-inch circle of open floor lets a wheelchair turn around. In a bathroom that often decides more than the door width does. Our guide to a [tub to walk-in shower conversion](/blog/tub-to-walk-in-shower-conversion/) covers bathroom floor space.
+Inside a room, a 60-inch circle of open floor lets a wheelchair turn around. In a bathroom, that circle often decides the layout more than the door does. Our post on a [tub to walk-in shower conversion](/blog/tub-to-walk-in-shower-conversion/) gets into bathroom floor space.
 
-## Options before cutting walls
+## Try the cheap fixes first
 
-### Offset (swing-clear) hinges
+Before anyone cuts a wall, look at offset hinges, sometimes called swing-clear hinges. They swing the door completely out of the opening when it's open, which adds about 1 1/2 to 2 inches of clear width. You swap the hinges and that's it. For a walker, that's sometimes all a tight door needed.
 
-Offset hinges swing the door fully out of the opening, adding about 1 1/2 to 2 inches of clear width with no wall work. For a walker that is sometimes enough to turn a tight door into a usable one. They are a fast, low-disruption first step.
+A closet door, or a door between two rooms that don't need privacy, can just come off. You gain the whole opening. Taking off the door stop picks up a little more.
 
-### Remove the door or the stops
+While you're at it, change round knobs to levers. It doesn't add an inch, but a lever is far easier to work with a weak grip or one hand on a walker.
 
-Removing a closet door or a door between two rooms that don't need privacy gains the full opening. Removing the door stop adds a little more width.
+## Cutting the opening wider
 
-### Lever handles
+When the cheap fixes don't get enough width, the opening has to get bigger, and the first job is finding out what's in the wall. Is it load-bearing? Are there wires, pipes or ductwork in that stud bay? Bathroom walls often hide a vent stack or a drain line. In a house built before 1978, test the paint for lead before cutting. Plaster walls take some care to cut cleanly without cracking the rest of the wall.
 
-Not a width change, but levers in place of round knobs make any door easier to open with a weak grip or while holding a walker.
+Then the trim, the door and the frame come out, and the opening gets cut wider. In a load-bearing wall, a properly sized header carries the load across the wider opening, with temporary support holding things up while the work is going on. That's structural work and may need a permit, so check with your town or city building department. A light switch right beside the door usually has to move over.
 
-## Widening the opening
+The new frame goes in, the door gets hung and the hardware fitted. Last comes patching, trim and paint, plus filling the floor where the old frame used to sit.
 
-When more width is needed, the opening is enlarged:
+Matching the trim is a real part of the job, especially in older houses with tall casings and plinth blocks at the bottom. We talk about keeping original trim where we can in our [old house restoration guide](/blog/restoring-old-house-saratoga-springs/).
 
-1. **Check the wall.** Is it load-bearing? Are there wires, plumbing or ductwork in the stud bay? Bathroom walls often hide a vent stack or drain. In pre-1978 homes, test paint for lead before cutting, and plaster walls take care to cut cleanly.
-2. **Remove the trim, door and frame.**
-3. **Cut the opening wider.** In a load-bearing wall, a properly sized header carries the load over the wider opening, with temporary support while the work is done. That is structural work and may need a permit; check with your town or city building department.
-4. **Relocate anything in the way**, such as a light switch beside the door.
-5. **Install a new frame and door**, rehang, and fit the hardware.
-6. **Patch, trim and paint**, and fill the floor where the old frame stood.
+## When a door can't swing
 
-Matching trim is part of the job, especially in older homes with tall casings and plinth blocks. In our [old house restoration guide](/blog/restoring-old-house-saratoga-springs/) we talk about keeping original trim where we can.
+If there's no room for a door to swing, a pocket door that slides into the wall saves the floor space and can be made very wide. It needs a wall cavity with no pipes or wires in it, and the hardware has to slide easily. Use a big D-shaped pull, not a little recessed cup, because a hand that doesn't grip well can't get into a cup.
 
-## Pocket and barn doors
-
-Where there is no room for a door to swing, a **pocket door** that slides into the wall saves floor space and can be very wide. It needs a wall cavity free of pipes and wires, and the hardware should pull easily. A large D-shaped pull is easier to grab than a recessed cup. **Barn-style sliding doors** mount on the wall surface and need no cavity, though they give less privacy and sound control.
+Barn-style sliding doors hang on the face of the wall, so they don't need a cavity. They don't close as tight, though, so you give up some privacy and sound control.
 
 ## Thresholds and floors
 
-A wider door with a tall threshold still catches wheels and walker feet. Accessibility guidance keeps thresholds to 1/2 inch or less, beveled. Where flooring changes height between rooms, a beveled transition strip helps. For outside doors, see [wheelchair ramp vs steps](/blog/ramps-and-safer-entry-steps/), which covers the entry itself.
+A wide door with a tall threshold still catches wheels and walker feet. Accessibility guidance keeps thresholds to 1/2 inch or less, beveled. Where the flooring changes height from one room to the next, a beveled transition strip smooths it out. Outside doors are their own problem, and [wheelchair ramp vs steps](/blog/ramps-and-safer-entry-steps/) covers the entry.
 
 ## What drives the cost
 
-We don't publish prices. The biggest factors are whether the wall is load-bearing, what is inside the wall, the wall finish (drywall or plaster), matching existing trim and flooring, and how many doors are involved. Doing several doors at once is more efficient than one at a time. If you are planning other changes, our guide to a [first floor bedroom and bathroom](/blog/first-floor-bedroom-conversion/) covers bigger layout decisions.
+We don't publish prices. The biggest factors are whether the wall is load-bearing and what's inside it, then whether it's drywall or plaster, how hard the trim and flooring are to match, and how many doors you're doing. Several doors at once goes more efficiently than one at a time. If bigger changes are on the table, see our guide to a [first floor bedroom and bathroom](/blog/first-floor-bedroom-conversion/).
 
 ## Frequently asked questions
 
 ### Can every interior door be widened?
 
-Most can. Doors next to a corner, in walls carrying plumbing stacks, or in tight hallways can be harder and may call for a pocket or sliding door instead. An on-site look answers it.
+Most can. A door right next to a corner, in a wall carrying a plumbing stack, or in a tight hallway is harder, and a pocket or sliding door may make more sense there. Someone looking at it in person can tell you.
 
 ### Is 32 inches wide enough for a wheelchair?
 
-Thirty-two inches of clear opening is the accepted minimum and works for most standard chairs with a straight approach. A 36-inch door gives more margin, and wider power chairs or tight turns may need more.
+Thirty-two inches of clear opening is the accepted minimum, and it works for most standard chairs coming straight at the door. A 36-inch door gives more margin. Wider power chairs, or a sharp turn into the doorway, may need more.
 
 ### Do offset hinges really help?
 
-Yes, for small gains. They add about 1 1/2 to 2 inches of clear width by moving the open door out of the frame. If the opening needs 4 inches more, they won't be enough on their own.
+For small gains, yes. They add about 1 1/2 to 2 inches of clear width by moving the open door out of the frame. If the opening needs another 4 inches, they won't do it alone.
 
-Safe at Home, our aging-in-place and home safety service for the Capital Region, is in preparation and will include doorway changes alongside rails, grab bars and accessible bathrooms. Join the waiting list on the [Safe at Home page](/safe-at-home/).
+Safe at Home is the aging-in-place and home safety service we're putting together for the Capital Region. It's not open yet, and when it is, doorway changes will sit alongside rails, grab bars and accessible bathrooms. You can join the waiting list on the [Safe at Home page](/safe-at-home/).

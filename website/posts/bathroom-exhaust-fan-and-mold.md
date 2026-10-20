@@ -7,77 +7,76 @@ summary: Why bathrooms grow mold, how to tell if your exhaust fan is actually wo
 flags:
 ---
 
-The best bathroom fan mold prevention is a fan sized for the room, ducted all the way outdoors, and left running for about 20 minutes after every shower. Most bathroom mold grows because moist air lingers on cool surfaces long enough for water to condense on ceilings, grout and caulk. If your mirror stays fogged long after a shower, paint is peeling on the ceiling, or black spots keep returning in the same corners, the fan is either too small, poorly vented or not running long enough.
+To keep mold out of a bathroom, you need a fan that's big enough for the room, a duct that goes all the way outside, and about 20 minutes of run time after every shower. Mold grows when wet air hangs around long enough to condense on the ceiling, the grout and the caulk. If the mirror stays fogged long after you're out, the ceiling paint is peeling, or black spots keep coming back in the same corner, the fan is too small, vented badly, or shut off too soon.
 
-## Why bathrooms grow mold
+## Where the water goes
 
-A hot shower puts a lot of water vapor into a small room. When that moist air touches anything cooler, such as the mirror, an outside wall, the ceiling under a cold attic or a window, it condenses into droplets. Mold needs moisture, a surface to grow on and time. A bathroom that dries out within half an hour rarely has a mold problem. One that stays damp for hours every day almost always does.
+A hot shower dumps a lot of water vapor into a small room. When that air hits something cooler, like the mirror, an outside wall, the window, or the ceiling under a cold attic, it turns back into droplets. Give mold moisture, a surface and time, and it grows. A bathroom that dries out within half an hour almost never has a mold problem. One that stays damp for hours a day almost always does.
 
-Winter makes this worse in the Capital Region. Exterior walls and ceilings below the attic are colder, so condensation forms faster and in more places. Windows that might be cracked open in summer stay shut. That is why many homeowners first notice mold on the ceiling or around the window in January and February.
+Capital Region winters make it worse. Outside walls and attic ceilings are cold, so condensation forms faster and in more places, and the window that sat cracked open all summer stays shut.
 
-## Signs your fan is not doing its job
+## Is your fan actually working?
 
-- The mirror is still fogged 10 or 15 minutes after the shower ends.
-- Paint is peeling or bubbling on the ceiling, especially above the shower.
-- Mold or mildew keeps returning on the ceiling, in corners, or on caulk and grout.
-- The fan is loud but moves little air. Hold a single square of toilet paper up to the grille while the fan runs; if it is not pulled firmly against the grille, airflow is weak.
-- You never see or feel air leaving the outside vent hood when the fan is on.
-- Water drips from the fan grille in cold weather. That often means warm, moist air is condensing inside a duct running through a cold attic.
+If the mirror is still fogged 10 or 15 minutes after the water's off, the fan isn't keeping up.
 
-## Sizing a bathroom fan
+Then try the toilet paper test. Turn the fan on and hold a single square of toilet paper up to the grille. A working fan pulls it flat and holds it there. If it flutters or drops, the airflow is weak, no matter how loud the fan sounds.
 
-Fans are rated by airflow in cubic feet per minute (CFM) and by noise in sones. The residential code sets a minimum airflow for bathroom exhaust, and the Home Ventilating Institute offers a simple rule of thumb for sizing:
+Go outside and find where the duct ends. With the fan running you should see the damper flap open or feel air coming out. If you can't find a vent cap at all, the duct may well stop in the attic.
 
-- **For bathrooms up to about 100 square feet:** about 1 CFM per square foot of floor area, with a 50 CFM minimum. A bathroom 8 feet by 10 feet calls for about 80 CFM.
-- **For larger bathrooms:** size by fixture, roughly 50 CFM each for a toilet, shower and tub, and 100 CFM for a jetted tub.
-- **For noise:** a fan rated around 1 sone or less is quiet. Quiet fans get used. Loud ones get switched off early.
+Look at the ceiling over the shower for peeling or bubbled paint, and at the caulk and grout for mildew that comes back a week after you clean it. And if water drips out of the fan grille in cold weather, warm wet air is condensing inside a duct that runs through a cold attic and draining back down.
 
-A fan's rated CFM assumes a short, smooth duct. Long runs, sharp turns and flexible duct that sags or kinks all reduce actual airflow. A fan that looks big enough on the box can move far less air once installed.
+## How big a fan you need
 
-## Venting it outdoors, the right way
+Fans are rated for airflow in cubic feet per minute (CFM) and for noise in sones. The residential code sets a minimum airflow for bathroom exhaust, and the Home Ventilating Institute gives a simple rule for sizing.
 
-The duct is where most problems hide. A good installation follows a few principles:
+For a bathroom up to about 100 square feet, figure about 1 CFM per square foot of floor, with 50 CFM as the floor. An 8-by-10 bathroom calls for about 80 CFM. For a bigger room, size by fixture instead: roughly 50 CFM each for the toilet, the shower and the tub, and 100 CFM for a jetted tub.
 
-- **The duct ends outdoors.** It should terminate at a roof or wall cap with a damper, not in the attic, not in a soffit where air can be drawn right back in, and not just pointed at a roof vent. Moist air dumped into an attic can lead to frost on the roof sheathing in winter, damp insulation and mold on the attic side of the ceiling.
-- **The duct is insulated in cold spaces.** In an unheated attic, an uninsulated duct gets cold enough for moisture to condense inside it and run back down into the fan. Insulated duct prevents that.
-- **The run is short and smooth.** Rigid or semi-rigid duct with as few bends as possible moves more air. Flexible duct should be pulled taut and supported so it does not sag.
-- **The duct is the right size.** Match or exceed the fan's outlet size rather than stepping down.
+Pay attention to the sone rating too. Around 1 sone or less is quiet. Quiet fans get left on. Loud ones get switched off the minute someone leaves the room.
 
-Moisture escaping into a cold attic is also connected to roof problems. Warm, damp air in the attic contributes to ice dams and frost damage, which we cover in our post on [ice dam damage repair](/blog/ice-dams-and-winter-damage/).
+The CFM on the box assumes a short, smooth duct. Long runs, tight elbows, and flex duct that sags between the trusses all cut the real airflow, sometimes by a lot.
 
-## Run time and controls
+## The duct is where it goes wrong
 
-Even a well-sized fan needs time. Run it during the shower and for about 20 minutes afterward. Most people turn the fan off when they leave the room, which is too soon. Two simple control upgrades help:
+Most bad installs are bad in the duct, not the fan.
 
-- **A timer switch** lets you set the fan to run for a fixed time and walk away.
-- **A humidity-sensing switch or fan** turns on automatically when humidity rises and runs until it falls.
+It has to end outdoors, at a roof or wall cap with a damper. Not in the attic. Not blowing at a soffit, where the soffit vents just pull it back in. Wet air dumped in an attic turns to frost on the underside of the roof sheathing in winter, soaks the insulation, and grows mold on the attic side of your ceiling.
 
-Fans also need replacement air to work. If the bathroom door seals tightly at the bottom, the fan may struggle to pull air through the room. A small gap under the door usually solves it.
+In an unheated attic the duct needs insulation. A bare duct gets cold enough that moisture condenses inside it and runs back down into the fan housing. That's the dripping grille.
 
-Replacing a fan in the same location is often straightforward. Adding a new fan, a new circuit or a fan over a tub or shower involves electrical work and specific manufacturer requirements for wet locations. That part should be done by a licensed electrician.
+Keep the run short and smooth. Rigid or semi-rigid duct with as few bends as you can manage moves the most air. If it has to be flex, pull it tight and support it so it doesn't sag into a belly that holds water. Match the duct to the fan's outlet size or go bigger, never smaller.
 
-## Newer homes in Wilton and nearby towns
+Damp air in the attic also feeds ice dams and frost damage on the roof. We get into that in [ice dam damage repair](/blog/ice-dams-and-winter-damage/).
 
-Many houses in Wilton's newer neighborhoods, and in subdivisions across Saratoga County, came with builder-grade bath fans that are noisy and modestly sized, sometimes ducted to a soffit or with long runs of flexible duct through the attic. They meet the minimum but often underperform in a busy family bathroom. Upgrading to a quieter, properly sized fan with a short insulated duct to an exterior cap is one of the most effective small improvements in a Wilton bathroom, and it extends the life of the paint, caulk and grout around it.
+## Run it long enough
 
-## Cleaning up mold that is already there
+Turn it on when the shower starts and leave it for about 20 minutes after. Most people flip it off on their way out, which is too soon. A timer switch fixes that: set it and walk away. A humidity-sensing switch, or a fan with a humidity sensor built in, is better still, since it comes on by itself and runs until the room dries.
 
-Small areas of surface mildew on tile, caulk and painted ceilings can usually be cleaned with a household bathroom cleaner. Mold that has grown under caulk means the caulk needs to be replaced; see [how often to recaulk a tub or shower](/blog/how-often-to-recaulk-a-shower/). Grout that stays damp and dark may need sealing, covered in our guide on [how often to seal grout](/blog/how-often-to-seal-grout/).
+The fan also needs air coming in to replace what it pushes out. If the bathroom door seals tight against the floor, the fan struggles. A small gap under the door takes care of it.
 
-Larger areas are different. EPA guidance suggests professional help for mold covering more than about 10 square feet, or for mold caused by hidden water such as a leak behind the wall. If mold keeps returning in the same place despite a working fan, look for a leak; our post on the [signs of a leaking shower behind tile](/blog/signs-of-a-leaking-shower-behind-tile/) explains what to check.
+Swapping an old fan for a new one in the same hole is often simple. Adding a fan where there wasn't one, running a new circuit, or putting a fan over a tub or shower means electrical work and the maker's rules for wet locations. Have a licensed electrician do that part.
+
+## Builder-grade fans in Wilton
+
+A lot of houses in Wilton's newer neighborhoods, and in subdivisions all over Saratoga County, came with the builder's cheapest bath fan. They're noisy, on the small side, and sometimes ducted to a soffit or through 15 feet of flex in the attic. They meet the minimum and fall behind in a busy family bathroom. Putting in a quiet fan sized for the room, with a short insulated duct to a real exterior cap, is one of the cheapest fixes that actually helps in a Wilton bathroom. The paint, the caulk and the grout all last longer for it.
+
+## Cleaning up what's already there
+
+Small patches of mildew on tile, caulk and a painted ceiling can generally be cleaned with a household bathroom cleaner. If the mold is under the caulk, the caulk has to come out and be replaced; see [how often to recaulk a tub or shower](/blog/how-often-to-recaulk-a-shower/). Grout that stays dark and damp may need sealing, covered in [how often to seal grout](/blog/how-often-to-seal-grout/).
+
+Bigger areas are a different job. EPA guidance suggests professional help for mold covering more than about 10 square feet, or mold caused by hidden water like a leak inside the wall. If mold keeps coming back in the same spot even with a fan that works, suspect a leak, and read the [signs of a leaking shower behind tile](/blog/signs-of-a-leaking-shower-behind-tile/).
 
 ## Frequently asked questions
 
 ### How long should a bathroom fan run after a shower?
 
-About 20 minutes is a common recommendation. A timer or humidity-sensing switch makes that easy, since few people wait that long before turning off a manual switch.
+About 20 minutes is the common advice. A timer or humidity switch makes it happen, since hardly anyone waits that long to flip a manual switch.
 
 ### Can a bathroom fan vent into the attic?
 
-It should not. Exhaust that ends in the attic leaves warm, moist air where it can condense on cold roof sheathing and insulation, leading to mold and rot. The duct should run to a roof or wall cap with a damper.
+No. It leaves warm, wet air where it condenses on cold roof sheathing and insulation, and that leads to mold and rot. Run the duct to a roof or wall cap with a damper.
 
 ### Why does my bathroom fan drip water in winter?
 
-Usually because moist air is condensing inside a duct that passes through a cold attic. The fix is typically insulated duct, a shorter run, a proper exterior cap, and making sure the fan runs long enough to clear the duct after each shower.
+Most often, moist air is condensing inside a duct that passes through a cold attic. The fix is generally insulated duct, a shorter run, a proper exterior cap, and running the fan long enough to clear the duct after each shower.
 
-We remodel bathrooms in [Wilton](/wilton/) and across Saratoga County, and a remodel is the right time to fix ventilation along with the tile, fixtures and waterproofing. You can see our work on the [bathrooms page](/bathrooms/).
+When we remodel a bathroom in [Wilton](/wilton/) or elsewhere in Saratoga County, the fan and duct get done along with the tile, fixtures and waterproofing, since the ceiling's already open. Our [bathrooms page](/bathrooms/) has some of the finished rooms.

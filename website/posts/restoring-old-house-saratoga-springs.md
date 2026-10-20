@@ -7,69 +7,70 @@ summary: How to set priorities when restoring a 19th or early 20th century Sarat
 flags:
 ---
 
-Restoring an old house in Saratoga Springs goes best when the work follows a clear order. Stop water first, then fix structure, then restore the parts you see every day. A beautiful staircase or a refinished ceiling will not last in a house with a leaking roof or a rotting sill. Starting with an honest look at the whole house, and then working through it in phases, protects both the building and your budget.
+Restoring an old house in Saratoga Springs goes best in a set order. Stop the water first, then fix the structure, then restore the parts you look at every day. A refinished staircase or a restored ceiling won't last long in a house with a leaking roof or a rotting sill. Walk the whole house honestly before you start, then work through it in phases, and you'll spend the money once.
 
-## The houses we are talking about
+## What these houses are made of
 
-Saratoga Springs has an unusually large stock of 19th and early 20th century homes. Greek Revival, Italianate, Second Empire, Queen Anne and Colonial Revival houses line the older streets near downtown, along with plainer workers' houses and two-family homes from the same era. Many have tall ceilings, plaster walls, wide trim, hardwood or softwood floors, wood windows and generous porches.
+Saratoga Springs has a lot of 19th and early 20th century houses. The older streets near downtown are lined with Greek Revival, Italianate, Second Empire, Queen Anne and Colonial Revival houses, mixed in with plainer workers' houses and two-families from the same years. Many have tall ceilings, plaster walls, wide trim, hardwood or softwood floors, wood windows and big porches.
 
-These houses were built with methods and materials that behave differently from modern construction. Old-growth lumber is dense and often more rot-resistant than wood available today. Lime plaster flexes and breathes in ways drywall does not. Balloon framing leaves open cavities from basement to attic. Understanding how the original house was meant to work is the first step in restoring it without causing new problems.
+They were built with materials that behave differently from what goes into a house now. Old-growth lumber is dense and often holds up to rot better than anything at the lumberyard today. Lime plaster flexes and lets moisture pass through in ways drywall doesn't. Balloon framing leaves open cavities that run from the basement to the attic, which is handy for fishing wire and lets a fire climb fast. Figure out how the house was meant to work before you change it, or the repair can cause the next problem.
 
-## Step one: keep water out
+## First, keep the water out
 
-Water is the main cause of damage in old houses, and most restoration plans should begin with the building envelope.
+Water does more damage to old houses than anything else, so nearly every restoration plan should start with the outside shell.
 
-- **Roof and flashing.** Check chimneys, valleys and the joints where porch roofs meet the main wall.
-- **Gutters and downspouts.** Water should be carried well away from the foundation. Overflowing gutters are a common cause of rot at the soffit and fascia.
-- **Grading.** Soil and walks should slope away from the house.
-- **Paint on exterior wood.** Paint is what protects trim, siding and sills from water. Our guide to [how often to paint exterior trim](/blog/how-often-to-paint-exterior-trim/) covers the typical cycle.
-- **Window sills.** Sills take more weather than any other piece of trim. See our post on [window sill rot repair](/blog/window-sill-rot-repair/) for how to tell a repairable sill from one that needs replacement.
+Go up and look at the roof and flashing, especially around chimneys, in the valleys, and where a porch roof meets the main wall. Check that gutters and downspouts carry water well away from the foundation. Gutters that overflow rot out the soffit and fascia behind them. Make sure the soil and the walks slope away from the house.
 
-Ice dams deserve special mention in older homes, since many have little attic insulation and a lot of heat escaping into the roof. Fixing the source of ice damming often belongs early in the plan.
+Paint is what keeps water out of trim, siding and sills, so peeling paint counts as a water problem. Our guide to [how often to paint exterior trim](/blog/how-often-to-paint-exterior-trim/) covers the usual cycle. Window sills take more weather than any other piece of trim on the house, and our post on [window sill rot repair](/blog/window-sill-rot-repair/) shows how to tell a sill you can fix from one that has to go.
 
-## Step two: structure and safety
+Ice dams are a big one in old houses. Many have little insulation in the attic and a lot of heat pouring into the roof boards, and that heat melts the snow that then freezes again at the eaves. Fixing that heat loss usually belongs early in the plan.
 
-Once water is under control, look at what holds the house up and what could hurt someone. Common items in older Saratoga Springs houses include sagging floors over undersized or notched joists, settled porch posts, rotted sills at the base of exterior walls, and stairs with loose or missing handrails. Structural repairs may call for an engineer's input, and anything involving the foundation or major framing should be evaluated by a qualified professional before work starts.
+## Second, structure and safety
 
-Old wiring, including knob-and-tube, and outdated plumbing are also part of this stage. Electrical evaluation and repair is work for a licensed electrician, and it is better done before walls and ceilings are restored than after.
+Once the water's handled, look at what holds the house up and what could hurt somebody. In older Saratoga Springs houses we see floors sagging over joists that were undersized or notched too deep for old plumbing, porch posts that have settled, sills rotted out at the bottom of the exterior walls, and stairs with loose or missing handrails. Structural repairs may need an engineer, and anything involving the foundation or major framing should be looked at by a qualified professional before work starts.
 
-## Step three: the parts you see
+Old wiring, knob-and-tube included, and worn-out plumbing belong in this stage too. Electrical evaluation and repair is work for a licensed electrician. Get it done before the walls and ceilings are restored, not after you've just finished the plaster.
 
-Interior and exterior details give an old house its character, and many of them can be repaired rather than replaced.
+## Third, the parts you see
 
-- **Staircases.** Loose balusters, a wobbly newel and worn treads can usually be fixed while keeping original parts. We restored one staircase while keeping its turned newel. Our post on [staircase restoration: repair or replace](/blog/staircase-restoration-repair-or-replace/) covers the decision.
-- **Porches.** Turned posts, scroll-cut balusters and brackets can be copied from surviving pieces when some are too far gone to save. See our guide to [porch railing repair](/blog/porch-railing-inspection/).
-- **Trim and doors.** Original casings, baseboards and paneled doors are often worth stripping, repairing and repainting rather than replacing with stock profiles that do not match.
-- **Ceilings.** Cracked plaster ceilings can sometimes be repaired, and in other cases covered. We covered one badly cracked ceiling with tin-look tiles, which suited the period of the house without tearing out the plaster.
+The details are why people buy these houses, and a lot of them can be repaired.
 
-A good rule is to repair what can be repaired, replace only what has failed, and match new pieces to the originals in profile and material.
+Start with the staircase. Loose balusters, a wobbly newel and worn treads can usually be fixed while keeping the original parts. The staircase on our site is one we restored with its turned newel kept in place. Our post on [staircase restoration: repair or replace](/blog/staircase-restoration-repair-or-replace/) goes through the decision.
+
+Porches take a beating, but turned posts, scroll-cut balusters and brackets can be copied from the surviving pieces when some are too far gone. See our guide to [porch railing repair](/blog/porch-railing-inspection/).
+
+Original casings, baseboards and paneled doors are often better stripped, repaired and repainted than swapped for stock trim that doesn't match anything else in the house.
+
+Cracked plaster ceilings can sometimes be repaired, and sometimes it makes more sense to cover them. One badly cracked ceiling on our site got tin-look tiles over the old plaster, which suited the period of the house and kept the plaster out of the dumpster.
+
+Our rule is to repair what can be repaired, replace only what has failed, and match new pieces to the old ones in profile and material.
 
 ## Lead paint and asbestos
 
-Any house built before 1978 may contain lead paint, and in a 19th century home it is very likely somewhere under the newer layers. Sanding, scraping, cutting or demolishing painted surfaces can release lead dust, which is especially dangerous to young children and pregnant women. Have painted surfaces tested before disturbing them, and use contractors who follow lead-safe work practices.
+Any house built before 1978 may have lead paint, and in a 19th century house it's almost certainly in there somewhere under the newer coats. Sanding, scraping, cutting or tearing out painted surfaces can put lead dust in the air, and that's especially dangerous for young children and pregnant women. Have painted surfaces tested before anyone disturbs them, and hire people who follow lead-safe work practices.
 
-Older popcorn ceilings, some plaster texture coatings, pipe and boiler insulation, and certain flooring materials can contain asbestos. Have suspect materials tested by a qualified lab before any work disturbs them. If asbestos is found, removal is work for a licensed abatement contractor.
+Older popcorn ceilings, some textured plaster coatings, pipe and boiler insulation, and some flooring can contain asbestos. Have anything suspicious tested by a qualified lab before work touches it. If it comes back positive, removal is a job for a licensed contractor that does asbestos abatement, not for you and not for us.
 
 ## Historic districts and approvals
 
-Much of the older housing in Saratoga Springs sits in one of the city's historic districts. In those areas, exterior changes such as new windows, porch alterations, siding, and some roofing work can need Design Review Commission approval. Interior work can need a building permit as well. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) explains how to find out what applies to your project. Ask early, since approval timing affects the whole schedule.
+A lot of the older housing in Saratoga Springs is in one of the city's historic districts. There, exterior changes like new windows, porch alterations, siding, and some roofing work can need Design Review Commission approval. Interior work may need a building permit as well. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) explains how to find out what applies to your project. Ask early. Approval timing can hold up the whole schedule.
 
-## Planning the work in phases
+## One phase at a time
 
-Very few homeowners restore an entire old house at once. Breaking the work into phases, ordered by water, structure and then finish, makes the project manageable and keeps the most urgent repairs at the front. A written scope that lists each phase, with its own price and payment, gives you a clear picture of what comes next and lets you pause between phases if needed. Old houses also tend to reveal surprises once walls or floors are opened, so agreeing in writing on any change before the work continues is especially important.
+Hardly anyone restores a whole old house at once. Split the work into phases in that same order, water then structure then finish, and the most urgent repairs land at the front. A written scope that lists each phase with its own price and payment shows you what's coming and lets you stop between phases if you need to. Old houses always hide something behind the plaster or under the floor, so any change gets agreed in writing before the work keeps going.
 
 ## Frequently asked questions
 
 ### Should I replace the original windows in an old house?
 
-Not automatically. Many original wood windows can be repaired, reglazed and fitted with storm windows to improve comfort. Where sashes or frames have failed, replacement may be the better choice. In a Saratoga Springs historic district, window replacement visible from the street may need Design Review Commission approval.
+Not by default. Many original wood windows can be repaired, reglazed and fitted with storm windows, and they get a lot more comfortable that way. Where the sashes or frames have failed, replacing them may be the better call. In a Saratoga Springs historic district, replacement windows visible from the street may need Design Review Commission approval.
 
 ### What should I fix first in an old house?
 
-Start with anything letting water in, such as roof leaks, failing gutters, poor grading and peeling exterior paint. Next address structure and safety, including floors, porch supports, stairs and wiring. Cosmetic and finish work comes last, so it is not damaged by problems that were not fixed.
+Anything letting water in: roof leaks, failing gutters, bad grading and peeling exterior paint. Then structure and safety, meaning floors, porch supports, stairs and wiring. Finish work goes last so it doesn't get ruined by a problem nobody fixed.
 
 ### Is it safe to sand old paint?
 
-Not until it has been tested. Homes built before 1978 may have lead paint, and sanding or scraping it creates hazardous dust. Test first, and if lead is present, use lead-safe work practices or hire a contractor trained in them.
+Not until it's been tested. Houses built before 1978 may have lead paint, and sanding or scraping it makes dangerous dust. Test first. If there's lead, use lead-safe work practices or hire a contractor trained in them.
 
-We restore stairs, porches, trim and ceilings in older homes, and our design and build work is planned by phase with a written scope. See our [restoration and built-ins work](/restoration-and-built-ins/) or read more about our projects in [Saratoga Springs](/saratoga-springs/).
+We restore stairs, porches, trim and ceilings in old houses, and we'd rather save an original part than replace it. Our [restoration and built-ins page](/restoration-and-built-ins/) shows some of that work, and our [Saratoga Springs page](/saratoga-springs/) covers the rest of what we do in the city.

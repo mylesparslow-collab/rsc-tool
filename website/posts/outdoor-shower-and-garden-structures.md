@@ -7,80 +7,73 @@ summary: Where to put an outdoor shower, how to handle water supply and drainage
 flags:
 ---
 
-An outdoor shower in Saratoga County works well when three things are planned from the start: where the water comes from, where it goes, and how the whole thing gets drained before the first hard freeze. Get those right and the rest is carpentry, privacy and finish choices. The same thinking applies to garden structures such as pergolas, arbors and footbridges, which have to stand up to frost, snow load and wet ground for many years.
+An outdoor shower in Saratoga County works if you plan two things before anything else: where the water drains, and how every drop of it gets out of the pipes before the first hard freeze. Where the water comes from is the easy part. Get the drainage and the winterizing right and the rest is carpentry, privacy and picking finishes. Pergolas, arbors and footbridges follow the same logic, since they have to stand up to frost, snow load and wet ground for a long time.
 
-## Why an outdoor shower makes sense here
+## Why bother with one inland
 
-Outdoor showers are associated with the beach, but they earn their place inland too. After a day at Saratoga Lake or on a trail, after yard work, or after a dog has found the mud, rinsing off outside keeps dirt and sand out of the house. A shower by the pool or garden can serve the same purpose. In summer, many owners simply like showering outdoors, and the season here is long enough to make the investment worthwhile.
+People think of outdoor showers as a beach thing, but they're just as handy here. Come back from Saratoga Lake or a muddy trail, finish a day of yard work, or catch the dog after it's found the one wet spot in the yard, and you rinse off outside instead of tracking it all through the house. And plenty of people simply like showering outdoors on a summer evening. The season here is long enough to get real use out of it.
 
-## Choosing the location
+## Where to put it
 
-A good spot is close to an existing water supply, offers some natural privacy, drains well and is reachable on a path you will actually use. The most common locations follow.
+Look for a spot close to existing plumbing, with some natural privacy, decent drainage, and on a path you'll actually walk. Against an outside wall near the basement, mudroom or kitchen plumbing keeps the supply lines short. Next to a deck or patio, it can share the level surface and the walkway. Out by the pool or garden, it stands on its own.
 
-- Against an exterior wall near a basement, mudroom or kitchen plumbing, which keeps supply lines short.
-- Next to a deck or patio, where it can share a level surface and a walkway.
-- Near a pool or garden as a freestanding enclosure.
+Morning sun helps it dry between uses and keeps mildew down. Under heavy trees it stays damp and fills up with leaves. Check the sightlines from the neighbors' windows, the street and your own house.
 
-Morning sun helps a shower dry out between uses and discourages mildew. A spot under heavy tree cover stays damp longer and collects leaves. Think about sightlines from neighbors' windows and the street, as well as from your own house.
+## Getting water in
 
-## Water supply and drainage
+The simplest version is cold water only, sometimes off a hose connection. Most people want it warm, which means running hot and cold lines from the house out to a mixing valve at the shower.
 
-### Supply
+Every piece of that plumbing has to be laid out so it can be drained before winter. That's the most important detail in this climate. A valve or pipe still holding water in January will split.
 
-The simplest setups run cold water only, sometimes from a hose connection. Most people want warm water, which means running hot and cold supply lines from the house to a mixing valve at the shower. Every piece of that plumbing has to be designed so it can be drained before winter. That is the single most important detail in our climate. A valve or pipe that holds water in January will split.
+Plumbing tied into the house supply is a job for a licensed plumber. Any light or outlet near the shower has to be done by a licensed electrician, with the protection the code requires for wet locations.
 
-Plumbing tied into the house supply is work for a licensed plumber, and any lighting or outlet near the shower must be done by a licensed electrician with the protection the code requires for wet locations.
+## Getting water out
 
-### Drainage
+A small rinse shower may drain into a gravel bed or a dry well sized for your soil. A shower that gets used a lot, or where people use soap and shampoo, raises the question of where gray water is allowed to go. The rules differ by town and depend on whether the property is on municipal sewer or a septic system. Check with your town or city building department before you settle on a drainage plan. Keep the drainage well away from your foundation, your well and any septic field.
 
-Where the water goes matters as much as where it comes from. A small rinse shower may drain into a gravel bed or dry well sized for the soil. A shower used more often, or one with soap and shampoo, raises questions about where gray water may be discharged. Rules differ by town and depend on whether the property has municipal sewer or a septic system. Check with your town or city building department before deciding on a drainage approach, and keep drainage well away from your foundation, your well and any septic field.
+The floor should let water through or shed it fast. Spaced decking boards over gravel work, as do stone pavers or a sloped concrete pad.
 
-The floor of the shower should let water through or shed it quickly. Spaced decking boards over gravel, stone pavers and sloped concrete are common choices.
+## Build it to be winterized
 
-## Winterizing
+Capital Region winters find any water left in a line. The showers that last are the ones that are easy to shut down, so design for it from the start. This is the one list here you'll want to keep:
 
-Capital Region winters will find any water left in the line. A shower that is easy to winterize is one that will last. Plan for these features at the design stage.
+- A shutoff valve inside the heated part of the house, ahead of the outdoor lines.
+- Supply lines that slope back to a drain point so they empty all the way.
+- A shower valve and head you can open or take off to let the water out.
+- A label, or a short written note, saying what to close and open each fall and spring.
 
-- A shutoff valve inside the heated house, ahead of the exterior supply lines.
-- Supply lines that slope back toward a drain point so they empty completely.
-- A shower valve and head that can be opened or removed to let water out.
-- Labels or a short written note on what to close and open each fall and spring.
+For a cold-water-only shower, a frost-free hose bib does a similar job. The valve seals off inside the wall where it's warm, but it only works if the hose is disconnected before the freeze. Our [fall home maintenance checklist](/blog/fall-home-checklist-saratoga/) includes shutting off and draining the outdoor water lines along with everything else to finish before the snow.
 
-A frost-free hose bib is a related idea for cold-water-only showers. These valves seal off water inside the wall where it is warm, but they only work if the hose is disconnected before the freeze. Our [fall home maintenance checklist](/blog/fall-home-checklist-saratoga/) includes shutting off and draining exterior water lines along with the other tasks to finish before the snow.
+## The enclosure
 
-## Building the enclosure
+Cedar is the classic wood for shower walls. It resists rot on its own and goes silver-gray if you leave it unfinished. Pressure-treated lumber is fine for posts and framing. Composite or PVC boards can go on the walls and floor if you want something you never have to stain. In a spot that's wet all the time, use stainless steel or hot-dip galvanized fasteners. Plain steel screws will rust and streak the wood.
 
-Cedar is the traditional material for outdoor shower walls. It resists rot naturally and weathers to a silver gray if left unfinished. Pressure-treated lumber works for posts and framing, and composite or PVC boards can be used for walls and floors where a low-maintenance surface is wanted. Stainless steel or hot-dipped galvanized fasteners hold up best in constantly wet conditions.
+Make it big enough to turn around in, and if you can, add a dry corner with a bench and a couple of hooks so your clothes and towel stay dry. Spaced slats on the walls let air move through and still block the view. A turned entry, where you walk in around a short wall, gives you privacy without a door to hang and maintain. And set the posts on proper footings. Without them the enclosure heaves and racks out of square after a few winters.
 
-Several design points are worth settling early.
+## Pergolas, arbors and bridges
 
-- **Size.** Enough room to turn around and a separate dry area with a bench and hooks makes the shower more usable.
-- **Walls.** Spaced slats let air move and help drying while still giving privacy.
-- **Door or no door.** A turned entry can provide privacy without a door to maintain.
-- **Footings.** Posts need proper footings so the enclosure does not heave and rack after a few winters.
+A freestanding garden structure takes the same beating as a deck, on a smaller scale. Frost heaves posts that aren't on proper footings. Snow piles up on a pergola top and loads the rafters. Wood sitting in wet soil rots unless it's rated for ground contact.
 
-## Garden structures: pergolas, arbors and bridges
+Set pergola and arbor posts on footings or metal post bases, not straight in the dirt, and lay out the top so snow slides off instead of sitting there. A pergola fastened to the house has to be connected to it properly and may need a permit.
 
-Freestanding garden structures face the same forces as a deck, just at a smaller scale. Frost can heave posts that are not set on proper footings. Snow piles up on pergola tops and can stress rafters. Constant contact with wet soil rots wood that is not rated for ground contact.
+A footbridge over a stream, a ditch or a low spot needs solid supports on each bank and enough clearance for spring runoff. Add handrails. A bridge deck is slick when it's wet. There's a garden bridge among the work on our site.
 
-- **Pergolas and arbors.** Posts should sit on footings or post bases rather than directly in the soil, and the top should be designed to shed snow rather than hold it. A pergola attached to the house has to be connected properly and may need a permit.
-- **Garden bridges.** A footbridge over a stream, ditch or low spot needs solid supports at each bank and enough clearance for spring runoff. Handrails make the crossing safer, especially when the deck is wet. We show a garden bridge among our own work.
-- **Sheds and other outbuildings.** These often have size limits and setback rules, so check with the building department.
+Sheds and other outbuildings often have size limits and setback rules, so ask the building department before you pick a spot.
 
-Many of the same material choices apply, so our post on [composite vs wood decking](/blog/composite-vs-wood-decking-upstate-ny/) is useful background for any outdoor build. Timing matters too, and the scheduling advice in our guide to the [best time to build a deck](/blog/best-time-to-build-a-deck-capital-region/) applies to garden structures as well.
+A lot of the same material questions come up as on a deck, so our post on [composite vs wood decking](/blog/composite-vs-wood-decking-upstate-ny/) is good background for any outdoor build. The scheduling advice in our guide to the [best time to build a deck](/blog/best-time-to-build-a-deck-capital-region/) applies to garden structures too.
 
 ## Frequently asked questions
 
 ### Can an outdoor shower have hot water in upstate New York?
 
-Yes. Hot and cold lines can run from the house to a mixing valve at the shower, installed by a licensed plumber. The system has to be designed so every pipe and the valve can be fully drained before freezing weather.
+Yes. Hot and cold lines can run from the house to a mixing valve at the shower, put in by a licensed plumber. The system has to be laid out so every pipe and the valve drain completely before freezing weather.
 
 ### Where can an outdoor shower drain?
 
-That depends on how much it is used, the soil, and local rules for gray water, which vary with whether you have sewer or septic. A small rinse shower often drains to a gravel bed or dry well. Check with your town building department before choosing, and keep drainage away from the foundation, well and septic field.
+Into a gravel bed or dry well, for a small rinse shower, in a lot of cases. For anything bigger, it comes down to how much it's used, your soil, and the local rules for gray water, which change with sewer versus septic. Check with your town building department before you choose, and keep drainage away from the foundation, the well and the septic field.
 
 ### When should I winterize an outdoor shower?
 
-Before the first hard freeze, which in Saratoga County usually means sometime in the fall. Close the indoor shutoff, open the exterior valve and drain points, and leave them open through winter.
+Before the first hard freeze, which in Saratoga County means sometime in the fall. Close the inside shutoff, open the outdoor valve and drain points, and leave them open all winter.
 
-We build outdoor showers, garden bridges and other garden structures, along with bulkhead and cellar stair work, planned with a written scope by phase. See our [outdoor and bulkhead projects](/bulkheads-and-outdoor/) for more on what we build. If the shower will tie into a deck or stair, our [decks and stairs page](/decks-and-stairs/) covers that side of the work.
+We build outdoor showers, garden bridges and other garden structures, and we also replace bulkheads and rebuild cellar stairs. Our [outdoor and bulkhead projects](/bulkheads-and-outdoor/) page has more. If the shower is going to tie into a deck or stair, the [decks and stairs page](/decks-and-stairs/) covers that side.

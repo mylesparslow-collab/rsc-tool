@@ -7,79 +7,68 @@ summary: The common problems in old staircases, which ones can be repaired with 
 flags:
 ---
 
-Most old staircases can be restored rather than replaced. Squeaky treads, loose balusters, a wobbly newel post and a worn finish are all repairable, and keeping the original parts preserves the craftsmanship that gives an older home its character. Replacement makes sense when the structure underneath has failed, when the stair is unsafe in ways repair cannot fix, or when a layout change is part of a larger remodel.
+Most old staircases should be repaired, not replaced. Squeaky treads, loose balusters, a wobbly newel post and a tired finish can all be fixed with the original parts left in place. Replace the stair when the structure underneath has failed, when it's unsafe in a way repair can't fix, or when a bigger remodel moves it.
 
-## What makes old staircases worth saving
+## Why we'd keep the old one
 
-In many older Saratoga Springs homes, the main staircase was the showpiece of the house. Turned newel posts, shaped handrails, carved brackets on the open side of the stair and hardwood treads were made by hand or on equipment that is rare today. Matching that work new is possible, but it takes time and skill, and the result is a copy. Repairing the original keeps the real thing.
+In a lot of older Saratoga Springs houses the front staircase was the showpiece. Turned newels, shaped handrails, carved brackets along the open side, hardwood treads. Somebody made those by hand or on machinery that's hard to find now. A shop can copy them, but it takes time and skill, and what you get is a copy.
 
-Old staircases were also built from dense, old-growth lumber that has had more than a century to stabilize. A stringer or tread that has stayed straight that long is often more stable than new material.
+Then there's the wood itself. Old stairs were built from dense old-growth lumber that's had a century or more to settle down. A stringer or tread that's stayed straight that long isn't going anywhere, and it's often more stable than anything you'd buy to replace it.
 
-## Common problems and how they are repaired
+## Squeaks
 
-### Squeaks and creaks
+A squeak is wood rubbing on wood, or on a loose nail, as a tread or riser moves under your weight. The usual culprits are the wedges under the treads shrinking, glue blocks letting go, or a tread separating a hair from the riser behind it.
 
-Squeaks come from wood rubbing on wood or on a loose nail as a tread or riser moves under weight. Common causes are shrunken wedges under the treads, loose glue blocks, or treads that have separated slightly from the risers. When the underside of the stair is accessible from a basement or closet, repairs can often be made from below by regluing and adding blocks or new wedges, with no visible change from above. When the underside is closed in, repairs are made from the top with careful fastening that is concealed afterward.
+If you can get under the stair from the basement or a closet, we fix squeaks from below. Reglue, add glue blocks, drive in new wedges, and nothing changes on top. If the underside is closed in with plaster, we work from above, fastening the tread down and hiding the fasteners afterward.
 
-### Loose balusters
+## Loose balusters
 
-Balusters loosen where they meet the handrail or the tread, usually because glue has failed or the wood has shrunk. Most can be reglued and refastened. A missing or broken baluster can be copied by a turner from a surviving example, so the new piece matches the rest.
+Balusters work loose where they meet the rail or the tread, nearly always because the glue failed or the wood shrank. Most get reglued and refastened. If one's missing or broken, a turner can copy a surviving one so the new piece matches the rest of the run.
 
-### A wobbly newel post
+## A newel that wobbles
 
-The newel post anchors the handrail at the bottom of the stair, and a loose one makes the whole rail feel unsafe. Newels are often fastened through the floor framing, and over time those connections loosen. Tightening or reinforcing the connection from below is the usual fix. We restored one staircase while keeping its original turned newel, which is often possible even when the post has loosened badly.
+The newel anchors the bottom of the handrail, and when it moves the whole rail feels unsafe. Newels are often fastened down through the floor framing, and those connections loosen over the decades. The fix is usually from below: tighten it or reinforce it. You don't have to lose the post to do that. One staircase on our site was restored with its original turned newel kept, and that's often possible even when the post has gotten pretty loose.
 
-### Worn treads
+## Worn treads
 
-Treads wear in the center from decades of foot traffic. Shallow wear can be sanded and refinished. Deep wear, cracks or splits may call for replacing individual treads with matching wood and nosing profile. Replacing a few treads is far less disruptive than replacing the staircase.
+Treads wear a dip in the middle from generations of feet. Shallow wear sands out and gets refinished. Deep wear, cracks or splits mean replacing that tread with matching wood and the same nosing profile. Swapping a few treads is a small job next to replacing a staircase.
 
-### Handrails and code
+## The handrail and the code
 
-A sound handrail is the most important safety feature on any stair. Under the New York State Residential Code, stairs with four or more risers need a handrail, mounted 34 to 38 inches above the tread nosing. Many older staircases have a decorative rail on the open side and no rail on the wall side, or a rail at a height that does not meet today's standard. Adding a wall-mounted handrail is often the simplest way to make an old stair safer without changing its appearance. Our post on [when stairs need a handrail](/blog/when-do-stairs-need-a-handrail/) explains the rules in more detail.
+The handrail is the most important safety part of any stair. The New York State Residential Code calls for a handrail on stairs with four or more risers, 34 to 38 inches above the tread nosing. Plenty of old staircases have a pretty rail on the open side and nothing on the wall side, or a rail that's too low by today's standard. A wall-mounted handrail is often the simplest way to make an old stair safer without changing how it looks. There's more on the rules in [when stairs need a handrail](/blog/when-do-stairs-need-a-handrail/).
 
-## Paint, finishes and lead
+## Paint, varnish and lead
 
-Original staircases are often covered in several layers of paint or old varnish. Stripping them can reveal fine wood underneath, but in any house built before 1978 the finish should be tested for lead before any sanding, scraping or chemical stripping. Lead dust from stair work spreads through a house easily because stairs connect every floor. If lead is present, the work should follow lead-safe practices.
+Old staircases usually wear several coats of paint or old varnish, and stripping them can turn up beautiful wood. In any house built before 1978, though, get the finish tested for lead before anybody sands, scrapes or puts stripper on it. Stairs connect every floor, so lead dust from stair work travels through the whole house. If the test comes back positive, the work has to follow lead-safe practices.
 
-Sometimes the better choice is to repaint rather than strip, especially on balusters with fine turned detail. Painted balusters with a stained handrail and treads is a traditional combination in many period homes.
+Sometimes we'd just repaint. Balusters with fine turned detail are miserable to strip. Painted balusters with a stained rail and treads is a traditional look in a lot of period houses anyway.
 
-## When replacement makes sense
+## When we'd replace it
 
-Restoration is not always the right answer. Replacement is worth considering in these situations.
+Restoration isn't always the answer. We'd replace the stair when the stringers are cracked or rotted or have pulled off their supports, or when water or insects have gotten into the structure. Same if the rise and run are so uneven that the stair is a trip hazard nobody can repair out of it. A remodel that moves or turns the stair is another reason, and so is a later replacement stair that was built poorly and has nothing historic about it.
 
-- The stringers are cracked, rotted or have pulled away from their supports.
-- Water damage or insect damage has compromised the structure.
-- Rise and run are so irregular that the stair is a tripping hazard, and that cannot be corrected with repair.
-- A remodel changes the floor plan and the stair needs to move or turn.
-- The stair is a later replacement with no historic value and poor construction.
+Basement and cellar stairs end up here more often than front staircases. They're simpler, often damp, and sometimes slapped together. Our posts on [basement stair repair](/blog/basement-stair-repair/) and on replacing a worn [bulkhead door](/blog/bulkhead-door-replacement-signs/) cover the stairs at the bottom of the house.
 
-Basement and cellar stairs fall into this category more often than main staircases. They are usually simpler, often damp, and sometimes built without much care. Our posts on [basement stair repair](/blog/basement-stair-repair/) and on replacing a worn [bulkhead door](/blog/bulkhead-door-replacement-signs/) cover the stairs at the bottom of the house.
+A replacement stair generally has to meet current code for rise, run, headroom, width, handrails and guards. Check with your building department about permits and how the code applies to your house. If the old stair has historic value, the newel, rail and balusters can sometimes be salvaged and reused even when the structure under them is rebuilt.
 
-When a staircase is replaced, the new stair generally has to meet current code for rise, run, headroom, width, handrails and guards. Check with your building department about permits and how code applies to your specific situation. Where the old stair has historic value, salvaging the newel, rail and balusters for reuse is sometimes possible even if the structure underneath is rebuilt.
+## The order we work in
 
-## How a staircase restoration usually goes
+We look at the stair from above and from below first: treads, risers, stringers and the newel connection, sorting out what's loose, what's worn and what's damaged. In an older house the paint gets tested before any finish work. Structural repairs come next, reglued, reinforced and refastened from underneath where we can reach. Failed parts get replaced with matching profiles. Then the handrail gets made safe and brought up to where it should be, and the finish goes last, whether that's refinishing, repainting or some of each.
 
-1. **Inspection from above and below.** Look at treads, risers, stringers and the newel connection, and identify what is loose, worn or damaged.
-2. **Paint testing** on older homes before any finish work.
-3. **Structural repairs first.** Reglue, reinforce and refasten from below where possible.
-4. **Replace failed parts** with matching profiles.
-5. **Handrail work** to make the stair safe and code-appropriate.
-6. **Finish work** last, whether that means refinishing, repainting or both.
-
-A staircase restoration often fits into a larger project. Our guide to [restoring an old house in Saratoga Springs](/blog/restoring-old-house-saratoga-springs/) explains how stair work fits into overall repair priorities.
+Stair work often rides along with a bigger job. Our guide to [restoring an old house in Saratoga Springs](/blog/restoring-old-house-saratoga-springs/) talks about where it falls in the order of repairs.
 
 ## Frequently asked questions
 
 ### Can a squeaky staircase be fixed without removing the treads?
 
-Usually, yes. If the underside is accessible, squeaks can be fixed from below by regluing and adding blocks or wedges. If not, treads can be fastened from above with concealed fasteners, and the surface touched up afterward.
+Usually. If you can reach the underside, squeaks get fixed from below with glue, blocks or wedges. If you can't, the treads can be fastened from above with hidden fasteners and the surface touched up.
 
-### Is it worth restoring an original staircase?
+### Should I restore my original staircase or replace it?
 
-In most older homes, yes. The original wood is often dense and stable, and hand-turned or carved details are difficult and time-consuming to duplicate. Restoring keeps the house's character and usually involves less disruption than full replacement.
+Restore it, in most older houses. The original wood is dense and stable, and hand-turned or carved parts are slow and hard to reproduce. Restoring keeps what's there and tears up a lot less of the house than a full replacement.
 
 ### Does a restored staircase need to meet current code?
 
-Repairs to an existing stair generally do not require rebuilding it to current standards, but adding a handrail where one is missing makes it much safer. Replacing the stair or making major changes generally means meeting current code. Check with your building department about your specific project.
+Repairing an existing stair generally doesn't mean rebuilding it to current standards, but adding a handrail where there isn't one makes it a lot safer. Replacing the stair or making major changes generally does mean meeting current code. Check with your building department about your project.
 
-We restore and rebuild staircases, porches, trim and ceilings in older Capital Region homes, keeping original parts where they can be saved. See our [restoration and built-ins work](/restoration-and-built-ins/) for examples of what we do.
+Old staircases, porches, trim and ceilings in Capital Region houses are a big part of our [restoration and built-ins work](/restoration-and-built-ins/), and we save the original pieces whenever they'll hold.

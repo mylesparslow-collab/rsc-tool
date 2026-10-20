@@ -7,80 +7,77 @@ summary: The certificates a New York homeowner should ask any contractor for, wh
 flags:
 ---
 
-Before a contractor starts work on your home in New York, whether in Saratoga County or anywhere else in the Capital Region, ask for three things. You want a certificate of general liability insurance, proof of workers' compensation coverage, and proof of disability benefits coverage, or, for a business with no employees, a state-issued exemption. Ask for the certificates to come directly from the insurance agent or carrier, check the dates and the business name, and keep copies. These documents matter most on the day something goes wrong, such as a fall from a ladder or water damage to a neighbor's property, and by then it is too late to ask.
+Before any contractor starts work on your house in New York, ask for a certificate of general liability insurance, proof of workers' compensation, and proof of disability benefits coverage. A business with no employees can give you a state-issued exemption in place of the last two. Have the certificates sent straight from the insurance agent or carrier, check the business name and the dates, and keep copies. You'll only need them on the bad day, when somebody falls off a ladder or a burst line floods the neighbor's basement, and by then it's too late to ask.
 
-## Why it matters to you
+## Why you should care
 
-If an uninsured worker is injured on your property, you may find yourself facing questions about who pays the medical bills and lost wages. If a contractor without liability coverage damages your house, or a neighbor's, you may be left to pay for the repair yourself or file a claim on your own homeowner's policy. Insurance certificates do not guarantee good work, but they mean that when an accident happens, there is a policy in place to respond to it.
+Say a worker without coverage gets hurt on your property. Now there are questions about who pays the hospital and the lost wages, and some of them can land on you. Say a contractor with no liability policy cracks your foundation or puts a ladder through the neighbor's window. You may end up paying for the repair yourself or filing on your own homeowner's policy.
 
-Remodeling in the Capital Region involves ladders, icy roofs, power tools, demolition and sometimes open walls during a rainstorm. Accidents are not rare. Asking for certificates is a routine, reasonable request, and an established contractor should be able to provide them without hesitation.
+A certificate tells you nothing about whether the work will be any good. It only tells you there's a policy in place to answer when something goes wrong.
 
-## The three documents to ask for
+And things do go wrong. Remodeling in the Capital Region means ladders, icy roofs in March, saws, demolition, and sometimes an open wall when a thunderstorm rolls through. Asking for certificates is routine. A contractor who's set up properly can email them over the same day, and one who hedges is telling you something.
 
-### General liability insurance
+## The documents, one at a time
 
-General liability covers damage the contractor causes to your property or someone else's, and injuries to people who are not the contractor's workers, such as a visitor tripping over materials. Ask for a certificate of insurance (often an ACORD form) that shows:
+### General liability
 
-- The insurance company and policy number
-- The named insured, which should match the business name on your contract
-- The policy period, which should cover the dates of your project
-- The coverage limits
+This covers damage the contractor does to your property or anyone else's, and injuries to people who aren't the contractor's own workers, like a visitor who trips over a stack of drywall. Proof comes as a certificate of insurance, often on an ACORD form. Check that it shows the insurance company and policy number, a named insured that matches the business name on your contract, a policy period that covers the dates of your job, and the coverage limits.
 
-You can ask to be listed as the certificate holder so the insurer has your name on record for the certificate.
+You can ask to be listed as the certificate holder so the insurer has your name on the certificate.
 
 ### Workers' compensation
 
-Workers' compensation covers injuries to the contractor's own employees. In New York, businesses with employees are generally required to carry it. Proof usually comes on a New York-specific form from the carrier, such as a C-105.2, or a U-26.3 from the New York State Insurance Fund. A general liability certificate does not substitute for workers' comp.
+Workers' comp covers injuries to the contractor's own employees. In New York, a business with employees is generally required to carry it. The proof is a New York form from the carrier, such as a C-105.2, or a U-26.3 if the policy is with the New York State Insurance Fund. A liability certificate is not a substitute for workers' comp, no matter how big the limits are.
 
 ### Disability benefits
 
-New York also requires most employers to carry disability benefits coverage, which pays employees for off-the-job injuries and illness. Proof typically comes on form DB-120.1. Like workers' comp, this is separate from liability insurance.
+New York also requires most employers to carry disability benefits, which pay employees for injuries and illness that happen off the job. The usual proof is form DB-120.1. It's separate from liability coverage too.
 
 ### The CE-200 exemption
 
-A business with no employees, such as a sole proprietor who does all the work personally, may not be required to carry workers' compensation or disability benefits. In that case, the New York State Workers' Compensation Board issues a Certificate of Attestation of Exemption, form CE-200. If a contractor gives you a CE-200, the important question is whether anyone else will be working on your job. A helper, laborer or subcontractor on site changes the picture, and you should ask how they are covered.
+A business with no employees, say a sole proprietor who does every bit of the work, may not have to carry workers' comp or disability benefits. In that case the New York State Workers' Compensation Board issues a Certificate of Attestation of Exemption, form CE-200.
 
-The Workers' Compensation Board publishes information about these forms and coverage requirements on its official site, [wcb.ny.gov](https://www.wcb.ny.gov/).
+If you're handed a CE-200, ask one question: will anybody else be working on my job? A helper carrying lumber, a laborer on demo day, or a subcontractor changes things, and you should ask how those people are covered.
 
-## Insurance and building permits
+The Workers' Compensation Board explains these forms and who needs what on its official site, [wcb.ny.gov](https://www.wcb.ny.gov/).
 
-New York requires proof of workers' compensation and disability benefits coverage, or a valid exemption, before most building permits are issued. That is one reason building departments ask for these forms with a permit application. If your project needs a permit, the contractor's certificates will usually be part of the paperwork. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) explains which projects typically need one.
+## Permits and insurance go together
 
-## How to verify what you're given
+New York requires proof of workers' comp and disability coverage, or a valid exemption, before most building permits are issued. That's why the building department asks for these forms with the application. If your job needs a permit, the contractor's certificates will usually be part of that paperwork anyway. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) covers which projects typically need one.
 
-A certificate is only useful if it is real and current. Steps to take:
+## Checking what you're handed
 
-1. **Ask for certificates to be sent directly from the agent or carrier**, not handed over as a photocopy.
-2. **Check the business name and address** against the name on your contract.
-3. **Check the dates.** The policies should be in effect for the full length of your project.
-4. **Call the agent or carrier** listed on the certificate to confirm the policy is active.
-5. **For workers' comp, use the state's coverage lookup.** The Workers' Compensation Board offers an online way to check whether an employer has coverage on file.
-6. **Keep copies** with your contract and other project paperwork.
+A photocopy of a certificate from three years ago proves nothing. Here's what to do, and this is one list you can actually check off:
 
-## Subcontractors
+1. Ask for the certificates to come directly from the agent or carrier, not a copy pulled out of a truck.
+2. Match the business name and address to the name on your contract.
+3. Check the dates. Every policy should be in force for the whole length of your project.
+4. Call the agent or carrier on the certificate and ask whether the policy is active.
+5. For workers' comp, use the state's coverage lookup. The Workers' Compensation Board has an online way to see whether an employer has coverage on file.
+6. File copies with your contract and the rest of the project papers.
 
-Many remodeling projects include subcontractors such as electricians, plumbers or tile setters. Ask whether subcontractors will work on your job and whether they carry their own insurance. A general contractor's policy may or may not extend to them, so it is reasonable to ask for their certificates too.
+## Subs carry their own coverage, or should
 
-## Licensing in New York
+Most remodels bring in subcontractors at some point: an electrician, a plumber, a tile setter. Ask who'll be on your job and whether they carry their own insurance. A general contractor's policy may or may not extend to the subs, so asking for their certificates as well is fair.
 
-New York does not have a single statewide license for general home improvement contractors. Some counties and cities do license them, and trades such as electrical and plumbing may be licensed locally. Check what applies where you live, and ask the contractor directly. Insurance and licensing are separate questions; a license does not prove insurance, and insurance does not prove a license.
+## Licensing is a separate question
 
-## Other things to have in writing
+New York has no single statewide license for general home improvement contractors. Some counties and cities license them, and trades like electrical and plumbing may be licensed locally. Find out what applies where you live, and ask the contractor directly. Keep the two questions apart. A license doesn't prove insurance, and insurance doesn't prove a license.
 
-Insurance is one part of protecting yourself. The others are a clear written scope, a payment schedule tied to finished work, and written change orders. Our posts on [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) and [phased payments vs paying upfront](/blog/phased-payments-vs-paying-upfront/) cover those in detail.
+The rest of your protection is on paper too: a clear written scope, payments tied to finished work, and written change orders. We cover those in [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) and [phased payments vs paying upfront](/blog/phased-payments-vs-paying-upfront/).
 
 ## Frequently asked questions
 
 ### Does my homeowner's insurance cover a contractor's accident?
 
-It may or may not, and relying on it can lead to higher premiums or disputes. The contractor's own liability and workers' compensation coverage should respond first. Call your own insurance agent before a large project to understand where your policy stands.
+Maybe, maybe not, and leaning on it can mean higher premiums or a fight over the claim. The contractor's own liability and workers' comp should respond first. Before a big project, call your own agent and find out where your policy stands.
 
 ### What is a CE-200 form?
 
-A CE-200 is a Certificate of Attestation of Exemption from the New York State Workers' Compensation Board. It states that a business is not required to carry workers' compensation or disability benefits, usually because it has no employees. It is used, among other things, to apply for building permits.
+It's a Certificate of Attestation of Exemption from the New York State Workers' Compensation Board. It says a business isn't required to carry workers' comp or disability benefits, usually because it has no employees. Among other things, it's used when applying for building permits.
 
 ### Is a verbal assurance of insurance enough?
 
-No. Ask for written certificates sent from the insurer or agent, check the names and dates, and confirm the policy is active. It is a standard request that a professional contractor should expect.
+No. Get written certificates sent from the insurer or agent, check the names and dates, and confirm the policy is active. Any professional contractor expects the request.
 
-Asking for insurance certificates is a reasonable request on any project, from [restoration and built-ins](/restoration-and-built-ins/) to a full remodel. We visit the site first and provide a written scope of work by phase, and we welcome questions like these before any agreement is signed.
+Ask us these same questions, on a cellar stair or a full set of [built-ins and restoration work](/restoration-and-built-ins/). The first site visit is the right time to sort out paperwork, before anything gets signed.

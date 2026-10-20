@@ -7,75 +7,76 @@ summary: Where the deck meets the house is where serious failures start. A step-
 flags:
 ---
 
-A deck ledger board inspection means checking the board that attaches the deck to the house for three things: water getting behind it, rot in the ledger or the house framing it is fastened to, and fasteners that are missing, rusted or the wrong type. You can do the first look yourself in about twenty minutes from the yard and the basement. If you find a gap between the ledger and the house, soft wood, rust streaks or only nails holding it on, have the deck evaluated before the next heavy snow or the next party.
+Inspecting a deck ledger board means checking the board that ties the deck to the house for water getting behind it, rot in the ledger or the house framing it's fastened to, and fasteners that are missing, rusted or the wrong kind. You can do a first look yourself in about twenty minutes, half from the yard and half from the basement. If you find a gap between the ledger and the house, soft wood, rust streaks, or nothing but nails holding it on, get the deck evaluated before the next heavy snow or the next graduation party.
 
-## What the ledger does and why it fails
+## Half the deck hangs on this board
 
-On an attached deck, one side of the frame is held up by posts and footings, and the other side hangs on the house. The ledger is a board bolted to the house's rim joist, the framing that runs around the edge of the floor system. The deck joists hang from the ledger, usually in metal hangers. Everything on that side of the deck, including snow, furniture and people, is carried through the ledger's fasteners into the house.
+An attached deck is held up two ways. The outer side sits on posts and footings. The house side hangs on the house. The ledger is the board bolted to the house's rim joist, which is the framing that runs around the edge of the floor system, and the deck joists hang off the ledger, usually in metal hangers. Everything on that half of the deck, the snow, the table, the grill and the people, goes through the ledger's fasteners into the house.
 
-Ledgers fail for a handful of reasons, almost all involving water:
+Nearly every ledger failure comes back to water.
 
-- **No flashing, or flashing that failed.** Rain and snowmelt run down the siding and get trapped between the ledger and the house, rotting both.
-- **Nails instead of bolts.** Older decks were often nailed on. Nails can work loose or pull out under load.
-- **Fastened through siding or to the wrong material.** A ledger fastened over siding, or to brick veneer, stone veneer or a chimney, is not properly connected to the house's structure.
-- **Rot in the house's rim joist.** The ledger itself may look fine while the house framing behind it has softened.
+Missing or failed flashing is the big one. Rain and snowmelt run down the siding, get trapped between the ledger and the house, and rot both of them from the back where you can't see it.
 
-In Saratoga County, snow makes this more serious. A deck holding a few feet of wet, packed snow is carrying a heavy load, and a ledger already weakened by rot has little margin left.
+Older decks were often nailed on, not bolted. Nails work loose over years of seasonal movement and can pull out under load.
 
-## The inspection, step by step
+Some ledgers were fastened right over the siding, or to brick veneer, stone veneer or a chimney. None of those is the house's structure, so the deck isn't really connected to anything.
 
-### From the yard and under the deck
+And sometimes the ledger looks fine while the house's rim joist behind it has gone soft.
 
-Use a flashlight and a screwdriver. Look along the full length of the ledger.
+In Saratoga County, snow raises the stakes. A deck holding a couple of feet of wet, packed snow is carrying a serious load, and a ledger already eaten by rot has very little left to give.
 
-1. **Look for a gap.** The ledger should be tight to the house. Any visible gap, or a gap that has grown since last year, is a warning.
-2. **Find the flashing.** There should be metal or membrane flashing tucked behind the siding above the ledger and lapped over its top edge, so water runs over and away from it. If you see bare wood meeting siding with no flashing, water is probably getting in.
-3. **Check for water stains.** Dark streaks on the foundation or siding below the ledger, or stains running down the face of the ledger, show where water has been traveling.
-4. **Probe the wood.** Press the screwdriver into the ledger, especially near the bottom edge and around each fastener. It should feel firm.
-5. **Look at the fasteners.** You should see bolts with washers or structural screws spaced along the ledger, usually in a staggered pattern. Rust streaks, heads that have corroded, or a row of nail heads only are all reasons for a professional look.
-6. **Check the hangers.** Each joist should sit in a metal hanger with fasteners in all the holes. Look for heavy rust or joists that have dropped in their hangers.
+## The twenty-minute check
 
-### From the basement
+Bring a flashlight and a flat screwdriver, and walk the whole length of the ledger. This one's a real checklist, so here it is in order.
 
-If the deck is attached next to a basement or crawlspace, look at the inside of the rim joist directly behind the ledger. Water stains, mold, soft wood or rusted bolt tips coming through are signs that water has been getting in from outside. It is also where you can confirm that the bolts actually pass through the rim joist and have nuts on the inside.
+1. Look for a gap. The ledger should sit tight to the house. Any gap you can see, or one that's wider than last year, is a warning.
+2. Find the flashing. There should be metal or membrane flashing tucked up behind the siding above the ledger and lapped over its top edge, so water runs over and off. Bare wood butting into siding with no flashing means water is probably getting in.
+3. Look for stains. Dark streaks on the foundation or siding below the ledger, or running down its face, show you where water has been traveling.
+4. Probe the wood. Push the screwdriver into the ledger, especially along the bottom edge and around every fastener. It should fight back.
+5. Look at the fasteners. You want bolts with washers, or structural screws, spaced along the ledger, usually staggered high and low. Rust streaks, heads corroded away, or a row of nail heads and nothing else all call for a professional look.
+6. Check the hangers. Each joist should sit in a metal hanger with a nail in every hole. Look for heavy rust, or joists that have dropped in their hangers.
 
-## Warning signs that mean stop using the deck
+Then go inside. If the deck attaches next to a basement or crawlspace, find the inside face of the rim joist right behind the ledger. Water stains, mold, soft wood or rusty bolt tips poking through tell you water's been getting in from outside. It's also where you can see whether the bolts really go all the way through the rim joist and have nuts on the inside.
 
-Some findings call for keeping people off the deck until it has been looked at by a qualified contractor or engineer:
+## When to keep everyone off
 
-- The ledger has pulled away from the house, even slightly, or the gap is growing.
-- The ledger or rim joist is soft enough that a screwdriver sinks in easily.
-- The deck is attached only with nails.
-- The ledger is attached to brick or stone veneer.
-- Joists have dropped or twisted in their hangers.
-- The deck moves or sways side to side when people walk on it.
+Some findings mean nobody uses the deck until a qualified contractor or engineer has looked at it:
 
-These are structural problems, and the repair involves the house framing as well as the deck. It is not a job for a quick weekend fix.
+- The ledger has pulled away from the house, even a little, or the gap is growing
+- The ledger or rim joist is soft enough that the screwdriver sinks in easily
+- The deck is held on with nails only
+- The ledger is fastened to brick or stone veneer
+- Joists have dropped or twisted in their hangers
+- The deck sways side to side when people walk on it
 
-## How ledgers are done right today
+Those are structural problems, and the fix involves the house framing as well as the deck. Don't try to fix it in a weekend.
 
-Current practice under the New York State Residential Code, which follows the International Residential Code, is far more specific than it was a few decades ago. A properly built ledger is fastened directly to the house's rim joist after the siding is removed in that area, with through-bolts or approved structural screws in a set pattern. Flashing is installed behind the siding and over the ledger to shed water. Many decks also have lateral load connectors that tie the deck framing to the house floor framing so the deck cannot pull away sideways.
+## How it's done now
 
-Where a solid connection to the house is not possible, for example over brick veneer or a cantilevered floor, a freestanding deck with its own beam and posts near the house is the usual solution. A ledger repair or replacement is structural work and typically needs a building permit; check with your town or city building department. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) covers how to ask.
+Current practice under the New York State Residential Code, which follows the International Residential Code, is far more specific than it was a few decades ago. We pull the siding off where the ledger goes and fasten the ledger straight to the house's rim joist, with through-bolts or approved structural screws in a set pattern. Flashing goes in behind the siding and over the ledger to shed water. Many decks also get lateral load connectors that tie the deck joists to the house's floor framing, so the deck can't pull away sideways.
 
-## Make it part of your yearly routine
+When you can't get a solid connection to the house, say over brick veneer or a floor that cantilevers past the foundation, the usual answer is a freestanding deck with its own beam and posts near the house. Repairing or replacing a ledger is structural work and typically needs a building permit, so check with your town or city building department. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) covers how to ask.
 
-Ledger problems develop slowly, then suddenly. A quick look every spring catches most of them early. Add it to the after-winter walk-around in our [spring home inspection after winter](/blog/spring-home-checklist-after-winter/), and to your longer-term list in our [home maintenance schedule for upstate NY](/blog/home-maintenance-schedule-saratoga-county/). Gutters overflowing above the deck are a common source of ledger rot, so if water is pouring onto the deck in a storm, read our guide to [soffit and fascia repair](/blog/gutters-soffits-fascia-rot/) as well.
+## Look every spring
 
-If the ledger is only one of several problems, the deck may be near the end of its life. Our list of [signs your deck needs to be replaced](/blog/signs-your-deck-needs-replacing/) can help you decide between repair and rebuild.
+Ledger trouble builds slowly for years and then shows up all at once. A quick look each spring catches most of it early. Put it on the after-winter walk-around in our [spring home inspection after winter](/blog/spring-home-checklist-after-winter/), and on the longer list in our [home maintenance schedule for upstate NY](/blog/home-maintenance-schedule-saratoga-county/).
+
+Overflowing gutters above a deck are a common cause of ledger rot. If water sheets onto the deck in a storm, read our guide to [soffit and fascia repair](/blog/gutters-soffits-fascia-rot/) too.
+
+If the ledger is one problem among several, the deck may be near the end. Our list of [signs your deck needs to be replaced](/blog/signs-your-deck-needs-replacing/) can help you decide between fixing it and starting over.
 
 ## Frequently asked questions
 
 ### Can a deck ledger be replaced without rebuilding the whole deck?
 
-Sometimes. If the joists, beams and footings are sound, the deck can be temporarily supported while the ledger and flashing are replaced and the rim joist is repaired. If rot has spread into the joist ends or the frame has other problems, rebuilding often makes more sense.
+Sometimes. If the joists, beams and footings are sound, the deck can be shored up temporarily while the ledger and flashing come off, the rim joist gets repaired, and a new ledger goes on. If rot has spread into the joist ends or the frame has other problems, a rebuild is often the smarter money.
 
 ### How often should I inspect my deck ledger?
 
-Take a quick look every spring and after any winter with heavy snow. A closer inspection every few years, or whenever you restain, is a good habit. Look sooner if you notice the deck moving differently or new stains on the foundation.
+Take a quick look every spring and after any heavy-snow winter. A closer look every few years, or whenever you restain, makes sense too. Look sooner if the deck starts moving differently or new stains show up on the foundation.
 
 ### Is it safe to shovel snow off my deck?
 
-Removing heavy snow reduces the load on the deck, and on the ledger in particular. Use a plastic shovel and leave a thin layer rather than scraping to the boards. If you already suspect a ledger problem, keep traffic and snow load to a minimum until it is checked.
+Taking heavy snow off lightens the load on the deck and on the ledger in particular. Use a plastic shovel and leave a thin layer instead of scraping down to the boards. If you already suspect a ledger problem, keep people and snow off it as much as you can until it's checked.
 
-We inspect, repair and rebuild decks across Saratoga County, including ledger and flashing replacement on decks whose frames are worth keeping. Every project starts with a site visit and a written scope that shows what will be done in each phase. See our work on the [decks, stairs and railings page](/decks-and-stairs/).
+When the frame is sound, we'll replace a rotted ledger and its flashing and leave the rest of the deck alone. When it isn't, we rebuild. We do both across Saratoga County, and some of that work is on our [decks, stairs and railings page](/decks-and-stairs/).

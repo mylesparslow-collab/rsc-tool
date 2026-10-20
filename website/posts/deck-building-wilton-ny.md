@@ -7,80 +7,68 @@ summary: What to plan for when building or replacing a deck on a Wilton home, fr
 flags:
 ---
 
-Many decks in Wilton, NY were built along with the house by the original builder, often from pressure-treated lumber on a basic frame, and a lot of them are now reaching the end of their useful life. Replacing one is a chance to build a deck that fits how you actually use the yard, with a stronger structure, better stairs and lower-maintenance materials. A deck builder in Wilton should look at the lot's grade, the house's attachment point, town and neighborhood rules, and how much upkeep you want before recommending a design. Here is how we approach decks on Wilton homes.
+A lot of decks in Wilton, NY went up with the house, built by the original builder out of pressure-treated lumber on a bare-bones frame, and many of them are wearing out now. Replacing one is your chance to get a deck that fits how you use the yard, with a stronger frame, better stairs and boards that need less upkeep. Before a deck builder in Wilton draws anything, they should look at the grade, where and how the deck meets the house, the town and neighborhood rules, and how much maintenance you're willing to do.
 
-## Decks on newer Wilton homes
+## What's out there on Wilton houses
 
-Wilton grew from a rural town into one of Saratoga County's busier residential areas, and many of its houses sit in subdivisions built over the last few decades. Decks on those homes tend to follow a few patterns:
+Wilton went from a rural town to one of Saratoga County's busier places to live, and a lot of its houses are in subdivisions built over the last few decades. The decks on them fall into a few patterns.
 
-- **Builder-grade rear decks.** A rectangular pressure-treated deck off a kitchen slider, with simple square balusters and a single stair.
-- **Raised decks on walkout lots.** Houses on sloped lots often have a deck a full story above grade, supported on tall posts.
-- **Small landings.** Some homes have only a small landing and stair at the back door, with the yard left for a future deck.
+The most common is the builder-grade rear deck: a pressure-treated rectangle off the kitchen slider, square balusters, one stair down to the grass. On sloped lots you get the raised deck, a full story up on tall posts outside a walkout basement. And some houses have only a small landing and a stair at the back door, with the yard left open for a deck that never got built.
 
-Older farmhouses and homes on larger rural parcels in Wilton bring different conditions, such as older foundations and additions built at different times, which affect how a deck can attach.
+The older farmhouses and houses on bigger rural parcels in town are a different story. Old foundations and additions built at different times change how and where a deck can attach.
 
-## When to replace an original builder deck
+## Is the original deck done?
 
-An original deck may still look acceptable while hiding wear underneath. Signs it is time to replace rather than repair include:
+A builder deck can look fine from the patio and be worn out underneath. Get under it with a flashlight. These are the things that point to replacement over repair:
 
-- Soft or rotted joists, especially where they meet the ledger or beam.
-- A ledger with no flashing, or with signs of water staining on the rim joist inside the basement.
-- Posts that are cracked, rotted at the base or set directly on the ground.
-- Rails that move when pushed, or balusters spaced wider than current code allows.
-- Stairs with uneven risers or stringers that have pulled away.
+- Soft or rotted joists, especially where they meet the ledger or sit on the beam
+- A ledger with no flashing, or water stains on the rim joist when you look from inside the basement
+- Posts that are cracked, rotted at the base, or sitting right on the dirt
+- Rails that move when you push them, or balusters spaced wider than code now allows
+- Stairs with uneven risers, or stringers that have pulled away from the deck
 
-Our post on [deck ledger board inspection](/blog/deck-ledger-board-inspection/) explains the attachment point, which is where most deck failures begin. If the frame is sound and only the surface is worn, refinishing may buy more time. Our article on [how often to stain a deck](/blog/how-often-to-stain-a-deck-upstate-ny/) covers that upkeep.
+The ledger is where most deck failures start, and our post on [deck ledger board inspection](/blog/deck-ledger-board-inspection/) walks through how to check it. If the frame's sound and only the surface is tired, a cleaning and a fresh coat may buy you a few more years; see [how often to stain a deck](/blog/how-often-to-stain-a-deck-upstate-ny/).
 
-## Designing for how you use the yard
+## Don't just copy the old footprint
 
-A replacement deck does not have to repeat the old footprint. Questions worth answering before design:
+The new deck doesn't have to be the same rectangle. Think through how many people you seat at once and where the grill goes. Maybe you want a stair straight to the yard, maybe a landing partway down, maybe both. A lower second level or a patio underneath can make the whole back of the house more useful. Watch where the afternoon sun lands, and where snow slides off the roof.
 
-- How many people do you seat at once, and where does the grill go?
-- Do you want a direct stair to the yard, a landing partway down, or both?
-- Would a lower second level or a patio below make the space more useful?
-- Where does the afternoon sun hit, and where does snow slide off the roof?
+On a walkout lot, plan the space under a raised deck from the start. Put a patio down there, clean up the framing overhead, and you get an outdoor room instead of a dark spot full of bikes and old pots. One project on our site has a composite deck and stair with a black aluminum rail over a stamped concrete patio, which is a combination that suits houses like these.
 
-On walkout lots, the space under a raised deck can be part of the plan. A patio below, with the deck framing finished neatly, turns the area into usable space rather than a dark storage zone. One project shown on our site pairs a composite deck and stair with black aluminum rail over a stamped concrete patio, which is a common combination on homes of this type.
+Snow is a real design problem in Wilton. A deck under a roof edge catches the snow and ice that slide off, and a north-facing stair stays icy for days after everything else has melted. Put the stairs where you'll actually walk in January, and keep them out from under the drip line.
 
-Snow deserves attention in Wilton. Decks beneath a roof edge can collect heavy snow and ice that slides off, and stairs that face north stay icy longer. Placing stairs where they will be used in winter and away from roof drip lines helps.
+## The code, briefly
 
-## Structure and code basics
+The New York State Residential Code sets the basic safety rules, and the town reviews deck plans when you apply for the permit.
 
-The New York State Residential Code sets the basic safety requirements, and the town reviews deck plans through its permit process. Key points include:
+Decks more than 30 inches above grade need guards at least 36 inches high, with openings a 4-inch sphere can't pass through. Every raised deck on a walkout lot is over that line. Stairs with four or more risers need a handrail between 34 and 38 inches high; our post on [when stairs need a handrail](/blog/when-do-stairs-need-a-handrail/) has more.
 
-- **Guards.** Decks more than 30 inches above grade need guards at least 36 inches high, with openings small enough that a 4-inch sphere cannot pass through. Raised decks on walkout lots always meet this threshold.
-- **Handrails.** Stairs with four or more risers need a handrail between 34 and 38 inches high. Our post on [when stairs need a handrail](/blog/when-do-stairs-need-a-handrail/) covers this in detail.
-- **Footings.** Footings must extend below the frost line, with depth set locally. Tall decks also need proper post connections and bracing.
-- **Ledger.** An attached deck needs a properly fastened and flashed ledger. On houses with engineered rim boards or overhangs, the attachment method has to suit the framing.
+Footings go below the frost line, and the depth is set locally. Tall decks also need solid post connections and bracing. An attached deck needs a ledger that's properly fastened and flashed, and on houses with engineered rim boards or a floor that cantilevers out past the foundation, the attachment method has to suit that framing.
 
-Check with the Town of Wilton building department before work begins, since permit requirements and procedures can change.
+Check with the Town of Wilton building department before work starts. Permit requirements and procedures change.
 
-## Homeowner association rules
+## Read your HOA covenants
 
-Some Wilton neighborhoods have homeowner association covenants that cover exterior changes, including decks. Rules may address size, materials, colors or placement. Get any required approval in writing before ordering materials.
+Some Wilton neighborhoods have homeowner association covenants that cover exterior changes, decks included. They may limit size, materials, colors or where the deck sits. Get any approval in writing before anybody orders lumber.
 
-## Materials and upkeep
+## Picking materials
 
-Pressure-treated lumber is the least expensive to build with but needs cleaning and stain every few years. Composite and PVC decking resist rot and do not need stain, though they cost more up front, require closer joist spacing in many cases and still need periodic cleaning. Aluminum and composite rail systems reduce upkeep compared with painted wood. Our comparison of [composite versus wood decking](/blog/composite-vs-wood-decking-upstate-ny/) explains the tradeoffs for Capital Region weather.
+Pressure-treated lumber is the cheapest to build with but needs cleaning and stain every few years. Composite and PVC decking won't rot and never need stain. They cost more up front, often need joists closer together, and still need washing. Aluminum and composite rail systems take less upkeep than painted wood. We compare them for Capital Region weather in [composite versus wood decking](/blog/composite-vs-wood-decking-upstate-ny/).
 
-A common approach on a replacement deck is to build a new pressure-treated frame with composite decking and a low-maintenance rail. The frame should still be protected, for example with joist tape on the tops of joists, since it is the part that is hardest to replace later.
+On a replacement deck, the combination we'd steer most people toward is a new pressure-treated frame, composite decking and a low-maintenance rail. Protect that frame anyway. Run joist tape over the tops of the joists before the boards go down, because once the decking is on, the frame is the hardest part to get at and the most expensive to replace.
 
 ## Frequently asked questions
 
 ### Can I reuse the frame of my old deck?
 
-Sometimes, if the joists, beams, posts and ledger are sound and sized for the new decking. Many original builder decks have framing that is undersized, rotted or lacks proper ledger flashing, so the frame is often replaced too.
+Sometimes, if the joists, beams, posts and ledger are sound and sized for the new decking. A lot of original builder decks have framing that's undersized, rotted or missing ledger flashing, so the frame often gets replaced along with the boards.
 
 ### Do I need HOA approval for a deck in Wilton?
 
-It depends on your neighborhood. Check your covenants, and get any approval in writing before work starts. You will also need to check with the town about a building permit.
+Only if your neighborhood has covenants that cover it, so read them, and get any approval in writing before work starts. Separately, check with the town about a building permit.
 
-### How tall can a deck be before it needs a railing?
+### What's the best decking for a sunny Wilton yard?
 
-Under the state residential code, a deck surface more than 30 inches above grade needs a guard at least 36 inches high. Raised decks on walkout lots always need them.
+Both wood and composite work. A light-colored composite stays cooler underfoot than dark boards in direct sun, and a wood deck in full sun needs stain more often.
 
-### What is the best decking for a sunny Wilton yard?
-
-Both wood and composite work. Lighter colored composite stays cooler than dark boards in direct sun, and wood needs more frequent stain where sun exposure is strong.
-
-We design and build decks, stairs and railings in [Wilton](/wilton/) and across Saratoga County, starting with a site visit and a written scope that lists the structure, materials and payment schedule by phase. Our guide to [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) can help you compare proposals, and you can see examples on our [decks and stairs](/decks-and-stairs/) page.
+We design and build decks, stairs and railings in [Wilton](/wilton/), and we talk about the frame before we talk about board colors. If you're comparing bids, our guide to [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) shows what to look for line by line, and our [decks and stairs page](/decks-and-stairs/) shows what we build.

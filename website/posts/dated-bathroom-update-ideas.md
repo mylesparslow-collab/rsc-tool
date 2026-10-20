@@ -7,98 +7,62 @@ summary: Practical ways to update a 1990s or early 2000s bathroom in Malta and n
 flags:
 ---
 
-You can update a dated bathroom without tearing it down to the studs as long as the shower, tub and floor are watertight and solid. Replacing the vanity, faucets, lighting, mirror and hardware, then repainting and regrouting, changes the look of a 1990s bathroom more than most people expect. If the tile is loose, the floor is soft or the shower leaks, cosmetic updates will not last, and a full remodel is the better use of money. This is a common question in Malta, where many homes were built in the 1990s and 2000s and their bathrooms are showing their age.
+You can update a dated bathroom without taking it to the studs, as long as the shower, tub and floor are solid and watertight. A new vanity, faucets, lights, mirror and hardware, plus paint and fresh grout, changes a 1990s bathroom more than people expect. If the tile is loose, the floor is soft or the shower leaks, though, cosmetic work won't last, and you're better off putting the money into a real remodel. We hear this question a lot in Malta, where plenty of houses went up in the 1990s and 2000s and the bathrooms are showing it.
 
-## What makes a bathroom look dated
+## The 1990s bathroom, item by item
 
-Bathrooms from the late twentieth century share a recognizable set of features. In many Malta and Clifton Park area homes you will find some combination of:
+You probably know the look. In a lot of Malta and Clifton Park area homes, you'll find some mix of polished brass faucets and towel bars, a honey oak vanity with a matching oak mirror frame, and a cultured marble top with the bowl molded right in. The toilet and tub are almond or bone. There's a Hollywood strip of bulbs over a mirror that runs wall to wall. The floor is small square tile with wide grout lines gone gray, and the shower is a one-piece fiberglass unit with a framed brass slider.
 
-- Polished brass faucets, towel bars and shower doors.
-- Honey or golden oak vanities with matching mirror frames.
-- Cultured marble vanity tops with an integral bowl.
-- Almond or bone colored toilets, tubs and sinks.
-- Hollywood-style strip lighting above a wall-wide mirror.
-- Small square floor tile with wide, discolored grout lines.
-- A fiberglass tub and shower unit with a framed sliding door.
+None of that is broken. What you need to sort out is which pieces come out cheaply and which ones are tied into the shower and floor.
 
-None of these is a functional problem on its own. The question is which ones you can change cheaply and which ones are tied to the shower and floor.
+## Check for water first
 
-## Check the condition before choosing a path
+Before you pick a vanity, spend ten minutes looking for leaks. An update on top of a hidden leak is money thrown away.
 
-A quick inspection tells you whether an update is worth doing. These are the things to look at:
+Stand next to the toilet and rock your weight onto the floor. Any give or softness points to a subfloor that's been wet. Look along the bottom of the tub or shower for cracked caulk, gaps, brown staining, or wall surface that feels soft at the seams of a fiberglass unit or along the bottom row of tile. Tap tiles with a knuckle; a hollow sound, or a tile that moves, means the bond has let go, often because water got to the backing. Peeling paint or mildew on the ceiling says the exhaust fan isn't keeping up. Then go downstairs and look at the ceiling under the bathroom for stains.
 
-- **Floor around the toilet.** Press with your foot. Any give or softness suggests subfloor damage from a leak.
-- **Tub and shower edges.** Look for cracked caulk, gaps, staining or soft wall surfaces at the joints of a fiberglass unit or along the bottom row of tile.
-- **Tile.** Tap tiles with a knuckle. Hollow sounds or tiles that move mean the bond has failed, often because water has reached the backing.
-- **Ceiling.** Peeling paint or mildew on the ceiling suggests the exhaust fan is not doing its job.
-- **Below.** Look at the ceiling under the bathroom for stains.
+If you find something, read our post on [signs of a leaking shower behind tile](/blog/signs-of-a-leaking-shower-behind-tile/). Fix the water damage before anything cosmetic happens.
 
-If you find problems, our post on [signs of a leaking shower behind tile](/blog/signs-of-a-leaking-shower-behind-tile/) explains what they mean. Hidden water damage should be repaired before any cosmetic work.
+## What to change, biggest payoff first
 
-## Updates that change the most
+If the room is sound, here's roughly the order we'd go in.
 
-If the bones of the room are sound, these changes give the largest visible return, roughly in order of impact.
+**The vanity and top.** Pull the oak vanity and cultured marble, put in a painted or wood-tone vanity with a quartz or solid-surface top, and the whole room reads differently. If the drain and supply lines stay where they are, it's a contained job. Measure carefully. A new vanity the same width as the old one means you don't have to patch floor tile where the old cabinet sat.
 
-### Vanity and top
+**Lights and mirror.** Take down the strip of bulbs and hang a sconce on each side of the mirror at face height. You get better light for shaving and makeup, and the room stops looking like 1994. A framed mirror or a medicine cabinet sized to the vanity replaces the wall-wide mirror. Moving or adding electrical boxes means opening the wall, and that's work for a licensed electrician.
 
-Replacing an oak vanity and cultured marble top with a painted or wood-tone vanity and a quartz or solid-surface top changes the whole room. If the plumbing stays in place, this is a contained job. Measure carefully: a vanity the same width avoids patching floor tile where the old one sat.
+**Faucets and hardware.** Swap the brass for brushed nickel, matte black or whatever finish you like, and do the faucet, towel bars, toilet paper holder and cabinet pulls all at once so they match. Sometimes the shower trim can be replaced without touching the valve in the wall, if the manufacturer makes a trim kit that fits.
 
-### Lighting and mirror
+**The shower door.** Getting rid of a framed brass slider and putting up a clean glass door, or just a curtain rod, is a small job with a big effect.
 
-Swapping strip lighting for sconces at face height on each side of the mirror improves light for grooming and modernizes the room. A framed mirror or medicine cabinet sized to the vanity replaces the wall-wide mirror. Moving or adding light boxes requires opening the wall and should be done by a licensed electrician.
+**The toilet.** A new white one replaces almond or bone, uses less water, and goes in quickly.
 
-### Faucets and hardware
+**Grout and caulk.** Clean and regrout a floor that's gone gray, then seal it. Cut out the old caulk around the tub completely and run a new bead. Our post on [how often to recaulk a tub or shower](/blog/how-often-to-recaulk-a-shower/) covers upkeep, and sealing grout every year or two keeps it from darkening again.
 
-Changing brass to brushed nickel, matte black or another finish on the faucet, towel bars, toilet paper holder and cabinet pulls makes the room feel coordinated. Shower trim kits can sometimes be replaced without changing the valve in the wall, if the manufacturer offers a compatible trim.
+**Paint and the fan.** New wall color, and a semi-gloss or bath-rated paint on the ceiling. If the ceiling peels or the mirror stays fogged long after a shower, replace the fan with a quieter, stronger one ducted outside, not into the attic. See [bathroom exhaust fans and mold](/blog/bathroom-exhaust-fan-and-mold/) for sizing and venting.
 
-### Shower door
+## When an update won't cut it
 
-Removing a framed brass slider and installing a cleaner glass door or a simple curtain rod is a small change that makes a big difference.
+Some problems mean a remodel, period. A fiberglass unit that's cracked or leaking at the seams. Loose tile on a shower wall, which almost always has water behind it. Soft or rotted subfloor. A tub or shower that somebody in the house has trouble stepping into. A layout where the door hits the toilet or there's nowhere to stand at the sink.
 
-### Toilet
+If you're looking at any of those, our guide to a [bathroom remodel in Clifton Park](/blog/bathroom-remodel-clifton-park/) walks through a full renovation in a house of the same age.
 
-A new toilet in white replaces almond or bone colors, uses less water and is usually a short job.
+## While the wall is open
 
-### Grout and caulk
-
-Cleaning and regrouting floor tile, then sealing it, brightens a floor that has gone gray. Old caulk around the tub should be cut out and replaced. Our post on [how often to recaulk a tub or shower](/blog/how-often-to-recaulk-a-shower/) explains the upkeep, and sealing grout every year or two keeps it from darkening again.
-
-### Paint and fan
-
-A fresh color on the walls and a semi-gloss or bath-rated paint on the ceiling make the room look clean. If the ceiling peels or the mirror stays fogged long after a shower, replace the fan with a quieter, more powerful model ducted to the outside. Our post on [bathroom exhaust fans and mold](/blog/bathroom-exhaust-fan-and-mold/) covers sizing and venting.
-
-## What an update cannot fix
-
-Some problems require a remodel:
-
-- A fiberglass unit that is cracked or leaking at the joints.
-- A tub or shower that is hard for someone in the house to step into.
-- Loose tile on a shower wall, which usually means water behind it.
-- A layout where the door hits the toilet or there is no room to stand at the vanity.
-- Soft or rotted subfloor.
-
-If any of these apply, our guide to a [bathroom remodel in Clifton Park](/blog/bathroom-remodel-clifton-park/) describes a full renovation in a house of the same era.
-
-## Plan for the next decade
-
-An update is a good moment to plan for the future, even if aging in place is years away. When a wall is already open for a new vanity or light, adding solid blocking in the shower and beside the toilet makes it easy to install grab bars later. Lever handles on faucets are easier to use than knobs. Our post on [grab bars that look good](/blog/grab-bars-that-look-good/) shows how support can blend with the rest of the room.
+Even if aging in place is years off for you, an update is a cheap moment to get ready for it. When the wall's already open for a new vanity or light, add solid wood blocking in the shower and beside the toilet. Later, grab bars screw into it without another wall repair. Lever handles on faucets are easier on hands than knobs. Our post on [grab bars that look good](/blog/grab-bars-that-look-good/) shows how support can blend into the room.
 
 ## Frequently asked questions
 
 ### Can I paint a cultured marble vanity top?
 
-It is possible with specialty coatings, but painted tops wear quickly around the sink. Replacing the top or the full vanity usually gives a longer-lasting result.
+You can, with specialty coatings, but painted tops wear fast around the sink where hands and water hit them. Replacing the top, or the whole vanity, lasts a lot longer.
 
-### Is it worth changing brass fixtures if I am not remodeling?
+### Should I change brass fixtures if I'm not remodeling?
 
-Often, yes. Faucets, towel bars and cabinet hardware are relatively simple to change, and coordinated finishes make a noticeable difference.
+Often, yes. Faucets, towel bars and cabinet hardware are fairly easy to swap, and a matched finish makes a noticeable difference for what it takes.
 
-### How do I know if my tile can stay?
+### Can I replace a fiberglass tub surround with tile and keep the tub?
 
-If the tiles are firmly bonded, the grout is intact and there are no soft spots or leaks, the tile can usually stay. Regrouting and sealing can refresh it.
+Sometimes. If the tub itself is sound, the surround comes out and the walls get rebuilt with backer board, waterproofing and tile. The joint where the tile meets the tub edge has to be detailed carefully, or water ends up behind the new wall.
 
-### Can I replace a fiberglass tub surround with tile without changing the tub?
-
-Sometimes. If the tub itself is sound, the surround can be removed and the walls rebuilt with backer board, waterproofing and tile. The tub edge needs careful detailing so water does not get behind the new wall.
-
-We design and build bathroom projects in Malta and the rest of the [Capital Region](/capital-region/), from focused updates to full remodels, with a written scope and one point of contact. See examples of our work on our [bathrooms](/bathrooms/) page.
+Some of the bathrooms we've done are on our [bathrooms page](/bathrooms/), including a white vanity with a glass walk-in shower. We take on small updates and full remodels in Malta and across the [Capital Region](/capital-region/), and we'll tell you which one your bathroom needs after we've tapped the tile and stood on the floor.

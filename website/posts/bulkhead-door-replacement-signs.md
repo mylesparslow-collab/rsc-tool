@@ -7,31 +7,31 @@ summary: How to tell whether a steel or wood cellar door can be repaired or shou
 flags:
 ---
 
-A bulkhead door needs to be replaced when the steel has rusted through, the doors no longer close and lock properly, or water gets past the frame onto the cellar stairs every time it rains or snow melts. Surface rust and stiff hinges can usually be fixed with cleaning, rust treatment and paint. Holes, warped panels and a frame that has pulled away from the foundation generally cannot. In Saratoga County, where a bulkhead spends months under snow and road salt drifts against it, most steel doors eventually reach that point.
+Replace a bulkhead when the steel has rusted through, the doors won't close and lock, or water gets past the frame onto the cellar stairs every time it rains or the snow melts. Surface rust and stiff hinges can be fixed with a wire brush, rust converter and paint. Holes, warped panels and a frame pulling off the foundation can't. In Saratoga County a bulkhead spends months under snow with road salt blown up against it, and most steel doors get there sooner or later.
 
-## What a bulkhead is and why it wears out
+## Why they wear out
 
-A bulkhead, often called a cellar door, is the angled pair of doors over an outside stairway into the basement. Most modern ones are steel, mounted on a sill or the top of a concrete or masonry areaway. Many older houses in the region still have wood bulkheads, sometimes built on a wood frame that sits directly on the foundation.
+A bulkhead, or cellar door, is the slanted pair of doors over an outside stairway down to the basement. Most newer ones are steel, set on a sill or on top of a concrete or masonry areaway. Plenty of older houses around here still have wood bulkheads, sometimes on a wood frame sitting right on the foundation.
 
-Bulkheads take a lot of abuse. Snow piles on the sloped doors and melts slowly. Meltwater runs to the bottom edge and the joint with the house. Salt and de-icer tracked from walks and driveways speed corrosion. Kids, pets and delivery workers walk across them. Each freeze-thaw cycle works at the seal between the bulkhead frame and the foundation. Over time the paint fails, rust starts at seams and edges, and the doors lose their fit.
+They take a beating. Snow piles up on the slope and melts slowly, and the meltwater runs down to the bottom edge and into the joint with the house. Salt and de-icer tracked off the walk and the driveway eat at the steel. Kids, dogs and delivery drivers walk across the top. Every freeze and thaw works at the seal between the frame and the foundation. The paint goes first, then rust starts at the seams and edges, and eventually the doors stop sitting flat.
 
-## Signs it is time to replace
+## What to look for
 
-Walk around the bulkhead and open and close the doors a few times. These are the signs that point toward replacement instead of repair:
+Walk around it, and open and close the doors a few times.
 
-- **Rust holes or perforation.** Pinholes or flaking that you can push a screwdriver through, especially along the bottom edges and seams.
-- **Doors that won't close flat or latch.** Warped or bent panels leave gaps that let in water, cold air, insects and animals.
-- **Broken or seized hinges** that cannot be freed or replaced because the surrounding metal is corroded.
-- **Water on the cellar stairs** after rain or snowmelt, even with the doors fully closed.
-- **A frame pulling away from the house** or rocking on its base.
-- **Rotted wood** on a wooden bulkhead or on a wood sill or header under a steel one.
-- **Doors that are too heavy or awkward to open safely**, because a spring or support has failed.
+Start with rust. Light surface rust is cosmetic. Pinholes, or flaking you can push a screwdriver through, mean the steel is gone, and that shows up first along the bottom edges and the seams.
 
-If the door is merely faded with light surface rust, cleaning, treating the rust and repainting with a metal primer and exterior enamel can buy several more years.
+Then see how the doors close. If they won't lie flat or latch, the panels are warped or bent, and the gaps let in water, cold air, bugs and the occasional chipmunk. Hinges that are seized or broken, where the metal around them is too corroded to take new ones, put you in the same spot.
 
-## Where leaks around a bulkhead come from
+Go down the cellar stairs after a rain or a melt. Water on the steps with the doors shut tight is the sign most people notice first. Push on the frame. If it rocks on its base or has pulled away from the house, it's done.
 
-Replacing the doors does not fix every leak, so it helps to find the source first.
+On a wood bulkhead, check for rot in the doors. On a steel one, check the wood sill or header underneath it. And if the doors have gotten too heavy or awkward to open safely because a spring or support failed, that's a reason on its own.
+
+If all you've got is faded paint and a little surface rust, clean it, treat the rust, and repaint with a metal primer and exterior enamel. That can buy several more years.
+
+## Find the leak before you buy a door
+
+New doors don't fix every leak, so figure out where the water's coming from first.
 
 | Where water shows up | Likely cause |
 |---|---|
@@ -40,58 +40,48 @@ Replacing the doors does not fix every leak, so it helps to find the source firs
 | Water at the bottom step or areaway floor | Groundwater or surface runoff, often from grading or a downspout |
 | Damp areaway walls | Cracked concrete or masonry, or soil sloping toward the house |
 
-Downspouts that empty near a bulkhead are a common culprit. So is soil or a patio that has settled and now slopes toward the house. Fixing grading and extending downspouts is part of a lasting repair. A new bulkhead will still leak at the bottom if water is flowing into the areaway from the yard.
+A downspout dumping next to the bulkhead is a common culprit. So is a patio or a strip of soil that's settled and now pitches toward the house. Regrade it and extend the downspout as part of the job. A brand-new bulkhead will still leak at the bottom if the yard is draining into the areaway.
 
-## What replacement involves
+## How a replacement goes
 
-Steel bulkheads come in a range of standard sizes, so the first step is measuring the existing opening. The length, width and height of the frame, along with the slope, determine whether a standard unit fits directly or the base needs to be modified.
+Steel bulkheads come in standard sizes, so we start by measuring the opening: length, width, height of the frame, and the slope. Those numbers tell you whether a stock unit drops right in or the base has to be built up or cut down.
 
-A typical replacement goes in this order:
-
-1. Remove the old doors and frame, cutting them apart if they are rusted in place.
-2. Inspect and repair the base, whether a concrete or masonry areaway wall, a wood sill, or the foundation itself.
+1. Pull the old doors and frame, cutting them apart if they're rusted in place.
+2. Inspect and fix the base, whether that's a concrete or masonry areaway wall, a wood sill, or the foundation itself.
 3. Set the new frame and fasten it to the base and the house.
-4. Seal the joint at the house, and the base, with a durable sealant and flashing where the siding meets the frame.
-5. Adjust the doors so they close flat and latch, and install hardware and any lock.
+4. Seal the joint at the house and at the base with a durable sealant, and flash where the siding meets the frame.
+5. Adjust the doors so they close flat and latch, and put on the hardware and any lock.
 
-Where an old wood bulkhead sits on a rotted wood frame, the base often needs more work, such as a new pressure-treated sill or a small concrete curb. If the areaway walls are cracked or crumbling, masonry repair may come first. Cellar stairs that are worn or unsafe are often rebuilt at the same time, which our post on [basement stair repair](/blog/basement-stair-repair/) covers.
+When an old wood bulkhead is sitting on a rotted wood frame, the base needs more, like a new pressure-treated sill or a small concrete curb. Cracked or crumbling areaway walls may need masonry repair before anything else. And worn cellar stairs often get rebuilt at the same time, since the doors are off and there's room to work; see [basement stair repair](/blog/basement-stair-repair/). A worn steel bulkhead replaced and a cellar stair rebuilt are both on our site.
 
-## Safety and code notes
+Late spring through fall is the easy time, because sealants and masonry want warm, dry weather. If yours fails in January, it can be secured temporarily and replaced when the weather allows.
 
-The cellar stairs under a bulkhead are still stairs. Worn treads, missing handrails and poor lighting make them a common place for falls. A handrail is required on stairs with four or more risers under the New York State Residential Code, so it is worth adding one if your cellar stairs lack it.
+## Safety and code
 
-If the basement is finished, or contains or will contain a bedroom, egress requirements may affect what kind of door and stairway you need. Check with your town or city building department before you finalize a design.
+The steps under a bulkhead are still stairs, and with worn treads, no rail and a single bulb they're a common place to fall. The New York State Residential Code requires a handrail on stairs with four or more risers. If your cellar stairs don't have one, put one up.
 
-Older homes may also have lead paint on a wood bulkhead or the trim around it. If the house was built before 1978, test before scraping or cutting.
+If the basement is finished, or has or will have a bedroom, egress rules may change what kind of door and stairway you need. Check with your town or city building department before you settle on a design.
 
-## Caring for a bulkhead between replacements
+A wood bulkhead and the trim around it may have lead paint. If the house was built before 1978, test before you scrape or cut.
 
-A few habits extend the life of a steel bulkhead:
+## Making a steel bulkhead last
 
-- Brush snow off the doors after big storms rather than letting it sit for weeks.
-- Keep de-icer and salt off the doors. Use sand or a salt-free product nearby.
-- Touch up chips and scratches with metal primer and paint each year.
-- Lubricate hinges and check the latch each fall.
-- Keep downspouts and grading directing water away from the areaway.
+Brush the snow off after big storms instead of letting it sit for weeks. Keep salt and de-icer off the doors, and use sand or a salt-free product on the walk next to them. Touch up chips and scratches with metal primer and paint once a year. Oil the hinges and check the latch every fall. Keep the downspouts and the grading sending water away from the areaway.
 
-These tasks fit naturally into a [fall home maintenance checklist](/blog/fall-home-checklist-saratoga/), and a quick check of the bulkhead belongs on your [spring inspection after winter](/blog/spring-home-checklist-after-winter/) too.
+Those fit right into a [fall home maintenance checklist](/blog/fall-home-checklist-saratoga/), and the bulkhead belongs on your [spring inspection after winter](/blog/spring-home-checklist-after-winter/) too.
 
 ## Frequently asked questions
 
 ### Can a rusted bulkhead door be repaired instead of replaced?
 
-Light surface rust can be cleaned, treated and painted. Once rust has eaten holes through the panels or frame, or the doors are warped and won't latch, replacement is the practical choice because patches on thin, corroded steel rarely last.
+Light surface rust can be cleaned, treated and painted. Once rust has eaten through the panels or frame, or the doors are warped and won't latch, replace it. Patches on thin, corroded steel rarely hold.
 
 ### Why does my bulkhead leak even when it's closed?
 
-The doors may be warped, or the seal where the frame meets the house may have failed. Water also often reaches the areaway from outside through poor grading or a nearby downspout. Finding the source comes before deciding on replacement.
+The doors may be warped, or the seal where the frame meets the house may have failed. Water also often gets into the areaway from the yard through bad grading or a nearby downspout. Find the source before deciding on new doors.
 
 ### Can a new steel bulkhead replace an old wood one?
 
-Usually, yes, though the base often needs work first. Wood bulkheads frequently sit on a wood sill that has rotted, and the opening may not match standard steel sizes, so the base may need to be rebuilt or modified to fit.
+Generally, yes, though the base often needs work first. Wood bulkheads frequently sit on a sill that's rotted, and the opening may not match standard steel sizes, so the base may have to be rebuilt or adjusted to fit.
 
-### When is the best time to replace a bulkhead?
-
-Late spring through fall is easiest, since sealants and any masonry work need warm, dry weather. A failing bulkhead can be temporarily secured in winter and replaced when conditions allow.
-
-We replace bulkheads, rebuild cellar stairs and fix the drainage problems around them as part of our [bulkheads and outdoor work](/bulkheads-and-outdoor/). After a site visit, you receive a written scope of work by phase with the price and payment schedule for each phase.
+Bulkheads, the cellar stairs under them, and the drainage problems around them are all part of our [bulkheads and outdoor work](/bulkheads-and-outdoor/). We'll measure the opening and tell you whether a stock door fits or the base needs work first.

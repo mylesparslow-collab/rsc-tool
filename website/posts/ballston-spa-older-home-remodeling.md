@@ -7,63 +7,64 @@ summary: The housing in and around the village of Ballston Spa, the remodeling p
 flags:
 ---
 
-Many homes in the village of Ballston Spa date from the 1800s and early 1900s, so remodeling there usually means working with plaster walls, old framing, fieldstone or brick foundations, and decades of earlier repairs. A good remodeling contractor in Ballston Spa plans for what may be found behind the walls and keeps the character of the house intact while bringing kitchens, baths and stairs up to modern use. Outside the village, newer homes in the surrounding towns bring a different set of projects.
+A lot of the houses in the village of Ballston Spa went up in the 1800s and early 1900s. Remodeling one means plaster on lath, rough-sawn framing, a fieldstone or brick foundation, and a hundred years of other people's repairs. Plan for what's behind the walls before you plan the finishes, and keep the parts of the house that are still good. Out in the newer neighborhoods around the village, the work looks different.
 
-## The housing in and around Ballston Spa
+## What's in the village and what's around it
 
-Ballston Spa is the county seat of Saratoga County, and the village center has a dense mix of older houses, including Greek Revival and Italianate homes, Victorian houses with porches and decorative trim, simpler workers' houses, and two-family homes. Many were built when the village was a mill and spa town in the 19th century. Many lots are narrow, houses often sit close to the street, and some have detached garages or carriage barns at the back.
+Ballston Spa is the county seat of Saratoga County. The village center is packed with older houses: Greek Revival and Italianate homes, Victorians with porches and fancy trim, plain workers' houses, and plenty of two-families. Much of it was built when this was a mill and spa town in the 19th century. Lots are narrow, houses sit close to the street, and a carriage barn or detached garage out back is common.
 
-The village sits within the towns of Ballston and Milton, and both towns also have suburban neighborhoods built in the later 20th century and newer subdivisions. Those houses tend to need different work, such as updating dated kitchens and bathrooms, replacing aging decks and adding finished space.
+The village sits inside the towns of Ballston and Milton. Both towns also have neighborhoods from the later 20th century and newer subdivisions. Those houses need other things: a tired kitchen or bath brought up to date, an old deck replaced, a basement or bonus room finished.
 
-## Common projects in older Ballston Spa homes
+## Kitchens
 
-### Kitchens
+Kitchens in old houses have usually been redone two or three times, sometimes with each one built right over the last. Pull the cabinets and you'll find a chimney somebody boxed in, a capped gas line, a drain that goes nowhere, wiring from three different decades, and joists that were notched to get a pipe through. Budget time and money for at least some of that.
 
-Kitchens in older houses were often remodeled several times, sometimes with each layer added over the last. Opening walls can reveal old chimneys, abandoned plumbing, earlier wiring and framing that was cut for previous work. Planning a kitchen in an older house means allowing for these discoveries. Original features such as an exposed brick chimney can become the focal point of the new room. We built one kitchen with sage cabinets around an original brick chimney left exposed. Our guide to [kitchen remodeling in Saratoga Springs](/blog/kitchen-remodel-saratoga-springs-guide/) covers planning steps that apply equally to older Ballston Spa houses.
+A chimney can be the best thing that comes out of the wall. One kitchen on our site has sage cabinets built around an original brick chimney left exposed. Our [Saratoga Springs kitchen remodel guide](/blog/kitchen-remodel-saratoga-springs-guide/) walks through planning steps that apply just as well to an old house in Ballston Spa.
 
-### Bathrooms
+## Bathrooms
 
-Bathrooms in older homes are often small, sometimes added into a former bedroom or closet long after the house was built. Floors may be out of level and plumbing may run through cramped spaces. Careful layout makes the most of the space. Water damage behind old tile or around a tub is common, so it is worth knowing the signs before planning a remodel.
+Bathrooms in these houses are often small, carved out of a bedroom or a closet long after the house was built. The floor is out of level, the drain runs through a cramped joist bay, and the tub is wedged in wherever it fit. Layout does a lot of the work in a room like that, down to which way the door swings. Expect water damage behind old tile and around the tub. It's common enough that we assume it until the wall is open and proves otherwise.
 
-### Cellar stairs and bulkheads
+## Cellar stairs and bulkheads
 
-Many older homes have steep, narrow cellar stairs and an exterior bulkhead door to the basement. Both take a beating from moisture, and both are common replacement projects. Our posts on [basement stair repair](/blog/basement-stair-repair/) and [bulkhead door replacement](/blog/bulkhead-door-replacement-signs/) explain what to look for. We have rebuilt cellar stairs and replaced worn steel bulkheads.
+Most of these houses have a steep, narrow cellar stair and a steel bulkhead door out to the yard. Damp gets to both. The stair stringers soften where they sit on the floor, and the bulkhead rusts through and leaks. Our posts on [basement stair repair](/blog/basement-stair-repair/) and [bulkhead door replacement](/blog/bulkhead-door-replacement-signs/) say what to check. A rebuilt cellar stair and a replaced steel bulkhead are both on our site.
 
-### Porches, trim and stairs
+## Porches, trim and the main stair
 
-Front porches, interior staircases and original trim give older Ballston Spa homes much of their character. Rotted porch posts, loose railings, worn stair treads and peeling trim are common needs. Most can be repaired with matching profiles rather than replaced with stock parts. Our guide to [restoring an old house in Saratoga Springs](/blog/restoring-old-house-saratoga-springs/) covers how to prioritize these repairs, and the same order applies in Ballston Spa.
+The front porch, the staircase and the original trim are a big part of why people buy these houses. Rotted porch posts, loose railings, cupped stair treads and peeling window casings are all typical. Most of it can be repaired, and where a piece has to be replaced we'd match the old profile instead of reaching for a stock part from the lumberyard. Mismatched trim shows from across the room. Our guide to [restoring an old house in Saratoga Springs](/blog/restoring-old-house-saratoga-springs/) covers what to fix first, and the same order holds in Ballston Spa.
 
-## What to expect when you open up an old house
+## What turns up once the walls are open
 
-Older homes tend to hide surprises. These are the most common.
+Lead paint and asbestos come first on the list. If the house was built before 1978, assume the paint may contain lead until a test says it doesn't. Old pipe insulation, flooring and ceiling materials can contain asbestos. Test before anything gets disturbed, and bring in qualified abatement contractors where the results call for it.
 
-- **Lead paint and asbestos.** Homes built before 1978 may contain lead paint, and older pipe insulation, flooring and ceiling materials can contain asbestos. Test before disturbing them, and use licensed abatement contractors where needed.
-- **Old wiring.** Knob-and-tube and other outdated wiring should be evaluated by a licensed electrician before walls are closed up.
-- **Framing changes.** Joists notched for old plumbing, removed walls and undersized beams turn up often. Structural concerns may need an engineer's review.
-- **Moisture.** Fieldstone and brick foundations can let in water, and damp basements affect stairs, framing and anything stored below.
+Old wiring is next. Knob-and-tube and other outdated wiring should be looked at by a licensed electrician before any walls get closed back up. Don't bury it behind new drywall and hope.
 
-Because these issues often appear only after demolition begins, a written agreement on how changes will be handled matters. Any change to scope, price or schedule should be agreed in writing, through a change order, before the work proceeds. Our post on [change orders in remodeling](/blog/change-orders-explained/) explains how that process works.
+Then the framing. Joists notched for old plumbing, bearing walls that somebody took out, beams too small for what they carry. If anything structural looks off, an engineer may need to see it.
 
-## Permits and approvals
+And moisture. Fieldstone and brick foundations let water through. A damp cellar works on the stair, the sill and the floor framing, and anything stored down there.
 
-Most remodeling projects that involve structure, plumbing, electrical or exterior changes need a building permit. Depending on where the property sits, the building department may be the village's or the town's, so confirm which one covers your address before planning. They can tell you what requires a permit and what inspections apply. For properties in a historic area, ask whether exterior changes need additional review.
+Most of this shows up after demolition starts, not before, which is why the paperwork on changes matters. Any change to scope, price or schedule should be agreed in writing, in a change order, before the work goes on. We explain how that works in [change orders explained](/blog/change-orders-explained/).
 
-## Planning the work in phases
+## Permits
 
-Older houses rarely get remodeled all at once. Many owners plan a sequence of projects over several years, starting with anything letting in water, then structure and safety, then kitchens, baths and finishes. A written scope of work organized by phase, with a price and payment schedule tied to each phase, makes it easier to plan around a budget and see what each stage includes.
+Work that touches structure, plumbing, electrical or the outside of the house generally needs a building permit. Depending on where your property is, that may be the village building department or the town's, so find out which one covers your address before you plan. They'll tell you what needs a permit and which inspections apply. If the house is in a historic area, ask whether exterior changes need another review on top of the permit.
+
+## Doing it a piece at a time
+
+Hardly anyone remodels an old house all at once. Most owners work through it over several years. Water comes first: the roof, gutters, grading, a leaking bulkhead. Then structure and safety. Kitchens, baths and finishes come last, because there's no point in new cabinets over a sill that's rotting. Breaking the job into phases, each with its own price and payment, makes it easier to fit the work to the budget.
 
 ## Frequently asked questions
 
 ### What should I know before remodeling an older home in Ballston Spa?
 
-Expect to find hidden conditions behind walls and under floors, such as old wiring, earlier repairs and framing changes. Test for lead paint and asbestos before demolition, and agree in writing on how changes will be handled before work starts.
+That you'll find things behind the walls and under the floors: old wiring, earlier repairs, cut framing. Test for lead paint and asbestos before demolition, and agree in writing on how changes get handled before work starts.
 
 ### Do I need a permit to remodel in Ballston Spa?
 
-Most work involving structure, plumbing, electrical or exterior changes needs a building permit. Whether the village or the town handles it depends on where your property sits, so confirm with the building department before you start.
+Most work involving structure, plumbing, electrical or the exterior needs one. The village or the town issues it, based on where the property sits, so call the building department before you start.
 
 ### Can original features be kept during a remodel?
 
-Often, yes. Brick chimneys, staircases, trim and porches can frequently be repaired and incorporated into the new design. Keeping them preserves the character of the house and can avoid the cost of replicating details.
+Often, yes. Brick chimneys, staircases, trim and porches can frequently be repaired and worked into the new design. Keeping them holds onto the character of the house and can save the cost of copying details that were already there.
 
-We work on kitchens, bathrooms, stairs, bulkheads, porches and trim in older homes in Ballston Spa and across Saratoga County, with one team handling both design and construction. See our [Capital Region service area](/capital-region/) or our [restoration and built-ins work](/restoration-and-built-ins/) to learn more.
+Kitchens, bathrooms, cellar stairs, bulkheads, porches and trim in old houses are the kind of work we do in Ballston Spa and the rest of Saratoga County, with the same team designing it and building it. Our [restoration and built-ins page](/restoration-and-built-ins/) shows some of it, and the [Capital Region service area](/capital-region/) lists where we work.

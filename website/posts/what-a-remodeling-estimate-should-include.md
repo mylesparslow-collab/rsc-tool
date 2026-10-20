@@ -7,84 +7,78 @@ summary: A one-line price is not an estimate. The parts a written remodeling est
 flags:
 ---
 
-A remodeling contractor's estimate should describe the work in enough detail that two people reading it would picture the same finished project. At a minimum, it should include a written scope of work organized by phase, the materials and fixtures included (or the allowances for them), what is excluded, who handles permits, the price, a payment schedule tied to completed work, and how changes will be agreed. Whether you are remodeling a kitchen in the Capital Region or anywhere else, a single number on a business card is a guess, not an estimate, and it leaves both sides open to misunderstanding.
+A remodeling estimate should describe the job well enough that you and the contractor, reading it separately, would picture the same finished room. At minimum that means a written scope of work broken out by phase, the materials and fixtures included or the allowances for them, what's left out, who pulls the permits, the price, a payment schedule tied to finished work, and how changes get agreed. A number scribbled on the back of a business card is a guess. It leaves both of you room to remember the deal differently, and on a Capital Region kitchen or bath that's a lot of money to argue over.
 
-## Why the detail matters
+## Where the arguments come from
 
-Most disputes in remodeling are not about bad workmanship. They are about expectations. The homeowner assumed the new vanity included the faucet, or that the old tile would be hauled away, or that painting was part of the job. A detailed written estimate settles those questions before the work starts, when they are cheap to settle. It also lets you compare bids fairly. Two numbers mean nothing side by side unless you know what each one covers.
+Most fights on remodeling jobs aren't about bad work. They're about what somebody assumed. The homeowner figured the faucet came with the new vanity, or that the old tile was getting hauled away, or that painting was part of it. The contractor figured otherwise. Put it in writing before anyone swings a hammer and those questions get settled while they're still cheap.
 
-## The parts of a good estimate
+Detail also lets you compare bids. Two prices side by side tell you nothing until you know what each one covers.
 
-### A scope of work, organized by phase
+## The scope, phase by phase
 
-The heart of an estimate is a written description of the work, broken into the order it will happen. For a kitchen, that might look like:
+The core of the estimate is a written description of the work in the order it'll happen. On a kitchen it might run like this:
 
-1. Protection and demolition: protect floors and adjacent rooms, remove existing cabinets, counters and flooring, haul debris.
+1. Protection and demolition: cover floors and the rooms next door, pull out the cabinets, counters and flooring, haul the debris.
 2. Rough work: framing changes, plumbing and electrical rough-in, inspections.
-3. Walls and ceilings: drywall repair, patching, priming.
-4. Cabinets and counters: install cabinets, template and install counters.
-5. Finishes: backsplash, flooring, trim, paint, fixtures and appliances hooked up.
-6. Cleanup and walkthrough.
+3. Walls and ceilings: drywall repair, patching, primer.
+4. Cabinets and counters: set the cabinets, template the counters, install them.
+5. Finishes: backsplash, flooring, trim, paint, fixtures, appliances hooked up.
+6. Cleanup and a walkthrough together.
 
-A phased scope tells you what happens when, and it ties directly to how payments should work.
+Laid out that way, you can see what happens when, and the payments can follow the same steps.
 
-### Materials, fixtures and allowances
+## Materials and allowances
 
-The estimate should name the important materials, including the cabinet line and finish, the countertop material, the tile, the flooring and the plumbing fixtures. Where you have not chosen something yet, the estimate should give an allowance, a set amount for that item, and explain what happens if your choice costs more or less. Vague phrases such as "standard fixtures" or "tile as selected" without an allowance are where surprises come from.
+The estimate should name the big materials: the cabinet line and finish, the countertop material, the tile, the flooring and the plumbing fixtures. Where you haven't picked something yet, it should carry an allowance, a set amount for that item, and say what happens if what you choose costs more or less. If your final pick costs more, you pay the difference. If it costs less, you get it back.
 
-### Exclusions and assumptions
+"Standard fixtures" or "tile as selected" with no allowance next to it is where the surprises come from. Ask for a number.
 
-A good estimate says what is not included. Common exclusions are appliances, painting, permit fees, repair of hidden damage, and work by other trades the homeowner is hiring directly. It should also state its assumptions, for example "assumes subfloor is sound" or "assumes existing wiring is adequate for new lighting." Those assumptions tell you where the price could change.
+## What's not included
 
-### Hidden conditions
+The estimate should say plainly what it leaves out. Appliances, painting, permit fees, repairs to hidden damage and work by other trades you're hiring yourself are the usual ones. It should also spell out its assumptions, like "assumes subfloor is sound" or "assumes existing wiring is adequate for new lighting." Read those closely. Each assumption is a spot where the price could move.
 
-In any house, and especially in older Capital Region homes, opening a wall or floor can reveal rot, water damage, old wiring or framing that does not meet code. An honest estimate says how hidden conditions will be handled. The work stops, you are shown the problem, and any added work is priced and agreed in writing before it proceeds.
+## Hidden conditions
 
-### Permits and inspections
+Open a wall or a floor in any house and you might find rot, water damage, old wiring or framing that's not to code. In older Capital Region houses you should expect it. The estimate should say how that gets handled, and the right answer goes like this: the work stops, you're shown what turned up, and any added work is priced and agreed in writing before it goes ahead.
 
-The estimate should say which parts of the job need a permit, who will apply for it, and how inspections fit into the schedule. If permit fees are included or excluded, it should say so. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) explains what typically needs one.
+## Permits, price, payments and changes
 
-### Price and payment schedule
+The estimate should say which parts of the job need a permit, who's applying for it, how the inspections fit in the schedule, and whether permit fees are included. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) covers what typically needs one.
 
-The price should be clear, and the payments should follow the work. A reasonable schedule ties each payment to a completed phase, with a deposit to schedule and order materials, then payments as phases are finished. We explain why in [phased payments vs paying upfront](/blog/phased-payments-vs-paying-upfront/). Be cautious of any estimate that asks for most or all of the money before work begins.
+The price should be clear and the payments should follow the work. A fair schedule ties each payment to a finished phase: a deposit to get on the calendar and order materials, then payments as each phase is done. We go into why in [phased payments vs paying upfront](/blog/phased-payments-vs-paying-upfront/). Be wary of anyone who wants most or all of the money before work starts.
 
-### How changes are handled
+Jobs change. You switch tile, or something ugly turns up behind the plaster. The estimate should say that any change to scope, price or schedule gets written up as a change order and agreed before the work goes on. See [change orders explained](/blog/change-orders-explained/) for how that plays out.
 
-Projects change. You decide on a different tile, or a hidden problem appears. The estimate should say that changes to scope, price or schedule will be written up as a change order and agreed before the work proceeds. See [change orders explained](/blog/change-orders-explained/) for how that works in practice.
-
-### Schedule
-
-An estimate should give an expected start window and an approximate duration, along with the things that can move the schedule, such as material lead times, inspections and weather for exterior work.
+It should also give a start window and a rough length, plus what can push the schedule around: material lead times, inspections, and weather on outside work. Many estimates carry an expiration date because material prices change. If yours doesn't say, ask how long the price holds.
 
 ## Red flags
 
+Check any estimate against these before you sign:
+
 - A price with no written description of the work
-- No mention of what is excluded
-- "Cash price" pressure or a discount for deciding today
-- Large upfront payment with nothing tied to progress
-- No mention of permits on work that clearly needs one
-- Reluctance to provide certificates of insurance; see [contractor insurance: what to ask in NY](/blog/contractor-insurance-what-to-ask-ny/)
+- Nothing about what's excluded
+- Pressure for a "cash price," or a discount if you decide today
+- A large payment upfront with nothing tied to progress
+- No mention of permits on work that obviously needs one
+- Reluctance to hand over certificates of insurance (see [contractor insurance: what to ask in NY](/blog/contractor-insurance-what-to-ask-ny/))
 
-## Estimate, proposal or contract?
+## Estimate, proposal, contract
 
-Contractors use these words differently. An estimate or proposal describes the work and price. A contract is the signed agreement that binds both parties, and in New York, home improvement contracts have specific legal requirements under state consumer protection law. Whatever the document is called, read it closely before signing, and ask questions about anything you do not understand. If the project is large, it is reasonable to have your own attorney review the contract.
+Contractors use these words loosely. An estimate or a proposal describes the work and the price. The contract is the signed agreement that binds both sides, and in New York, home improvement contracts have specific legal requirements under state consumer protection law. Whatever it's called, read it closely before you sign it and ask about anything you don't follow. On a big project it's reasonable to have your own attorney look it over.
 
 ## Frequently asked questions
 
 ### Should I get more than one estimate?
 
-It is reasonable to compare two or three, as long as they describe the same scope. If one bid is much lower, check what it leaves out before assuming it is a better deal.
+Comparing two or three is reasonable, as long as they're for the same scope. If one comes in far lower than the others, find out what it leaves out before you call it a better deal.
 
 ### Why do some contractors charge for an estimate?
 
-A detailed estimate for a large project takes real time for site measurements, design decisions, material pricing and phasing. Some contractors charge for design work or credit that fee against the project. Either way, the arrangement should be clear before the work on the estimate begins.
+A detailed estimate on a big job takes real time: measuring the site, working through design decisions, pricing materials and laying out the phases. Some contractors charge for that design work, or credit the fee against the project. Either way, the arrangement should be clear before they start on it.
 
 ### What is an allowance on an estimate?
 
-An allowance is a set amount included for an item you have not chosen yet, such as tile or light fixtures. If your final choice costs more, you pay the difference; if it costs less, the difference is credited. The estimate should explain how this is settled.
+It's a set amount included for something you haven't chosen yet, like tile or light fixtures. Go over budget on it and you pay the difference; come in under and the difference is credited. The estimate should say how that gets settled.
 
-### How long is an estimate good for?
-
-Many estimates include an expiration window because material prices change. If yours does not say, ask how long the price will hold.
-
-To get an estimate that means something, the contractor needs to see the house; our post on [preparing for a site visit](/blog/preparing-for-a-site-visit/) explains how to make that visit useful. For [kitchens](/kitchens/) and every other project, we visit first and then provide a written scope of work organized by phase, with the price and a payment schedule tied to each phase.
+A real estimate starts with someone standing in your house with a tape measure, and [preparing for a site visit](/blog/preparing-for-a-site-visit/) helps you get the most out of that hour. Whether it's [kitchens](/kitchens/) or anything else we build, the scope we hand you is written out phase by phase, and each phase has its own price and payment.

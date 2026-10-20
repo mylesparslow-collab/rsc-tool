@@ -7,102 +7,74 @@ summary: A room-by-room and yard-by-yard walk-around for the first dry weekend o
 flags:
 ---
 
-A spring home inspection after winter should focus on what ice, snow and freeze-thaw cycles leave behind, such as shingles lifted by wind, ceiling stains from ice dams, gutters bent under ice, steps and deck posts pushed up by frost, and concrete flaking from salt. The best time to look is the first dry weekend after the snow is gone, before spring rains add new problems. Much of the damage you find in April started small in January, and catching it now usually means a repair rather than a replacement.
+After a Capital Region winter, walk the house looking for what ice, snow and freeze-thaw left behind: shingles the wind lifted, ceiling stains from ice dams, gutters bent under the weight of ice, steps and deck posts pushed up by frost, and concrete flaking from salt. Do it the first dry weekend after the snow's gone, before the spring rains pile on. Most of what you find in April started small in January, and if you catch it now you're usually fixing it, not replacing it.
 
-## How winter damages a house here
+## What a winter here actually does
 
-Capital Region winters cycle above and below freezing many times. Each cycle lets water seep into cracks, then expands it as ice. Soil that freezes can heave upward and settle again unevenly when it thaws. Snow that melts on a warm roof and refreezes at the cold eaves forms ice dams. Road salt and de-icers chew at concrete and metal. Plows and snowblowers scrape whatever sits along the driveway.
+Around here the temperature crosses freezing over and over from November to April, and each time water in a crack freezes and opens it wider. Wet soil freezes and heaves up, then settles back unevenly when it thaws. Snow melts on a warm roof, runs down to the cold eaves and freezes again into an ice dam. Road salt and ice melt eat at concrete and metal, and the plow and the snowblower take a swipe at anything near the driveway.
 
-None of this is unusual, which is why a yearly spring walk-around is worth the time. Bring a notebook, a flashlight, a screwdriver and binoculars.
+None of that is unusual. Grab a notebook, a flashlight, a screwdriver and a pair of binoculars and go around once.
 
-## Roof, gutters and the eaves
+## Look at the roof from the ground
 
-Start at the top and work down, staying on the ground.
+Start at the top, and stay on the ground to do it. Use the binoculars on the shingles, mostly along the ridges and edges. You're looking for missing ones, curled or lifted tabs, and nail heads showing. Then check the flashing around the chimney, the vent pipes and anywhere a roof meets a wall for bent or lifted metal.
 
-- **Shingles.** Use binoculars to look for missing, curled or lifted shingles, especially along ridges and edges, and exposed nail heads.
-- **Flashing.** Check around chimneys, vents and where roofs meet walls for bent or lifted metal.
-- **Gutters.** Ice can bend gutters, pull hangers loose and separate seams. Look for sagging sections and gutters pulling away from the fascia.
-- **Fascia and soffits.** Peeling paint or dark stains on the fascia behind the gutter often mean water has been getting behind it. Our post on [soffit and fascia repair](/blog/gutters-soffits-fascia-rot/) describes the next steps.
+Ice is hard on gutters. It bends them, pulls the hangers loose and opens the seams. Sight down each run for sags and for spots where the gutter has pulled away from the fascia. Look at the fascia board behind it too. Peeling paint or dark streaks there mean water's been getting behind it, and our post on [soffit and fascia repair](/blog/gutters-soffits-fascia-rot/) picks it up from there.
 
-Any roof repair should be handled by a roofer. Walking a roof in spring, when shingles may be wet and slippery, is a real fall risk.
+Leave the roof itself to a roofer. Shingles are often wet and slick in spring, and walking a roof then is a real way to get hurt.
 
-## Signs of ice dam damage inside
+## Ice dam stains inside
 
-Ice dams often leave their mark inside the house after the snow is gone. Look along exterior walls and ceilings on the top floor, especially below the eaves.
+Ice dams leave marks indoors that outlast the snow. Go along the outside walls on the top floor, especially the ceilings under the eaves. Brown or yellow rings on the ceiling or high on a wall, paint bubbling or peeling near the ceiling line, and upstairs window trim that's swollen or stained are the things to find. In the attic, look for damp or flattened insulation.
 
-- Brown or yellow stains on ceilings or high on walls
-- Peeling or bubbling paint near the ceiling line
-- Damp or compressed insulation if you can see into the attic
-- Swollen or stained window trim on upper floors
+A stain that showed up over the winter needs looking into even if it's dry now. Wet insulation and framing can stay damp long after the paint looks fine. Our guide to [ice dam damage repair](/blog/ice-dams-and-winter-damage/) covers how to trace it back and what the repair usually takes. If you smell mold or see it on drywall or framing, call a professional.
 
-Stains that appeared over the winter are worth investigating even if they are now dry, since wet insulation and framing may stay damp long after the surface looks fine. Our guide on [ice dam damage repair](/blog/ice-dams-and-winter-damage/) explains how to trace the source and what repairs usually involve. If you find a moldy smell or visible mold on drywall or framing, call a professional.
+## Steps, walks and deck posts that moved
 
-## Frost-heaved steps, walks and deck posts
+Frost heave is the thing we see most in spring. Concrete steps tip forward or pull away from the house and leave a new gap at the top. Walkway slabs end up with a trip edge. Deck posts and footings lift, so the deck's out of level or the stair landing tilts. A railing that was solid in October leans or wobbles in April.
 
-Frost heave is one of the most common spring discoveries in this region. Watch for:
+Some of that settles back as the ground thaws. What's still out of place once the soil dries, or what moves a little more every year, tells you the step or footing wasn't built below frost depth, or water's collecting under it. Our post on [concrete and wood step repair](/blog/outdoor-steps-freeze-thaw/) goes through the options.
 
-- Steps that have tipped, separated from the house or developed a new gap at the top
-- Walkway slabs that are uneven, creating a trip edge
-- Deck posts or footings that have lifted, leaving the deck out of level or a stair landing tilted
-- Railings that were solid in fall and now lean or wobble
+Shake the deck stairs and railings hard, since one heaved post can loosen everything bolted to it. If you find soft boards, rotted posts or framing that's shifted, read [signs your deck needs to be replaced](/blog/signs-your-deck-needs-replacing/) before you decide to patch it.
 
-Some heave settles back as the ground thaws. Movement that remains after the soil dries out, or that gets worse each year, usually means the step or footing was not built below frost depth or water is collecting underneath it. Our post on [concrete and wood step repair](/blog/outdoor-steps-freeze-thaw/) goes through the repair options.
+## Concrete, foundation and chimney
 
-On decks, check stairs and railings carefully, since a heaved post can loosen everything attached to it. If boards are soft, posts are rotted or the structure has moved, our post on [signs your deck needs to be replaced](/blog/signs-your-deck-needs-replacing/) can help you judge whether repair still makes sense.
+Flaking and pitting on concrete steps, walks and the garage floor is spalling, and around here it's mostly salt plus freeze-thaw. A few small spots can be patched. When it's spread across the whole surface, you're looking at resurfacing or replacing. A gentler ice melt or sand on the steps next winter slows it down.
 
-## Concrete, masonry and salt
+Hairline cracks in a poured foundation are common and mostly harmless. Get a structural engineer to look at any crack wider than a pencil line, a stair-step crack running through block or brick, or a crack where one side has pushed out past the other.
 
-- **Spalling.** Flaking or pitting on concrete steps, walks and the garage floor often comes from salt and freeze-thaw. Small patches can be repaired, while widespread spalling may mean resurfacing or replacing.
-- **Foundation cracks.** Hairline cracks in a poured foundation are common. Cracks that are wider than a pencil line, run in a stair-step pattern through block or masonry, or show one side pushed out from the other should be looked at by a structural engineer.
-- **Chimney.** Look for missing mortar, loose bricks or a cracked cap. Leave chimney repair to a mason.
-
-Switching to a gentler de-icer next winter, or using sand on steps, reduces salt damage over time.
+On the chimney, look for missing mortar, loose bricks and a cracked cap. That's a mason's job.
 
 ## Siding, trim and windows
 
-Walk the house slowly and look at:
+Snowblowers, plows and shovels scrape siding and corner boards near the ground. Caulk at windows, doors and corners cracks and falls out over a winter. Push a screwdriver into each window sill; if it sinks in, the sill's soft. And look for paint that came off over the winter and left bare wood exposed.
 
-- Siding and trim scraped by snowblowers, plows or shovels
-- Cracked or missing caulk at windows, doors and corners
-- Window sills that feel soft when probed
-- Paint that peeled over the winter, exposing bare wood
-
-Trim and sill repairs, and the painting that protects them, are best scheduled for late spring once the wood has dried and temperatures stay steady.
+Leave trim and sill repairs, and the paint that protects them, for late spring, when the wood has dried out and the temperatures have settled.
 
 ## Water and the basement
 
-Spring melt is when many basements take on water.
+Spring melt is when a lot of basements take on water. After a good rain, go down and look for damp walls, puddles, or the white crusty deposits on masonry called efflorescence, which is what water leaves behind when it seeps through. If you have a sump pump, pour a bucket of water into the pit and make sure it kicks on.
 
-- Check the basement after rain and snowmelt for damp walls, puddles or efflorescence, the white mineral deposits left by water seeping through masonry.
-- Test the sump pump, if you have one, by pouring water into the pit.
-- Confirm downspouts are connected and discharging away from the house. Extensions are easy to knock loose during snow clearing.
-- Look at the soil around the foundation. Settled spots that slope toward the house should be regraded.
-- Turn outdoor water back on and check faucets and hoses for leaks once nights stay above freezing.
+Outside, check that every downspout is still connected and its extension is carrying water away from the house. They get knocked loose clearing snow all the time. Low spots in the soil along the foundation that slope back toward the house should be built up and regraded. Once nights stay above freezing, turn the outside water back on and check the faucets and hoses for leaks.
 
-## Planning the repairs
+## What to fix first
 
-Sort what you find into three groups.
+Safety first. Loose railings, heaved steps and wobbly deck stairs get fixed right away. Water problems come next: gutter damage, lifted flashing, ceiling stains and seepage in the basement should be handled before the heavy spring rains. Peeling paint, scraped siding and light spalling can wait for summer.
 
-| Group | Examples | Timing |
-|---|---|---|
-| Safety | Loose railings, heaved steps, wobbly deck stairs | Fix right away |
-| Water | Gutter damage, failed flashing, ceiling stains, foundation seepage | Fix before heavy spring rains |
-| Cosmetic | Peeling paint, scraped siding, minor spalling | Schedule for summer |
-
-Spring is also when contractors' calendars fill quickly, so it helps to get larger projects on the list early. If you are thinking about replacing a deck, our post on [the best time to build a deck in the Capital Region](/blog/best-time-to-build-a-deck-capital-region/) covers scheduling.
+Contractors' spring calendars fill fast, so get bigger projects scheduled early. For a deck, see [the best time to build a deck in the Capital Region](/blog/best-time-to-build-a-deck-capital-region/).
 
 ## Frequently asked questions
 
 ### When should I do a spring home inspection in upstate New York?
 
-Once the snow has melted and the ground has started to dry, usually from late March into April. Look at the roof, gutters and steps first, then check inside for ceiling stains and basement water after the first heavy rain.
+Once the snow is gone and the ground has started to dry, which is usually late March into April. Do the roof, gutters and steps first. Check inside for ceiling stains and basement water after the first heavy rain.
 
 ### Will frost-heaved steps settle back down on their own?
 
-Sometimes they settle partway as the ground thaws, but they rarely return exactly to where they were. Steps that move every winter usually need a repair to the footing or drainage beneath them.
+Partway, sometimes, as the ground thaws. They almost never go back exactly where they were. Steps that move every winter need work on the footing or the drainage under them.
 
 ### How do I know if a ceiling stain is from an ice dam?
 
-Ice dam stains usually appear on top-floor ceilings or walls near the outside edge of the house, below the eaves, and show up during or just after a period of heavy snow and thaw. A roof leak elsewhere, or a plumbing leak, tends to appear in other places.
+Ice dam stains show up on top-floor ceilings or walls near the outside edge of the house, under the eaves, during or just after a stretch of heavy snow followed by a thaw. A roof leak somewhere else, or a plumbing leak, tends to show up in other places.
 
-We repair and rebuild decks, steps and railings damaged by winter through our [decks and stairs work](/decks-and-stairs/), and we work across the [Capital Region](/capital-region/). After a site visit, you receive a written scope of work by phase with the price tied to each phase.
+Heaved steps, leaning rails and decks that came out of winter worse than they went in are the part of this list we handle, through our [decks, stairs and railings work](/decks-and-stairs/) across the [Capital Region](/capital-region/). Once we've been under it, we'll tell you whether it's a repair or a rebuild.

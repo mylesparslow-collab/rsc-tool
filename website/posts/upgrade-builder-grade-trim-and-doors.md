@@ -7,80 +7,70 @@ summary: Thin baseboard and hollow-core doors are the most common builder-grade 
 flags:
 ---
 
-The most effective way to upgrade trim and interior doors in a newer home is to replace three things together. Replace thin baseboard with taller baseboard, flat or narrow casing with wider casing around doors and windows, and hollow-core doors with solid-core doors and better hardware. In many Clifton Park and Halfmoon subdivisions, these were the builder's least expensive choices, and changing them makes a house look and feel more solid without moving a single wall. The work can be done one floor or one room at a time.
+If you want a newer house to feel more solid without moving a wall, change the baseboard, the casing and the doors together. Thin baseboard comes out and taller baseboard goes in, the skinny casing around doors and windows gets swapped for something wider, and hollow-core doors give way to solid-core doors with decent hardware. In a lot of Clifton Park and Halfmoon subdivisions those were the cheapest choices the builder made, and you can redo them a room or a floor at a time.
 
-## What builder-grade millwork looks like
+## What came with the house
 
-Most homes built in subdivisions over the last few decades share a standard package:
+Most subdivision houses from the last few decades got the same package. Baseboard about three inches tall in a rounded "colonial" or "ranch" profile, made of finger-jointed pine or MDF. Casing around two and a quarter inches wide, the same profile in every room. Hollow-core doors with a molded hardboard face, light enough to rattle in the frame and let every sound through. Hinges and knobs in a builder finish that's worn or tarnished by now. And on a lot of windows, no stool or apron at all, just drywall wrapped into the opening.
 
-- **Baseboard** around three inches tall, often a simple rounded "colonial" or "ranch" profile in finger-jointed pine or MDF
-- **Door and window casing** about two and a quarter inches wide, the same profile throughout the house
-- **Interior doors** that are hollow-core, molded hardboard, light enough to rattle in the frame and to let sound through
-- **Hinges and knobs** in a builder finish that has worn or tarnished
-- **Window stools and aprons** sometimes skipped entirely, with drywall wrapped into the window opening
+There's nothing wrong with any of it. It's just thin, and it's the first thing you notice standing in a newer house after you've been in an older one with heavy millwork.
 
-None of this is wrong. It is simply minimal, and it is the first thing people notice when they compare a newer house to an older one with heavier millwork.
+## Baseboard
 
-## Baseboard and casing: what to change
+Taller baseboard makes the biggest difference of anything on this list. In rooms with eight- or nine-foot ceilings, five to seven inches is a common range, and taller rooms can carry more.
 
-### Taller baseboard
+We like a two-piece base: a flat board with a separate cap molding on top. Floors and walls in a newer house aren't as flat as they look, and the thin cap can bend to follow the wall where a single wide board would leave a gap you'd have to fill with caulk.
 
-Taller baseboard is the single biggest visual change. Five to seven inches is a common range in rooms with standard eight- or nine-foot ceilings, and taller rooms can carry more. A two-piece baseboard (a flat board with a separate cap molding) handles uneven floors and walls better than a single wide piece, because the cap can follow the wall.
+## Casing, stools and aprons
 
-### Wider casing
+Wider casing around the doors and windows balances out the taller base. In newer houses we'd lean toward a flat casing with a simple back band, or a head casing with a small cap. It looks crisp and doesn't pretend the house is a Victorian. Whatever you pick, use the same casing everywhere in the area you're redoing. Mixing styles room to room looks like a mistake.
 
-Wider casing around doors and windows balances the taller base. A flat casing with a simple back band or a head casing with a small cap is a common choice in newer houses because it looks crisp without pretending the house is a Victorian. The key is consistency: pick one casing style and use it throughout the area you are updating.
+Where the windows are wrapped in drywall, add a wood stool, which is the inside sill, with an apron under it. The window looks finished and you get a ledge to set things on. Do it at the same time as the casing so the pieces meet properly.
 
-### Window stools and aprons
+## What the trim is made of
 
-Where windows were wrapped in drywall, adding a wood stool (the interior sill) and apron underneath gives the window a finished look and a place to set things. This works best when it is done along with the new casing.
+Paint-grade trim is usually poplar, finger-jointed pine or MDF. MDF is stable and takes paint beautifully, but it swells when it gets wet and it doesn't come back. Don't use it for bathroom baseboard, or by the entry where snow melts off boots all winter. Poplar or primed pine costs more and holds up in those spots.
 
-### Materials
+## Doors
 
-Paint-grade trim is usually poplar, finger-jointed pine or MDF. MDF is stable and paints well but does not tolerate water, so it is a poor choice for bathroom baseboard or anywhere near an entry where snow melts off boots. Poplar or primed pine costs more but holds up better in those spots.
+A solid-core door has a dense engineered core behind the same style of face. It's heavier, it closes with a solid sound, and it blocks noise noticeably better than a hollow-core door. That's what you want on bedrooms, home offices and bathrooms.
 
-## Interior doors: hollow-core vs solid-core
+The least disruptive option is to keep the frame and hang a new solid-core slab in it. The frame and hinges have to be in good shape for that, and the new slab gets fitted to the old opening, planed and mortised for the hinges you already have.
 
-Solid-core doors have a dense engineered core inside the same style of face. They feel heavier, close with a satisfying sound, and block noise noticeably better than hollow-core doors. That matters most for bedrooms, home offices and bathrooms.
+If the old frames are out of square or beat up, or you're replacing the casing anyway, go pre-hung. The door arrives already hung in a new frame, and the whole unit gets shimmed and set in the opening.
 
-Options, roughly from least to most involved:
+Changing the door style is the bigger move. Going from a molded six-panel to a flat shaker panel changes the feel of a room, and so does putting glass French doors on a home office. The office built-ins with glass French doors on our site are one example of a plain room getting finished that way.
 
-1. **Replace the door slab only.** Keep the existing frame and hang a new solid-core slab. This is the least disruptive, but the frame and hinges have to be in good shape, and the new slab is fitted to the old opening.
-2. **Replace the door as a pre-hung unit.** The door comes already hung in a new frame. This is the better choice when the old frames are out of square or damaged, and when you are replacing casing anyway.
-3. **Change the door style.** Moving from a molded six-panel to a flat shaker-style panel, or adding glass French doors to a home office, changes the character of a room. Office built-ins with glass French doors are one of the ways a plain room becomes a finished one.
+Finish with hardware. New hinges and levers or knobs, in one finish through the whole house, tie the doors together.
 
-Good hardware finishes the job. New hinges, levers or knobs in one finish throughout the house tie the doors together.
+## Doing it in stages
 
-## Planning the work room by room
+Trim and doors break up into stages easily. Start where people look first: the entry, the stair hall, the living room and the openings into the kitchen. Bedrooms and the upstairs hall can be a second round. Closets and utility rooms go last, or keep their original trim for good.
 
-Trim and door work is well suited to phasing. A sensible approach:
+Flooring sets the order. If new floors are coming, put them in before the new baseboard so the base sits on the finished floor. If cabinets or built-ins are planned, line up the trim with them so everything meets cleanly.
 
-- Start with the most visible areas: the entry, stair hall, living room and kitchen openings.
-- Do bedrooms and upstairs halls in a second phase.
-- Leave closets and utility areas for last, or keep the original trim there.
+Then there's the painting, which is a bigger share of the job than people expect. New trim needs every nail hole filled, every joint caulked and at least two finish coats.
 
-Floors matter to the order. If new flooring is planned, install it before the new baseboard so the base sits on the finished floor. If cabinets or built-ins are coming, coordinate the trim so they meet cleanly. Painting is usually the final step and can be a significant share of the work: new trim needs caulking, filling and at least two finish coats.
+Expect some patching. When old trim comes off you'll find gaps in the drywall, floors that dip and walls that aren't plumb. That's normal in any house. Taller base and wider casing cover more of it than the original trim did, but not all of it.
 
-One caution. Removing old trim can reveal gaps in drywall, uneven floors and walls that are out of plumb. Those are normal in any house, and taller baseboard and wider casing usually hide more of them than the original trim did, but some patching should be expected.
+## Built-ins fit in the same phase
 
-## Built-ins and other upgrades that pair well
+Built-ins go naturally with trim work, since it's the same carpentry and the same finishing. A mudroom bench, a window seat, bookcases on either side of a fireplace or an office wall of cabinets and shelves can all be built while the trim crew is in that room. Our post on [custom built-ins in Saratoga County](/blog/custom-built-ins-saratoga/) covers what to think through. If a bathroom is also on your list, replace that door and casing as part of the same push; our [Clifton Park bathroom remodel guide](/blog/bathroom-remodel-clifton-park/) explains how the two jobs fit together.
 
-Trim work combines naturally with built-ins, since the same carpentry skills and finishing apply. A mudroom bench, a window seat, a bookcase wall beside a fireplace, or an office wall with cabinets and shelves can all be built in the same phase. Our post on [custom built-ins in Saratoga County](/blog/custom-built-ins-saratoga/) covers what to consider. If you are also working on a bathroom, the trim and door upgrade is a good moment to replace that door and casing; our [Clifton Park bathroom remodel guide](/blog/bathroom-remodel-clifton-park/) explains how those projects fit together.
-
-Homeowners in neighboring towns with similar housing, such as Malta, face the same choices; see [remodeling in Malta](/blog/malta-home-remodeling/) for the broader list of projects newer homes tend to need.
+Houses in Malta tend to come with the same builder package. See [remodeling in Malta](/blog/malta-home-remodeling/) for the wider list of projects newer homes usually need.
 
 ## Frequently asked questions
 
 ### Can I keep my existing doors and just change the trim?
 
-Yes. New casing can go around existing doors and frames, and many people upgrade trim first and doors later. If the doors will be replaced within a year or two, it is worth planning the casing so it does not need to come off again.
+Yes. New casing can go around the doors and frames you have, and plenty of people do trim first and doors later. If you know the doors are getting replaced within a year or two, plan the casing so it doesn't have to come off again for pre-hung units.
 
-### Is it worth replacing hollow-core doors with solid-core?
+### Should I replace hollow-core doors with solid-core?
 
-For bedrooms, bathrooms and offices, usually yes, because solid-core doors block sound much better and feel more substantial. For closets and less-used rooms, hollow-core doors are often fine.
+On bedrooms, bathrooms and offices, yes. Solid-core doors block sound much better and feel more substantial in the hand. Hollow-core is fine for closets and rooms nobody spends much time in.
 
 ### How disruptive is a trim and door upgrade?
 
-Less than most remodeling. Each room is out of use for a short time while old trim comes off, new trim goes on, and painting is finished. Dust is limited compared to demolition work, and you can live in the rest of the house.
+Less than most remodeling. Each room is out of commission for a short stretch while the old trim comes off, the new trim goes on and the paint gets done. There's far less dust than with demolition, and you live in the rest of the house the whole time.
 
-A written estimate for this kind of work should list each room, the trim profiles and door types, and who does the painting; our post on [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) explains what to look for. Trim, doors and built-ins are part of our [restoration and built-ins](/restoration-and-built-ins/) work, scoped room by room and phased so you can do the most visible rooms first.
+An estimate for this kind of job should name each room, the trim profiles, the door types and who's doing the painting; see [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/). We do trim, doors and built-ins as part of our [restoration and built-ins](/restoration-and-built-ins/) work, and we're glad to start with the two or three rooms people see first.

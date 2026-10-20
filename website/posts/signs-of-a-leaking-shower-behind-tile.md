@@ -7,77 +7,68 @@ summary: How to read the clues that water is getting behind shower tile, how to 
 flags:
 ---
 
-The common signs of a leaking shower behind tile are tiles that sound hollow or move when pressed, grout lines that stay dark long after a shower, a wall that feels soft or spongy, peeling paint or swelling trim just outside the shower, a musty smell, and stains on the ceiling below. Any one of these can have a simple cause, but two or more together usually mean water has been getting into the wall or floor for some time. The sooner the source is found, the less framing and subfloor have to be replaced.
+A shower that's leaking behind the tile gives itself away in a handful of places. Tiles sound hollow or move when you press them. Grout stays dark long after the last shower. The wall feels soft, the paint or trim just outside the shower peels and swells, the room smells musty, or a stain shows up on the ceiling below. One of those on its own can have a simple cause. Two or more together and water has probably been getting into the wall or floor for a while, and the sooner you find where it's coming in, the less framing and subfloor you'll be replacing.
 
-## Why showers leak behind the tile
+## Tile isn't the waterproof part
 
-Tile and grout are not waterproof on their own. Grout is porous, and a small amount of water passes through it every time the shower runs. A properly built shower handles that with a waterproof layer behind the tile: a membrane over cement board, or a similar system, plus a sloped and waterproofed pan on the floor that directs water to the drain.
+Tile doesn't keep water out, and neither does grout. Grout is porous, and a little water goes through it every time the shower runs. A shower built right has a waterproof layer behind the tile to catch that: a membrane over cement board, or a similar system, and on the floor a pan that's sloped and waterproofed so the water heads to the drain.
 
-Many showers built before those methods became standard practice were tiled directly over drywall or moisture-resistant "greenboard," with no real waterproofing behind it. They can perform for years, then fail once grout cracks or caulk gives out. Across Saratoga County we see this in houses of many ages, from older village homes with remodeled baths to subdivision houses whose original showers are now a few decades old.
+Plenty of older showers were tiled straight onto drywall or the green "moisture-resistant" board with nothing real behind it. They hold up for years. Then a grout line cracks or the caulk lets go. In Saratoga County we find this in old village houses with a bath redone at some point, and just as often in subdivision houses whose original showers are now a few decades old.
 
-## The warning signs, inside and out
+## What to look for in the shower
 
-### In the shower
+Take the handle of a screwdriver and tap the tiles, gently, one at a time. A sound tile gives a solid click. A dull, hollow knock, or a tile that shifts under your thumb, means the bond behind it has failed, and the usual reason is wet backing.
 
-- **Loose, cracked or hollow-sounding tiles.** Tap tiles gently with the handle of a screwdriver. A dull, hollow sound or a tile that shifts means the bond behind it has failed, often because the backing is wet.
-- **Cracked, crumbling or missing grout.** Gaps give water a direct path behind the tile.
-- **Grout that stays dark.** Sealed, healthy grout dries within an hour or two. Grout that is still dark the next morning is holding water. Our guide on [how often to seal grout](/blog/how-often-to-seal-grout/) explains the difference between worn sealer and a deeper problem.
-- **Failed caulk at the tub or corners.** Gaps along the tub edge or in the corners are one of the most common leak paths. See [how often to recaulk a tub or shower](/blog/how-often-to-recaulk-a-shower/).
-- **Mold that keeps coming back** in the same spot even after cleaning.
+Then look at the grout. Cracks, crumbling joints and missing pieces give water a straight path to the wall. Check it again the morning after a shower, too. Sealed grout in decent shape dries within an hour or two. If it's still dark the next morning, it's holding water. Our post on [how often to seal grout](/blog/how-often-to-seal-grout/) gets into how to tell worn sealer from something worse.
 
-### Around the shower
+Caulk at the tub edge and in the inside corners is one of the most common leak paths we see. A gap you can slide a fingernail into is enough. See [how often to recaulk a tub or shower](/blog/how-often-to-recaulk-a-shower/) for that job, which most people can do themselves.
 
-- A soft or bulging section of wall on the other side of the shower, or next to it.
-- Peeling paint, bubbling wallpaper or swelling baseboard near the shower.
-- Floor tiles cracking or lifting just outside the shower, or a floor that feels soft.
-- A persistent musty smell, especially when the bathroom is closed up.
+Mold that keeps coming back in the same spot, no matter how often you scrub it, is another tell.
 
-### Below the shower
+## Outside the shower and below it
 
-- Water stains, bubbling paint or sagging drywall on the ceiling underneath.
-- Drips or stains on the framing visible from a basement.
+Walk around to the other side of the shower wall, or the wall next to it, and press on it. A soft or bulging patch, paint that's bubbling, wallpaper lifting, or a baseboard that's swelled up all point back at the shower. So do floor tiles cracking or lifting just outside the curb, or a floor there that gives a little when you step on it. So does a musty smell when the door's been shut a while.
 
-## Narrowing down the source
+Then go downstairs. Water stains, bubbling paint or drywall starting to sag on the ceiling under the bathroom are hard to argue with. From an unfinished basement, shine a flashlight on the framing for drips or stains.
 
-Water behind tile can come from several places, and each needs a different repair. A careful process of elimination helps before anything is opened. Let the shower dry out completely for a day or two first so new stains are easier to spot.
+## Narrowing down where it's coming from
 
-1. **Plumbing supply or valve.** If you see dampness or stains even when the shower has not been used, the supply lines or valve inside the wall may be leaking. This is a job for a licensed plumber. Shut off the water to that fixture if you can, and call promptly.
-2. **The drain.** Pour water directly into the drain without wetting the walls or floor, then check below. Drain connections can loosen over time.
-3. **The pan or tub.** For a tiled shower floor, a plumber or contractor can plug the drain and fill the pan with a shallow depth of water for a set time to see whether the level drops or stains appear below. For a tub, check the overflow and drain gaskets.
-4. **The walls.** With the drain clear, spray only the walls for several minutes, one section at a time, and check for new dampness.
-5. **The door or curtain.** Water escaping past a shower door or curtain and running along the floor can mimic a leak. Watch the floor outside the shower while it is in use.
+Each possible source gets a different repair, so rule things out before anyone opens a wall. Let the shower sit unused for a day or two first so it dries out and any new stain is easy to see.
 
-If the source turns out to be a plumbing leak, a failed pan or a wall that is soft to the touch, the repair is beyond caulk and grout.
+1. Check for dampness or stains when the shower hasn't been used. If they're there anyway, the supply lines or valve inside the wall may be leaking. That's a licensed plumber's job. Shut off the water to that fixture if you can and call promptly.
+2. Pour water straight into the drain without wetting the walls or floor, then check below. Drain connections loosen over time.
+3. Test the pan or tub. On a tiled floor, a plumber or contractor can plug the drain and fill the pan with a shallow depth of water for a set time, then see whether the level drops or a stain appears below. On a tub, check the overflow and drain gaskets.
+4. With the drain ruled out, spray only the walls for several minutes, one section at a time, and look for fresh dampness after each.
+5. Watch the floor outside the shower while someone's using it. Water getting past a door or curtain and running along the floor can look just like a leak.
 
-## When to call a professional
+If it turns out to be the plumbing, a failed pan, or a wall that's soft to the touch, you're past what caulk and grout can fix.
 
-Some situations need a professional sooner rather than later:
+## When to call someone
 
-- The wall or floor is soft, or tiles are falling off.
-- There is visible mold larger than a small patch. EPA guidance suggests professional help for mold covering more than about 10 square feet, and anyone with asthma or allergies should not disturb mold themselves.
-- Water is reaching the ceiling below, which can involve electrical fixtures. Turn off the power to affected lights and call an electrician if water is near wiring.
-- The leak is from supply plumbing inside the wall.
+Don't wait on it if the wall or floor is soft or tiles are falling off. Same if water is reaching the ceiling below, because there are often light fixtures there. Turn off the power to those lights and call an electrician if water is anywhere near the wiring. A leak in the supply plumbing inside the wall needs a plumber.
 
-In older homes, the materials being removed may need testing before demolition. Pre-1978 houses can have lead paint on nearby walls and trim, and some older flooring, adhesives and pipe insulation contain asbestos.
+Mold is the other one. EPA guidance suggests professional help for mold covering more than about 10 square feet, and anyone with asthma or allergies shouldn't disturb mold themselves.
 
-## What a lasting repair involves
+Older houses add a step before demolition. Pre-1978 houses can have lead paint on the walls and trim around the bathroom, and some older flooring, adhesives and pipe insulation contain asbestos. Get them tested before anything comes apart.
 
-When water has been getting behind the tile for a long time, patching usually does not hold. The lasting fix is to remove the tile and wet backing, let the framing dry, replace any rotted studs or subfloor, and rebuild the shower with a proper waterproofing system before new tile goes on. That is also the moment to correct the slope of the floor, add a niche or bench, or replace an aging valve.
+## Fixing it so it stays fixed
 
-The full scope depends on what is found when the wall is opened. If that changes the price or schedule, we agree the change in writing, as a change order, before the work continues. For a sense of the timeline, our post on [how long a bathroom remodel takes](/blog/how-long-does-a-bathroom-remodel-take/) breaks down each phase.
+Once water has been getting behind the tile for a long time, patching doesn't hold. We take the tile and the wet backing off, let the framing dry out, replace any studs or subfloor that have rotted, and rebuild the shower with a real waterproofing system before new tile goes on. With the wall open, it's also the time to fix a floor that doesn't slope to the drain, add a niche or bench, or swap an old valve.
+
+Nobody knows the full scope until the wall is open. If what we find changes the price or the schedule, we write it up as a change order and agree on it with you before the work keeps going. For how the weeks lay out, see [how long a bathroom remodel takes](/blog/how-long-does-a-bathroom-remodel-take/).
 
 ## Frequently asked questions
 
 ### Can I fix a leaking shower by regrouting?
 
-Sometimes, if the leak is caught early and the backing behind the tile is still dry and solid. If tiles are loose, the wall is soft, or stains appear below, the water has already done damage behind the tile and regrouting will only hide it.
+Sometimes, if you've caught it early and the backing behind the tile is still dry and solid. If tiles are loose, the wall is soft or stains show up below, the water has already done its damage behind the tile. New grout will just cover it up.
 
 ### How do I know if the shower pan is leaking?
 
-Stains on the ceiling below that appear after showers, a soft floor around the shower, or grout on the shower floor that never dries out are common signs. A flood test, where the drain is plugged and the pan is filled with shallow water for a period of time, is the usual way to confirm it.
+Look for stains on the ceiling below that show up after showers, a soft floor around the shower, or grout on the shower floor that never dries. A flood test confirms it. The drain gets plugged and the pan is filled with shallow water for a period of time to see if it holds.
 
 ### Is a leaking shower an emergency?
 
-A supply line leak that runs constantly, or water near electrical fixtures, needs attention right away. A slow leak through grout or caulk is not an emergency, but it gets worse with every shower and can lead to rot and mold, so it is worth addressing within weeks rather than months.
+A supply line leak that runs all the time, or water near electrical fixtures, needs attention right away. A slow leak through grout or caulk isn't an emergency. It does get worse with every shower and leads to rot and mold, so deal with it within weeks, not months.
 
-We rebuild leaking showers and remodel bathrooms across Saratoga County, with proper waterproofing behind every new tile wall and floor. It starts with a site visit and a written scope organized by phase. See more on our [bathrooms page](/bathrooms/).
+Tearing out a shower that's been leaking into the wall and building it back properly is regular bathroom work for us across Saratoga County, and the waterproof layer goes on before any new tile does. Some finished showers are on our [bathrooms page](/bathrooms/).

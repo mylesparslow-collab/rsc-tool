@@ -7,27 +7,25 @@ summary: A practical schedule for sealing cement grout in showers, kitchens and 
 flags:
 ---
 
-Cement-based grout in a shower should be sealed about once a year, and grout on floors, backsplashes and other areas that see less water usually needs it every one to three years. The quick test is a few drops of water on the grout line: if they bead up, the sealer is working; if the grout darkens within a few minutes, it is time to reseal. Epoxy grout and some premixed grouts do not need sealing at all, so it helps to know what is in your joints before you buy a bottle.
+Seal cement grout in a shower about once a year. On floors, backsplashes and anywhere else that sees less water, every one to three years is typical. To check, put a few drops of water on a grout line. If they bead up, the sealer's still working. If the grout darkens within a few minutes, reseal. Epoxy grout and some premixed grouts don't need sealer at all, so find out what's in your joints before you buy a bottle.
 
-## Why grout needs sealing
+## What sealer does and doesn't do
 
-Traditional grout is made from cement, sand and water. Once it cures it is hard, but it is also porous, full of tiny passages that absorb water, soap residue, body oils and dirt. That is why light grout turns gray along the bottom of a shower and why a kitchen floor's grout darkens in the path from the sink to the stove.
+Ordinary grout is cement, sand and water. Cured, it's hard, but it's porous, full of tiny channels that soak up water, soap scum, body oil and dirt. That's why white grout turns gray along the bottom of a shower, and why kitchen floor grout goes dark in the path between the sink and the stove.
 
-A penetrating sealer soaks into those pores and makes the grout resist water and stains. It does not make the grout waterproof, and it does not stop water that is already getting behind the tile through cracks or failed caulk. Think of it as stain protection and a way to slow down how much water the grout soaks up between showers.
+A penetrating sealer soaks into those channels and makes the grout shed water and resist stains. It doesn't make grout waterproof. It won't stop water that's already getting behind the tile through cracks or failed caulk. Treat it as stain protection that also slows how much water the grout drinks between showers.
 
-The real waterproofing in a well-built shower is behind the tile: a membrane over cement board or a similar system. If your grout is crumbling, cracked, or missing in spots, sealer will not help, and you should read our guide to the [signs of a leaking shower behind tile](/blog/signs-of-a-leaking-shower-behind-tile/).
+In a properly built shower, the waterproofing is behind the tile: a membrane over cement board, or a similar system. Grout and sealer are the outer skin. If your grout is crumbling, cracked or missing in spots, sealer won't help, and you should read our guide to the [signs of a leaking shower behind tile](/blog/signs-of-a-leaking-shower-behind-tile/).
 
 ## The water drop test
 
-Put a few drops of water on several grout lines in different places: the shower floor, the wall where the spray hits, and an area that rarely gets wet. Wait three to five minutes.
+Drop a little water on grout lines in a few different places. Try the shower floor, the wall where the spray hits, and a spot that rarely gets wet. Wait three to five minutes.
 
-- **Water beads on the surface:** the sealer is still doing its job.
-- **Grout darkens slowly:** the sealer is wearing. Plan to reseal soon.
-- **Grout darkens immediately:** the grout is absorbing freely and is due now.
+If the water beads on top, you're fine. If the grout darkens slowly, the sealer is wearing thin and you should plan to reseal soon. If it darkens right away, the grout is soaking up water freely and it's due now.
 
-Another clue is grout that looks dark after a shower and stays dark for hours. Sealed grout dries quickly. Unsealed or worn grout holds moisture, which also feeds mildew.
+There's another tell you can see without the test. Sealed grout dries fast after a shower. Grout that's still dark hours later is holding water, and that damp grout is what mildew lives on.
 
-## A practical sealing schedule
+## How often, room by room
 
 | Location | Typical interval | Notes |
 |---|---|---|
@@ -37,48 +35,44 @@ Another clue is grout that looks dark after a shower and stays dark for hours. S
 | Kitchen and bathroom floors | Every 1 to 3 years | High-traffic paths wear first |
 | Entry and mudroom tile | About once a year | Winter salt and slush are hard on grout |
 
-Those entry floors deserve a note for Capital Region homes. From November to April, boots carry snowmelt, sand and road salt across mudroom and front hall tile. Salt residue left to dry in grout joints can leave white deposits and wear down the surface. A good mat at the door, regular damp mopping with plain water or a neutral cleaner, and a yearly reseal in late spring keep entry grout from aging faster than the rest of the house.
+That last row is the one Capital Region houses tend to forget. From November into April, boots drag snowmelt, sand and road salt across the mudroom and front hall tile. Salt that dries in the joints leaves white deposits and wears down the surface. Put a heavy mat at the door, damp-mop with plain water or a neutral cleaner, and reseal once a year in late spring after the salt season is over. Do that and the entry grout ages at the same pace as the rest of the house.
 
-## Which grouts do not need sealer
+## Grouts that skip the sealer
 
-Not every grout line needs this treatment:
+Epoxy grout is resin and hardener instead of cement. It's very stain resistant and doesn't need sealing. Some premixed urethane or single-component grouts are also made to resist stains without a separate sealer; check the manufacturer's information. A lot of cement grouts now include additives for stain resistance, but most of those manufacturers still say to seal.
 
-- **Epoxy grout** is made from resin and hardener rather than cement. It is highly stain resistant and does not need sealing.
-- **Some premixed urethane or single-component grouts** are formulated to resist stains without a separate sealer. Check the manufacturer's information.
-- **Many cement grouts now include additives** that improve stain resistance, but most manufacturers still recommend sealing.
+If you don't know what's in your joints, assume cement grout and do the water test. If you're tiling a new shower or regrouting an old one, epoxy or a high-performance grout takes sealing off your list for good. We like it in showers for exactly that reason, though epoxy is fussier to install and cleanup has to happen fast.
 
-If you do not know what was used, assume cement grout and do the water test. If you are tiling or regrouting, epoxy or a high-performance grout can take sealing off your list.
+## How to seal grout
 
-## How to seal grout properly
+1. Clean it well. Use a pH-neutral tile cleaner and a stiff nylon brush, because sealer locks in whatever dirt is there. Skip harsh acid cleaners on cement grout and natural stone; over time they etch the surface and strip what sealer is left.
+2. Let it dry all the way. Grout can look dry on top and still hold water underneath. Give it at least a day without use, longer in a humid bathroom. The exhaust fan helps; see our post on [bathroom fan mold prevention](/blog/bathroom-exhaust-fan-and-mold/).
+3. Put penetrating sealer on the joints. An applicator bottle with a small wheel or brush tip keeps it on the grout. Wipe any that gets on the tile before it dries, since some products leave a haze on glazed tile.
+4. Add a second coat if the product calls for one.
+5. Let it cure. Keep the area dry for the time on the label before you shower or mop.
 
-1. **Clean thoroughly first.** Use a pH-neutral tile cleaner and a stiff nylon brush. Sealing over dirt locks the dirt in. Avoid harsh acidic cleaners on cement grout and natural stone; over time they can etch the surface and strip existing sealer.
-2. **Let it dry completely.** Grout that looks dry on top can still hold moisture. Give it at least a day without use, longer in a humid bathroom. Running the exhaust fan helps; see our post on [bathroom fan mold prevention](/blog/bathroom-exhaust-fan-and-mold/).
-3. **Apply a penetrating sealer to the joints.** An applicator bottle with a small wheel or brush tip keeps sealer on the grout. Wipe any sealer off the tile surface before it dries, since some products leave a haze on glazed tile.
-4. **Apply a second coat if the product calls for it.**
-5. **Let it cure.** Keep the area dry for the time on the label before showering or mopping.
+New cement grout has to cure before it can be sealed. Manufacturers usually call for a few days; follow the grout and sealer instructions.
 
-Newly installed cement grout has to cure before it can be sealed. Manufacturers usually specify a waiting period of a few days; follow the grout and sealer instructions.
+Natural stone like marble, travertine or slate usually needs the tile itself sealed too, often with the same product. Glazed ceramic and porcelain don't.
 
-If your tile is natural stone, such as marble, travertine or slate, the tile itself usually needs sealing too, often with the same product. Glazed ceramic and porcelain tile do not.
+## When to regrout instead
 
-## When it is time to regrout instead
+Sealer can't save grout that's cracked, crumbling, sandy when you rub it, or missing in places. It can't fix grout stained so deep that scrubbing does nothing, either. Often the old grout can be ground out and replaced without pulling the tile, as long as the tiles are solid and the wall behind them is dry. Tap each tile lightly with the handle of a screwdriver. A hollow sound, or a tile that shifts, points to a bigger problem behind it.
 
-Sealer cannot fix grout that is cracked, crumbling, sandy to the touch or missing in places. It also cannot fix grout stained so deeply that cleaning does not help. In those cases the old grout can often be removed and replaced without removing the tile, as long as the tiles are solid and the wall behind them is dry. Tap tiles gently with the handle of a screwdriver: a hollow sound or a tile that moves suggests a bigger problem.
-
-Remember that the joint where the tub meets the wall, and the vertical inside corners, should be caulked rather than grouted. Our guide on [how often to recaulk a tub or shower](/blog/how-often-to-recaulk-a-shower/) covers those joints. If the whole bathroom is starting to feel tired, our ideas for how to [update a dated bathroom](/blog/dated-bathroom-update-ideas/) range from regrouting to a full new shower.
+The joint where the tub meets the wall and the vertical inside corners should be caulked, not grouted. Our guide on [how often to recaulk a tub or shower](/blog/how-often-to-recaulk-a-shower/) covers those. If the whole bathroom is starting to look tired, these ideas to [update a dated bathroom](/blog/dated-bathroom-update-ideas/) run from a regrout up to a new shower.
 
 ## Frequently asked questions
 
 ### Can you seal old grout?
 
-Yes, as long as the grout is solid and clean. Deep-clean it first, let it dry thoroughly, and then apply a penetrating sealer. If the grout is cracked or crumbling, it should be replaced before sealing.
+Yes, if it's solid and clean. Deep-clean it, let it dry thoroughly, then put on a penetrating sealer. Cracked or crumbling grout gets replaced before anyone seals it.
 
 ### Does sealing grout prevent mold?
 
-It helps by reducing how much water the grout absorbs and how long it stays damp, which makes it harder for mildew to take hold. Ventilation matters more. A bathroom fan that actually vents outdoors and runs long enough after showers does more to prevent mold than any sealer.
+It helps, because sealed grout soaks up less water and dries faster, so mildew has a harder time getting started. The fan does more. A bathroom fan that actually vents outdoors, and runs long enough after a shower, prevents more mold than any sealer.
 
 ### Should I seal grout on a new tile floor right away?
 
-Not right away. Cement grout needs to cure first, usually for a few days, depending on the product and the conditions. Check the grout manufacturer's instructions, then seal once the waiting period has passed and the floor is clean and dry.
+No. Cement grout has to cure first, usually for a few days depending on the product and the conditions. Check the grout manufacturer's instructions, then seal once that time has passed and the floor is clean and dry.
 
-We build and remodel bathrooms across the [Capital Region](/capital-region/), including new showers with waterproofing behind the tile and grout chosen to suit how the room is used. Every project starts with a site visit and a written scope organized by phase. You can see our tile work on the [bathrooms page](/bathrooms/).
+We build and remodel bathrooms across the [Capital Region](/capital-region/), including new showers waterproofed behind the tile, with the grout picked for how the room gets used. Our [bathrooms page](/bathrooms/) shows some of the tile work.

@@ -7,85 +7,83 @@ summary: Pressure-treated, cedar, composite and PVC compared for Saratoga County
 flags:
 ---
 
-For most Capital Region homeowners, the choice between composite and wood decking comes down to how much upkeep you want and how long you plan to stay. Pressure-treated wood costs less to put down but needs cleaning and stain every few years to stay sound and good-looking. Composite and PVC boards cost more at the start, skip the staining, and hold their color far longer, though they still need cleaning and they ride on the same wood framing underneath.
+For most Capital Region homeowners, composite vs wood comes down to two things: how much upkeep you'll actually do, and how long you plan to stay in the house. Pressure-treated wood costs less to put down, but it needs a cleaning and a coat of stain every few years to stay sound and look decent. Composite and PVC boards cost more up front, never need stain, and hold their color much longer. They still need washing, though, and they sit on the same wood frame as any other deck.
 
-## What the options actually are
+## Four boards cover almost everything
 
-Four surface materials cover nearly every deck we see in Saratoga County.
+Pressure-treated lumber is southern yellow pine treated against rot and insects. It's the most common deck board in Saratoga County, and it's the framing under every other board here.
 
-- **Pressure-treated lumber.** Southern yellow pine treated against rot and insects. It is the most common deck material in the region and the standard for framing under every other surface.
-- **Cedar.** Naturally rot-resistant, lighter in weight, and handsome when kept up. It is softer than pressure-treated pine and dents more easily.
-- **Capped composite.** A core of wood fiber and plastic wrapped in a harder plastic shell. The cap is what resists stains and fading. Older uncapped composites from the early 2000s had mold and fading problems that the capped products largely solved.
-- **PVC (cellular vinyl).** No wood fiber at all. It is lighter than composite and very resistant to moisture, and it tends to expand and contract more with temperature.
+Cedar resists rot on its own, weighs less, and looks handsome when it's kept up. It's softer than treated pine, so chair legs and dropped tools dent it.
 
-## How each one handles a Capital Region winter
+Capped composite is a core of wood fiber and plastic wrapped in a harder plastic shell. The cap is the part that fights stains and fading. The uncapped composites sold in the early 2000s had real trouble with mold and fading, and the capped boards mostly fixed that.
 
-Our climate is hard on decks for reasons that have nothing to do with summer use. Boards get wet in November, freeze, thaw on a sunny afternoon, and freeze again, over and over until April. Snow sits on the surface for weeks at a time. Ice melt gets tracked out from the door.
+PVC, sometimes called cellular vinyl, has no wood fiber in it at all. It's lighter than composite and shrugs off moisture, but it grows and shrinks more as the temperature swings.
 
-Wood absorbs water, and that cycle is what opens up checks and cracks, lifts the grain and loosens fasteners. A good stain or water-repellent finish slows that down, which is why the finish schedule matters so much. Our post on [how often to stain a deck in upstate New York](/blog/how-often-to-stain-a-deck-upstate-ny/) covers the timing and the simple water test.
+## What a Capital Region winter does to each one
 
-Capped composite and PVC absorb very little water at the surface, so freeze-thaw does not split them the way it splits wood. They do move with temperature. Boards are gapped at the ends and sides according to the manufacturer's instructions for the temperature on install day, and a board laid tight in July can open a visible gap by January. That is normal when it is installed correctly.
+The boards get wet in November, freeze, thaw on a sunny afternoon, freeze again that night, and keep doing it until April. Snow sits on the floor for weeks.
 
-For snow removal, both materials want a plastic shovel pushed along the length of the boards. Metal blades scratch composite caps and gouge soft wood. Ice melt is a product-by-product question. Composite manufacturers publish which deicers they accept, so check the instructions for your specific board before you spread anything on it.
+Wood soaks up water, and that freeze-thaw cycle is what opens checks and cracks along the grain, raises splinters and works fasteners loose. Stain or a water repellent slows it down, which is why keeping to a finish schedule is so important on a wood deck. Our post on [how often to stain a deck in upstate New York](/blog/how-often-to-stain-a-deck-upstate-ny/) has the timing and a quick water test.
 
-## Upkeep over the years
+Capped composite and PVC take on very little water at the surface, so freezing doesn't split them the way it splits wood. They do move with temperature. The installer gaps the ends and sides of each board to the manufacturer's chart for the temperature on install day. A board laid tight in July can show a visible gap at the butt joint by January, and if it was installed to the chart, that's normal.
 
-Upkeep is where the two paths split most clearly.
+Shovel either one with a plastic shovel, pushed along the length of the boards. A metal blade scratches the cap on composite and gouges soft wood. Ice melt is product by product. Composite makers publish which deicers they allow, so read the instructions for your exact board before you spread anything on it.
+
+## Upkeep, year after year
+
+This is where the two really part ways.
 
 | | Pressure-treated or cedar | Capped composite or PVC |
 |---|---|---|
 | Cleaning | Once or twice a year | Once or twice a year |
 | Stain or sealer | Every two to three years for most decks | Not needed |
-| Board replacement | Individual boards split or cup over time | Rare when installed to spec |
+| Board replacement | Boards split or cup over time | Rare when installed to spec |
 | Color over time | Grays without finish | Some early lightening, then stable |
 
-Wood rewards owners who like a weekend project and do not mind the cycle of washing, letting it dry and recoating. Skip a few cycles and the boards gray, splinter and start to cup, and at that point a deck can reach the stage described in our guide to [signs your deck needs to be replaced](/blog/signs-your-deck-needs-replacing/).
+Wood suits people who like a weekend project and don't mind the routine of washing, waiting for it to dry, and recoating. Skip a couple of rounds and the boards go gray, splinter and start to cup. Let it go long enough and you're reading our list of [signs your deck needs to be replaced](/blog/signs-your-deck-needs-replacing/).
 
-Composite is not zero-maintenance. Pollen, leaves and shade from trees leave a film that can grow mildew on any surface, so a spring wash with a soft brush and a cleaner approved by the manufacturer is still part of owning one.
+Composite isn't maintenance-free, whatever the brochure says. Pollen, leaves and tree shade leave a film that grows mildew on any surface. Plan on a spring wash with a soft brush and a cleaner the manufacturer approves.
 
-## Heat, feel and looks
+## Heat and looks
 
-Composite and PVC get warmer than wood in direct sun, and darker colors get warmer than lighter ones. That matters for bare feet on a south-facing deck in July. Lighter shades and products designed to run cooler help.
+Composite and PVC get hotter than wood in full sun, and dark colors get hotter than light ones. On a south-facing deck in July, bare feet notice. Lighter shades and the product lines built to run cooler help a lot.
 
-Wood looks and feels like wood, and some owners prefer that above everything else, especially on older houses. Composite has come a long way in grain pattern and color variation, and capped boards now come in many shades. On a period home, painted wood rails with composite decking can be a good middle path. One of the decks we show on our site pairs composite decking and stairs with a black aluminum rail over a stamped concrete patio, and another uses wood with sage-painted rails and black balusters. Both are sound choices for different houses and owners.
+Wood looks and feels like wood. Composite grain and color have come a long way, and capped boards come in plenty of shades now. On a period home, painted wood rails over composite decking is a sensible compromise. Two decks on our site show both routes: one has composite decking and stairs with a black aluminum rail over a stamped concrete patio, and the other is wood with sage-painted rails and black balusters.
 
-## The framing underneath matters more than the boards
+## The frame decides how long it lasts
 
-Whatever you walk on, the structure beneath it is almost always pressure-treated lumber, and that structure decides how long the deck lasts. A few points are worth knowing before you choose a surface.
+The structure under any deck board is almost always pressure-treated lumber, and it sets the deck's lifespan.
 
-- **Joist spacing.** Composite and PVC manufacturers specify maximum joist spacing, and it is often tighter for diagonal patterns. Wood decking has its own span limits too. Putting new composite on old framing that was spaced for thicker boards can leave a bouncy surface.
-- **Ledger and footings.** If an existing deck is being resurfaced, the ledger connection to the house and the footings need inspection first. Our post on [deck ledger board inspection](/blog/deck-ledger-board-inspection/) explains what to look for.
-- **Guards and stairs.** New boards do not change code. Guards are required where the walking surface is more than 30 inches above grade, at least 36 inches high on residential decks, with openings that a 4-inch sphere cannot pass through. Stairs with four or more risers need a handrail.
+Joist spacing comes first. Composite and PVC makers set a maximum spacing, and it's often tighter when boards run on a diagonal. Wood decking has span limits too. Lay new composite on an old frame spaced for thicker wood boards and the floor will feel bouncy underfoot.
 
-A resurfacing job is a simple swap only when the frame is sound and was built to carry the new boards.
+If you're resurfacing, the ledger where the deck bolts to the house and the footings in the ground need a hard look first. Our post on [deck ledger board inspection](/blog/deck-ledger-board-inspection/) shows what to check.
 
-## How to decide
+New boards don't change the code. Guards are required where the walking surface is more than 30 inches above grade, at least 36 inches high on a residential deck, with openings a 4-inch sphere can't pass through. Stairs with four or more risers need a handrail.
 
-These questions usually settle it for the homeowners we talk with.
+Swapping wood boards for composite is a simple job only when the frame is sound and was built to carry them. Otherwise you're adding joists, or rebuilding.
 
-1. **How long will you live here?** If the answer is five years or less, the lower first cost of wood often makes sense. Over a longer stay, the stain cycles on wood start to add up in time and materials.
-2. **How much sun and shade does the deck get?** Full sun favors lighter composite colors. Heavy shade under trees means more cleaning for any material, and slower drying for wood.
-3. **Do you enjoy the upkeep?** Be honest about whether refinishing will happen on schedule.
-4. **What does the house call for?** A historic home in a village center and a newer house in a Malta or Clifton Park subdivision may point in different directions.
+## Picking one
 
-Timing affects the decision too, since materials and schedules shift through the year. Our post on the [best time to build a deck in the Capital Region](/blog/best-time-to-build-a-deck-capital-region/) covers the planning calendar.
+Start with how long you'll be in the house. Five years or less, and wood's lower first cost often wins. Stay longer and the stain cycles add up in weekends and materials.
+
+Then look at the sun. Full sun favors a lighter composite. Heavy shade under trees means more cleaning for any board and slow drying for wood.
+
+Be honest about the upkeep. If you know the restaining won't happen on schedule, buy composite.
+
+And look at the house. A historic place in a village center and a newer house in a Malta or Clifton Park subdivision can point different ways. Timing plays in too, since materials and schedules shift through the year; see the [best time to build a deck in the Capital Region](/blog/best-time-to-build-a-deck-capital-region/).
 
 ## Frequently asked questions
 
 ### Does composite decking hold up to snow and ice in upstate New York?
 
-Capped composite handles freeze-thaw well because it absorbs very little water, so it does not split and check the way wood does. Clear snow with a plastic shovel along the board length and use only the ice melt the manufacturer lists as safe for that product.
+Capped composite handles freeze-thaw well because it takes on very little water, so it doesn't split and check like wood. Clear it with a plastic shovel along the length of the boards, and only use ice melt the manufacturer lists as safe for that product.
 
 ### Can you put composite boards on an existing wood deck frame?
 
-Sometimes. The frame needs sound footings and ledger, no rot, and joist spacing that meets the composite manufacturer's requirements. Many older frames were spaced for thicker wood boards and need added joists or a rebuild first.
-
-### Is pressure-treated wood a bad choice for a deck?
-
-No. It is the most common decking in the region and lasts well when it is cleaned and stained on a regular schedule. It simply asks for more ongoing care than composite or PVC.
+Sometimes. The footings and ledger have to be sound, there can't be rot, and the joist spacing has to meet the composite maker's requirements. Plenty of older frames were spaced for thicker wood boards and need extra joists, or a rebuild, first.
 
 ### Does composite get too hot to walk on?
 
-Composite and PVC run warmer than wood in direct summer sun, and dark colors run warmest. Lighter colors, cooler-running product lines and some shade make a real difference on south- and west-facing decks.
+It runs warmer than wood in direct summer sun, and dark colors run warmest. A lighter color, a cooler-running product line and a bit of shade make a real difference on decks facing south or west.
 
-We design and build decks in both wood and composite, from the footings and framing up through stairs, guards and rails, with a written scope by phase so you know exactly what is included. See our [decks, stairs and railings work](/decks-and-stairs/) to get a sense of what we build across the Capital Region.
+Pressure-treated wood isn't a bad choice, by the way. It lasts well when it's cleaned and stained on schedule; it just asks more of you than composite does. We build decks in both, starting at the footings and finishing with the stairs, guards and rails, and you can see some of them on our [decks, stairs and railings page](/decks-and-stairs/).

@@ -1,0 +1,52 @@
+# Copy playbook for the Refined Space Crafters site
+
+Written 2026-10-18 after Myles called the "sound like a builder" rewrite a terrible try. The problem with both earlier
+passes: they described the company and the trade. Sales copy describes the reader's problem and what they get.
+These rules come from the standard copywriting books. I could not open the books from this environment, so this is
+what they teach as I know it, not quotes.
+
+## The rules
+
+1. **Write about the reader, not us.** (Ogilvy, *Confessions of an Advertising Man*; Bly, *The Copywriter's
+   Handbook*.) Count "you" against "we" on every block. The reader should be the subject of most sentences.
+2. **The headline does most of the work.** (Ogilvy: five times as many people read the headline as the body.) A
+   headline promises a specific benefit or names a specific fear. "Remodeling and carpentry, designed and built
+   in-house" promises nothing.
+3. **Specific beats general.** (Hopkins, *Scientific Advertising*.) "A written price for each phase" is believed.
+   "Transparent pricing" is not. Use the concrete things we really do.
+4. **Enter the conversation already in the reader's head.** (Collier; Schwartz, *Breakthrough Advertising*.) People
+   looking for a contractor are already worried about the same things: the price creeping up, paying a big deposit and
+   waiting, the contractor vanishing mid-job, being passed between a salesman and a crew, a mess in the house. Name
+   the worry, then show how our process removes it.
+5. **The customer is the hero; we are the guide with a plan.** (Miller, *Building a StoryBrand*.) Problem, a guide
+   who understands it, a simple plan (three or four steps), a clear call to action, and what's at stake.
+6. **Features become benefits.** "Payment schedule tied to each phase" is a feature. "You pay as each phase is
+   finished, not all up front" is the benefit.
+7. **Every line earns the next.** (Sugarman, *The Adweek Copywriting Handbook*.) Short first sentence. No
+   throat-clearing, no slogans, no aphorisms.
+8. **One clear next step.** Each page ends on the same ask: send a photo and a sentence, and we'll set up a visit.
+   Make it sound small and easy.
+9. **Reduce the risk of saying yes.** (Bly, Kennedy.) Our real risk-reducers: we look before we price, the scope is
+   written, the price is split by phase, changes are agreed in writing first, one team and one contact.
+10. **Proof, not adjectives.** The photos are the proof. Point at them ("the kitchen built around its original
+    chimney") instead of calling the work beautiful.
+11. **Use the customer's words.** (Wiebe, Copyhackers.) "Deck is falling apart", "bathroom from 1985", "nobody
+    calls back". When Nick has real reviews or emails, mine them for phrasing.
+
+## What we can sell with (true, already on the site)
+
+- We come and look before we put a price on anything.
+- A written scope of work, split into phases, each with its price and its payment.
+- You pay as phases are done, not all up front (payment schedule tied to each phase).
+- No change to scope, price or schedule happens until it's agreed in writing.
+- The same team designs and builds. One point of contact from the first visit to the walkthrough.
+- Updates as the job goes: what got done, what's next.
+- If something turns up behind a wall, you hear about it the same day (Saratoga Springs page).
+- Specialty jobs other contractors pass on: bulkheads, cellar stairs, a garden bridge, a mosaic for the Saratoga
+  Rowing Association.
+- Built for winters here: snow load, freeze-thaw, footings below frost.
+
+## Still off limits
+
+Everything in WRITING-BRIEF.md "Never claim": no licenses, insurance, years, job counts, warranties, guarantees,
+response times, prices, testimonials, past accessibility work. "Guarantee" language is out even when it is tempting.

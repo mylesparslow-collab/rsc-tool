@@ -7,80 +7,72 @@ summary: A practical order of priorities for Capital Region homeowners choosing 
 flags:
 ---
 
-Remodel whichever room has a real problem first: a leak, rot, unsafe wiring or a layout that no longer works for someone in the house. If both rooms are simply dated, many homeowners start with the bathroom because it is smaller, faster and less disruptive, then take on the kitchen once they know how a remodel feels. If you plan to sell in the next few years, the kitchen often matters more to buyers. Below is how we help homeowners across the Capital Region sort out the order.
+Do the room with a real problem first: a leak, rot, unsafe wiring, or a layout somebody in the house can't use anymore. If both rooms are just dated, start with the bathroom. It's smaller, it's over faster, it turns the house upside down less, and you'll find out what living through a remodel is like before you take on the kitchen. The exception is if you're selling in the next few years, because buyers pay more attention to the kitchen. That's how we help people around the Capital Region sort out the order.
 
-## Fix what is failing before what is dated
+## Failing beats dated
 
-The first question is not which room looks older, but which one is causing damage. Water problems get worse over time and spread into framing, subfloors and ceilings below. Signs that a room should move to the front of the line include:
+Don't start by asking which room looks older. Ask which one is doing damage. Water gets worse the longer it runs, and it spreads into the framing, the subfloor and the ceiling of the room below.
 
-- Loose or hollow-sounding tile, soft spots in the floor, or a ceiling stain below a bathroom.
-- A sink base cabinet with a swollen or stained floor.
-- Recurring mold on walls or ceilings, especially in a bathroom with no working exhaust fan.
-- Outlets near water without ground-fault protection, warm switch plates or breakers that trip often. Have a licensed electrician evaluate electrical issues promptly.
-- Fixtures that are hard for someone in the household to use safely, such as a high tub wall.
+Go look for loose or hollow-sounding tile, soft spots in the floor, or a stain on the ceiling under the bathroom. Open the sink base and check whether the cabinet floor is swollen or stained. Check for mold that keeps coming back on the walls or ceiling, especially in a bathroom where the exhaust fan doesn't work or there isn't one. Any of those means the room moves to the front of the line, and a failing shower usually settles the whole question.
 
-If the bathroom shows any of the first three, have it looked at soon. A failing shower usually decides the question.
+Electrical trouble goes on the same list. Outlets near water without ground-fault protection, warm switch plates, or breakers that trip all the time need a licensed electrician to look at them soon, whichever room they're in.
 
-## Compare the scale of each project
+So does a room someone can't use safely anymore, like a tub with a high wall that a parent has to climb over.
 
-Kitchens and bathrooms differ in size, number of trades involved and how long you live without them.
+## A bathroom is a smaller job
 
-| | Bathroom | Kitchen |
-|---|---|---|
-| Typical room size | Small | Medium to large |
-| Trades involved | Plumbing, electrical, tile, glass | Plumbing, electrical, cabinets, countertops, flooring, appliances |
-| Long-lead items | Vanity, fixtures, glass | Cabinets, countertops, appliances |
-| Living without it | Easier if there is a second bath | A temporary kitchen for several weeks |
-| Effect on the rest of the house | Limited | Often affects adjoining rooms and flooring |
+A bathroom is a small room with a short list of trades: plumbing, electrical, tile, glass. The things you wait on are the vanity, the fixtures and the shower glass. If there's a second bathroom in the house, living without this one for a while is manageable, and the mess mostly stays behind one door.
 
-A bathroom remodel is a contained project with a clear finish line. A kitchen touches more of the house, involves more decisions and is harder to live around. Our article on [how long a bathroom remodel takes](/blog/how-long-does-a-bathroom-remodel-take/) gives a sense of the phases involved in the smaller job.
+A kitchen is bigger and pulls in more trades. Add cabinets, countertops, flooring and appliances to the plumbing and electrical. Cabinets, countertops and appliances all have lead times. You'll be cooking in a temporary kitchen for several weeks, and the work often spills into the next rooms, especially when the flooring runs through.
 
-## Think about how you will live through it
+A bathroom has a clear finish line. A kitchen touches more of the house, asks you to make more decisions, and is harder to live around. Our post on [how long a bathroom remodel takes](/blog/how-long-does-a-bathroom-remodel-take/) walks through the phases of the smaller job.
 
-Disruption is a real factor, especially in winter.
+## Living through it
 
-**One bathroom in the house.** If the bathroom you would remodel is the only one, living through the work is hard. In that case the kitchen may be the easier first project, or the bath work can be scheduled so the toilet is reconnected at the end of most days. Some families plan the remodel around a trip.
+Think hard about how the house will run while the work goes on, especially in winter.
 
-**Kitchen in winter.** Grilling outside is not an option for much of a Capital Region winter, and a temporary kitchen in the basement or dining room is less pleasant when the days are short. Many people prefer to have the kitchen out of service in late spring or summer.
+If the bathroom you want to redo is the only one in the house, that's a tough few weeks. In that case the kitchen may be the easier first project. Or the bathroom work can be scheduled so the toilet gets reset at the end of most days. Some families time the remodel around a trip.
 
-**Children, pets and work from home.** Kitchens sit in the middle of the house and bring more noise and dust into daily routines. A bathroom upstairs is easier to close off.
+A kitchen out of service in winter is no fun around here. You can't grill outside for much of a Capital Region winter, and a hot plate in the basement or dining room is grim when it's dark at 4:30. Most people would rather lose the kitchen in late spring or summer.
 
-## Consider how long you will stay
+Kids, pets and working from home all push the same way. The kitchen sits in the middle of the house and puts noise and dust into everyone's day. An upstairs bathroom is easier to shut off.
 
-If you plan to stay for many years, put first the room that bothers you most every day. The value of a remodel to you is measured in daily use.
+## How long you're staying
 
-If you plan to sell within a few years, look at the house as a buyer would. Kitchens usually carry more weight in a buyer's impression of a house, but a bathroom with obvious water damage or a failing shower can raise concerns during inspection. Fixing defects matters more than finishes in that situation, and a modest update may serve you better than a full remodel. Our post on [updating a dated bathroom](/blog/dated-bathroom-update-ideas/) covers lighter options.
+If you're staying for years, do the room that bugs you most every day. That's where you'll feel the difference.
 
-If aging in place is part of your plan, a bathroom with a walk-in shower, grab bar blocking in the walls and good lighting may be the right first project regardless of resale. Our guide to [aging in place in Saratoga County](/blog/aging-in-place-saratoga-county/) discusses that planning.
+If you're selling within a few years, look at the house the way a buyer would. Kitchens weigh more in a buyer's first impression. But a bathroom with obvious water damage or a shower that's failing can turn into a problem at inspection. In that spot, fix the defects before you spend on finishes, and a modest update may do more for you than a full remodel. Our post on [updating a dated bathroom](/blog/dated-bathroom-update-ideas/) covers lighter options.
 
-## Can you do both at once?
+If you plan to age in place, the bathroom may be the right first project no matter what the resale math says. A walk-in shower, blocking in the walls for grab bars, and good lighting do a lot. Our guide to [aging in place in Saratoga County](/blog/aging-in-place-saratoga-county/) gets into that planning.
 
-Doing both together can save some repeated work, since trades are already on site and plumbing or electrical changes can be planned together. It also means living with more disruption at once, making more decisions at the same time and committing a larger budget up front.
+## Doing both
 
-A middle path is to plan both rooms together and build them in phases. Design decisions such as plumbing routes, the electrical panel's capacity and flooring that runs between rooms get settled once, and each room is built when it suits your schedule and budget. A written scope with a payment schedule tied to each phase makes this easier to manage. Our article on [phased payments versus paying up front](/blog/phased-payments-vs-paying-upfront/) explains how that kind of schedule should work.
+Doing both at once saves some repeat work. The trades are already on site, and the plumbing and electrical changes can be planned together. You also live with twice the disruption, make twice the decisions in the same few weeks, and commit to the whole budget up front.
 
-## A simple way to decide
+We'd usually suggest the middle path. Design both rooms together, then build them one at a time. Plumbing routes, whether the electrical panel can handle both, and any flooring that runs from one room into the next all get decided once. Then each room gets built when it suits your schedule and your budget. A written scope with a payment tied to each phase keeps that straight. Our post on [phased payments versus paying up front](/blog/phased-payments-vs-paying-upfront/) explains how that kind of schedule should work.
 
-If you are still unsure, work through these questions in order and stop at the first clear answer:
+## Still stuck?
 
-1. Is either room leaking, rotting or unsafe? Do that one first.
-2. Does someone in the house struggle to use either room? Do that one first.
-3. Are you selling within a few years? Fix defects first, then consider the kitchen.
-4. Is the bathroom the only one in the house? Plan carefully, or start with the kitchen.
-5. Otherwise, start with the room you would most like to change, and consider the bathroom if you want a smaller first project.
+Go down this list and stop at the first yes.
+
+1. Is either room leaking, rotting or unsafe? Do that one.
+2. Does someone in the house have trouble using either room? Do that one.
+3. Selling within a few years? Fix the defects, then look at the kitchen.
+4. Is the bathroom the only one in the house? Plan carefully, or do the kitchen first.
+5. None of the above? Do the room you want to change most, or the bathroom if you'd like a smaller first job.
 
 ## Frequently asked questions
 
 ### Which adds more value, a kitchen or a bathroom remodel?
 
-It depends on the house, the neighborhood and the condition of each room. Kitchens tend to influence buyers more, but fixing a damaged bathroom can matter more than updating a sound kitchen.
+That comes down to the house, the neighborhood and what shape each room is in. Kitchens tend to sway buyers more, but fixing a damaged bathroom can do more for a sale than updating a sound kitchen.
 
 ### Is it cheaper to remodel both rooms at the same time?
 
-There can be some savings from coordinating trades and planning systems once, but the total commitment is larger and disruption is greater. Planning both and building in phases is a common compromise.
+You can save some by lining up the trades and planning the plumbing and wiring once, but the total bill is bigger and so is the disruption. Planning both and building them in phases is a common middle ground.
 
 ### What season is best for a kitchen remodel in the Capital Region?
 
-Interior work can happen year-round, but many people prefer spring or summer for a kitchen because cooking outdoors is possible and a temporary kitchen is easier to live with.
+Inside work can happen any time of year, but most people pick spring or summer for a kitchen. You can cook outside, and a temporary kitchen is easier to put up with.
 
-We design and build both kitchens and bathrooms across the Capital Region, starting with a site visit and a written scope organized by phase. For planning a kitchen in an older house, read our [Saratoga Springs kitchen remodel guide](/blog/kitchen-remodel-saratoga-springs-guide/), or see our [kitchens](/kitchens/) and [bathrooms](/bathrooms/) pages.
+We design and build kitchens and bathrooms around the Capital Region, and we're happy to plan both even if only one gets built this year. If the kitchen is in an older house, our [Saratoga Springs kitchen remodel guide](/blog/kitchen-remodel-saratoga-springs-guide/) is the place to start. The finished work is on our [kitchens](/kitchens/) and [bathrooms](/bathrooms/) pages.

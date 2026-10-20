@@ -23,8 +23,7 @@ SITE = "https://rscrafters.com"  # registered 2026-10-18 (Cloudflare)
 NAME = "Refined Space Crafters"
 PHONE, TEL = "(518) 932-9919", "+15189329919"
 PUBLISHED = "2026-10-18"
-NAME_PH = ('<span class="ph" title="Name changed from Reclaimed to Refined on 2026-10-18. Confirm with Nick before '
-           'launch.">Refined</span> Space Crafters')
+NAME_PH = NAME
 NEXTDOOR = "https://nextdoor.com/pages/reclaimed-space-crafters-saratoga-springs-ny/"
 
 # name: (width, height, srcset widths, alt). Files are images/<name>.jpg and images/<name>-<w>.webp on the site.
@@ -181,8 +180,7 @@ def nice_date(iso: str) -> str:
 
 def draft_bar() -> str:
     src = (BASE / "kitchens" / "index.html").read_text(encoding="utf-8")
-    m = re.search(r'<div class="draft-bar".*?</div>\s*</div>', src, re.S)
-    return m.group(0)
+    return ''  # draft notes removed 2026-10-19: the site is public
 
 
 def chrome_top(up: str, title: str, head_extra: str) -> str:
@@ -206,7 +204,7 @@ def chrome_top(up: str, title: str, head_extra: str) -> str:
 
 def chrome_header(up: str) -> str:
     nav = (f'<a href="{up}#work">Work</a><a href="{up}#services">Services</a><a href="{up}#about">About</a>'
-           f'<a href="{up}#reviews">Reviews</a><a href="{up}safe-at-home/index.html">Safe at Home</a>'
+           f'<a href="{up}safe-at-home/index.html">Safe at Home</a>'
            f'<a href="{up}blog/index.html" aria-current="page">Blog</a><a href="{up}work-with-us/index.html">Hiring</a>')
     return f"""</head>
 <body>
@@ -244,10 +242,10 @@ def chrome_footer(up: str) -> str:
   <div class="container">
     <p class="foot-mark">{NAME_PH}</p>
     <div class="foot-grid">
-      <div><h3>Contact</h3><p><a href="tel:{TEL}">{PHONE}</a><br>Call or text<br><span class="ph" title="Hours from the listing kit. Confirm with Nick.">Mon to Fri, 8 to 5</span><br>Saratoga Springs, NY</p></div>
+      <div><h3>Contact</h3><p><a href="tel:{TEL}">{PHONE}</a><br>Call or text<br>Saratoga Springs, NY</p></div>
       <div><h3>Services</h3><ul><li><a href="{up}decks-and-stairs/index.html">Decks + stairs</a></li><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Bathrooms</a></li><li><a href="{up}restoration-and-built-ins/index.html">Restoration + built-ins</a></li><li><a href="{up}bulkheads-and-outdoor/index.html">Bulkheads + outdoor jobs</a></li><li><a href="{up}safe-at-home/index.html">Safe at Home (coming soon)</a></li></ul></div>
       <div><h3>Where we work</h3><ul><li><a href="{up}saratoga-springs/index.html">Saratoga Springs</a></li><li><a href="{up}wilton/index.html">Wilton</a></li><li><a href="{up}capital-region/index.html">Capital Region</a></li></ul></div>
-      <div><h3>More</h3><ul><li><a href="{up}#work">Work</a></li><li><a href="{up}#reviews">Reviews</a></li><li><a href="{up}#faq">FAQ</a></li><li><a href="{up}blog/index.html">Blog</a></li><li><a href="{up}work-with-us/index.html">Work with us</a></li><li><a href="{NEXTDOOR}" target="_blank" rel="noopener">Nextdoor</a></li></ul></div>
+      <div><h3>More</h3><ul><li><a href="{up}#work">Work</a></li><li><a href="{up}#faq">FAQ</a></li><li><a href="{up}blog/index.html">Blog</a></li><li><a href="{up}work-with-us/index.html">Work with us</a></li><li><a href="{NEXTDOOR}" target="_blank" rel="noopener">Nextdoor</a></li></ul></div>
     </div>
     <p class="foot-legal">© <span id="yr">2026</span> {NAME}. Design and build across Saratoga County and the Capital Region.</p>
   </div>

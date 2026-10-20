@@ -7,81 +7,76 @@ summary: How to plan a bathroom remodel in a Saratoga Springs house, from what d
 flags:
 ---
 
-A bathroom remodel in Saratoga Springs should be planned around what is behind the walls and under the floor, not just the tile and vanity you pick. Many bathrooms in the city's older houses were added or rebuilt long after the house was framed, so it is common to find patched subfloors, old drain lines, missing ventilation or tile set on materials that were never waterproof. A good plan accounts for those conditions, sets the layout, and builds a properly waterproofed shower before any finish goes up. Here is how we approach it.
+Plan a bathroom remodel in Saratoga Springs around what's behind the walls and under the floor, then pick the tile. In a lot of the city's older houses the bathroom was added or redone long after the house was built, so expect a patched subfloor, old drain lines, no real ventilation, and tile stuck to materials that were never meant to get wet. Settle the layout, build the shower's waterproofing right, and only then put up finishes.
 
-## What demolition usually reveals
+## What comes out with the old tile
 
-The finished surfaces of an old bathroom rarely tell the full story. When the tile and fixtures come out, these are the conditions we most often find:
+The finished surfaces of an old bathroom don't tell you much. Once the tile and fixtures are out, the same things show up again and again.
 
-- **Water damage around the toilet and tub.** Slow leaks at a wax ring or a tub drain soften the subfloor and sometimes the joists below.
-- **Joists cut for plumbing.** Generations of plumbers notching joists to run drains can weaken a floor. Some need sistering or blocking before new tile goes down.
-- **Old drain and supply lines.** Cast iron, galvanized steel and lead bends turn up in older houses. They may be nearing the end of their life even if they are not leaking yet.
-- **Tile over drywall or plaster.** Older showers were often tiled directly onto materials that absorb water, with no membrane behind them.
-- **No exhaust fan, or a fan venting into the attic.** Both lead to moisture problems in walls, ceilings and the roof framing.
+Water damage around the toilet and tub is the most common. A wax ring or tub drain that leaked slowly for years softens the subfloor, and sometimes the joists under it.
 
-In houses built before 1978, test for lead paint before demolition. Old pipe insulation and some older flooring and adhesives can contain asbestos, so have suspect materials tested before they are disturbed. If testing finds either, the work must be handled by qualified professionals.
+Joists cut for plumbing come next. Every plumber who's been through the house notched a joist to get a drain across, and after a few rounds the floor is weaker than it looks. Some need sistering or blocking before new tile goes down, because tile cracks on a floor that flexes.
 
-## Layout in a small old bathroom
+Then the pipes themselves. Cast iron, galvanized steel, and lead bends at the toilet all turn up in older houses. They may be near the end even if they aren't leaking yet, and replacing them is a lot easier with the floor already open.
 
-Bathrooms in older Saratoga Springs houses are often small and awkward, tucked under a roofline or carved from a former bedroom or closet. A few layout rules help:
+Older showers were often tiled right onto drywall or plaster with no membrane at all. And plenty of these bathrooms have no exhaust fan, or a fan that blows into the attic. Both put moisture into the walls, the ceiling and the roof framing.
 
-- Keep clearance in front of the toilet and to each side of it. Cramped toilets are the most common complaint in older baths.
-- Check the door swing. A door that hits the vanity or toilet can sometimes be replaced with a pocket or barn-style door.
-- Consider the window. Many older baths have a window in the tub or shower wall, which is a moisture problem unless it is detailed carefully or relocated.
-- Look at the slope of the ceiling before planning a shower under it. Headroom at the showerhead matters.
+In a house built before 1978, test for lead paint before demolition. Old pipe insulation and some older flooring and adhesives can contain asbestos, so have anything suspicious tested before it's disturbed. If either test comes back positive, qualified professionals have to handle that part of the work.
 
-Moving the toilet is the most expensive layout change because of the size and slope of its drain. Moving a vanity is usually easier. If you are deciding between keeping a tub and building a walk-in shower, our post on [tub to walk-in shower conversions](/blog/tub-to-walk-in-shower-conversion/) covers the tradeoffs.
+## Fitting a layout into a small old room
+
+Bathrooms in older Saratoga Springs houses tend to be small and odd-shaped, tucked under a roofline or cut out of a bedroom or closet. Leave room in front of the toilet and on each side. A toilet wedged between the tub and the vanity is the most common complaint in old baths, and it's the one you notice every day.
+
+Watch the door swing. If the door hits the vanity or the toilet, a pocket door or a barn-style slider can sometimes fix it. Look hard at the window, too. A lot of old baths have one in the tub or shower wall, and that's a moisture problem unless it's flashed and trimmed carefully or moved. And check the slope of the ceiling before you put a shower under it. You need headroom where you stand at the showerhead.
+
+Moving the toilet is the most expensive layout change, because of the size of the drain and the slope it needs. Moving a vanity is generally easier. If you're torn between keeping the tub and building a walk-in shower, our post on [tub to walk-in shower conversions](/blog/tub-to-walk-in-shower-conversion/) goes through the tradeoffs.
 
 ## Waterproofing is the part you never see
 
-Tile and grout are not waterproof. Water passes through grout and reaches whatever is behind it, so a shower depends on the layer beneath the tile. A properly built shower has a waterproof membrane or a sealed backer board system on the walls, a pan or sloped waterproof floor that drains to the drain, and careful sealing at corners, niches, benches and fixture openings.
+Tile and grout aren't waterproof. Water goes through grout and gets to whatever's behind it, so the shower lives or dies on the layer under the tile. A properly built shower has a waterproof membrane or a sealed backer board system on the walls, a pan or sloped waterproof floor that sends water to the drain, and careful sealing at the corners, the niche, the bench and every pipe that comes through the wall.
 
-When this layer is missing or poorly installed, leaks show up years later as loose tile, soft walls, stained ceilings below or mold. Our article on [signs of a leaking shower behind tile](/blog/signs-of-a-leaking-shower-behind-tile/) describes what to watch for in an existing shower. In a remodel, this is the layer that deserves the most care, and it is worth asking any contractor exactly which system they use and how they test it before tile goes on.
+When that layer's missing or done badly, you find out years later: loose tile, soft walls, a stained ceiling downstairs, or mold. Our article on [signs of a leaking shower behind tile](/blog/signs-of-a-leaking-shower-behind-tile/) lists what to watch for in a shower you already have. In a remodel this is where we spend the most care. Ask any contractor you're talking to which waterproofing system they use and how they test it before the tile goes on. If they can't tell you, keep looking.
 
-## Ventilation and winter conditions
+## Venting it for winter
 
-Capital Region winters make bathroom moisture a bigger problem. Warm, humid air from a shower condenses on cold exterior walls, window frames and the roof deck. An exhaust fan sized for the room, ducted all the way to the outside and run long enough after each shower, prevents most of that.
+Capital Region winters make bathroom moisture a bigger deal. Warm, wet air from a shower condenses on cold outside walls, window frames and the underside of the roof deck. A fan sized for the room, ducted all the way outside, and left running long enough after each shower heads off most of it. Older bathrooms often relied on the window for ventilation. These days the standard is a fan ducted outdoors, and adding one is a normal part of the job.
 
-Exterior walls in older houses often have little or no insulation. When a bathroom wall on the outside of the house is opened, it is a good time to insulate it, which also helps keep plumbing in that wall from freezing. Our post on [bathroom exhaust fans and mold](/blog/bathroom-exhaust-fan-and-mold/) goes deeper on sizing and venting.
+Outside walls in older houses often have little or no insulation. When a bathroom's exterior wall is open, insulate it. That also helps keep the pipes in that wall from freezing in February. Our post on [bathroom exhaust fans and mold](/blog/bathroom-exhaust-fan-and-mold/) goes deeper on sizing and venting.
 
 ## Permits and the order of work
 
-Bathroom work that changes plumbing, adds or moves electrical circuits, or alters framing generally needs a permit. Check with the City of Saratoga Springs building department before starting. If the work changes anything on the exterior of a house in a historic district, such as a new window or a visible vent, Design Review Commission approval can be needed as well.
+Bathroom work that changes plumbing, adds or moves circuits, or alters framing generally needs a permit, so check with the City of Saratoga Springs building department first. If the work changes the outside of a house in a historic district, say a new window or a vent cap people can see, it can also need Design Review Commission approval.
 
-The sequence for a full remodel usually runs like this:
+A full remodel tends to run like this:
 
 1. Site visit, measurements and design.
 2. Written scope, price and payment schedule by phase.
-3. Ordering fixtures, vanity, glass and tile.
-4. Demolition and assessment of the subfloor, framing and pipes.
-5. Framing repairs, rough plumbing, electrical and fan ducting, with inspections where required.
-6. Backer board, waterproofing and flood testing of the shower pan.
+3. Order fixtures, vanity, glass and tile.
+4. Demolition, then a look at the subfloor, framing and pipes.
+5. Framing repairs, rough plumbing, electrical and fan duct, with inspections where required.
+6. Backer board, waterproofing, and a flood test of the shower pan.
 7. Tile, then grout and sealing.
-8. Vanity, toilet, fixtures, lighting and accessories.
-9. Glass enclosure, which is usually measured after tile is complete.
+8. Vanity, toilet, fixtures, lights and accessories.
+9. Glass enclosure.
 
-Glass is a common wait at the end. Frameless glass is measured from finished tile, so the shower may be usable with a temporary curtain for a short time before the glass arrives.
+Glass is the usual wait at the end. Frameless glass gets measured from finished tile, so you may shower behind a temporary curtain for a short while before it arrives.
 
-## Choosing finishes that last
+## Finishes that are easier to live with
 
-Finish choices affect upkeep as much as appearance. Larger tiles mean fewer grout lines to clean and seal. Porcelain tile is dense and resists water well. A solid-surface or quartz vanity top avoids the sealing that some natural stones require. Matte black and brushed finishes show fewer water spots than polished chrome. The bathrooms shown on our site range from a white vanity with a glass walk-in shower to subway-tile and accent-tile showers, which shows how much a simple palette can do.
+What you pick changes how much cleaning you do. Bigger tiles mean fewer grout lines to scrub and seal. Porcelain is dense and shrugs off water. A quartz or solid-surface vanity top skips the sealing some natural stone needs. Matte black and brushed finishes hide water spots that polished chrome shows. The bathrooms on our site, from the white vanity with a glass walk-in shower to the subway-tile and accent-tile showers, stick to simple palettes and still look finished.
 
 ## Frequently asked questions
 
 ### Do I need a permit for a bathroom remodel in Saratoga Springs?
 
-Usually, if you are moving or adding plumbing, adding electrical circuits or changing framing. Replacing a vanity or toilet in the same spot may not require one. Ask the city building department before work begins.
+Generally yes, if you're moving or adding plumbing, adding circuits or changing framing. Replacing a vanity or toilet in the same spot may not need one. Ask the city building department before work starts.
 
 ### Can you tile over my existing bathroom tile?
 
-It is possible in limited cases, but we rarely recommend it. Tiling over old tile hides any damage underneath, raises the floor height and does nothing for the waterproofing behind a shower.
-
-### Why does my old bathroom have no exhaust fan?
-
-Many older bathrooms relied on a window for ventilation. Today a fan ducted to the outside is the standard approach, and adding one is a common part of a remodel.
+In a few cases, but we rarely recommend it. Tile over tile hides whatever damage is underneath, raises the floor, and does nothing for the waterproofing behind a shower.
 
 ### What if the floor is rotted under the toilet?
 
-Damaged subfloor is cut out and replaced, and any weakened joists are reinforced before new flooring goes down. We agree on any added work in writing before it proceeds.
+The bad subfloor gets cut out and replaced, and any weak joists get reinforced before new flooring goes down. We put any added work in writing and agree on it before it goes ahead.
 
-We design and build bathrooms in Saratoga Springs and nearby towns, from the first site visit through the final fixture, with a written scope and a payment schedule tied to each phase. For an idea of scheduling, read [how long a bathroom remodel takes](/blog/how-long-does-a-bathroom-remodel-take/), or visit our [bathrooms](/bathrooms/) page.
+From tearing out the old tile to setting the last faucet, we design and build bathrooms in Saratoga Springs and the towns nearby. To get a feel for the schedule, read [how long a bathroom remodel takes](/blog/how-long-does-a-bathroom-remodel-take/), or see finished rooms on our [bathrooms](/bathrooms/) page.

@@ -7,96 +7,80 @@ summary: The phases of a bathroom remodel, what each one involves, and the thing
 flags:
 ---
 
-A full bathroom remodel usually takes several weeks of work on site, plus planning and ordering time before demolition starts. A simple update that keeps the fixtures in place can be much shorter, while a larger bath with moved plumbing, a custom tiled shower and frameless glass takes longer. The biggest variables are how quickly decisions get made, how long materials take to arrive, what demolition uncovers, and how many inspections and curing times the work requires. Here is how the time breaks down for a typical remodel in Saratoga County.
+A full bathroom remodel takes several weeks of work on site, and that clock doesn't start until the planning and ordering are done. Keep the fixtures where they are and it can go a lot faster. Move the plumbing, build a custom tiled shower and add frameless glass, and it takes longer. What actually sets the calendar is how fast decisions get made, how long materials take to show up, what's behind the walls, and how many inspections and cure times the work needs. Here's how the time breaks down on a typical remodel in Saratoga County.
 
-## The three stages of the calendar
+## Count the whole calendar, not just demolition day
 
-It helps to think of the schedule in three stages rather than one number.
+People tend to count from the day the old tile comes off to the day the new toilet goes on. That's the stretch when the bathroom is out of service, so it's the part you feel. But there's time on either side of it.
 
-**Before work starts.** Site visit, design, the written scope and ordering materials. This stage depends mostly on how quickly choices are made and how long the vanity, fixtures, tile and glass take to arrive.
+Before anything gets torn out, there's the site visit, the design, the written scope and the ordering. After the main work, there's the shower glass and sometimes a back-ordered fixture. You can usually use the bathroom during that last bit. Leave either end out of your head and the job will feel like it ran long even when it didn't.
 
-**On-site work.** Demolition through the final fixture. This is the period when the bathroom is out of service.
+## Before demolition: pick everything and get it delivered
 
-**Finishing items.** Glass enclosures and occasionally a back-ordered fixture arrive after the main work is done. The bathroom is often usable during this stage.
+This is the part you control. A remodel moves when the layout, vanity, tile, fixtures, lights and fan are chosen and sitting in the garage before anyone picks up a pry bar. Pick tile after the walls are open and you've got a gutted room and nothing to put in it.
 
-Homeowners tend to count only the middle stage, then feel the project took longer than expected. Planning for all three gives a more realistic picture.
+Lead times change with the product and the season. A custom vanity, special-order tile or certain plumbing fixtures can take weeks. We confirm materials are on hand before we start demolition, because that one step does more to shorten the on-site stretch than anything we can do with a tile saw.
 
-## Before demolition: design and ordering
+Testing happens here too. If the house was built before 1978, test for lead paint. Old pipe insulation or flooring that might contain asbestos should be tested before anybody disturbs it. A positive result changes how the work gets planned, and you want to know that now, not with the floor half up.
 
-This is the stage you control most. A remodel moves faster when the layout, vanity, tile, fixtures, lighting and fan are chosen and ordered before demolition. Waiting to pick tile until the walls are open leaves the room torn apart with nothing to install.
+## On site, in the order it happens
 
-Lead times vary by product and season. Custom vanities, special-order tile and some plumbing fixtures can take weeks. Ordering early and confirming that materials are on hand before demolition is one of the most effective ways to keep the on-site stage short.
-
-If the house was built before 1978, lead paint testing should happen in this stage. Suspect materials such as old pipe insulation or flooring should be tested for asbestos before they are disturbed, since results can change how the work is planned.
-
-## On site, phase by phase
-
-Each phase depends on the one before it, so the order cannot be shuffled much.
+The phases stack. Each one needs the one before it finished, so there isn't much room to shuffle them.
 
 ### Demolition
 
-Removing the old tile, fixtures and wall surfaces is usually quick. Protecting the hallway, stairs and nearby rooms from dust is part of this phase.
+Pulling the old tile, fixtures and wall surfaces goes quickly. Most of the care goes into protecting the hallway, the stairs and the rooms next door from dust.
 
-### Assessment and repairs
+### Opening up and repairs
 
-Once the room is open, the subfloor, joists, wall framing and pipes are visible. In older Saratoga County houses this is where surprises show up: rotted subfloor near the toilet, joists notched by earlier plumbers, or corroded drain lines. Repairs here add time, and any change to the scope, price or schedule should be agreed in writing before the work continues. Our article on [change orders in remodeling](/blog/change-orders-explained/) explains how that works.
+Now you can see the subfloor, the joists, the wall framing and the pipes. In older Saratoga County houses this is where the surprises are. Rotted subfloor around the toilet flange. Joists notched half through by some plumber decades ago. Cast iron drain lines rusted thin. Fixing them adds days, and any change to scope, price or schedule gets agreed in writing before the work goes on. Our post on [change orders in remodeling](/blog/change-orders-explained/) explains how that works.
 
 ### Rough plumbing, electrical and venting
 
-Supply and drain lines, the shower valve, electrical circuits, lighting boxes and the exhaust fan duct go in during this phase. If a permit is involved, a rough inspection is often required before the walls are closed, so inspection scheduling becomes part of the timeline.
+Supply and drain lines, the shower valve, new circuits, light boxes and the duct for the exhaust fan all go in now. If there's a permit, there's often a rough inspection before the walls close, so the inspector's schedule becomes part of yours.
 
 ### Walls, backer board and waterproofing
 
-Drywall goes up on dry areas and cement board or a foam board system in the shower. The waterproofing layer is applied and allowed to cure according to the manufacturer's directions. A flood test of the shower floor confirms it holds water before tile covers it. This phase cannot be rushed without risking a leak later.
+Drywall goes on the dry walls. The shower gets cement board or a foam board system, then the waterproofing layer, which cures for as long as the manufacturer says. Then we flood test the shower floor: plug the drain, fill the pan, and wait to see that the water level holds before any tile covers it. Don't let anyone rush this phase. A shortcut here shows up as a stain on the ceiling below a year later.
 
 ### Tile and grout
 
-Tile is often the longest phase in a bathroom with a tiled shower. Floors, shower walls, niches and benches all take time, and mortar and grout need curing time before the next step. Small tiles, intricate patterns and accent bands take longer than large, simple tiles.
+In a bathroom with a tiled shower, this is usually the longest stretch. Floor, shower walls, niche and bench all take hands-on time, and the thinset and grout need to cure between steps. Small tile, a fussy pattern or an accent band take longer to set than big plain tile.
 
-### Fixtures, vanity and finishes
+### Fixtures, vanity and trim
 
-The vanity, top, toilet, faucets, shower trim, lighting, mirror and accessories go in, followed by paint and trim. Final inspections, if required, happen around this point.
+Vanity and top, toilet, faucets, shower trim, lights, mirror and accessories go in, then paint and trim. If there's a final inspection, it lands around here.
 
 ### Glass
 
-Frameless and semi-frameless shower glass is measured after the tile is finished, then fabricated. It commonly arrives some time after the rest of the bathroom is done. A temporary shower curtain bridges the gap.
+Frameless and semi-frameless glass gets measured off the finished tile, then made to order. It often shows up a while after everything else is done. Hang a shower curtain on a tension rod and use the shower in the meantime.
 
-## What stretches the schedule
+## What makes a bathroom run long
 
-The most common reasons a bathroom remodel runs long are predictable:
+Most delays are the same handful of things. Materials that weren't picked or didn't arrive before demolition. Rot or bad plumbing found once the walls are open. Changes after the work starts, like moving the niche or switching tile halfway through. Waiting on an inspection. Cure times for waterproofing, thinset and grout, which nobody can hurry. And the glass.
 
-- Materials not chosen or not delivered before demolition.
-- Hidden damage found after demolition.
-- Changes made after work starts, such as moving a niche or changing tile.
-- Inspection scheduling.
-- Waterproofing, mortar and grout curing times.
-- Glass fabrication.
-- A house with only one bathroom, which can require work to be staged so a toilet is usable overnight.
+A house with one bathroom adds its own time. The work gets staged so there's a working toilet every night, and that means reconnecting and disconnecting it as the job goes.
 
-Weather plays a smaller role in an interior project, but winter can affect deliveries, and very cold conditions may require heat in the room for some products to cure properly.
+Weather doesn't touch an inside job much, but winter can slow deliveries. In a cold room, some products won't cure right without heat, so in January we may need to keep the space warm while they set.
 
 ## How to keep it moving
 
-Most of the time savings come from decisions made early. A written scope organized by phase, with materials listed and a payment schedule tied to each phase, gives everyone the same picture of what happens next. Our guide on [preparing for a site visit](/blog/preparing-for-a-site-visit/) lists what to have ready for the first meeting. If you are still deciding on the scope, our [Saratoga Springs bathroom remodel guide](/blog/bathroom-remodel-saratoga-springs-guide/) covers layout and waterproofing decisions.
+Nearly all the time you can save comes from deciding early. The written scope lays out each phase in order with the materials listed and a payment tied to each phase, so you and we are looking at the same plan. Our guide to [preparing for a site visit](/blog/preparing-for-a-site-visit/) lists what to have ready for the first meeting. If you're still working out what the job includes, the [Saratoga Springs bathroom remodel guide](/blog/bathroom-remodel-saratoga-springs-guide/) covers layout and waterproofing choices.
 
-Smaller projects can be much faster. Replacing a vanity, toilet, lighting and paint without touching the shower is a short job compared to a full gut. Our post on [updating a dated bathroom](/blog/dated-bathroom-update-ideas/) covers projects at that scale.
+A smaller job is a different animal. A new vanity, toilet, light and paint, with the shower left alone, is short work next to a full gut. Our post on [updating a dated bathroom](/blog/dated-bathroom-update-ideas/) covers projects that size.
 
 ## Frequently asked questions
 
 ### Can I use my bathroom during a remodel?
 
-Generally not during a full remodel. If it is the only bathroom in the house, the work can sometimes be staged so the toilet is reconnected at the end of the day, but this adds time.
+Not during a full remodel. If it's the only bathroom in the house, we can sometimes stage the work so the toilet gets reset at the end of each day, but that adds time.
 
-### Why does the glass take so long?
+### Why does the shower glass take so long?
 
-Custom shower glass is measured from finished tile so it fits exactly, then made to order. That fabrication period usually falls after the rest of the work is complete.
+It's measured off the finished tile so it fits the walls you actually have, then made to order. That wait falls after the rest of the work is done, which is why you'll shower behind a curtain for a little while.
 
-### Does a permit add time to a bathroom remodel?
+### What's the fastest way to shorten a bathroom remodel?
 
-It can. Permit review happens before work starts, and inspections at rough and final stages need to be scheduled. Building this into the plan from the start avoids delays.
+Choose every material and have it delivered before demolition. Leaving the toilet, shower and vanity where they are now saves more time, since the drains and supply lines stay put.
 
-### What is the fastest way to shorten a bathroom remodel?
-
-Make every material choice and have the materials delivered before demolition. Keeping the toilet, shower and vanity in their current locations also saves time.
-
-We design and build bathrooms across Saratoga County with one point of contact and a written scope that shows each phase in order. You can see examples of our work on our [bathrooms](/bathrooms/) page.
+We design and build bathrooms across Saratoga County, and you deal with one person from the first visit to the last fixture. Photos of finished work are on our [bathrooms](/bathrooms/) page.

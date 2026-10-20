@@ -7,88 +7,76 @@ summary: A short checklist for the first walkthrough with a remodeling contracto
 flags:
 ---
 
-The best way to prepare for a contractor's site visit is to know what problem you want solved, gather a few examples of what you like, think about your budget and timing, and make the areas involved easy to see. Have the house's age, any past repairs, and known problems such as leaks written down. A well-prepared first visit gives the contractor what they need to write an accurate scope and price, and it gives you a chance to judge whether this is someone you want working in your home. Across Saratoga County, a few minutes of preparation saves weeks of back-and-forth later.
+To get ready for a contractor's site visit, know what problem you want fixed, pull together a few pictures of things you like, have a rough budget and timeline in your head, and clear a path to everything involved. Jot down the age of the house, past repairs, and anything you know is wrong, like a leak or a soft spot in the floor. That gives the contractor enough to write an accurate scope and price. It also gives you an hour to decide whether you want this person working in your house. Around Saratoga County, a little prep before that first walkthrough saves a lot of back-and-forth by email afterward.
 
-## Why the visit matters
+## Why we come out before we price anything
 
-A remodeling price is only as good as the information behind it. A contractor who has not seen the house can only guess at the condition of the subfloor, the age of the wiring, the slope of the floor, or how far the plumbing has to run. The site visit is where those guesses become measurements and observations. It is also where you find out how the contractor listens, what questions they ask, and whether they explain things clearly.
+A remodeling price is a guess until somebody has seen the house. From a phone call we can't know what shape the subfloor is in, how old the wiring is, how far the floor slopes, or how far the drain has to run to reach the stack. The visit is where we stop guessing. We measure, open the vanity doors, go down to the basement and look up at the joists under the bathroom.
 
-## Before the visit: what to gather
+It's also your chance to size us up. Watch whether the contractor listens, what questions get asked, and whether the answers make sense to you.
 
-### Your goals, in plain words
+## What to have ready
 
-Write a few sentences about what you want to change and why. "The shower leaks and the vanity is falling apart" is a useful start. So is "We want the bathroom to be easier to use as we get older" or "There isn't enough counter space for two people to cook." The reason behind a project shapes the design more than a list of features.
+Start with a few sentences about what you want to change and why. "The shower leaks and the vanity is falling apart" is a fine start. So is "We want this bathroom to be easier to use as we get older," or "Two people can't cook in this kitchen at the same time." The reason behind a project shapes the design more than a list of features does.
 
-### Must-haves and nice-to-haves
+Then split the list into what has to happen and what you'd like if the money's there. A walk-in shower might be a must. Heated floors might be a maybe. Knowing which is which lets the contractor suggest doing the job in phases or swapping one thing for another.
 
-Separate what the project must include from what you would like if budget allows. A walk-in shower might be a must-have; heated floors might be a nice-to-have. This helps the contractor suggest phasing or alternatives.
+Pictures beat descriptions. Pull them from magazines, websites, a friend's house, whatever you've got, and say what you like in each one. Maybe it's the tile, maybe it's the layout or the light. Pictures of things you hate help too.
 
-### Examples of what you like
+And write down what you know about the house:
 
-Photos from magazines, websites or friends' homes are more useful than descriptions. Note what you like about each one, whether it is the tile, the color, the layout or the lighting. Examples of what you do not like are useful too.
+- Roughly how old it is
+- Past renovations, and about when
+- Known problems: leaks, soft floors, drafts, ice dams, cracks
+- Whether it's in a historic district
+- Any plans, surveys or old permits you've got
 
-### The house's history
+On an older Capital Region house, knowing when the bathroom was last torn open, or whether a ceiling's been patched before, tells us where to look hard.
 
-- The approximate age of the house
-- Past renovations and roughly when they were done
-- Known problems: leaks, soft floors, drafts, ice dams, cracking
-- Whether the house is in a historic district
-- Any plans, surveys or past permits you have
+## Money and timing
 
-In older Capital Region houses, knowing when a bathroom was last opened up, or whether a ceiling has been patched before, tells the contractor where to look closely.
+You don't have to name an exact number. It does help to have a range and to say whether it's firm or has some give. Mention any date that matters, like a family event, a baby on the way, or a sale you're planning. Outdoor work runs on the building season here, so if it's a deck or anything on the exterior, start talking months ahead.
 
-### Budget and timing
+## On the day
 
-You do not have to share an exact number, but it helps to have a range in mind and to say whether the budget is fixed or flexible. Mention any deadline that matters, such as a family event, a baby due, or a planned sale. Timing also affects outdoor work: decks and exterior projects in this region depend on the building season, so they are best discussed months ahead.
+Clear out under the sinks and the inside of the vanity. Make sure we can get into the basement or crawlspace under the project, since that's where you can actually see the framing, pipes and wires. Know where the electrical panel and the main water shutoff are. If two people are going to make the decisions, have both of you there, so nobody has to explain it twice. And leave enough time. A careful walkthrough of a kitchen or a bathroom often takes an hour or more.
 
-## On the day: make the space easy to see
+## What the contractor should be doing
 
-- Clear access to the rooms involved, including under sinks and inside vanities.
-- Make the basement or crawlspace below the project accessible, since that is where the framing, plumbing and wiring often can be seen.
-- Know where the electrical panel and main water shutoff are.
-- Have everyone who will make decisions present, so questions can be answered once.
-- Set aside enough time; a careful walkthrough of a kitchen or bathroom often takes an hour or more.
+A contractor who's paying attention will ask how you use the room, not just what you want in it. They'll measure, write down what's there now, and look under and around the room as well as at it. They should point out things you hadn't noticed, like a water stain on the subfloor or a sag in the ceiling below. Before leaving, they should tell you what happens next and roughly when you'll get a written estimate.
 
-## What a good contractor will do
+What shows up after the visit should be a written scope of work, not a number on a napkin. Our post on [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) explains what to look for when it arrives.
 
-On a useful site visit, the contractor should:
+## Questions to ask
 
-- Ask about your goals and how you use the space
-- Measure the rooms and note existing conditions
-- Look below and around the project area, not just at the room itself
-- Point out problems you may not have noticed, such as signs of water damage
-- Explain what happens next and roughly how long it will take to receive a written estimate
+These are the ones we'd want answered if we were on your side of the table:
 
-What should follow is a written scope of work, not just a number. Our post on [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) explains what to look for when it arrives.
-
-## Questions worth asking
-
-- How would you approach this project, and in what order?
+- How would you go about this job, and in what order?
 - What could change the price once work starts?
-- How do you handle changes during the project?
-- How is the payment schedule structured?
-- Who will be my point of contact during the work?
-- Does this need a permit, and who handles it?
-- Can you provide certificates of insurance?
+- How do you handle changes during the job?
+- How is the payment schedule set up?
+- Who's my point of contact while the work is going on?
+- Does it need a permit, and who pulls it?
+- Can you send me certificates of insurance?
 
-If the project involves both design and construction, it is also worth understanding the difference between [design-build and hiring an architect and contractor separately](/blog/design-build-vs-architect-and-contractor/).
+If the job needs both design and construction, it helps to understand [design-build versus hiring an architect and a contractor separately](/blog/design-build-vs-architect-and-contractor/) before the visit.
 
-## If you have more than one project in mind
+## If you've got a list
 
-Many homeowners have a list, perhaps a bathroom, the kitchen and a deck. Mention everything during the visit, even if you plan to do only one project now. It helps the contractor suggest a sensible order and avoid work that would have to be undone later. Our post on whether to [remodel the kitchen or bathroom first](/blog/remodel-kitchen-or-bathroom-first/) covers how to think about sequence.
+Lots of people have more than one project in mind: a bathroom, the kitchen, a deck out back. Bring up all of it, even if you're only doing one this year. It lets the contractor suggest a sensible order, so you don't pay to have new work torn out for the next job. Our post on whether to [remodel the kitchen or bathroom first](/blog/remodel-kitchen-or-bathroom-first/) gets into the order.
 
 ## Frequently asked questions
 
 ### How long does a contractor site visit take?
 
-For a single room, such as a bathroom, plan on about an hour. Larger projects, or houses where the contractor needs to look in the basement and attic, can take longer. Rushing the visit usually means a less accurate estimate.
+For one room, like a bathroom, figure about an hour. Bigger jobs, or houses where the contractor needs to get into the basement and the attic, take longer. A rushed visit gets you a less accurate estimate.
 
 ### Should I tell the contractor my budget?
 
-Sharing a range helps. It lets the contractor suggest a scope and materials that fit, rather than designing something you will not build. You can still compare estimates from different contractors on the same scope.
+Give a range. That lets the contractor suggest a scope and materials that fit, so nobody spends time designing something you won't build. You can still compare estimates from different contractors on the same scope.
 
 ### What if I'm not sure what I want yet?
 
-That is common, and a site visit is a good place to start. Bring your goals and the problems you want solved, and the contractor can suggest options. Our [Saratoga Springs bathroom remodel guide](/blog/bathroom-remodel-saratoga-springs-guide/) is a useful starting point if a bathroom is on your list.
+That's common, and the visit is a good place to start. Bring your goals and the problems you want gone, and the contractor can lay out some options. If a bathroom's on your list, our [Saratoga Springs bathroom remodel guide](/blog/bathroom-remodel-saratoga-springs-guide/) is the next thing to read.
 
-For [bathrooms](/bathrooms/) and every other project we take on in Saratoga County, we visit the site first, then provide a written scope of work organized by phase, with the price and a payment schedule tied to each phase.
+We see the house before we put a number on anything. After the walkthrough you get the scope in writing, split into phases, each with its price and its payment. Some of the finished rooms are on our [bathrooms page](/bathrooms/).

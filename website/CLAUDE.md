@@ -46,10 +46,10 @@ be made in all of them (`grep -rn` first).
    past accessibility work. If Nick hasn't said it, leave it out. `check_blog.py` catches some of this, not all.
 2. **Reviews** must be real client words, first name and town only, ideally with the client's OK. Older reviews from
    the Reclaimed Space Crafters days may be labeled "formerly Reclaimed Space Crafters".
-3. **Draft notes**: text in `class="ph"` is unconfirmed; `ph-only` blocks are notes. When Nick confirms something,
-   replace the text, remove the `ph` wrapper, and drop that item from the "What to confirm" list on every page.
+3. **No draft notes on the site** (Myles, 2026-10-19: "this is a public website"). Don't add placeholders, `ph`
+   highlights or "Nick to confirm" text to pages. Keep open questions out of the repo's pages.
 4. **Keep name, phone and email identical everywhere.** Business name: Refined Space Crafters. Phone (518) 932-9919.
 5. **Small changes.** Don't redesign, reformat, or rename pages or files. Match the surrounding HTML.
-6. **Forms** open an email to Nick until Myles sets a Formspree address (`FORMSPREE_URL` in Cloudflare's build
-   settings). Keep the form's field names: the RSC tool reads them (`rsc/intake.py`). No tracking or new services.
+6. **Forms** post to Myles's Formspree form (default in `make_deploy.py`; `FORMSPREE_URL` in Cloudflare's build
+   settings overrides it). Keep the form's field names: the RSC tool reads them (`rsc/intake.py`). No tracking or new services.
 7. **Domain** is `https://rscrafters.com` (`SITE` in `build_blog.py`). Don't hard-code other domains.

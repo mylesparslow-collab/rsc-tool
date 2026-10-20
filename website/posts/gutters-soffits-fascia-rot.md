@@ -7,100 +7,68 @@ summary: How the gutter, fascia and soffit work as one system, the signs of rot 
 flags:
 ---
 
-Soffit and fascia rot almost always starts with water that the gutters are supposed to carry away. When gutters overflow, pull away from the house, or lack a proper drip edge behind them, water soaks into the fascia board and then the soffit beneath it. Signs include peeling paint, dark streaks behind the gutter, sagging gutter sections, and soft or crumbling wood at the corners of the roof. In Wilton, where many homes have fascia wrapped in aluminum or vinyl, the rot can be well along before anything shows on the surface.
+Rotted soffit and fascia almost always trace back to water the gutters were supposed to carry off. A gutter overflows, or pulls away from the house, or there's no drip edge behind it, and the water soaks into the fascia board and then the soffit under it. You'll see peeling paint, dark streaks behind the gutter, sagging sections, and soft or crumbling wood at the corners of the roof. In Wilton, where a lot of houses have the fascia wrapped in aluminum or vinyl, the rot can get a long way before anything shows.
 
-## How the roof edge works
+## Three parts at the roof edge
 
-Three parts work together at the bottom edge of a roof.
+The fascia is the vertical board nailed across the ends of the rafters. The gutter hangs on it. The soffit is the flat underside of the overhang, running from the fascia back to the house wall, and on many houses it's vented to let air into the attic.
 
-- **The fascia** is the vertical board that runs along the ends of the rafters. The gutter is fastened to it.
-- **The soffit** is the horizontal underside of the overhang, between the fascia and the house wall. In many homes it is vented to let air into the attic.
-- **The gutter** collects water from the roof and sends it to downspouts.
-
-Above them, a metal drip edge along the roof edge directs water off the shingles and into the gutter, rather than letting it run behind the gutter onto the fascia. When any one of these pieces fails, the others take on water they were not built to handle.
+Above both, a metal drip edge runs along the edge of the roof. Its job is to kick water off the shingles and into the gutter, so it doesn't run down behind the gutter onto the fascia. When one of these parts fails, the others start taking water they weren't built for.
 
 ## Why gutters overflow
 
-Overflow is the most common cause of fascia rot, and it has several sources:
+Overflow causes more fascia rot than anything else, and it comes from a handful of places. Leaves, seeds and shingle granules clog the gutter or the downspout. The gutter loses its pitch and holds standing water. Hangers work loose so the gutter tips outward or sags between them. There are too few downspouts, or they're too small for the amount of roof they drain. In winter, ice packs the gutter and meltwater goes over the back edge. And a roof valley can dump a concentrated stream into one spot that the gutter can't keep up with.
 
-- Leaves, seeds and roofing granules clogging the gutter or downspout
-- Gutters that have lost their slope and hold standing water
-- Hangers that have loosened so the gutter tips outward or sags
-- Downspouts that are too few or too small for the roof area they drain
-- Ice packed in the gutter during winter, forcing meltwater over the back edge
-- Valleys in the roof that send a concentrated stream of water to one spot
+Ice dams do it from the other direction. Water backs up behind the ice at the eaves and soaks the fascia and soffit from above. Our post on [ice dam damage repair](/blog/ice-dams-and-winter-damage/) covers the attic side of that.
 
-Ice dams are a related problem. Water backing up behind ice at the eaves can soak the fascia and soffit from above. Our post on [ice dam damage repair](/blog/ice-dams-and-winter-damage/) explains the attic side of that problem.
+## What to look for
 
-## Signs of soffit and fascia damage
+Walk around the house during a heavy rain, then again on a dry day. In the rain, watch for water sheeting over the gutter, mostly at the corners and under valleys. On the dry day, look for dark streaks on the fascia under the gutter or on the siding below it, and for peeling or blistering paint on wood fascia and soffit.
 
-Walk the house after a heavy rain and again on a dry day. Look for:
+Check whether the gutters are pulling away from the house or sagging between hangers. Then take a flat screwdriver to the corners where two fascia boards meet. That's where rot starts, and the tip will sink into soft wood.
 
-- **Water spilling over the gutter**, especially at corners and below roof valleys
-- **Dark streaks or staining** on the fascia below the gutter or on the siding beneath
-- **Peeling or blistering paint** on wood fascia and soffit
-- **Gutters pulling away** from the house or sagging between hangers
-- **Soft wood** you can press a screwdriver into, especially at corners where two fascia boards meet
-- **Sagging, cracked or stained soffit panels**
-- **Gaps or holes in the soffit**, which give squirrels, birds and insects a way into the attic
-- **Peeling paint or rot on the window trim** below a problem gutter
+Look up at the soffit itself. Panels that sag, crack or stain are a sign. So are gaps and holes, which let squirrels, birds and insects into the attic. Chewed edges, nesting material, or scratching overhead at night usually point to an opening in the soffit. Take a flashlight up into the attic and look at the back side of the soffit too.
 
-Signs of animals, such as chewed edges, nesting material or scratching sounds in the attic, often point to a soffit opening. Damage around soffits is also worth checking from inside the attic with a flashlight.
+Don't forget the windows under a bad stretch of gutter. Peeling paint or rot on that window trim often comes from the same overflow.
 
-## Wrapped fascia in newer homes
+## Wrapped fascia hides rot
 
-Many homes built in Wilton's subdivisions over the last few decades have wood fascia covered with aluminum or vinyl trim coil. The wrap protects the wood from sun and keeps it from needing paint. It does not keep the wood dry if water gets behind it. Water that runs behind a gutter or under a missing drip edge can soak the wood for years, and the metal hides it.
+A lot of houses in Wilton's subdivisions, built over the last few decades, have wood fascia covered in aluminum or vinyl trim coil. The wrap keeps the sun off the wood and means nobody has to paint it. It doesn't keep the wood dry. If water gets behind the gutter, or runs under a missing drip edge, it can soak that board for years while the metal makes everything look fine.
 
-Signs of rot behind wrap include:
+Here's how rot behind the wrap gives itself away. The gutters keep coming loose even after you refasten the hangers. Nails and screws won't bite. The wrap bulges, goes wavy, or splits at the seams. There are stains on the soffit right inside the fascia. If you see any of that, pull off a section of wrap and look at the wood.
 
-- Gutters that keep loosening even after the hangers are re-fastened
-- Wrap that is bulging, wavy or separated at the seams
-- Nails or screws that won't hold
-- Stains on the soffit just inside the fascia
+## How we fix it
 
-If any of these appear, a section of wrap can be removed to check the wood beneath.
+How far the rot has gone decides the repair. If the paint is peeling but the wood is still hard, it's a scrape, prime and paint job, plus fixing whatever let the water in, which is usually the gutter or the drip edge. Small soft spots can be cut out and patched with new wood or epoxy filler. Rot running down a length of fascia means replacing that section of board. Stained or soft soffit gets new panels or boards. If the gutters are undersized, worn out or badly pitched, they get replaced with proper slope and enough downspouts.
 
-## What repair involves
+The one people don't expect is the rafter tails. When fascia has been wet a long time, the rafter ends behind it often are too. Those get repaired or sistered before any new trim goes on.
 
-The right repair depends on how far the rot has gone.
+The order goes like this. The gutter comes down. We pull the damaged fascia and soffit and check the rafter tails behind them. New fascia goes up, either wood primed on all six sides or cellular PVC, which won't rot. New soffit goes in with the vents left open so the attic still breathes. We add or correct the drip edge. Then the gutters go back up with a steady pitch toward the downspouts, and the downspouts get pointed away from the foundation.
 
-| Condition | Usual approach |
-|---|---|
-| Peeling paint, wood still firm | Scrape, prime and paint; fix the gutter or drip edge |
-| Small soft areas on fascia | Cut out and patch with new wood or epoxy filler |
-| Rot along a length of fascia | Replace that section of fascia board |
-| Soffit stained or soft in spots | Replace damaged soffit panels or boards |
-| Rafter tails soft behind the fascia | Repair or sister rafter ends before new trim goes on |
-| Gutters undersized, failing or poorly pitched | Replace gutters with proper slope and downspouts |
-
-Repairs usually happen in this order. The gutter comes down. Damaged fascia and soffit are removed and the rafter tails behind them inspected. New fascia goes up, primed on all sides if it is wood, or made of a rot-resistant material such as cellular PVC. Soffit panels are replaced with vents kept open for attic airflow. A drip edge is added or corrected, and the gutters are reinstalled with a consistent slope toward the downspouts and with downspouts that discharge away from the foundation.
-
-On houses built before 1978, painted fascia and soffit may contain lead. Test before scraping, sanding or cutting.
+On a house built before 1978, painted fascia and soffit may have lead in the paint. Test before anyone scrapes, sands or cuts it.
 
 ## Keeping the roof edge sound
 
-- Clean gutters at least once in late fall and again in spring, more often under heavy tree cover. Our [fall home maintenance checklist](/blog/fall-home-checklist-saratoga/) covers the timing.
-- Check that gutters slope toward downspouts and that downspouts run freely.
-- Look for overflow during a heavy rain, when problems are easy to see.
-- Keep paint on wood fascia and soffit intact. Our guide on [how often to paint exterior trim](/blog/how-often-to-paint-exterior-trim/) covers typical intervals.
-- Trim branches that overhang the roof.
+Clean the gutters at least once in late fall and again in spring, and more often under heavy trees. Our [fall home maintenance checklist](/blog/fall-home-checklist-saratoga/) has the timing. Check that they pitch toward the downspouts and that the downspouts run free. The best time to spot trouble is during a heavy rain, when you can see exactly where the water goes.
 
-Gutter work on a two-story house is ladder work at height. If your roof is steep or high, have a professional handle it.
+Keep the paint intact on wood fascia and soffit. Our post on [how often to paint exterior trim](/blog/how-often-to-paint-exterior-trim/) gives typical intervals. And cut back branches that hang over the roof.
 
-Overflowing gutters often damage the windows below as well. If the sills under a problem gutter feel soft, our post on [window sill rot repair](/blog/window-sill-rot-repair/) can help.
+Gutter work on a two-story house means a ladder at height. If your roof is steep or high, hire it out.
+
+If the sills under a problem gutter feel soft, read [window sill rot repair](/blog/window-sill-rot-repair/) next.
 
 ## Frequently asked questions
 
 ### Can I put new gutters on rotted fascia?
 
-No. Gutters need solid wood to hold their fasteners, and new gutters on soft fascia will pull loose. The rotted fascia, and any damaged rafter ends behind it, should be repaired first.
+No. Gutters need solid wood to hold their fasteners, and new ones hung on soft fascia will pull loose. Repair the fascia, and any rotted rafter ends behind it, first.
 
 ### Do gutter guards prevent fascia rot?
 
-Guards can reduce clogging from leaves, which helps prevent overflow. They don't fix gutters that are poorly sloped or missing a drip edge, and some guards still need periodic cleaning. Proper slope, downspouts and a drip edge matter more.
+They cut down on leaf clogs, which helps with overflow. They won't fix a gutter with bad pitch or a roof with no drip edge, and some guards still need cleaning now and then. Get the slope, the downspouts and the drip edge right first.
 
-### How do I know if there is rot behind aluminum fascia wrap?
+### How do I know if there's rot behind aluminum fascia wrap?
 
-Look for gutters that keep coming loose, wrap that bulges or separates, and staining on the soffit near the edge. Pressing on the wrap may reveal soft spots. The only sure check is removing a section to look at the wood.
+Watch for gutters that keep loosening, wrap that bulges or separates, and stains on the soffit near the edge. Pressing on the wrap may turn up soft spots. The only sure way is to take a section off and look at the wood.
 
-We repair fascia, soffits and the trim around them, and handle gutters, roofing and siding as part of a larger project, through our [restoration and built-ins work](/restoration-and-built-ins/). We work in [Wilton](/wilton/) and across Saratoga County, starting with a site visit and a written scope of work by phase.
+Fascia, soffits and the trim around them are part of our [restoration and built-ins work](/restoration-and-built-ins/), and we take on gutters, roofing and siding when they're part of a bigger project. That work runs through [Wilton](/wilton/) and the rest of Saratoga County.

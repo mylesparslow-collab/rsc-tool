@@ -7,74 +7,70 @@ summary: How to decide between better steps and a ramp, what a ramp needs in len
 flags:
 ---
 
-Whether a home needs a wheelchair ramp or better steps depends on how the person moves. Someone who walks, even with a cane or walker, is often safer on well-built steps with low risers, deep treads and rails on both sides. Someone who uses a wheelchair or scooter needs a step-free route, which usually means a ramp, a regraded walkway, or a platform lift. Ramps take far more length than people expect, roughly one foot of ramp for every inch of rise.
+Whether a house needs a wheelchair ramp or better steps comes down to how the person gets around. Someone who walks, even with a cane or a walker, is often safer on well-built steps with low risers, deep treads and a rail on each side. Someone in a wheelchair or on a scooter needs a way in with no steps at all, which means a ramp, a regraded walk, or a platform lift. And ramps eat up far more yard than people expect: about a foot of ramp for every inch of rise.
 
-## Start with the person, then the house
+## Start with the person
 
-An occupational therapist can tell you whether a walker user can still manage steps safely or whether a ramp is the better choice. Some people with balance problems find a long ramp harder than a few good steps, because a slope pulls at the ankles and a walker wants to roll. Others need a ramp now or will within a few years. Planning for the likely future saves rebuilding the entry twice.
+Before anybody measures the porch, talk to an occupational therapist. They can tell you whether a walker user can still handle steps safely or would do better on a ramp. Some people with balance trouble find a long ramp harder than a few good steps. The slope pulls at the ankles and the walker wants to roll away downhill. Other people need a ramp now, or will in a few years. Build for where things are headed and you won't be tearing out the entry twice.
 
-Then measure the house. The key number is the **total rise**: the height from the ground (or the driveway or garage floor) to the top of the door threshold. Capital Region homes vary widely. A garage entry in a newer Wilton or Halfmoon house might be two or three steps. A front porch on an older house in Saratoga Springs or Glens Falls can be 3 or 4 feet above grade.
+Then measure the house. The number you need is the total rise, the height from the ground (or the driveway, or the garage floor) up to the top of the door threshold. Around the Capital Region that number is all over the place. A garage entry in a newer house in Wilton or Halfmoon might be two or three steps. The front porch on an older house in Saratoga Springs or Glens Falls can sit 3 or 4 feet above the yard.
 
-## Making steps safer
+## Better steps first
 
-For many households, better steps are the right first move:
+For a lot of households, rebuilding the steps is the right first move.
 
-- **Rails on both sides**, solid, easy to grip, and running past the top and bottom step. The New York State Residential Code requires a handrail on stairs with four or more risers, at 34 to 38 inches above the nosings, but for safety even two or three steps deserve rails.
-- **Even, lower risers and deeper treads.** Rebuilding steps with consistent risers of around 6 to 7 inches and deep treads makes them easier for tired knees. Uneven steps are a classic trip hazard; frost heave makes them worse. See [concrete and wood step repair](/blog/outdoor-steps-freeze-thaw/).
-- **A landing at the door** large enough to stand on while opening a storm door. A 5-by-5-foot landing gives room for a walker.
-- **Light** over the steps on a switch or motion sensor.
-- **Slip resistance.** Textured composite, broomed concrete, or grit strips. Avoid smooth painted wood.
+Put a rail on both sides. It should be solid, easy to wrap a hand around, and run past the top and bottom steps so there's something to hold before the first step and after the last. The New York State Residential Code requires a handrail on stairs with four or more risers, at 34 to 38 inches above the nosings. We'd put rails on two or three steps too. That's where a lot of people lose their footing.
 
-## What a ramp needs
+Make every riser the same height and keep them low, around 6 to 7 inches, with deep treads. Uneven steps are a classic trip hazard, and frost heave makes them more uneven every winter. Our post on [concrete and wood step repair](/blog/outdoor-steps-freeze-thaw/) covers what the freeze does to them.
 
-Accessibility guidance (the ADA standards most designers use as a reference) sets the basic rules:
+Build a landing at the door big enough to stand on while you pull open the storm door. Five feet by five feet gives room for a walker. Put a light over the steps on a switch or a motion sensor. And pick a surface that grips: textured composite, broom-finished concrete, or grit strips. Smooth painted wood gets slick the minute it's wet.
 
-- **Slope no steeper than 1:12**, meaning 1 inch of rise per 12 inches of run. A 24-inch rise needs at least 24 feet of ramp, plus landings. A gentler slope such as 1:16 or 1:20 is easier for someone pushing their own chair.
-- **Width of at least 36 inches** clear between rails.
-- **Level landings** at the top and bottom, at least 60 inches long, and at any change of direction. Turning landings for a wheelchair are commonly 60 by 60 inches.
-- **A landing at least every 30 inches of rise**, so a long ramp gets rest spots.
-- **Handrails on both sides** for ramps that rise more than 6 inches, at 34 to 38 inches high, plus an edge curb or rail so wheels can't roll off the side.
+## What a ramp has to have
 
-Those numbers are why a ramp to a tall porch often has to switch back or wrap along the side of the house. Ramps can be built as part of a deck, which often looks better than a freestanding structure. Our posts on [composite vs wood decking](/blog/composite-vs-wood-decking-upstate-ny/) and [deck builders in Saratoga Springs](/blog/deck-builder-saratoga-springs/) cover materials and structure.
+Most designers use the ADA standards as their reference for ramps, and the basic numbers go like this.
 
-## Planning for snow and ice
+The slope can't be steeper than 1:12, which is 1 inch of rise for every 12 inches of run. A 24-inch rise needs at least 24 feet of ramp, plus landings. Gentler is easier for someone pushing their own chair, so 1:16 or 1:20 is better if the yard allows it.
 
-In Saratoga County, any entry has to work in January. A ramp is a long surface to clear, and a 1:12 slope with ice on it is dangerous.
+The ramp needs at least 36 inches clear between the rails. It needs level landings at the top and bottom, at least 60 inches long, and another one at any turn. Turning landings for a wheelchair are commonly 60 by 60 inches. On a long ramp, there has to be a landing at least every 30 inches of rise, so the person gets a place to stop and rest.
 
-- **Cover it where possible.** A roof over the landing and top section keeps much of the snow off.
-- **Choose a surface that grips** when wet and can take salt or ice melt. Ask the decking maker what deicers their product tolerates.
-- **Plan who shovels** and where the snow goes. A ramp with rails on both sides needs somewhere to throw snow.
-- **Drainage.** Water should run off the ramp and away from the foundation, not puddle and freeze on landings.
-- **Consider the garage.** A ramp inside an attached garage stays dry and clear all winter, if there is room.
+Any ramp that rises more than 6 inches needs handrails on both sides at 34 to 38 inches high, plus an edge curb or a low rail so a wheel can't drop off the side.
 
-## Other options
+That's why a ramp to a tall porch often switches back or wraps along the side of the house. A ramp built as part of a deck often looks better than one standing alone in the yard. For materials and structure, see our posts on [composite vs wood decking](/blog/composite-vs-wood-decking-upstate-ny/) and [choosing a deck builder in Saratoga Springs](/blog/deck-builder-saratoga-springs/).
 
-- **Regrading.** Where the rise is small, raising the walkway with fill and pavers to meet the door can create a step-free entry without rails or a visible ramp.
-- **Platform or vertical lifts.** For a tall rise and little space, a vertical platform lift takes a small footprint. It needs power, maintenance and a level approach.
-- **A different door.** A side or back door, or the garage entry, may have a lower rise than the front door and be easier to make accessible.
+## It has to work in January
 
-Inside the door, thresholds of 1/2 inch or less and a 32-inch clear opening finish the job. See [widening doorways for a wheelchair or walker](/blog/widening-doorways-for-walkers/).
+In Saratoga County, any entry you build has to work under snow. A ramp is a long surface to shovel, and a 1:12 slope with ice on it is dangerous.
 
-## Permits and approvals
+Put a roof over the top landing and the first run if you can. Pick a surface that grips when it's wet and can take salt or ice melt, and ask the decking manufacturer which de-icers their product tolerates. Figure out who's going to shovel and where the snow goes, because a ramp with rails on both sides gives you nowhere to throw it. Make sure water runs off the ramp and away from the foundation, not into puddles on the landings that freeze overnight. And look at the garage. If there's room, a ramp inside an attached garage stays dry and clear all winter.
 
-Ramps, rebuilt steps and new landings are structures and usually need a building permit; check with your town or city building department. In Saratoga Springs historic districts, a ramp visible from the street may need Design Review Commission approval. Funding help is available for some families; see [home modification grants in Saratoga County](/blog/home-modification-funding-saratoga/).
+## Other ways in
 
-## What drives the cost
+When the rise is small, sometimes you can build the walkway up with fill and pavers until it meets the door. That gives you a step-free entry with no rails and nothing that looks like a ramp.
 
-We don't publish prices. The biggest factors are total rise (which sets the ramp length), the shape needed to fit the site, materials, footings for our frost conditions, rails, and whether a roof or lighting is added. Rebuilding a few steps with rails is a much smaller project than a long switchback ramp.
+For a tall rise and not much room, a vertical platform lift takes up a small footprint. It needs power, regular maintenance and a level approach.
+
+Or use a different door. A side door, back door or the garage entry may have a lot less rise than the front, and be much easier to make accessible.
+
+Inside, thresholds of 1/2 inch or less and a 32-inch clear door opening finish the route. See [widening doorways for a wheelchair or walker](/blog/widening-doorways-for-walkers/).
+
+## Permits, approvals and money
+
+Ramps, rebuilt steps and new landings are structures, and they usually need a building permit, so check with your town or city building department. In the Saratoga Springs historic districts, a ramp you can see from the street may need Design Review Commission approval. Some families can get help paying for the work. Our post on [home modification grants in Saratoga County](/blog/home-modification-funding-saratoga/) lists where to look.
+
+We don't publish prices. What moves the cost most is the total rise, since that sets how long the ramp has to be. After that it's the shape it takes to fit the lot, the materials, footings deep enough for our frost, the rails, and whether you add a roof or lighting. Rebuilding a few steps with good rails is a much smaller job than a long switchback ramp.
 
 ## Frequently asked questions
 
 ### How long does a wheelchair ramp need to be?
 
-At a 1:12 slope, one foot of ramp for every inch of rise, plus level landings at the top, bottom and turns. A 30-inch rise needs at least 30 feet of ramp before landings.
+At a 1:12 slope, one foot of ramp for every inch of rise, plus level landings at the top, the bottom and every turn. A 30-inch rise needs at least 30 feet of ramp before you add the landings.
 
 ### Are ramps or steps safer for someone with a walker?
 
-It depends on the person. Some walker users do better on good steps with two rails; others need a ramp. An occupational therapist can assess which is safer.
+That varies from person to person. Some walker users do better on good steps with a rail on each side, and others need a ramp. An occupational therapist can tell you which is safer.
 
 ### Can a ramp be removed later?
 
-Yes. Modular ramps can be removed, and a well-built wood or composite ramp can be taken down or reworked into a deck or steps later.
+Yes. Modular ramps come apart, and a well-built wood or composite ramp can be taken down or reworked into a deck or steps.
 
-Our Safe at Home service in the Capital Region, which will include safer entries and rails, is in preparation; join the waiting list on the [Safe at Home page](/safe-at-home/). For the steps, decks and railings we build today, see [decks and stairs](/decks-and-stairs/).
+Safe at Home, our service for safer entries, rails and other changes for aging in place, is still in preparation. You can join the waiting list on the [Safe at Home page](/safe-at-home/). The steps, decks and railings we build now are on our [decks and stairs page](/decks-and-stairs/).

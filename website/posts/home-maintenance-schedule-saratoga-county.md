@@ -7,77 +7,82 @@ summary: A season-by-season and year-by-year list of the repairs that keep an up
 flags:
 ---
 
-A practical home maintenance schedule for upstate NY has two layers: a short seasonal walk-around each spring and fall, and a longer list of jobs that come due every few years, like deck stain, shower caulk and exterior paint. In Saratoga County the calendar is driven by winter. Freeze-thaw cycles, snow load, road salt and ice dams do most of the damage, so the most important checks happen just before the first hard freeze and just after the snow melts.
+A home maintenance schedule for upstate NY comes in two parts. There's a short walk around the house every spring and fall, and there's a longer list of jobs that come due every few years, like deck stain, shower caulk and exterior paint. In Saratoga County, winter sets the calendar. Freeze-thaw, snow load, road salt and ice dams do most of the damage, so the checks that count most happen right before the first hard freeze and right after the snow's gone.
 
-## Why upstate houses need their own schedule
+## Why a generic list doesn't fit here
 
-Generic maintenance lists are written for mild climates. Here, water that gets into a crack in October freezes and expands dozens of times before April, opening the crack a little wider each cycle. Snow sits on roofs, decks and porch steps for weeks. Salt tracked onto steps and splashed onto foundations eats at concrete and metal. The building season is short, so a repair you notice in November often waits until May.
+Most maintenance lists online are written for mild winters. Here, water that gets into a crack in October freezes and thaws dozens of times before April, and every round pries the crack a little wider. Snow sits on roofs, decks and porch steps for weeks. Salt tracked onto the steps and splashed up on the foundation eats concrete and metal. And the season for outside work is short, so something you notice in November often sits until May.
 
-Our housing stock adds another layer. Saratoga Springs, Ballston Spa and the older villages have many houses built a century or more ago, with wood porches, plaster walls and stone or brick foundations. Newer subdivisions in Malta, Wilton, Clifton Park and Halfmoon have different weak points: builder-grade decks, vinyl siding that hides trim problems, and showers that are now reaching the age when grout and caulk fail.
+Then there are the houses themselves. Saratoga Springs, Ballston Spa and the older villages have plenty of houses a century old or more, with wood porches, plaster walls, and stone or brick foundations. The newer subdivisions in Malta, Wilton, Clifton Park and Halfmoon break down in other places: decks the builder put on, vinyl siding that hides trouble in the trim, and showers just now old enough for the grout and caulk to give out.
 
-## Every spring: the after-winter walk-around
+## Spring: walk it after the snow melts
 
-Once the snow is gone and the ground has firmed up, walk the outside of the house slowly. Look for:
+Once the snow's gone and the ground has firmed up, walk slowly around the outside of the house and check these off:
 
-- Gutters that pulled loose or sag under the weight of ice, and downspouts that dump water against the foundation.
-- Shingles that lifted or slid, and stains on the ceiling or attic sheathing below a roof valley or eave, which can point to ice dam leaks.
-- Front and back steps that heaved, tipped or cracked, and handrails that loosened over winter.
-- Deck boards that cupped or split, and any gap opening between the deck and the house wall.
-- Peeling paint on the south and west sides, where sun and meltwater hit trim the hardest.
-- Soft spots in window sills and the bottoms of door trim.
+- Gutters that pulled loose or sagged under ice, and downspouts dumping water against the foundation
+- Shingles that lifted or slid, and stains on a ceiling or on the attic sheathing under a valley or eave, which can mean an ice dam leaked
+- Front and back steps that heaved, tipped or cracked, and handrails that worked loose over the winter
+- Deck boards that cupped or split, and any gap opening between the deck and the house
+- Peeling paint on the south and west sides, where sun and meltwater are hardest on the trim
+- Soft spots in window sills and at the bottoms of door trim
 
-Our [spring home inspection after winter](/blog/spring-home-checklist-after-winter/) goes through each item in more detail, including how to tell frost heave from a failing footing.
+Our [spring home inspection after winter](/blog/spring-home-checklist-after-winter/) goes through each one in more detail, including how to tell ordinary frost heave from a footing that's failing.
 
-## Every fall: getting ready for the freeze
+## Fall: get ahead of the freeze
 
-The fall check is about keeping water out and making sure the house is safe to walk around on ice. Clean the gutters after most of the leaves are down. Disconnect garden hoses and shut off exterior spigots if they are not frost-free. Re-caulk gaps around windows and doors where you can see daylight or feel a draft. Check that stair and porch railings are solid, since everyone will be holding them with snow on their boots. Make sure the bulkhead door closes and latches, so snowmelt does not run into the cellar.
+The fall walk is about keeping water out and making the house safe to get around on ice. Clean the gutters once most of the leaves are down. Take the hoses off and shut off the outside spigots if they aren't frost-free. Recaulk around windows and doors anywhere you can see daylight or feel a draft. Grab the stair and porch rails and shake them, since everybody's going to be leaning on them with snow on their boots. Make sure the bulkhead closes and latches, or snowmelt will find its way into the cellar.
 
-We keep a longer version of this list in our [fall home maintenance checklist](/blog/fall-home-checklist-saratoga/).
+There's a longer version in our [fall home maintenance checklist](/blog/fall-home-checklist-saratoga/).
 
-## The multi-year jobs
+## The jobs that come around every few years
 
-These are the jobs that slip, because they do not come up every year. Write down when each was last done.
+These are the ones that slip, because they don't come up every year. Write down when each was last done.
 
-| Job | Typical interval | What tells you it is due |
+| Job | Typical interval | How you know it's due |
 |---|---|---|
 | Deck stain or sealer | Every 2 to 3 years | Water soaks in instead of beading; gray, dry-looking boards |
 | Tub and shower caulk | Every 1 to 2 years | Mold under the bead, gaps, peeling edges |
 | Grout sealer (cement grout) | About once a year in showers | Grout darkens and stays dark after a shower |
 | Exterior trim paint | Every 5 to 10 years | Peeling, chalking, bare wood at joints |
 | Gutter and soffit check | Every year, closer look every few years | Overflow, stains on fascia, birds or insects in soffits |
-| Deck ledger and framing | Every year, a closer look every few years | Gap at the house, rust stains, soft wood near fasteners |
+| Deck ledger and framing | Every year, closer look every few years | Gap at the house, rust stains, soft wood near fasteners |
 
-The intervals are ranges because exposure matters more than the calendar. A deck under a big maple stays damp longer than one in full sun. A shower used twice a day wears faster than one in a guest bath. For the details, see [how often to stain a deck](/blog/how-often-to-stain-a-deck-upstate-ny/), [how often to recaulk a tub or shower](/blog/how-often-to-recaulk-a-shower/) and [how often to paint exterior trim](/blog/how-often-to-paint-exterior-trim/).
+Those are ranges on purpose, since how a spot is exposed counts for more than what the calendar says. A deck under a big maple stays wet longer than one out in full sun. A shower used twice a day wears out faster than the one in the guest bath. For the details, see [how often to stain a deck](/blog/how-often-to-stain-a-deck-upstate-ny/), [how often to recaulk a tub or shower](/blog/how-often-to-recaulk-a-shower/) and [how often to paint exterior trim](/blog/how-often-to-paint-exterior-trim/).
 
-## Safety checks that should not wait
+## Don't put these off
 
-Some items are not cosmetic, and they should move to the top of the list as soon as you notice them:
+Move these to the top of the list the day you notice them.
 
-- **Loose or missing handrails.** Stairs with four or more risers need a handrail under the New York State Residential Code. A rail that moves when you lean on it is not doing its job.
-- **A deck pulling away from the house.** The ledger board, where the deck attaches to the house, is the most common point of serious deck failure.
-- **Soft or spongy floors around a tub or shower.** That usually means water has been getting past the tile or the tub edge for some time.
-- **Electrical, gas or structural concerns.** Scorched outlets, a gas smell, or a sagging beam call for a licensed professional, not a weekend project.
+A loose or missing handrail is one. The New York State Residential Code requires a handrail on stairs with four or more risers, and a rail that moves when you lean on it isn't doing its job.
 
-If your house was built before 1978, test painted surfaces for lead before sanding or scraping. Older popcorn ceilings and pipe insulation can contain asbestos and should be tested before anyone disturbs them.
+A deck pulling away from the house is another. The ledger, the board where the deck bolts to the house, is the most common place for a deck to fail badly.
 
-## Keeping a simple record
+A soft or spongy floor around a tub or shower means water has been getting past the tile or the tub edge for a while.
 
-The easiest maintenance schedule is the one you actually keep. A single page taped inside a kitchen cabinet works, as does a note on your phone. For each job, write the date, what was done, and what product was used. When you sell the house, that record is useful to a buyer and their inspector. When you hire a contractor, it saves time on the first visit, because they can see at a glance what is original and what has been redone.
+And anything electrical, gas or structural. A scorched outlet, a gas smell, or a sagging beam is a call to a licensed professional, not a Saturday project.
 
-A record also shows patterns. If the same section of gutter overflows every year, or the same stretch of trim peels every three years instead of seven, the problem is probably drainage or ventilation, not the paint or the gutter itself. Fixing the cause is usually cheaper over time than repeating the repair.
+If the house was built before 1978, test painted surfaces for lead before you sand or scrape. Older popcorn ceilings and pipe insulation can have asbestos in them, so get them tested before anyone disturbs them.
+
+## Keep a record
+
+One sheet of paper taped inside a kitchen cabinet does it, or a note on your phone. For each job, write the date, what got done, and what product went on.
+
+When you sell, a buyer and their inspector can see what's been kept up. When a contractor comes out, it saves time on the first visit, because we can tell at a glance what's original and what's been redone.
+
+It also shows you patterns. If the same stretch of gutter overflows every year, or the same piece of trim peels every three years instead of seven, the trouble is drainage or ventilation, not the paint or the gutter. Fix that first.
 
 ## Frequently asked questions
 
-### What is the most important home maintenance task in upstate New York?
+### What's the most important maintenance job in upstate New York?
 
-Managing water. Clean gutters, downspouts that carry water away from the foundation, sound caulk and paint, and a roof that sheds snowmelt prevent most of the damage we see in Capital Region homes. Nearly every rot, mold and foundation problem starts with water going where it should not.
+Keeping water where it belongs. Clean gutters, downspouts that carry water away from the foundation, sound caulk and paint, and a roof that sheds snowmelt head off most of the damage we see in Capital Region houses. Nearly every rot, mold or foundation problem starts with water going somewhere it shouldn't.
 
-### When is the best time to schedule exterior repairs in Saratoga County?
+### When should I schedule exterior repairs in Saratoga County?
 
-Late spring through early fall. Paint, stain and many sealants need dry weather and temperatures above a minimum set by the manufacturer, often around 50 degrees, so the practical window is shorter than the calendar suggests. Book early if the work needs to be done before winter.
+Late spring through early fall. Paint, stain and a lot of sealants need dry weather and temperatures above a minimum the manufacturer sets, often around 50 degrees, so the real window is shorter than the calendar makes it look. If something has to be done before winter, book it early.
 
 ### How often should a house be professionally inspected?
 
-There is no fixed rule for an occupied home. Many homeowners do their own seasonal walk-arounds and bring in a contractor or inspector when they see a change, such as a new stain, a gap or a soft spot. A closer look every few years at the deck framing, roof and chimney is a reasonable habit.
+There's no fixed rule for a house you're living in. Plenty of homeowners do their own seasonal walks and bring in a contractor or inspector when something changes, like a new stain, a gap or a soft spot. A closer look at the deck framing, roof and chimney every few years is a sensible habit.
 
-Much of the work on this list lands on decks, stairs, porches and railings, where weather does its worst. We repair and rebuild them across Saratoga County, starting with a site visit and a written scope organized by phase. You can see that work on our [decks, stairs and railings page](/decks-and-stairs/).
+A lot of what's on this list ends up on decks, stairs, porches and railings, because that's where the weather hits hardest. We repair and rebuild them across Saratoga County, and you can see some of that on our [decks, stairs and railings page](/decks-and-stairs/).

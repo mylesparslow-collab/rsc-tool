@@ -7,69 +7,68 @@ summary: What refacing really changes, how to check your cabinet boxes, and when
 flags:
 ---
 
-Reface your kitchen cabinets when the boxes are dry, solid and square and the layout already works for the way you cook. Replace them when the boxes are water-damaged, built from swollen particleboard, or arranged in a layout you would change anyway. Refacing replaces the doors, drawer fronts and the visible skin of the face frames while keeping the boxes behind them, so it only makes sense when those boxes are worth keeping. In Saratoga Springs, where kitchens range from rooms in nineteenth-century houses to 1990s subdivision kitchens, the answer usually comes down to what you find under the sink and behind the doors.
+Reface your kitchen cabinets if the boxes are dry, solid and square and the layout already works for how you cook. Replace them if the boxes are water-damaged, made of swollen particleboard, or set up in a layout you'd change anyway. Refacing swaps the doors, the drawer fronts and the visible skin of the face frames and keeps the boxes behind them, so the whole decision rides on those boxes. In Saratoga Springs, where kitchens run from back rooms in nineteenth-century houses to 1990s subdivision kitchens, you'll usually find the answer under the sink.
 
-## What refacing actually changes
+## What refacing changes and what it leaves alone
 
-A typical refacing job includes new doors and drawer fronts, a new veneer or painted finish on the exposed face frames and end panels, and new hinges and pulls. Drawer boxes and slides can be replaced at the same time, and that is often worth doing because worn slides are one of the most common complaints in an older kitchen.
+A refacing job gets you new doors and drawer fronts, new veneer or a painted finish on the face frames and end panels, and new hinges and pulls. You can replace the drawer boxes and slides at the same time, and we'd do it. Worn-out slides are one of the top complaints in an older kitchen, and they're easy to swap while everything's apart.
 
-What refacing does not change is the size, position or depth of the cabinets. The sink base stays where it is, the corner cabinet keeps its awkward blind corner, and the wall cabinets stay at the same height. If those things bother you every day, new doors will not fix them.
+Refacing doesn't touch the size, position or depth of anything. The sink base stays put. The corner cabinet keeps its awkward blind corner. The wall cabinets stay at the same height. If any of that bugs you every day, new doors won't help.
 
-Painting the existing doors is a separate, lighter option. It can work well on solid wood doors in good shape. It does not fix warped doors, failed joints or a door style you no longer like.
+Painting the doors you have is a lighter option again. On solid wood doors in good shape it can look fine. It won't fix a warped door, a joint that's come apart, or a door style you've grown sick of.
 
-## Check the boxes before you decide
+## Check the boxes yourself
 
-Open every cabinet with a flashlight. These are the things we look at on a site visit, and you can check most of them yourself:
+Take a flashlight and open every cabinet. This is what we look at on a site visit, and you can check most of it before we get there.
 
-- **Sink base floor.** Press on it. Soft spots, swelling or dark staining mean a past or current leak. Particleboard that has been wet does not recover.
-- **Box material.** Look at an unfinished edge. Plywood shows layers; particleboard looks like compressed sawdust. Particleboard boxes can be refaced if they are dry and intact, but swollen edges or crumbling screw holes are a reason to replace.
-- **Hinge screws.** If hinges keep pulling loose and the holes are stripped, the material around them may be too weak to hold new hardware.
-- **Face frame joints.** Gaps or loose joints at the corners of the frames will show through a new veneer.
-- **Wall cabinet mounting.** Wall cabinets should be screwed through a solid back rail into studs. If one has dropped or pulled away from the wall, find out why before you invest in it.
-- **Level and square.** Lay a level across the base cabinet tops. Boxes that have settled out of level make it hard to install a new countertop well.
+Start with the floor of the sink base. Press on it. Soft spots, swelling or dark stains mean a leak, past or present, and particleboard that's been wet doesn't come back.
 
-If most of the boxes pass and only one or two are damaged, those individual cabinets can sometimes be rebuilt or replaced to match while the rest are refaced.
+Find an unfinished edge and look at what the boxes are made of. Plywood shows layers. Particleboard looks like pressed sawdust. Dry, intact particleboard can be refaced, but swollen edges or screw holes that crumble when you touch them mean replace.
 
-## When the layout is the real problem
+Look at the hinges. If they keep pulling loose and the screw holes are stripped, the material around them may be too far gone to hold new hardware. Check the corners of the face frames too, since gaps or loose joints there will telegraph right through new veneer.
 
-Many kitchens we see in the Capital Region have sound cabinets in the wrong places. Common layout problems include a refrigerator that blocks the main walkway, no landing space beside the range, a dishwasher that opens into the path to the sink, or too little counter between the sink and the cooktop.
+Wall cabinets should be screwed through a solid back rail into studs. If one has dropped or pulled off the wall, find out why before you spend money on it.
 
-Appliances have also changed. Many current refrigerators are deeper and taller than the opening built for them decades ago, and a range hood that vents outside may need a different wall cabinet arrangement than an old recirculating hood. If the new appliance package does not fit the old boxes, replacement becomes the practical choice. Our article on [planning a kitchen remodel in Saratoga Springs](/blog/kitchen-remodel-saratoga-springs-guide/) walks through layout and appliance decisions in more detail.
+Last, lay a 4-foot level across the base cabinet tops. Boxes that have settled out of level make it hard to set a new countertop well.
 
-## Countertops depend on the boxes
+If most of the boxes pass and one or two don't, those can sometimes be rebuilt or replaced to match while the rest get refaced.
 
-Homeowners often plan new counters at the same time as refacing. That can work, but the counter is only as good as what it sits on. Stone and quartz need flat, level, well-fastened support. If the base cabinets have sagged, shims and added blocking can correct small problems; larger ones mean the boxes are not a good foundation.
+## When the layout is the actual problem
 
-Order also matters. Countertops are measured after the cabinets are set and level, so any cabinet changes have to be finished first. Changing your mind about the cabinets after the counter is templated adds time and cost, which is why we put decisions like this in writing up front and handle any later change through a [written change order](/blog/change-orders-explained/).
+Plenty of Capital Region kitchens have good cabinets in the wrong places. The fridge sticks out into the main walkway. There's no landing space next to the range. The dishwasher door drops open right where you stand at the sink. There's barely a foot of counter between the sink and the cooktop.
 
-## Older kitchens in Saratoga Springs
+Appliances have changed, too. A lot of today's refrigerators are deeper and taller than the opening built for the old one. A range hood that vents outside may need a different wall cabinet setup than the old recirculating hood did. If the appliances you want don't fit the old boxes, you're replacing the cabinets whether you planned to or not. Our article on [planning a kitchen remodel in Saratoga Springs](/blog/kitchen-remodel-saratoga-springs-guide/) goes through layout and appliance decisions in more detail.
 
-Kitchens in the city's older houses bring their own conditions. Walls and floors are rarely flat or plumb, so new cabinets need careful scribing and shimming to look straight. Original features such as a brick chimney, a window with deep trim, or a narrow doorway can limit where cabinets go. One kitchen shown on our site has sage cabinets built around an exposed original brick chimney, which is the kind of situation where custom-fitted boxes make more sense than refacing whatever was there before.
+## The countertop sits on the boxes
 
-Before any demolition in a house built before 1978, test painted surfaces for lead. Old cabinets, trim and window casings are common places to find lead paint, and removing them stirs up dust. Plaster walls behind old cabinets may also need repair once the cabinets come off.
+People often plan new counters along with refacing. That can work, but a counter is only as good as what's under it. Stone and quartz need flat, level, solidly fastened support. If the base cabinets have sagged, shims and added blocking can correct a small dip. A bigger one means the boxes can't carry stone.
 
-## What drives the cost either way
+Order matters here. Countertops get templated after the cabinets are set and leveled, so every cabinet change has to be done first. Change your mind about the cabinets after the counter's been templated and you add time and cost. That's why we settle this in writing up front and handle any later change with a [written change order](/blog/change-orders-explained/).
 
-We do not publish prices, but the factors are predictable. For refacing, the main drivers are the number of doors and drawers, the door style and material, whether drawer boxes and slides are replaced, and any individual cabinets that must be rebuilt. For replacement, add the cabinet line and construction, demolition, any changes to plumbing, electrical or venting, wall and floor repair, and new countertops, which are almost always needed when boxes change.
+## Old kitchens in the city
 
-A useful exercise is to list what you dislike about the current kitchen. If every item on the list is cosmetic, refacing is worth pricing. If the list includes words like "no room," "cannot open," or "always in the way," you are describing a layout problem. Our guide to [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) can help you compare the two options line by line.
+Kitchens in Saratoga Springs' older houses come with their own conditions. The walls and floors are rarely flat or plumb, so new cabinets get scribed and shimmed to look straight. A brick chimney, a window with deep old trim, or a narrow doorway can limit where cabinets go. One kitchen on our site has sage cabinets built around an exposed original brick chimney. That's a room where custom-fitted boxes beat refacing whatever was there before.
+
+In a house built before 1978, test painted surfaces for lead before any demolition. Old cabinets, trim and window casings are common places to find lead paint, and tearing them out stirs up dust. The plaster behind old cabinets often needs repair once they come off, too.
+
+## What drives the cost
+
+With refacing, the cost follows the number of doors and drawers, the door style and material, whether drawer boxes and slides get replaced, and any cabinets that have to be rebuilt. With replacement, add the cabinet line and how it's built, demolition, any changes to plumbing, wiring or venting, wall and floor repair, and new countertops, which you'll almost always need when the boxes change.
+
+Here's a test we like. Write down everything you dislike about your kitchen. If it's all cosmetic, price out refacing. If the list says things like "no room," "can't open it" or "always in the way," that's a layout problem, and new doors won't touch it. Our guide to [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) can help you compare the two options line by line.
 
 ## Frequently asked questions
 
 ### Can particleboard cabinets be refaced?
 
-Yes, if the boxes are dry, intact and still hold screws firmly. Particleboard that has swollen from a leak or crumbles at the hinge holes should be replaced, because new doors will not stay aligned on it.
-
-### Is painting cabinets the same as refacing?
-
-No. Painting refinishes the existing doors and frames. Refacing replaces the doors and drawer fronts and covers the frames with new material, which lets you change the door style and fix damaged doors.
+Yes, if the boxes are dry, intact and still hold a screw tight. Particleboard that's swollen from a leak or crumbles at the hinge holes should be replaced, because new doors won't stay lined up on it.
 
 ### Can I keep my cabinets and only replace the countertop?
 
-Often, as long as the base cabinets are level, solid and well fastened. Removing an old counter can damage the cabinet tops or the backsplash wall, so plan for some repair.
+Often, if the base cabinets are level, solid and well fastened. Pulling an old counter can damage the cabinet tops or the backsplash wall, so plan on some repair.
 
-### Does refacing take less time than replacing?
+### Is refacing faster than replacing?
 
-Generally, yes. Refacing leaves the kitchen mostly usable and avoids plumbing and electrical work. Replacement involves demolition, rough work, cabinet installation and then countertop templating, so the kitchen is out of service longer.
+Yes, generally. You can mostly keep using the kitchen, and there's no plumbing or electrical work. Replacement means demolition, rough work, setting cabinets and then waiting on the countertop template and fabrication, so the kitchen's out of commission longer.
 
-We design and build kitchens from the cabinets out, starting with a site visit and a written scope organized by phase, so you can see which approach fits your kitchen before work begins. If you are weighing this choice against other projects, read [whether to remodel the kitchen or the bathroom first](/blog/remodel-kitchen-or-bathroom-first/), or see our [kitchen remodeling](/kitchens/) page.
+We design and build kitchens from the boxes out, and we'll tell you on site whether yours are good enough to reface. If this is one of several projects on your list, read [whether to remodel the kitchen or the bathroom first](/blog/remodel-kitchen-or-bathroom-first/), or look at our [kitchen remodeling](/kitchens/) page.
