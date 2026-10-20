@@ -2,6 +2,11 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## Unreleased
+
+- New Scorecard page (Money, Scorecard): one screen that shows whether attention is turning into paid jobs. This week's new leads, estimates sent, jobs won, money in, the win rate over 90 days, and labor dollars per crew-hour against the $65 floor and $72 target, then the last 8 weeks side by side and which lead sources (Google, Nextdoor, TikTok, referrals...) turned into signed work. It counts only what's already in the app, so there's nothing new to type. The source is read from the job notes, which the website form fills in ("Found us: nextdoor"). Estimates priced under the floor are listed with links. Website visits, TikTok views, Google profile calls and ad spend are shown as "not connected yet" rather than guessed.
+- The Monday report has a short "Leads and sales" section with the same numbers.
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.
