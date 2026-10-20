@@ -80,3 +80,58 @@ def draft_reply(model, conn: sqlite3.Connection, lead: dict, phone: str, today: 
     except Exception:
         pass
     return fallback_reply(lead.get("name", ""), lead.get("project", ""), slots, owner, phone)
+
+
+# ------------------------------------------------- the instant thank-you (off unless switched on in Setup)
+
+ACK_MAX_AGE_DAYS = 1  # a first email check reaches back weeks; only today's and yesterday's requests get a thank-you
+
+
+def ack_on(conn: sqlite3.Connection) -> bool:
+    return prefs.get(conn, "lead_ack") == "on"
+
+
+def ack_subject() -> str:
+    return f"We got your request ({brand.current()['name']})"
+
+
+def ack_text(name: str, project: str, owner: str, phone: str) -> str:
+    """The short thank-you a website request gets within minutes. Plain template: no prices, no promised times."""
+    first = (name or "").split()[0] if name and name.strip() else "there"
+    what = topic(project) if (project or "").strip() else "your project"
+    return (f"Hi {first},\n\nThanks for reaching out about {what}. Your request came through, and {owner} will get back to you "
+            f"personally to set up a free visit. We come and look before we put a price on anything.\n\n"
+            f"If it's easier, call or text {phone}.\n\n{brand.current()['name']}")
+
+
+def ack_fresh(received_at: str | None, today: date | None = None) -> bool:
+    try:
+        return ((today or date.today()) - date.fromisoformat((received_at or "")[:10])).days <= ACK_MAX_AGE_DAYS
+    except ValueError:
+        return False
+
+
+def send_ack(address: str, password: str, to: str, subject: str, body: str, host: str = "smtp.gmail.com") -> None:
+    """Sent from Nick's Gmail, with a copy to him, only when the Setup switch is on."""
+    import smtplib
+    from email.message import EmailMessage
+    msg = EmailMessage()
+    msg["From"], msg["To"], msg["Subject"], msg["Bcc"] = address, to, subject, address
+    msg.set_content(body)
+    with smtplib.SMTP_SSL(host, 465, timeout=30) as s:
+        s.login(address, password)
+        s.send_message(msg)
+
+
+def lead_checkin(job: dict, days: int) -> str:
+    """For a lead with no estimate yet, 7 and 21 days on: a polite nudge to book the visit. Never names a price."""
+    b = brand.current()
+    first = job.get("first_name") or job.get("last_name") or "there"
+    what = (job.get("job_type") or "").lower() or topic(job.get("notes", "")).removeprefix("your ")
+    if days < 21:
+        body = (f"Following up on your request about your {what}. If you'd still like us to come take a look, "
+                f"reply with a day and time that suits you and I'll fit it in. The visit is free.")
+    else:
+        body = (f"Checking in one last time about your {what}. If the timing isn't right or plans have changed, no problem "
+                f"at all. If you'd still like a visit, just reply and we'll set one up.")
+    return f"Hi {first},\n\n{body}\n\n{b['owner']}\n{b['name']}\n{b['phone']}"
