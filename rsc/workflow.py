@@ -171,7 +171,8 @@ def register(app, conn, get_model):
                                subject=estimate_mail.default_subject(job),
                                body=estimate_mail.default_body(job, ctx["totals"]["total"]),
                                pdf_name=estimate_mail.filename(job), total=ctx["totals"]["total"],
-                               sent=job.get("estimate_sent"))
+                               sent=job.get("estimate_sent"),
+                               rates=(pricing.check_estimate(conn(), number) or {}).get("rates"))
 
     @app.post("/jobs/<int:number>/sow/send")
     def sow_send(number):
