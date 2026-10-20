@@ -78,10 +78,10 @@ def next_step(conn: sqlite3.Connection, job: dict) -> dict | None:
             p = unpaid[0]
             return {"title": f"Waiting on payment {p['payment_id']}", "why": f"${p['amount'] - (p['amount_paid'] or 0):,.0f} invoiced. When it arrives, the email check suggests it for approval.",
                     "endpoint": "job_detail", "args": {"number": n}, "label": "Open the job", "wait": True, "target": _paid_target(p)}
-        row = conn.execute("SELECT id FROM followups WHERE job_number = ? AND status = 'pending' ORDER BY due_date", (n,)).fetchone()
+        row = conn.execute("SELECT id, kind, round FROM followups WHERE job_number = ? AND status = 'pending' ORDER BY due_date", (n,)).fetchone()
         if row:
             fid = row[0]
-            return {"title": "Ask for a review", "why": f"{name}'s job is done. A short note now brings reviews and the next job.",
+            return {"title": "Send the review reminder" if row["kind"] == "review" and row["round"] > 1 else "Ask for a review", "why": f"{name}'s job is done. A short note now brings reviews and the next job.",
                     "endpoint": "followups_page", "args": {}, "label": "Open follow-ups",
                     "target": [f"#f{fid} a.btn", f"#f{fid} button.btn"]}
         return None

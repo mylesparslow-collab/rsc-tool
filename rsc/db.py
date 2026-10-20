@@ -117,6 +117,7 @@ CREATE TABLE IF NOT EXISTS followups (
     draft      TEXT NOT NULL DEFAULT '',
     status     TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'sent', 'skipped')),
     done_at    TEXT,
+    round      INTEGER NOT NULL DEFAULT 1,  -- review: 1 = the request, 2 = the reminder a week after it went out
     UNIQUE (job_number, kind)
 );
 
@@ -268,6 +269,9 @@ def _migrate(conn: sqlite3.Connection) -> None:
                      ("version", "INTEGER NOT NULL DEFAULT 1"), ("version_date", "TEXT NOT NULL DEFAULT ''")):
         if col not in est_cols:
             conn.execute(f"ALTER TABLE estimates ADD COLUMN {col} {ddl}")
+    fu_cols = {r[1] for r in conn.execute("PRAGMA table_info(followups)")}
+    if fu_cols and "round" not in fu_cols:
+        conn.execute("ALTER TABLE followups ADD COLUMN round INTEGER NOT NULL DEFAULT 1")
 
 
 def init(conn: sqlite3.Connection, first_job_number: int = 1001) -> None:

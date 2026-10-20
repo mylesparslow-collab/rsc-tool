@@ -14,7 +14,7 @@
 
 **New customers:** an inquiry in To Review comes with a reply already written, offering your next visit times. Read it, change anything, press Open reply in Mail.
 
-**After a job:** when you mark a job Complete, the Follow-ups tab queues a review request and a one-year check-in. Open one, press Write the message, send it from Mail, press Mark sent.
+**After a job:** when you mark a job Complete, the Follow-ups tab queues a review request and a one-year check-in. Open one, press Write the message, send it from Mail (or Send as a text), press Mark sent. A week later a short reminder comes back; press They left a review if they already did.
 
 **Monday report:** every Monday morning you and Myles get an email with the week's money and jobs to watch. See it any time under Home > Weekly report.
 
