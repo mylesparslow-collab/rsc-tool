@@ -3,8 +3,8 @@
     python3 build.py
 
 Runs build_blog.py (posts, blog index, sitemap), check_blog.py (broken links, banned claims) and make_deploy.py
-(strips draft notes, leaves out pages on hold). Stops at the first step that fails. Cloudflare runs this same command
-on every push, so if it passes here it will publish.
+(strips draft notes, leaves out pages on hold). Stops at the first step that fails. The "Website" GitHub
+Action runs this same command on every PR, so if it passes here it will publish.
 """
 import subprocess
 import sys

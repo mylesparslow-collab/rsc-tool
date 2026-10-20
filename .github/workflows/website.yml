@@ -1,0 +1,71 @@
+name: Website
+# Builds rscrafters.com from website/ and runs its checks (broken links, banned claims) on every change to it.
+# A PR gets a preview link (in the run's summary); a merge to the default branch publishes the live site.
+# Publishing is a direct upload to the Cloudflare Pages project "rscrafters" (the one that holds rscrafters.com),
+# so Cloudflare runs no build of its own. Needs the repo secret CLOUDFLARE_API_TOKEN (Account > Cloudflare Pages > Edit).
+on:
+  workflow_dispatch:   # "Run workflow" on the default branch republishes the live site by hand
+  push:
+    branches: [claude/project-thread-9kkubi]
+    paths: ["website/**", ".github/workflows/website.yml"]
+  pull_request:
+    paths: ["website/**", ".github/workflows/website.yml"]
+concurrency:
+  group: website-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  CLOUDFLARE_ACCOUNT_ID: 3fef926cd8533ba6109643650cce9c94   # Myles's Cloudflare account (not a secret)
+  PROJECT: rscrafters
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: Build and check the site
+        run: python3 build.py
+      - name: The quote form has no "Your message to us" box (Myles, 2026-10-19)
+        run: "! grep -q 'preview-label' public/index.html"
+      - name: Stamp the build so the live check can find it
+        run: sed -i "0,/<head>/s//<head>\n<meta name=\"build\" content=\"$GITHUB_SHA\">/" public/index.html && grep -q "$GITHUB_SHA" public/index.html
+
+      - name: Is publishing set up?
+        id: token
+        run: echo "ok=${{ secrets.CLOUDFLARE_API_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
+
+      - name: Preview link for this PR
+        id: preview
+        if: github.event_name == 'pull_request' && steps.token.outputs.ok == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy website/public --project-name=${{ env.PROJECT }} --branch=pr-${{ github.event.number }} --commit-dirty=true
+      - if: steps.preview.outcome == 'success'
+        run: |
+          echo "Preview of this PR: ${{ steps.preview.outputs.deployment-url }}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish rscrafters.com
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/claude/project-thread-9kkubi'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+          # "main" is the production branch of a Pages project made by upload; any other name would only make a preview
+          command: pages deploy website/public --project-name=${{ env.PROJECT }} --branch=main --commit-dirty=true
+      - name: Check the live site
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/claude/project-thread-9kkubi'
+        run: |
+          for i in 1 2 3 4 5 6; do
+            curl -fsS "https://rscrafters.com/?v=$GITHUB_SHA" | grep -q "$GITHUB_SHA" && { echo "rscrafters.com is serving this build"; exit 0; }
+            sleep 20
+          done
+          echo "::error::rscrafters.com isn't serving this build yet. In Cloudflare, check that the rscrafters project's production branch is main."
+          exit 1
