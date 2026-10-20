@@ -29,6 +29,7 @@
     <div style="grid-column:span 2"><label>When can you do free site visits?</label><input name="visit_when" data-voice value="{{ vals.visit_when }}" placeholder="Tuesdays and Thursdays at 4pm or 5:30pm"></div>
     <div><label>Your Google review link</label><input name="review_url" value="{{ vals.review_url }}" placeholder="https://g.page/r/..."></div>
   </div>
+  {% if not vals.review_url %}<p class="muted" style="margin-top:6px"><span class="bad">No review link yet.</span> When your Google Business Profile is ready, open it, choose "Ask for reviews", copy the link and paste it above. Until then, review requests ask clients to reply with a few words.</p>{% endif %}
   <p class="muted" style="margin-top:6px">Replies to new inquiries will offer: {% for s in slots %}{{ s }}{{ '; ' if not loop.last }}{% endfor %}.</p>
   <div class="actions"><button class="btn">Save</button></div>
 </form>

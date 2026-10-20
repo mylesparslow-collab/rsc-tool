@@ -2,6 +2,11 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## Unreleased
+
+- Google reviews: after you mark a review request sent, a short, no-pressure reminder comes back to Follow-ups a week later. Press "They left a review" and it goes away. A job with a phone number gets a "Send as a text" button that opens Messages with the note already written.
+- Until your Google review link is on the Setup page, Follow-ups and Setup say so plainly, and requests ask the client to reply with a few words. Add the link later and drafts already written pick it up.
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.

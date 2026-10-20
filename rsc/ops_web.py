@@ -159,9 +159,14 @@ def register(app, cfg, conn, get_model):
 
     @app.post("/followups/<int:fid>/<status>")
     def followup_mark(fid, status):
-        if status in ("sent", "skipped"):
-            followups.mark(conn(), fid, status)
-            flash("Marked " + status + ".")
+        if status in ("sent", "skipped", "reviewed"):
+            c = conn()
+            was = c.execute("SELECT kind, round FROM followups WHERE id = ?", (fid,)).fetchone()
+            followups.mark(c, fid, status)
+            if status == "sent" and was and was["kind"] == "review" and was["round"] == 1:
+                flash(f"Marked sent. A gentle reminder comes back here in {followups.REMINDER_DAYS} days, in case they haven't got to it.")
+            else:
+                flash({"reviewed": "Great. No reminder will go out."}.get(status, "Marked " + status + "."))
         return redirect(url_for("followups_page"))
 
     # ------------------------------------------------------------ weekly report
