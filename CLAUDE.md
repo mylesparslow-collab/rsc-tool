@@ -76,6 +76,9 @@ field; redirects that take a `back` parameter must validate it is a local path. 
 - **Website:** `website/` is the public site at rscrafters.com (pages, blog posts, photos, build scripts). A GitHub
   Action builds it and uploads it to Cloudflare Pages: merging to the default branch makes it live, PRs get preview links. Read
   `website/CLAUDE.md` before changing it. It is separate from the app: no tests, no version bump, no `rsc` restart.
+- **Email worker:** `email-worker/` is a small Cloudflare program on the rscrafters.com addresses: it forwards each email to
+  Nick's Gmail, copies it to Myles, and sends Myles a summary of each lead. Read `email-worker/README.md` before changing it.
+  Separate from the app: no Python tests, no version bump, no `rsc` restart.
 - **Data:** `~/RSC` (or whatever `RSC_HOME` says): `rsc.db` (everything), `config.toml`, `backups/rsc-YYYY-MM-DD.db`
   (daily, 30 kept), `install.log`, and one log per background job: `app.log`, `checkmail.log`, `weeklyreport.log`,
   `dailysheet.log`.
