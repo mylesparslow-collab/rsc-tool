@@ -1,6 +1,6 @@
 """Checks Gmail by itself while RSC.app is open, so the .dmg alone is enough (no installer, no background agent).
 
-Every 30 minutes, and once shortly after the app opens, it runs the same email check as the Check email button.
+Every 10 minutes, and once shortly after the app opens, it runs the same email check as the Check email button.
 It only runs when Gmail is set up, when the switch on Setup is on, and when this Mac doesn't already check in the
 background (the installer's launchd agent), so nothing is checked twice. Whatever it finds waits in To Review.
 Nothing is ever sent. When the window is closed the app quits and the checks stop; the installer's agent is what
@@ -12,7 +12,7 @@ from pathlib import Path
 
 from . import config, db, prefs
 
-INTERVAL = 30 * 60
+INTERVAL = 10 * 60
 FIRST_DELAY = 20
 AGENT = Path("~/Library/LaunchAgents/com.reclaimedspacecrafters.checkmail.plist").expanduser()
 

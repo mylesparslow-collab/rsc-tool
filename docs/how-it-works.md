@@ -14,7 +14,7 @@ Pops's computer reads his email, spots receipts, payments and new customers, and
 5. **Room model**: type wall sizes, windows and doors; get a dimensioned plan, a spinnable 3D view, and text to paste into ChatGPT for a pretty picture.
 
 ## What happens behind the scenes
-Every 30 minutes: Gmail (read-only) -> keyword filter drops junk -> the AI model on his Mac reads what's left -> plain rules pick the job (a "1002-SMI" on the receipt, or the address, or the client name) -> a card appears in To Review.
+Every 10 minutes: Gmail (read-only) -> keyword filter drops junk -> the AI model on his Mac reads what's left -> plain rules pick the job (a "1002-SMI" on the receipt, or the address, or the client name) -> a card appears in To Review.
 
 ## What you do to try it
 Nothing runs on your laptop yet. The screenshots came from a copy running here with fake emails. To try it for real, say yes to the "install on your Mac" card in this thread.

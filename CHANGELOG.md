@@ -14,7 +14,12 @@ Newest first. Each entry says what changed in plain words. Version numbers match
   out the fields (value under its label, or in a table), and the reply goes to the person, not to Formspree. The Safe at
   Home list form sends one field per line like the quote form, and the site build wires every form, not only the quote
   form, when `FORMSPREE_URL` is set. Before Formspree is set up nothing changes: the form still opens an email.
-- 278 tests pass.
+- Faster lead replies (2026-10-20): email is checked every 10 minutes instead of 30 (re-run the installer to update the
+  background check). A new Setup switch, *Thank new customers right away*, emails a short fixed thank-you to a website
+  request with an email address within minutes, from Nick's Gmail with a copy to him. It is **off until he turns it on**.
+  Nick's own reply with visit times still waits in To Review. A lead turned job with no estimate after 7 days gets a
+  check-in note on the job page (Open in Mail / Text it), and a last one after 21 days.
+- 284 tests pass.
 
 ## 0.2.7
 

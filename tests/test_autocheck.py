@@ -79,7 +79,7 @@ def test_setup_and_home_describe_it_only_inside_the_app(cfg, monkeypatch):
     app.testing = True
     c2 = app.test_client()
     page = c2.get("/setup").get_data(as_text=True)
-    assert "Check my email by myself every 30 minutes while RSC is open" in page and "checked" in page
+    assert "Check my email by myself every 10 minutes while RSC is open" in page and "checked" in page
     import re
     t2 = re.search(r'name="csrf" value="([0-9a-f]+)"', c2.get("/").get_data(as_text=True)).group(1)
     c2.post("/setup/auto-mail", data={"csrf": t2})   # box unticked
