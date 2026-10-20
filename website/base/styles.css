@@ -283,9 +283,6 @@ p{text-wrap:pretty}
 .field--full{grid-column:1/-1}
 .field input,.field textarea{font:400 16px/1.4 var(--text);color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:2px;padding:13px 14px;width:100%;resize:vertical}
 .field input:focus,.field textarea:focus{outline:2px solid var(--ink);outline-offset:-1px}
-.preview{grid-column:1/-1;background:var(--stone);padding:18px 20px}
-.preview-label{display:block;font-size:13px;font-weight:600;color:var(--moss)}
-.preview p{margin:6px 0 0;font-size:16px;line-height:1.5}
 .planner-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px}
 .planner-note{grid-column:1/-1;margin:0;font-size:14px;color:var(--moss)}
 .planner-note.is-error{color:var(--barn);font-weight:600}
