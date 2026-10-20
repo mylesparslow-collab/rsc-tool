@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 
 
-from . import brand, books, crew, prefs, extract, intake, leads, receipts
+from . import ballpark, brand, books, crew, prefs, extract, intake, leads, receipts
 from .config import Config
 from .llm import Model
 from .mail import Mail, lookback_start
@@ -60,6 +60,8 @@ def process(conn: sqlite3.Connection, cfg: Config, mails: list[Mail], model: Mod
                 form.data["reply"] = leads.draft_reply(model, conn, form.data, cfg.business_phone)
             form.data["reply_to"] = form.data["email"]
             form.data["reply_subject"] = "Re: " + mail.subject
+            if not form.data.get("applicant"):
+                _add_ballpark(conn, form.data, mail, model, vision)
             email_id = _record_email(conn, mail, None)
             conn.execute("INSERT INTO suggestions (email_id, kind, data, match_note, confidence) VALUES (?, ?, ?, ?, ?)",
                          (email_id, form.kind, json.dumps(form.data), form.match_note, form.confidence))
@@ -88,6 +90,8 @@ def process(conn: sqlite3.Connection, cfg: Config, mails: list[Mail], model: Mod
             if suggestion.kind == "lead":
                 suggestion.data["reply_to"] = suggestion.data.get("email") or mail.sender
                 suggestion.data["reply_subject"] = "Re: " + mail.subject
+            if suggestion.kind == "lead" and not suggestion.data.get("applicant"):
+                _add_ballpark(conn, suggestion.data, mail, model, vision)
         email_id = _record_email(conn, mail, None if suggestions else "model: not business")
         for suggestion in suggestions:
             conn.execute("INSERT INTO suggestions (email_id, kind, data, match_note, confidence) "
@@ -99,6 +103,14 @@ def process(conn: sqlite3.Connection, cfg: Config, mails: list[Mail], model: Mod
             report.skipped += 1
         conn.commit()
     return report
+
+
+def _add_ballpark(conn: sqlite3.Connection, data: dict, mail: Mail, model: Model, vision: Model | None) -> None:
+    """A rough range and site-visit questions, for Nick only (never in the reply). A failure here never loses the lead."""
+    try:
+        data["ballpark"] = ballpark.draft(model, conn, data, mail.attachment_images, vision)
+    except Exception as exc:
+        log.warning("No rough range for %r: %s", mail.subject, exc)
 
 
 def _read_mail(conn: sqlite3.Connection, mail: Mail, model: Model, vision: Model | None, prompt: str) -> list:
@@ -227,7 +239,8 @@ def approve(conn: sqlite3.Connection, suggestion_id: int, edits: dict) -> str:
         first_name = " ".join(name.split()[:-1])
         number = books.create_job(conn, last_name, first_name=first_name, email=data.get("email", ""),
                                   phone=data.get("phone", ""), address=data.get("address", ""),
-                                  status="Estimate", notes=data.get("project", ""))
+                                  status="Estimate", notes=data.get("project", ""),
+                                  job_type=(data.get("ballpark") or {}).get("job_type", ""))
         data["job_number"] = number
         msg = f"Started job {number}-{books.get_job(conn, number)['code']} for {name}"
 

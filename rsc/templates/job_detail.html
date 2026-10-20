@@ -31,6 +31,8 @@
   <div class="actions"><button class="btn">Save</button></div>
 </form>
 
+{% if ballpark %}<details class="more"{{ ' open' if job.status == 'Estimate' }}><summary>Rough range and visit questions</summary>
+  {% with bp = ballpark %}{% include "_ballpark.html" %}{% endwith %}</details>{% endif %}
 {% if guide_next %}<details class="more"><summary>Every step on this job</summary>
   <div class="muted" style="margin-top:6px">{% for label, done in guide_steps.list %}<span class="{{ 'ok' if done else '' }}">{{ '&#10003;'|safe if done else '&#9675;'|safe }} {{ label }}</span>{{ ' &middot; '|safe if not loop.last }}{% endfor %}</div></details>{% endif %}
 <p class="actions" style="flex-wrap:wrap">
