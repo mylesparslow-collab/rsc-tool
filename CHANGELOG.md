@@ -2,6 +2,10 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## Unreleased
+
+- Rough range for new leads. Every new-lead card in To Review now has a yellow box, for you only: a rough price range ("$15,500 to $32,000"), what kind of job it looks like, and up to six things to ask or check at the visit. If they sent a photo, the photo program says what it shows. The range is worked out in plain code at your Pricing page rates ($65-72 a crew-hour and the materials markup); once you have two or more past estimates of the same kind with crew and days filled in, it uses those jobs' hours repriced at those rates. It is never put in the reply and never sent. After "Start estimate" it stays on the job page and the estimate page, and the job type is filled in. Works with the AI off (word matching and a standard question list). The starting hours and materials per kind of job are drafts in `rsc/ballpark.py` for Nick to adjust.
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.
