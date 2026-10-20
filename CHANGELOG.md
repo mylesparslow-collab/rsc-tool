@@ -2,7 +2,7 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
-## Unreleased
+## 0.2.8
 
 - Pricing check before you send. The Send screen for an estimate now shows the labor rate per crew-hour (worked out from the Crew and Duration lines, nothing new to type) and any pricing warnings, with a "Change the price first" button. It never stops you sending.
 - A suggested price. When labor is under the target rate (Pricing page, $72 a crew-hour by default) or the materials markup is under your usual one, the estimate page and the Send screen say what the job would be at those numbers and how many dollars more that is.
