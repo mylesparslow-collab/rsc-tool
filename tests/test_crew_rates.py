@@ -208,3 +208,17 @@ def test_nan_is_refused(conn):
         rates.save_settings(conn, {"gross_target": "nan"})
     with pytest.raises(crew.CrewError):
         crew.add_person(conn, "Zed", "helper", float("nan"))
+
+
+def test_missing_markup_is_a_red_flag_and_the_price_gap_is_spelled_out():
+    a = rates.analyze(_est(labor=8480, markup_pct=0))     # 160 crew-hours at $53, materials at cost
+    assert a["level"] == "bad"
+    assert any("no markup" in w for w in a["warnings"])
+    assert a["labor_gap"] == 72 * 160 - 8480 and a["markup_gap"] == 4000 * 0.43
+    assert a["suggested_price"] == round(4000 + 8480 + a["labor_gap"] + a["markup_gap"])
+    assert "$17,240" in a["summary"] and "$4,760 more" in a["summary"]
+
+
+def test_healthy_estimate_has_no_suggested_price():
+    a = rates.analyze(_est(labor=12000))
+    assert a["suggested_price"] is None and a["summary"] is None

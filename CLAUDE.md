@@ -181,8 +181,9 @@ When Nick or Myles asks you to update the app:
 
 - **Contract needs a New York attorney** (attorneys' fees, permits, termination days, license/insurance wording,
   deposits/cancellation/lien section 18 which cites NY GBL §771 as a placeholder). Not legal advice.
-- **Default markup is 43%** (`rates.py`), but Nick's own practice has been closer to 20%. Myles has not decided.
-  Don't change it without asking.
+- **Default markup is 43%** (`rates.py`), the industry standard (about a 30% gross margin). Nick's own practice has
+  been closer to 20%; Myles decided 2026-10-20 that the pricing check uses the industry standard. Don't change it
+  without asking.
 - **Hours vs expense double counting:** crew hours logged on the Crew page and labor entered as expenses can both
   count toward a job's cost. The Crew page notes this. Logged hours replace the estimate's guess only when higher.
 - **Crew pay setup is unconfirmed** (payroll, workers' comp, insurance). The Crew page payroll calculator is an estimate.
