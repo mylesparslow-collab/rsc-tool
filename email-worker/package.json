@@ -1,0 +1,16 @@
+{
+  "name": "rsc-email-worker",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Email Worker for rscrafters.com: forwards to Nick, copies to Myles, sends a short lead summary.",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "postal-mime": "4.0.11"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.3"
+  }
+}

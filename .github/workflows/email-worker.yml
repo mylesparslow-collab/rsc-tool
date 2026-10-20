@@ -1,0 +1,39 @@
+name: Email worker
+# Tests the rscrafters.com email worker (email-worker/) on every change to it, and publishes it to Cloudflare when the
+# change is merged to the default branch. Needs the repo secret CLOUDFLARE_API_TOKEN with "Workers Scripts: Edit"
+# (the token made for the website only has Cloudflare Pages; see email-worker/README.md to add it).
+on:
+  workflow_dispatch:   # "Run workflow" on the default branch republishes the worker by hand
+  push:
+    branches: [claude/project-thread-9kkubi]
+    paths: ["email-worker/**", ".github/workflows/email-worker.yml"]
+  pull_request:
+    paths: ["email-worker/**", ".github/workflows/email-worker.yml"]
+concurrency:
+  group: email-worker-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  worker:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: email-worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: npm ci
+      - run: npm test
+      - name: Check it bundles
+        run: npx wrangler deploy --dry-run --outdir "$RUNNER_TEMP/worker"
+      - name: Publish to Cloudflare
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/claude/project-thread-9kkubi'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          npx wrangler deploy || {
+            echo "::error::Publishing failed. Most likely the CLOUDFLARE_API_TOKEN secret lacks 'Workers Scripts: Edit', or mzpprojects1@gmail.com isn't verified in Email Routing yet. See email-worker/README.md."
+            exit 1
+          }
