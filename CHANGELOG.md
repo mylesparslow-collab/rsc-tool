@@ -2,7 +2,7 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
-## Unreleased
+## 0.2.8
 
 - Google reviews: after you mark a review request sent, a short, no-pressure reminder comes back to Follow-ups a week later. Press "They left a review" and it goes away. A job with a phone number gets a "Send as a text" button that opens Messages with the note already written.
 - Until your Google review link is on the Setup page, Follow-ups and Setup say so plainly, and requests ask the client to reply with a few words. Add the link later and drafts already written pick it up.
