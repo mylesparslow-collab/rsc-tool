@@ -10,7 +10,7 @@ import sqlite3
 from datetime import date, timedelta
 from email.message import EmailMessage
 
-from . import receivables, books, brand, crew, estimates, followups, margins, pipeline, prefs, pricing
+from . import receivables, books, brand, crew, estimates, followups, margins, pipeline, prefs, pricing, scorecard
 
 OPENING_SCHEMA = {"type": "object", "properties": {"message": {"type": "string"}}, "required": ["message"]}
 OPENING_PROMPT = ("Write ONE plain sentence (under 30 words) opening a weekly business report for a remodeling contractor. "
@@ -56,6 +56,7 @@ def build(conn: sqlite3.Connection, today: date | None = None) -> dict:
         "active": active, "spent": round(spent, 2), "flagged": flagged, "waiting": waiting,
         "to_review": len(pipeline.pending(conn)), "followups": followups.due(conn, today, ahead_days=7),
         "new_this_week": [j for j in jobs if (j["created_at"] or "")[:10] >= start],
+        "scorecard": scorecard.build(conn, today),
     }
 
 
@@ -88,6 +89,8 @@ def render_text(r: dict, intro: str) -> str:
     if r["to_invoice"]:
         L.append("  Ready to invoice when the work gets there:")
         L += [f"    {p['payment_id']} {p['last_name']}: {money(p['amount'])} ({p['due_when'] or p['description']})" for p in r["to_invoice"]]
+    if r.get("scorecard"):
+        L += ["", "LEADS AND SALES"] + scorecard.summary_lines(r["scorecard"])
     L += ["", "JOBS UNDERWAY"]
     L += [f"  {j['job_id']} {j['last_name']} ({j['status']}): contract {money(j['contract_total'])}, paid {money(j['paid'])}, spent {money(j['expenses'])}"
           for j in r["active"]] or ["  None"]

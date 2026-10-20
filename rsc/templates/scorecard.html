@@ -1,0 +1,60 @@
+{% extends "base.html" %}{% block title %}Scorecard{% endblock %}
+{% macro rate(v) %}{% if v is none %}<span class="muted">-</span>{% else %}<span class="{{ level(v, card) }}">${{ '%.0f'|format(v) }}</span>{% endif %}{% endmacro %}
+{% block body %}
+{% set w = card.this_week %}{% set lw = card.last_week %}{% set win = card.win %}
+<div class="page-head"><div><div class="eyebrow">Is the work turning into paid jobs?</div><h1>Scorecard</h1></div>
+  <a class="btn secondary" href="{{ url_for('report_page') }}">Monday report</a></div>
+<p class="muted">Counted from the jobs, estimates and payments already in the app. Weeks start on Monday. Nothing here needs typing; to see where a lead came from, the job notes just need to say it (the website form does this for you).</p>
+
+<h2>This week <span class="muted">from {{ w.start }}, last week in small print</span></h2>
+<div class="stats">
+  <div class="card"><div class="muted">New leads</div><div class="big-number">{{ w.leads }}</div><div class="muted">Last week {{ lw.leads }}</div></div>
+  <div class="card"><div class="muted">Estimates sent</div><div class="big-number">{{ w.quotes }}</div><div class="muted">Last week {{ lw.quotes }}</div></div>
+  <div class="card"><div class="muted">Jobs won</div><div class="big-number">{{ w.won }}</div><div class="muted">{{ money(w.sold) if w.won else 'Last week ' ~ lw.won }}</div></div>
+  <div class="card"><div class="muted">Money in</div><div class="big-number">{{ money(w.collected)|replace('.00', '') }}</div><div class="muted">Last week {{ money(lw.collected)|replace('.00', '') }}</div></div>
+  <div class="card"><div class="muted">Win rate, {{ card.window_days }} days</div><div class="big-number">{{ '%.0f%%'|format(win.rate * 100) if win.rate is not none else '-' }}</div>
+    <div class="muted">{% if win.rate is not none %}{{ win.won }} signed, {{ win.lost }} lost{% else %}No answers yet{% endif %}{% if win.waiting %}, {{ win.waiting }} waiting{% endif %}</div></div>
+  <div class="card"><div class="muted">Quoted per crew-hour</div><div class="big-number">{{ rate(card.quoted.rate) }}</div><div class="muted">Target ${{ '%.0f'|format(card.target) }}, floor ${{ '%.0f'|format(card.floor) }}</div></div>
+</div>
+
+{% if card.quoted.below %}
+<div class="card tone-warn"><strong>Priced under ${{ '%.0f'|format(card.floor) }} a crew-hour</strong>
+  {% for r in card.quoted.below %}<div><a class="id" href="{{ url_for('job_detail', number=r.job.number) }}">{{ r.job.job_id }}</a> {{ r.job.last_name }}: ${{ '%.0f'|format(r.rate) }} a crew-hour ({{ '%.0f'|format(r.hours) }} crew-hours, labor {{ money(r.labor) }})</div>{% endfor %}
+</div>
+{% endif %}
+
+<h2>Week by week</h2>
+<div class="scroll"><table>
+  <tr><th>Week of</th><th class="num">Leads</th><th class="num">Estimates sent</th><th class="num">Won</th><th class="num hide-sm">Signed value</th><th class="num">Money in</th><th class="num hide-sm">Quoted $/crew-hour</th></tr>
+  {% for wk in card.weeks %}<tr>
+    <td>{{ wk.start }}{% if wk.current %} <span class="muted">(so far)</span>{% endif %}</td>
+    <td class="num">{{ wk.leads }}</td><td class="num">{{ wk.quotes }}</td><td class="num">{{ wk.won }}</td>
+    <td class="num hide-sm">{{ money(wk.sold) if wk.sold else '-' }}</td><td class="num">{{ money(wk.collected) if wk.collected else '-' }}</td>
+    <td class="num hide-sm">{{ rate(wk.quoted_rate) }}</td></tr>{% endfor %}
+</table></div>
+
+<h2>Where leads came from <span class="muted">last {{ card.window_days }} days</span></h2>
+<div class="scroll"><table>
+  <tr><th>Source</th><th class="num">Leads</th><th class="num">Estimates sent</th><th class="num">Won</th><th class="num">Signed value</th></tr>
+  {% for s in card.sources %}<tr><td>{% if s.source == 'Not recorded' %}<span class="muted">Not recorded</span>{% else %}{{ s.source }}{% endif %}</td>
+    <td class="num">{{ s.leads }}</td><td class="num">{{ s.quotes }}</td><td class="num">{{ s.won }}</td><td class="num">{{ money(s.sold) if s.sold else '-' }}</td></tr>
+  {% else %}<tr><td colspan="5" class="muted">No leads in the last {{ card.window_days }} days.</td></tr>{% endfor %}
+</table></div>
+{% if card.unrecorded %}<p class="muted">{{ card.unrecorded }} lead{{ 's' if card.unrecorded != 1 }} don't say where they came from. Adding "Found us: Nextdoor" (or Google, TikTok, a neighbor) to the job notes is enough.</p>{% endif %}
+{% if card.pending_leads %}<p class="muted">Includes {{ card.pending_leads }} lead{{ 's' if card.pending_leads != 1 }} still waiting under <a href="{{ url_for('review') }}">To review</a>.</p>{% endif %}
+
+<h2>Dollars per crew-hour</h2>
+<div class="grid">
+  <div class="card"><div class="muted">Quoted, estimates sent in the last {{ card.window_days }} days</div>
+    <div class="big-number">{{ rate(card.quoted.rate) }}</div>
+    <div class="muted">{{ card.quoted.count }} estimate{{ 's' if card.quoted.count != 1 }} with crew and days{% if card.quoted.unknown %}; {{ card.quoted.unknown }} without, so not counted{% endif %}.</div></div>
+  <div class="card"><div class="muted">Earned, finished jobs with hours logged</div>
+    <div class="big-number">{{ rate(card.earned.rate) }}</div>
+    <div class="muted">{% if card.earned.jobs %}{{ card.earned.jobs|length }} job{{ 's' if card.earned.jobs|length != 1 }}: labor price divided by the hours on the Crew page.{% else %}Shows up once a finished job has crew hours logged.{% endif %}</div></div>
+</div>
+
+<h2>Not connected yet</h2>
+<div class="card flat">
+  {% for label, why in card.not_connected %}<div><strong style="display:inline;font-size:inherit">{{ label }}:</strong> <span class="muted">{{ why }}</span></div>{% endfor %}
+</div>
+{% endblock %}
