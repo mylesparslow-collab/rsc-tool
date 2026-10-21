@@ -32,6 +32,12 @@ Nothing is sent automatically. The app only talks to QuickBooks when Nick presse
 6. Send one test invoice and check it in the sandbox company.
 7. For real books: create the Production keys in the same Intuit app (Intuit asks a few questions about the app), put them in `config.toml`, set `environment = "production"`, and Connect again.
 
-What gets created: a customer (the client's name), an invoice whose number is the Payment ID with one line "Remodeling Services" (created if missing), and, for Record payment, a payment applied to that invoice.
+What gets created by **Send estimate** (one per job): an estimate numbered with the Job ID (`1002-HAR`), one line per
+payment on the schedule, each line starting with its Payment ID. Each signed change order becomes its own estimate
+(`1002-HAR-CO1`). Mark the estimate Accepted in QuickBooks once the client signs, then make each phase's invoice from it
+(turn on progress invoicing under Account and settings, Sales, and use the Payment ID as the invoice number), or press
+Send invoice here. If the schedule changes after the estimate is sent, change it in QuickBooks too.
+
+What gets created by Send invoice: a customer (the client's name), an invoice whose number is the Payment ID with one line "Remodeling Services" (created if missing), and, for Record payment, a payment applied to that invoice.
 
 **Not yet tested against a live QuickBooks account.** It is covered by tests that imitate QuickBooks' replies. Run step 6 on the sandbox first. Intuit's production keys use HTTPS redirects for apps that others will use; for one person on one Mac, `localhost` works in development and may need review for production.

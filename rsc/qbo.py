@@ -34,6 +34,8 @@ def configured(cfg) -> bool:
 def ensure_tables(conn: sqlite3.Connection) -> None:
     conn.execute("CREATE TABLE IF NOT EXISTS qb_sync (payment_pk INTEGER PRIMARY KEY, qb_invoice_id TEXT NOT NULL, "
                  "qb_payment_id TEXT, synced_at TEXT NOT NULL DEFAULT (datetime('now')))")
+    conn.execute("CREATE TABLE IF NOT EXISTS qb_estimates (doc_number TEXT PRIMARY KEY, job_number INTEGER NOT NULL, "
+                 "qb_estimate_id TEXT NOT NULL, synced_at TEXT NOT NULL DEFAULT (datetime('now')))")
 
 
 def _setting(conn, key, default=""):
@@ -166,6 +168,61 @@ def send_invoice(cfg, conn, payment: dict, client_name: str, email: str = "") ->
     conn.execute("INSERT INTO qb_sync (payment_pk, qb_invoice_id) VALUES (?, ?)", (payment["id"], inv))
     conn.commit()
     return inv
+
+
+def estimate_groups(payments: list[dict], job_id: str) -> list[tuple[str, list[dict]]]:
+    """The job's estimates as QuickBooks will hold them: the signed schedule under the Job ID (1002-SMI), and each
+    change order on its own (1002-SMI-CO1), so the original estimate stays as signed. One line per payment."""
+    main = [p for p in payments if p["kind"] != "change_order"]
+    groups = [(job_id, main)] if main else []
+    cos = sorted({p["change_order_id"] for p in payments if p["kind"] == "change_order" and p["change_order_id"]})
+    for i, co in enumerate(cos, start=1):
+        groups.append((f"{job_id}-CO{i}", [p for p in payments if p["change_order_id"] == co]))
+    return groups
+
+
+def send_estimates(cfg, conn, job: dict, payments: list[dict], client_name: str, email: str = "") -> list[str]:
+    """Create the job's estimate(s) in QuickBooks, one line per payment, each line naming its Payment ID so the
+    invoices match. Ones already there are left alone, so pressing twice never duplicates. Returns the new numbers."""
+    ensure_tables(conn)
+    job_id = f"{job['number']}-{job['code']}"
+    sent = []
+    for doc, pays in estimate_groups(payments, job_id):
+        if conn.execute("SELECT 1 FROM qb_estimates WHERE doc_number = ?", (doc,)).fetchone():
+            continue
+        existing = _query(cfg, conn, f"select Id from Estimate where DocNumber = '{_q(doc)}'")
+        if existing:
+            est = existing[0]["Id"]
+        else:
+            lines = []
+            for p in pays:
+                if not p["amount"]:
+                    continue
+                desc = f"{p['payment_id']}: {p['description']} ({p['due_when']})".replace(" ()", "")
+                lines.append({"Amount": round(p["amount"], 2), "DetailType": "SalesItemLineDetail", "Description": desc,
+                              "SalesItemLineDetail": {"ItemRef": {"value": item_ref(cfg, conn)}, "Qty": 1,
+                                                      "UnitPrice": round(p["amount"], 2)}})
+            if not lines:
+                continue
+            body = {"DocNumber": doc, "CustomerRef": {"value": customer_ref(cfg, conn, client_name, email)},
+                    "TxnDate": time.strftime("%Y-%m-%d"), "Line": lines}
+            if job.get("address"):
+                body["CustomerMemo"] = {"value": job["address"]}
+            est = _call(cfg, conn, "POST", "estimate", body)["Estimate"]["Id"]
+            sent.append(doc)
+        conn.execute("INSERT INTO qb_estimates (doc_number, job_number, qb_estimate_id) VALUES (?, ?, ?)",
+                     (doc, job["number"], est))
+        conn.commit()
+    return sent
+
+
+def estimates_synced(conn) -> dict:
+    """Job number -> the estimate numbers already in QuickBooks."""
+    ensure_tables(conn)
+    out: dict = {}
+    for doc, n in conn.execute("SELECT doc_number, job_number FROM qb_estimates ORDER BY doc_number"):
+        out.setdefault(n, []).append(doc)
+    return out
 
 
 def record_payment(cfg, conn, payment: dict, client_name: str) -> str:

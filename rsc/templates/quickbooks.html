@@ -19,16 +19,28 @@
   <p class="muted" style="margin:4px 0 0">Optional. To send invoices straight into QuickBooks Online, create an app at developer.intuit.com, add <code>{{ redirect_uri }}</code> as its Redirect URI, and put its Client ID and Secret in <code>config.toml</code> under <code>[quickbooks]</code>. Start with <code>environment = "sandbox"</code>. Step by step: docs/quickbooks-setup.md.</p>
   {% elif not connected %}
   <form method="post" action="{{ url_for('qb_connect') }}"><input type="hidden" name="csrf" value="{{ csrf }}">
-    <p class="muted" style="margin:4px 0 10px">Ready to connect to a {{ env }} company. Nothing is sent until you press Send on a payment below.</p>
+    <p class="muted" style="margin:4px 0 10px">Ready to connect to a {{ env }} company. Nothing is sent until you press Send on a job or payment below.</p>
     <div class="actions"><button class="btn">Connect to QuickBooks</button></div></form>
   {% else %}
   <form method="post" action="{{ url_for('qb_disconnect') }}"><input type="hidden" name="csrf" value="{{ csrf }}">
-    <p class="muted" style="margin:4px 0 10px">Nothing is sent automatically. Press Send on a payment to create that invoice in QuickBooks, and Paid once the money arrives.</p>
+    <p class="muted" style="margin:4px 0 10px">Nothing is sent automatically. Press Send estimate on a job to put its estimate in QuickBooks, Send invoice on a payment to create that invoice, and Record payment once the money arrives.</p>
     <button class="btn secondary">Disconnect</button></form>
   {% endif %}
 </div>
 
 {% if connected %}
+<h2>Estimates</h2>
+<p class="muted">One estimate per job, one line per payment, each line named with its Payment ID. Once the client signs, mark it Accepted in QuickBooks and make each invoice from it when that phase is reached (or press Send invoice below). A signed change order goes in as its own estimate. If you change the payment schedule after sending, change the estimate in QuickBooks too.</p>
+<table>
+  <tr><th>Job</th><th>Client</th><th class="num">Scheduled</th><th>In QuickBooks</th><th></th></tr>
+  {% for j in estimate_jobs %}
+  <tr><td class="id">{{ j.job_id }}</td><td>{{ j.last_name }}</td><td class="num">{{ money(j.scheduled_total) }}</td>
+    <td>{% if j.sent %}{{ j.sent|join(', ') }}{% else %}<span class="muted">Not yet</span>{% endif %}</td>
+    <td>{% if j.unsent %}<form method="post" action="{{ url_for('qb_estimate', number=j.number) }}" style="display:inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small">Send estimate</button></form>{% endif %}</td></tr>
+  {% else %}<tr><td colspan="5" class="muted">No jobs with a payment schedule yet.</td></tr>{% endfor %}
+</table>
+
+<h2>Invoices</h2>
 <table>
   <tr><th>Payment ID</th><th>Client</th><th>For</th><th class="num">Amount</th><th>Status</th><th></th></tr>
   {% for p in payments %}{% set s = synced.get(p.id) %}
