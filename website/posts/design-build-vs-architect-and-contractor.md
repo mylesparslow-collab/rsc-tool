@@ -13,7 +13,7 @@ A design-build contractor does the design and the construction of your remodel u
 
 The same people come to the house, hear what you want, measure, draw it up, price it and build it. Since whoever is drawing the plan also knows what each choice costs and how it goes together, you find out a tile or a moved wall blows the budget while you're still choosing, not after a full set of drawings is done.
 
-The order goes roughly like this. We walk the house with you, talk through what you're after, take measurements and note what's there, like the sagging header or the knob-and-tube in the basement. Then comes the layout and the selections, written up as a scope of work organized by phase. Each phase gets a price, and the payments are tied to finished work. The same team builds it. And if anything changes along the way, scope, price or schedule, it's agreed in writing before the work goes on.
+The order goes roughly like this. We walk the house with you, talk through what you're after, take measurements and note what's there, like the sagging header or the knob-and-tube in the basement. Then comes the layout and the selections, written up as a scope of work organized by phase. Each phase gets a price. The first payment buys the materials, and the payments after that are tied to finished work. The same team builds it. And if anything changes along the way, scope, price or schedule, it's agreed in writing before the work goes on.
 
 What you really get is one person to call. Halfway through a kitchen, when the wall turns out to be an inch and a half out of plumb or the vent can't run where the drawing shows, the person answering knows what the design was supposed to do and what the framing will allow.
 
@@ -45,7 +45,7 @@ Historic houses add a step. Exterior changes in Saratoga Springs historic distri
 
 ## Ask the same questions either way
 
-Whichever way you go, the protections are the same. Get a written scope that describes each phase. Tie payments to completed work, not calendar dates. Make sure changes get agreed in writing before the work proceeds. Know who your point of contact is and how to reach them. And ask for certificates of insurance; our post on [contractor insurance in NY](/blog/contractor-insurance-what-to-ask-ny/) lists which ones. We go deeper in [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) and [change orders explained](/blog/change-orders-explained/).
+Whichever way you go, the protections are the same. Get a written scope that describes each phase. Know what the first payment buys, and tie the rest to completed work, not calendar dates. Make sure changes get agreed in writing before the work proceeds. Know who your point of contact is and how to reach them. And ask for certificates of insurance; our post on [contractor insurance in NY](/blog/contractor-insurance-what-to-ask-ny/) lists which ones. We go deeper in [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) and [change orders explained](/blog/change-orders-explained/).
 
 ## Our take for a typical Saratoga Springs job
 

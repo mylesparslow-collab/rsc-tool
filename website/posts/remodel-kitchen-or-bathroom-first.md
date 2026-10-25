@@ -49,7 +49,7 @@ If you plan to age in place, the bathroom may be the right first project no matt
 
 Doing both at once saves some repeat work. The trades are already on site, and the plumbing and electrical changes can be planned together. You also live with twice the disruption, make twice the decisions in the same few weeks, and commit to the whole budget up front.
 
-We'd usually suggest the middle path. Design both rooms together, then build them one at a time. Plumbing routes, whether the electrical panel can handle both, and any flooring that runs from one room into the next all get decided once. Then each room gets built when it suits your schedule and your budget. A written scope with a payment tied to each phase keeps that straight. Our post on [phased payments versus paying up front](/blog/phased-payments-vs-paying-upfront/) explains how that kind of schedule should work.
+We'd usually suggest the middle path. Design both rooms together, then build them one at a time. Plumbing routes, whether the electrical panel can handle both, and any flooring that runs from one room into the next all get decided once. Then each room gets built when it suits your schedule and your budget. A written scope with a payment tied to each phase keeps that straight. Our post on [contractor payment schedules](/blog/phased-payments-vs-paying-upfront/) explains how that kind of schedule should work.
 
 ## Still stuck?
 

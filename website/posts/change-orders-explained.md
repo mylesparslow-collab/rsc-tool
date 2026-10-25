@@ -59,7 +59,7 @@ Decide early. Pick fixtures, tile and finishes before work starts whenever you c
 
 Get the price before you say yes, even on something small. Know the current contract total after every change. And if three little things come up in the same week, put them on one change order instead of three.
 
-Changes move the payment schedule, too. Our post on [phased payments vs paying upfront](/blog/phased-payments-vs-paying-upfront/) explains how payments should stay tied to finished work as the scope shifts.
+Changes move the payment schedule, too. Our post on [contractor payment schedules](/blog/phased-payments-vs-paying-upfront/) explains why materials are paid for when they are ordered and labor as it is done, including for changes.
 
 ## Frequently asked questions
 

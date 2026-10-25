@@ -1,51 +1,57 @@
 ---
 slug: phased-payments-vs-paying-upfront
-title: Contractor Payment Schedule: Phased vs Upfront
-h1: Contractor payment schedules: why phased payments beat paying upfront
-description: A fair contractor payment schedule ties each payment to finished work. How phased payments protect both sides, and why a large upfront payment is a red flag.
-summary: How a phased contractor payment schedule works, what a reasonable deposit covers, and the warning signs in a payment plan that front-loads the money.
+title: Contractor Payment Schedule: What's Paid Up Front
+h1: Contractor payment schedules: what you pay up front, and what you pay as the work goes in
+description: A fair contractor payment schedule pays for materials up front and labor as each phase is done. How it protects both sides, and which requests to worry about.
+summary: Why the first payment covers your materials, how the rest follows the work, and the warning signs in a payment plan.
 flags:
 ---
 
-A fair contractor payment schedule ties each payment to a phase of work you can see is finished. You pay a deposit to get on the calendar and cover the early materials, then pay again as each phase wraps up, and the last check is due when the job is done and the punch list is closed. If a contractor wants most or all of the money before anyone swings a hammer, walk away. That's one of the oldest red flags in home improvement, here in Saratoga County and everywhere else in New York.
+A fair contractor payment schedule has two parts. The first payment, due when you sign, buys the materials for your job and holds your start date. On a kitchen or bathroom with cabinets, tile and fixtures to order, that first payment can be a large share of the total, because materials are a large share of the total. After that, the labor gets paid in pieces as each phase is finished, and the last payment is due when the job is done and the punch list is closed. What should worry you isn't a big first payment. It's money up front that nobody can account for.
 
-## What a phased schedule looks like
+## What the schedule looks like
 
-The payment schedule follows the scope of work. Every phase ends at a point you can walk in and check, and a payment is attached to that point. Here's roughly how we'd lay one out for a bathroom:
+The payment schedule follows the scope of work. Here's roughly how we'd lay one out for a bathroom:
 
-| Phase | What's finished | Payment |
+| Phase | What's done | Payment |
 |---|---|---|
-| Scheduling | Contract signed, start date set, materials ordered | Deposit |
-| Demolition and rough-in | Old bathroom gutted, plumbing and electrical rough work done and inspected | Second payment |
-| Walls and waterproofing | Backer board, waterproofing membrane, drywall done | Third payment |
-| Tile and fixtures | Tile set, vanity, toilet and fixtures in | Fourth payment |
+| Signing | Contract signed, start date set, materials and fixtures ordered | First payment: materials, plus a share of the labor |
+| Demolition and rough-in | Old bathroom gutted, plumbing and electrical rough work done and inspected | Labor payment |
+| Walls and waterproofing | Backer board, waterproofing membrane, drywall done | Labor payment |
+| Tile and fixtures | Tile set, vanity, toilet and fixtures in | Labor payment |
 | Completion | Punch list done, final walkthrough | Final payment |
 
-A small job might have two or three payments. A kitchen or an addition might have five or six. The count doesn't matter much. What you're looking for is that every payment lines up with work that's actually in place.
+A small job might have two or three payments. A kitchen or an addition might have five or six. After the first one, every payment lines up with work you can walk in and see.
 
-## What the deposit is for
+## Why the materials are paid for first
 
-Asking for a deposit is normal. It holds your spot on the schedule and pays for the things that have to be ordered before work starts: custom cabinets, special-order tile, windows with a lead time of several weeks. If a contractor buys those and the client backs out, the contractor is stuck with a set of cabinets built for one kitchen and nobody else's.
+The materials for a remodel get bought before the work starts: cabinets built to your measurements, tile and fixtures you picked, windows with a lead time of several weeks. Suppliers want paying when the order goes in. A contractor who fronts all of that for every job is carrying several clients' kitchens on credit at once, and that's how honest contractors end up short on cash and late on everyone's job.
 
-So the deposit should be sized to those early costs, not to the whole job. If the number looks big, ask what it pays for. "The cabinets are custom and we pay for them when we order" is a straight answer. Hemming and hawing is not.
+Paying for the materials up front also means they're yours. They're ordered for your house, they show up on your schedule, and nobody is waiting on a supplier to extend credit before your job can start.
 
-New York's consumer protection law has rules for home improvement contracts and how deposits are handled. That part is a legal question and we won't pretend to answer it for you. Read the contract closely and have the contractor explain the deposit terms in plain English before you sign. For what the paperwork itself should spell out, see [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/).
+The fair version comes with a list. You should see what the first payment buys: the cabinets, the tile, the fixtures, the lumber, each with its price. If the number looks big, ask to go through it. "These are your cabinets, and this is what the shop charges for them" is a straight answer. Hemming and hawing is not.
 
-## Why paying up front goes wrong
+New York's consumer protection law has rules for home improvement contracts and how money paid before the work is done gets handled. That part is a legal question and we won't pretend to answer it for you. Read the contract closely and have the contractor explain the payment terms in plain English before you sign. For what the paperwork itself should spell out, see [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/).
 
-Once the money's handed over before work begins, you've got nothing left to hold back if the job stalls or the work gets sloppy.
+## The payment requests that should worry you
 
-Some of those jobs never start at all. Collecting a big payment up front and disappearing is the standard pattern in home improvement fraud. Other times the contractor is honest but short on cash, and your money goes to finish somebody else's kitchen while yours waits. And when there's no payment tied to a finished phase, there's no natural moment to stop, look at the work, and say "that's not right" before it gets covered up.
+A large first payment for materials you can see on a list is normal. These aren't:
 
-A contractor who's sure of the work has no reason to want the whole price before starting.
+- Money up front with no list of what it buys.
+- Most of the labor paid before the labor is done.
+- The whole price before starting on a job with nothing to order.
+- Cash only, or a check made out to a person whose name doesn't match the business on the contract.
+- Pressure to pay for a phase before it's finished.
 
-## It helps the builder too
+Collecting a payment and disappearing is the standard pattern in home improvement fraud. A materials list, a start date in writing and labor paid as it's done are what make a large first payment safe.
 
-Phased payments get pitched as protection for the homeowner, and they are. They also keep a contractor paid as the work goes in, so we aren't carrying the cost of materials and labor for months until the end of the job. And each payment is a reason for both sides to walk the job together, agree the phase is done, and talk about what's next. Jobs with those checkpoints have fewer surprises at the end.
+## It helps both sides
+
+Labor paid by phase gets pitched as protection for the homeowner, and it is. It also keeps the crew paid as the work goes in. And each payment is a reason for both sides to walk the job together, agree the phase is done, and talk about what's next. Jobs with those checkpoints have fewer surprises at the end.
 
 ## When something changes mid-job
 
-A change shouldn't show up as a fuzzy add-on to the next payment. If scope, price or schedule changes, write it up and sign it before the work goes ahead, with its own price and its own timing. Then every payment still matches a known amount of work, and nobody's arguing over memory in the final week. Our post on [change orders](/blog/change-orders-explained/) explains how that works.
+A change shouldn't show up as a fuzzy add-on to the next payment. If scope, price or schedule changes, write it up and sign it before the work goes ahead, with its own price and its own timing. If the change needs new materials, expect to pay for those when they're ordered, the same as at the start. Our post on [change orders](/blog/change-orders-explained/) explains how that works.
 
 ## Before you write the last check
 
@@ -55,20 +61,20 @@ It's fair to hold the last payment until the punch list is done. It's not fair t
 
 ## How to pay
 
-Pay by check or some other method that leaves a record, and keep a note of which phase each payment covered. Be wary of a request for cash only, a check made out to a person whose name doesn't match the business on the contract, or pressure to pay before a phase is finished. Before work starts, ask for certificates of insurance too. Our post on [contractor insurance: what to ask in NY](/blog/contractor-insurance-what-to-ask-ny/) covers what to look for on them.
+Pay by check or some other method that leaves a record, and keep a note of what each payment covered. Before work starts, ask for certificates of insurance too. Our post on [contractor insurance: what to ask in NY](/blog/contractor-insurance-what-to-ask-ny/) covers what to look for on them.
 
 ## Frequently asked questions
 
 ### How much should a contractor deposit be?
 
-There's no single right number. The deposit should cover scheduling the job and the materials that have to be bought before work starts. Ask what it's paying for, and be careful if it's a big share of the total on a job with no special-order materials.
+There's no single right number, because it depends on the materials. A job with custom cabinets, tile and fixtures has a lot to buy before day one, so the first payment is bigger. A repair with little to order has a small one. Ask for the list of what the first payment buys.
 
 ### Is it normal for a contractor to ask for payment before starting?
 
-A deposit before starting is normal. Paying most or all of the price before any work is done isn't, and it's a common sign of trouble.
+Yes. The materials have to be bought before the work starts, so the first payment comes at signing. What isn't normal is paying for labor that hasn't been done, or paying up front without a list of what the money buys.
 
 ### What if the work falls behind the payment schedule?
 
-Payments follow finished phases, not dates on a calendar. If a phase isn't done, the payment tied to it isn't due yet. That keeps the money and the work together even if the job runs long. Our post on [how long a bathroom remodel takes](/blog/how-long-does-a-bathroom-remodel-take/) explains what tends to stretch a schedule.
+After the first payment, payments follow finished phases, not dates on a calendar. If a phase isn't done, the payment tied to it isn't due yet. Our post on [how long a bathroom remodel takes](/blog/how-long-does-a-bathroom-remodel-take/) explains what tends to stretch a schedule.
 
-Every job we take on, [bathrooms](/bathrooms/) included, gets a written scope broken into phases with a price on each one. Before you pay for a phase, you can walk in and see what it bought.
+Every job we take on, [bathrooms](/bathrooms/) included, gets a written scope broken into phases with a price on each one, and a list of the materials the first payment buys.

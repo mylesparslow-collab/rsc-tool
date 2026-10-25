@@ -56,7 +56,7 @@ Explainer tie-in = the daily animated repair-tip video (social/explainers/) that
 | 41 | schuylerville-stillwater-historic-homes | historic home repair Schuylerville | Town guides | Schuylerville, Stillwater | /capital-region/ | porch-balusters | | written |
 | 42 | upgrade-builder-grade-trim-and-doors | upgrade trim and interior doors | Old houses | Clifton Park, Halfmoon | /restoration-and-built-ins/ | window-trim | builder-grade trim, hollow doors | written |
 | 43 | what-a-remodeling-estimate-should-include | what should a contractor estimate include | Hiring a contractor | Capital Region | /kitchens/ | kitchen-render | what a real estimate lists | written |
-| 44 | phased-payments-vs-paying-upfront | contractor payment schedule | Hiring a contractor | Saratoga County | /bathrooms/ | deck-rear | 100% up front red flag | written |
+| 44 | phased-payments-vs-paying-upfront | contractor payment schedule | Hiring a contractor | Saratoga County | /bathrooms/ | deck-rear | what the first payment buys | written |
 | 45 | change-orders-explained | change order remodeling | Hiring a contractor | Saratoga County | /kitchens/ | kitchen-brick | handshake vs signed change order | written |
 | 46 | do-i-need-a-permit-saratoga-springs | building permit Saratoga Springs | Hiring a contractor | Saratoga Springs | /decks-and-stairs/ | deck-dark-a | no permit bites at sale | written |
 | 47 | contractor-insurance-what-to-ask-ny | contractor insurance NY | Hiring a contractor | Capital Region | /restoration-and-built-ins/ | office-built-in | uninsured contractor ladder fall | written |

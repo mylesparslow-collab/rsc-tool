@@ -20,8 +20,9 @@ what they teach as I know it, not quotes.
    the worry, then show how our process removes it.
 5. **The customer is the hero; we are the guide with a plan.** (Miller, *Building a StoryBrand*.) Problem, a guide
    who understands it, a simple plan (three or four steps), a clear call to action, and what's at stake.
-6. **Features become benefits.** "Payment schedule tied to each phase" is a feature. "You pay as each phase is
-   finished, not all up front" is the benefit.
+6. **Features become benefits.** "Payment schedule tied to each phase" is a feature. "Your first payment buys your
+   materials, with a list of what it buys, and the labor is paid as each phase is finished" is the benefit. (Nick
+   front-loads materials, so never promise "not all up front" or a small deposit.)
 7. **Every line earns the next.** (Sugarman, *The Adweek Copywriting Handbook*.) Short first sentence. No
    throat-clearing, no slogans, no aphorisms.
 8. **One clear next step.** Each page ends on the same ask: send a photo and a sentence, and we'll set up a visit.
@@ -37,7 +38,7 @@ what they teach as I know it, not quotes.
 
 - We come and look before we put a price on anything.
 - A written scope of work, split into phases, each with its price and its payment.
-- You pay as phases are done, not all up front (payment schedule tied to each phase).
+- The first payment buys the materials and holds the start date; the rest are paid as phases are done.
 - No change to scope, price or schedule happens until it's agreed in writing.
 - The same team designs and builds. One point of contact from the first visit to the walkthrough.
 - Updates as the job goes: what got done, what's next.

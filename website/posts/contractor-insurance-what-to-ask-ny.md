@@ -64,7 +64,7 @@ Most remodels bring in subcontractors at some point: an electrician, a plumber, 
 
 New York has no single statewide license for general home improvement contractors. Some counties and cities license them, and trades like electrical and plumbing may be licensed locally. Find out what applies where you live, and ask the contractor directly. Keep the two questions apart. A license doesn't prove insurance, and insurance doesn't prove a license.
 
-The rest of your protection is on paper too: a clear written scope, payments tied to finished work, and written change orders. We cover those in [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) and [phased payments vs paying upfront](/blog/phased-payments-vs-paying-upfront/).
+The rest of your protection is on paper too: a clear written scope, a first payment that comes with a list of the materials it buys, later payments tied to finished work, and written change orders. We cover those in [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) and [contractor payment schedules](/blog/phased-payments-vs-paying-upfront/).
 
 ## Frequently asked questions
 
