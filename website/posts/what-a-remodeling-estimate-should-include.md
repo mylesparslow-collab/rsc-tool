@@ -46,7 +46,7 @@ Open a wall or a floor in any house and you might find rot, water damage, old wi
 
 The estimate should say which parts of the job need a permit, who's applying for it, how the inspections fit in the schedule, and whether permit fees are included. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) covers what typically needs one.
 
-The price should be clear and the payments should follow the work. A fair schedule ties each payment to a finished phase: a deposit to get on the calendar and order materials, then payments as each phase is done. We go into why in [phased payments vs paying upfront](/blog/phased-payments-vs-paying-upfront/). Be wary of anyone who wants most or all of the money before work starts.
+The price should be clear and the payments should follow the work. A fair schedule has the first payment cover the materials, with a list of what it buys, and ties each payment after that to a finished phase. We go into why in [what you pay up front and what you pay as the work goes in](/blog/phased-payments-vs-paying-upfront/). Be wary of anyone who wants money up front without saying what it buys.
 
 Jobs change. You switch tile, or something ugly turns up behind the plaster. The estimate should say that any change to scope, price or schedule gets written up as a change order and agreed before the work goes on. See [change orders explained](/blog/change-orders-explained/) for how that plays out.
 
@@ -59,7 +59,7 @@ Check any estimate against these before you sign:
 - A price with no written description of the work
 - Nothing about what's excluded
 - Pressure for a "cash price," or a discount if you decide today
-- A large payment upfront with nothing tied to progress
+- Money up front with no list of what it buys, or labor paid before it is done
 - No mention of permits on work that obviously needs one
 - Reluctance to hand over certificates of insurance (see [contractor insurance: what to ask in NY](/blog/contractor-insurance-what-to-ask-ny/))
 

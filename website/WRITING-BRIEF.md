@@ -12,7 +12,9 @@ Phone: (518) 932-9919, call or text.
 Facts we may state:
 - The same team designs and builds the project, with one point of contact.
 - We visit the site first. The client receives a written scope of work organized by phase, with the price and a
-  payment schedule tied to each phase.
+  payment schedule tied to each phase. The first payment, due at signing, buys the materials and holds the start
+  date; it can be a large share of the total. Later payments follow finished phases. Never call a large up-front
+  payment a red flag or tell readers to keep the first payment small: Nick front-loads materials.
 - Any change to scope, price or schedule is agreed in writing (a change order) before the work proceeds.
 - Services: decks, stairs and railings; kitchens; bathrooms; built-ins and custom carpentry; old-house restoration
   (stairs, porches, trim, ceilings); bulkhead (cellar door) replacement and cellar stairs; outdoor showers and garden
