@@ -12,7 +12,7 @@ what they teach as I know it, not quotes.
 2. **The headline does most of the work.** (Ogilvy: five times as many people read the headline as the body.) A
    headline promises a specific benefit or names a specific fear. "Remodeling and carpentry, designed and built
    in-house" promises nothing.
-3. **Specific beats general.** (Hopkins, *Scientific Advertising*.) "A written price for each phase" is believed.
+3. **Specific beats general.** (Hopkins, *Scientific Advertising*.) "Decks framed to carry a winter of snow" is believed.
    "Transparent pricing" is not. Use the concrete things we really do.
 4. **Enter the conversation already in the reader's head.** (Collier; Schwartz, *Breakthrough Advertising*.) People
    looking for a contractor are already worried about the same things: the price creeping up, paying a big deposit and
@@ -36,16 +36,25 @@ what they teach as I know it, not quotes.
 
 ## What we can sell with (true, already on the site)
 
+Lead with the quality and care of the work (Myles, 2026-10-25). Pricing transparency, written scopes and payments are
+a supporting point, never the headline or the first reason to hire us.
+
+Lead with these:
+- Built for winters here: snow load, freeze-thaw, footings below frost, showers waterproofed before tile.
+- New work matched to the house: original trim, brick, stairs and porches repaired or rebuilt to match, original
+  details kept where practical (the kitchen built around its chimney, the scroll-cut balusters, the restored newel).
+- Care with the work nobody sees: framing, flashing, waterproofing.
+- Our own crew designs and builds. One point of contact from the first visit to the walkthrough.
+- Specialty jobs other contractors pass on: bulkheads, cellar stairs, a garden bridge, a mosaic for the Saratoga
+  Rowing Association.
+
+Supporting points:
 - We come and look before we put a price on anything.
 - A written scope of work, split into phases, each with its price and its payment.
 - The first payment buys the materials and holds the start date; the rest are paid as phases are done.
 - No change to scope, price or schedule happens until it's agreed in writing.
-- The same team designs and builds. One point of contact from the first visit to the walkthrough.
 - Updates as the job goes: what got done, what's next.
 - If something turns up behind a wall, you hear about it the same day (Saratoga Springs page).
-- Specialty jobs other contractors pass on: bulkheads, cellar stairs, a garden bridge, a mosaic for the Saratoga
-  Rowing Association.
-- Built for winters here: snow load, freeze-thaw, footings below frost.
 
 ## Still off limits
 

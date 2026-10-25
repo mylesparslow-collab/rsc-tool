@@ -16,6 +16,8 @@ Facts we may state:
   date; it can be a large share of the total. Later payments follow finished phases. Never call a large up-front
   payment a red flag or tell readers to keep the first payment small: Nick front-loads materials.
 - Any change to scope, price or schedule is agreed in writing (a change order) before the work proceeds.
+- Emphasis (Myles, 2026-10-25): lead with the quality and care of the work. The written scope and payment terms are a
+  supporting point, not the selling point; don't close posts on them by default.
 - Services: decks, stairs and railings; kitchens; bathrooms; built-ins and custom carpentry; old-house restoration
   (stairs, porches, trim, ceilings); bulkhead (cellar door) replacement and cellar stairs; outdoor showers and garden
   structures; porch enclosures into finished rooms; additions; roofing, siding, soffits and gutters as part of a project.
