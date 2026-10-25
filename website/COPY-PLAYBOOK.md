@@ -44,7 +44,7 @@ Lead with these:
 - New work matched to the house: original trim, brick, stairs and porches repaired or rebuilt to match, original
   details kept where practical (the kitchen built around its chimney, the scroll-cut balusters, the restored newel).
 - Care with the work nobody sees: framing, flashing, waterproofing.
-- Our own crew designs and builds. One point of contact from the first visit to the walkthrough.
+- Our crew designs and builds (don't say "our own crew" or imply employees; crew pay setup is unconfirmed). One point of contact from the first visit to the walkthrough.
 - Specialty jobs other contractors pass on: bulkheads, cellar stairs, a garden bridge, a mosaic for the Saratoga
   Rowing Association.
 
@@ -54,7 +54,7 @@ Supporting points:
 - The first payment buys the materials and holds the start date; the rest are paid as phases are done.
 - No change to scope, price or schedule happens until it's agreed in writing.
 - Updates as the job goes: what got done, what's next.
-- If something turns up behind a wall, you hear about it the same day (Saratoga Springs page).
+- If something turns up behind a wall, you hear about it before any extra work is done (no "same day" promises).
 
 ## Still off limits
 

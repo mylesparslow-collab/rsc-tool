@@ -61,7 +61,6 @@ Check any estimate against these before you sign:
 - Pressure for a "cash price," or a discount if you decide today
 - Money up front with no list of what it buys, or labor paid before it is done
 - No mention of permits on work that obviously needs one
-- Reluctance to hand over certificates of insurance (see [contractor insurance: what to ask in NY](/blog/contractor-insurance-what-to-ask-ny/))
 
 ## Estimate, proposal, contract
 

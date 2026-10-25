@@ -7,7 +7,7 @@ summary: Practical ways to update a 1990s or early 2000s bathroom in Malta and n
 flags:
 ---
 
-You can update a dated bathroom without taking it to the studs, as long as the shower, tub and floor are solid and watertight. A new vanity, faucets, lights, mirror and hardware, plus paint and fresh grout, changes a 1990s bathroom more than people expect. If the tile is loose, the floor is soft or the shower leaks, though, cosmetic work won't last, and you're better off putting the money into a real remodel. We hear this question a lot in Malta, where plenty of houses went up in the 1990s and 2000s and the bathrooms are showing it.
+You can update a dated bathroom without taking it to the studs, as long as the shower, tub and floor are solid and watertight. A new vanity, faucets, lights, mirror and hardware, plus paint and fresh grout, changes a 1990s bathroom more than people expect. If the tile is loose, the floor is soft or the shower leaks, though, cosmetic work won't last, and you're better off putting the money into a real remodel. It's a common question in Malta, where plenty of houses went up in the 1990s and 2000s and the bathrooms are showing it.
 
 ## The 1990s bathroom, item by item
 

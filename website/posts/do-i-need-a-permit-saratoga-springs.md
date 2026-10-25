@@ -42,7 +42,7 @@ Zoning is its own question. Setbacks, lot coverage and height are zoning rules, 
 
 Every department runs it a little differently, but the steps are about the same. First comes the application, a description of the work with drawings or a site plan. Bigger projects may need plans stamped by an architect or professional engineer.
 
-Then insurance. New York requires proof of workers' compensation and disability benefits coverage, or a valid exemption, before it'll issue most building permits. A contractor hands over certificates. A homeowner doing their own work on their own house may qualify for an exemption form instead. We go through the details in [contractor insurance: what to ask in NY](/blog/contractor-insurance-what-to-ask-ny/).
+Then insurance. New York requires proof of workers' compensation and disability benefits coverage, or a valid exemption, before it'll issue most building permits. A contractor hands over certificates. A homeowner doing their own work on their own house may qualify for an exemption form instead.
 
 The department reviews the plans against code and zoning. Once work starts, an inspector comes out at set stages. On a deck that can mean looking at the footing holes before the concrete goes in. On a remodel it can mean framing before the walls get closed up. Then there's a final.
 

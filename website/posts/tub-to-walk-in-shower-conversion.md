@@ -57,7 +57,7 @@ We don't publish prices. What moves the number most is curb versus curbless, and
 
 ### How long does a tub to shower conversion take?
 
-A straightforward conversion in the same footprint typically takes one to two weeks of work once materials are on hand. A curbless shower that needs framing changes takes longer. Tile needs time to cure, so plan on being without that shower for a stretch.
+How long depends on what's behind the walls and how much has to change. A swap in the same footprint goes quicker than a curbless shower that needs framing changes, and you get the schedule for your bathroom after the site visit. Tile needs time to cure, so plan on being without that shower for a stretch.
 
 ### Can a walk-in shower go in a small bathroom?
 

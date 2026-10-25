@@ -45,7 +45,7 @@ Historic houses add a step. Exterior changes in Saratoga Springs historic distri
 
 ## Ask the same questions either way
 
-Whichever way you go, the protections are the same. Get a written scope that describes each phase. Know what the first payment buys, and tie the rest to completed work, not calendar dates. Make sure changes get agreed in writing before the work proceeds. Know who your point of contact is and how to reach them. And ask for certificates of insurance; our post on [contractor insurance in NY](/blog/contractor-insurance-what-to-ask-ny/) lists which ones. We go deeper in [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) and [change orders explained](/blog/change-orders-explained/).
+Whichever way you go, the protections are the same. Get a written scope that describes each phase. Know what the first payment buys, and tie the rest to completed work, not calendar dates. Make sure changes get agreed in writing before the work proceeds. Know who your point of contact is and how to reach them. We go deeper in [what a remodeling estimate should include](/blog/what-a-remodeling-estimate-should-include/) and [change orders explained](/blog/change-orders-explained/).
 
 ## Our take for a typical Saratoga Springs job
 
