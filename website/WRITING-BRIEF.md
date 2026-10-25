@@ -33,6 +33,9 @@ Facts we may state:
 
 - Licenses, insurance, certifications (no CAPS), awards, memberships, years in business, number of jobs, warranties,
   guarantees, response times, an office, employees or crew size.
+- Don't tell readers to demand insurance certificates or workers' comp, or call a missing certificate a red flag,
+  until Nick's insurance and crew pay are confirmed (the insurance post is in `held-posts/`). No job-length promises
+  in weeks; say the schedule comes after the site visit.
 - Prices, price ranges, rates, discounts or any dollar figure, even "typical" market costs. Talk about what drives
   cost instead.
 - Testimonials, client names, reviews, quotes from customers.

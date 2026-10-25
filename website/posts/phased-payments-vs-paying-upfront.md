@@ -40,7 +40,7 @@ A large first payment for materials you can see on a list is normal. These aren'
 - Money up front with no list of what it buys.
 - Most of the labor paid before the labor is done.
 - The whole price before starting on a job with nothing to order.
-- Cash only, or a check made out to a person whose name doesn't match the business on the contract.
+- Cash only, with no receipt.
 - Pressure to pay for a phase before it's finished.
 
 Collecting a payment and disappearing is the standard pattern in home improvement fraud. A materials list, a start date in writing and labor paid as it's done are what make a large first payment safe.
@@ -61,7 +61,7 @@ It's fair to hold the last payment until the punch list is done. It's not fair t
 
 ## How to pay
 
-Pay by check or some other method that leaves a record, and keep a note of what each payment covered. Before work starts, ask for certificates of insurance too. Our post on [contractor insurance: what to ask in NY](/blog/contractor-insurance-what-to-ask-ny/) covers what to look for on them.
+Pay by check or some other method that leaves a record, and keep a note of what each payment covered.
 
 ## Frequently asked questions
 
