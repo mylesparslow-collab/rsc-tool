@@ -79,4 +79,4 @@ In a few cases, but we rarely recommend it. Tile over tile hides whatever damage
 
 The bad subfloor gets cut out and replaced, and any weak joists get reinforced before new flooring goes down. We put any added work in writing and agree on it before it goes ahead.
 
-From tearing out the old tile to setting the last faucet, we design and build bathrooms in Saratoga Springs and the towns nearby. To get a feel for the schedule, read [how long a bathroom remodel takes](/blog/how-long-does-a-bathroom-remodel-take/), or see finished rooms on our [bathrooms](/bathrooms/) page.
+We design and build bathrooms in Saratoga Springs and the towns nearby. To get a feel for the schedule, read [how long a bathroom remodel takes](/blog/how-long-does-a-bathroom-remodel-take/), or see finished rooms on our [bathrooms](/bathrooms/) page.

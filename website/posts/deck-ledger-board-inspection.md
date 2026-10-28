@@ -27,7 +27,7 @@ In Saratoga County, snow raises the stakes. A deck holding a couple of feet of w
 
 ## The twenty-minute check
 
-Bring a flashlight and a flat screwdriver, and walk the whole length of the ledger. This one's a real checklist, so here it is in order.
+Bring a flashlight and a flat screwdriver, and walk the whole length of the ledger. Here's what to check, in order.
 
 1. Look for a gap. The ledger should sit tight to the house. Any gap you can see, or one that's wider than last year, is a warning.
 2. Find the flashing. There should be metal or membrane flashing tucked up behind the siding above the ledger and lapped over its top edge, so water runs over and off. Bare wood butting into siding with no flashing means water is probably getting in.

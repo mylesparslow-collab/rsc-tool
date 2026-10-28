@@ -41,7 +41,7 @@ If the porch itself is in rough shape, read our guide to [porch railing repair](
 
 ## Glass, heat and summer sun
 
-In most porch enclosures the windows take up a big share of the wall. That means they decide how comfortable the room is, and how much heat it loses, far more than in a normal room. Energy-rated windows, installed carefully and air-sealed around the frames, make a real difference on a below-zero night in January.
+In most porch enclosures the windows take up a big share of the wall. That means they decide how comfortable the room is, and how much heat it loses, far more than in a normal room. Energy-rated windows, installed carefully and air-sealed around the frames, make the difference on a below-zero night in January.
 
 For heat, it comes down to the house. You can extend the existing heating system, add a ductless heat pump, or put in electric baseboard. A licensed electrician or HVAC contractor should size and install whatever you choose. Lights, outlets and a ceiling fan are electrical work for a licensed electrician too, and the code has rules for outlet spacing in living space that apply to the new room.
 

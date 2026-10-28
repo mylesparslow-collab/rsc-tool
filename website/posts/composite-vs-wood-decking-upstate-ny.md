@@ -84,6 +84,6 @@ Sometimes. The footings and ledger have to be sound, there can't be rot, and the
 
 ### Does composite get too hot to walk on?
 
-It runs warmer than wood in direct summer sun, and dark colors run warmest. A lighter color, a cooler-running product line and a bit of shade make a real difference on decks facing south or west.
+It runs warmer than wood in direct summer sun, and dark colors run warmest. A lighter color, a cooler-running product line and a bit of shade help on decks facing south or west.
 
-Pressure-treated wood isn't a bad choice, by the way. It lasts well when it's cleaned and stained on schedule; it just asks more of you than composite does. We build decks in both, starting at the footings and finishing with the stairs, guards and rails, and you can see some of them on our [decks, stairs and railings page](/decks-and-stairs/).
+Pressure-treated wood isn't a bad choice, by the way. It lasts well when it's cleaned and stained on schedule; it just asks more of you than composite does. We build decks in both, footings, frame, stairs and rails included, and you can see some of them on our [decks, stairs and railings page](/decks-and-stairs/).

@@ -7,7 +7,7 @@ summary: How winter breaks down concrete stoops and wood entry stairs, the diffe
 flags:
 ---
 
-Concrete steps and wood steps break down differently, but around Saratoga County the cause is almost always water that gets in and then freezes. Concrete cracks, flakes and heaves. Wood rots at the bottom of the stringers and the treads work loose. Small cracks and a flaking surface can be fixed, but steps that tilt, pull away from the house or shift every winter need to be rebuilt on real footings. You use entry steps every day in snow and ice, so a loose or uneven one is a real fall hazard.
+Concrete steps and wood steps break down differently, but around Saratoga County the cause is almost always water that gets in and then freezes. Concrete cracks, flakes and heaves. Wood rots at the bottom of the stringers and the treads work loose. Small cracks and a flaking surface can be fixed, but steps that tilt, pull away from the house or shift every winter need to be rebuilt on real footings. You use entry steps every day in snow and ice, so a loose or uneven one is a fall hazard.
 
 ## What a winter does to a set of steps
 
