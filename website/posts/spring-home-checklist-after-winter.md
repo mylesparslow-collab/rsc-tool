@@ -21,7 +21,7 @@ Start at the top, and stay on the ground to do it. Use the binoculars on the shi
 
 Ice is hard on gutters. It bends them, pulls the hangers loose and opens the seams. Sight down each run for sags and for spots where the gutter has pulled away from the fascia. Look at the fascia board behind it too. Peeling paint or dark streaks there mean water's been getting behind it, and our post on [soffit and fascia repair](/blog/gutters-soffits-fascia-rot/) picks it up from there.
 
-Leave the roof itself to a roofer. Shingles are often wet and slick in spring, and walking a roof then is a real way to get hurt.
+Leave the roof itself to a roofer. Shingles are often wet and slick in spring, and walking a roof then is an easy way to get hurt.
 
 ## Ice dam stains inside
 

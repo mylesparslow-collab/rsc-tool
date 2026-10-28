@@ -21,7 +21,7 @@ What you really get is one person to call. Halfway through a kitchen, when the w
 
 The traditional way is often called design-bid-build. You hire an architect or designer first. They produce drawings and specifications, and you take those to one or more contractors for bids. Depending on the contract, the architect may also watch construction on your behalf, review the contractor's payment requests and answer questions about the drawings.
 
-That setup has real strengths. The architect works for you, not the builder, so you've got independent oversight. Every contractor prices the same drawings, so the bids line up side by side. And on a large addition, or a house with tangled structural or historic issues, an architect brings design depth most remodelers don't have.
+That setup has its strengths. The architect works for you, not the builder, so you've got independent oversight. Every contractor prices the same drawings, so the bids line up side by side. And on a large addition, or a house with tangled structural or historic issues, an architect brings design depth most remodelers don't have.
 
 The cost is time, plus the risk that the design gets finished before anyone has priced it. When the bids come back over budget, the plans go back for revisions and out for bids again, and you've lost a season.
 

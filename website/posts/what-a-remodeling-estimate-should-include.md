@@ -74,7 +74,7 @@ Comparing two or three is reasonable, as long as they're for the same scope. If 
 
 ### Why do some contractors charge for an estimate?
 
-A detailed estimate on a big job takes real time: measuring the site, working through design decisions, pricing materials and laying out the phases. Some contractors charge for that design work, or credit the fee against the project. Either way, the arrangement should be clear before they start on it.
+A detailed estimate on a big job takes time: measuring the site, working through design decisions, pricing materials and laying out the phases. Some contractors charge for that design work, or credit the fee against the project. Either way, the arrangement should be clear before they start on it.
 
 ### What is an allowance on an estimate?
 
