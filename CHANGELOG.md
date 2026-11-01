@@ -27,6 +27,11 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 - A suggested price. When labor is under the target rate (Pricing page, $72 a crew-hour by default) or the materials markup is under the industry-standard 43% (about a 30% gross margin; change it on the Pricing page), the estimate page and the Send screen say what the job would be at those numbers and how many dollars more that is.
 - Materials with no markup at all are now a red flag, not a gentle note.
 
+## 0.2.8
+
+- Google reviews: after you mark a review request sent, a short, no-pressure reminder comes back to Follow-ups a week later. Press "They left a review" and it goes away. A job with a phone number gets a "Send as a text" button that opens Messages with the note already written.
+- Until your Google review link is on the Setup page, Follow-ups and Setup say so plainly, and requests ask the client to reply with a few words. Add the link later and drafts already written pick it up.
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.

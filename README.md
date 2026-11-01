@@ -24,7 +24,7 @@ QuickBooks: the QuickBooks page downloads invoices (invoice number = Payment ID)
 
 - **Weekly report:** Monday 7 AM the app emails a one-page report (collected, owed, jobs underway, margin warnings, estimates waiting, follow-ups due) from the business Gmail to the addresses on the Setup page. Preview or send now at `/report`; from Terminal `rsc weekly-report [--send]`. The numbers come from the books; the model only writes the opening sentence.
 - **Lead replies:** a new inquiry in To Review comes with a reply already written that offers the next real visit times (set in plain words on Setup, like "Tuesdays and Thursdays at 4pm"). The reply is never sent for him: Open in Mail, or Copy.
-- **Follow-ups:** marking a job Complete queues a review request (3 days) and a one-year check-in. Each is drafted on demand, opens in Mail, and is marked sent by hand.
+- **Follow-ups:** marking a job Complete queues a review request (3 days, then one gentle reminder a week after it is marked sent) and a one-year check-in. Each is drafted on demand, opens in Mail or Messages, and is marked sent by hand.
 - **Job margins:** `/margins` compares spent with the estimate's direct-cost budget and projects the margin; warnings appear on Home. Set the target on the Pricing page.
 - **One-click install:** `Install RSC.command` asks nothing, then opens the Setup page. The app runs as a login item (launchd), so the Desktop icon just opens it.
 
