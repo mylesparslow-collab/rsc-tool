@@ -1,45 +1,27 @@
 {% extends "base.html" %}{% block title %}Leads{% endblock %}
 {% block body %}
 <h1>Leads</h1>
-<p class="muted">Every new lead gets a grade from what they wrote: the kind of job, its size, how soon, the town and how to reach them. When the crew is booked or a job isn't a fit, you can pass it to a contractor you trust, but only once the homeowner has said that's OK. Nothing is sent for you: the emails open in Mail.</p>
+<p class="muted">Every open lead gets a grade from what they wrote: the kind of job, its size, how soon, the town and how to reach them. The best ones are at the top, so they get the fastest reply.</p>
 
 {% set cap = s.capacity %}
 <div class="grid">
   <div class="card"><div class="muted">Crew</div>
     <div class="big-number">{{ cap.running }} of {{ cap.slots }}</div>
-    <div class="{{ 'bad' if cap.booked else 'ok' }}">{{ 'Booked: pass along what you can’t take' if cap.booked else cap.open ~ ' open, take good leads' }}</div>
+    <div class="{{ 'bad' if cap.booked else 'ok' }}">{{ 'Booked: offer start dates' if cap.booked else cap.open ~ ' open' }}</div>
     <form method="post" action="{{ url_for('leads_slots') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}">
       <label>Jobs the crew can run at once <input name="crew_slots" value="{{ cap.slots }}" size="3" inputmode="numeric"></label> <button class="btn small secondary">Save</button></form>
   </div>
   <div class="card"><div class="muted">Open leads by grade</div>
-    <div>{% for g, n in s.by_grade.items() %}<span class="pill g-{{ g }}">{{ g }}: {{ n }}</span> {% endfor %}</div>
-    <div class="muted">{{ s.to_pass }} worth passing on</div></div>
-  <div class="card"><div class="muted">Partner referrals</div>
-    <div class="big-number">{{ s.ledger.sent }} sent · {{ s.ledger.won }} won</div>
-    <div class="muted">{{ money(s.ledger.owed) }} in fees owed to you · <a href="{{ url_for('partners_page') }}">Partners</a></div></div>
+    <div>{% for g, n in s.by_grade.items() %}<span class="pill g-{{ g }}">{{ g }}: {{ n }}</span> {% endfor %}</div></div>
 </div>
 
-{% for j in leads %}{% set sc = j.score %}{% set r = j.route %}
+{% for j in leads %}{% set sc = j.score %}
 <div class="card" id="lead{{ j.number }}">
   <strong><span class="pill g-{{ sc.grade }}">{{ sc.grade }}</span> <a href="{{ url_for('job_detail', number=j.number) }}">{{ j.first_name }} {{ j.last_name }}</a> <span class="id muted">{{ j.job_id }}</span></strong>
   <div>{{ (j.notes or j.job_type or 'No details yet')[:300] }}</div>
   <div class="muted">Why {{ sc.grade }}: {{ sc.reasons|join('; ') }}.</div>
-  <div><b>{{ r.why }}</b></div>
-  {% if r.action == 'keep' %}
-    <div class="actions"><a class="btn" href="{{ url_for('job_detail', number=j.number) }}">Open the job</a></div>
-  {% elif r.action == 'pass' %}
-    <div class="muted">They said yes: {{ j.consent.how }}{% if j.consent.said_on %} ({{ j.consent.said_on }}){% endif %}.</div>
-    {% if j.partners %}<div class="actions">{% for p in j.partners[:3] %}<a class="btn secondary" href="{{ url_for('lead_pass', number=j.number, partner_id=p.id) }}">Pass to {{ p.name }}</a>{% endfor %}</div>
-    {% else %}<div class="muted">No partner is ready yet (needs an email and current insurance). <a href="{{ url_for('partners_page') }}">Add one</a>.</div>{% endif %}
-  {% elif r.action == 'ask' %}
-    <div class="muted">Ask them something like: “We can’t take this one on ourselves. Would it be OK if I passed your request to one contractor I trust?” If they say yes, write down how.</div>
-    <form method="post" action="{{ url_for('lead_consent', number=j.number) }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}">
-      <input name="how" placeholder="How they said yes: on the phone, by email..." size="34"> <input name="note" placeholder="Anything they said (optional)" size="28">
-      <button class="btn small">They said yes</button></form>
-    <div class="actions"><a class="btn secondary" href="{{ url_for('job_detail', number=j.number) }}">Open the job</a></div>
-  {% else %}
-    <div class="actions"><a class="btn secondary" href="{{ url_for('job_detail', number=j.number) }}">Open the job</a></div>
-  {% endif %}
+  <div><b>{{ j.route.why }}</b></div>
+  <div class="actions">{% if j.phone %}<a class="btn secondary" href="tel:{{ j.phone }}">Call {{ j.phone }}</a>{% endif %}<a class="btn{{ ' secondary' if sc.grade != 'A' }}" href="{{ url_for('job_detail', number=j.number) }}">Open the job</a></div>
 </div>
 {% else %}<div class="card muted">No open leads. When you approve a new lead in To Review it shows up here with its grade.</div>{% endfor %}
 {% endblock %}

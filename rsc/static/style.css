@@ -163,7 +163,7 @@ details.more[open] > summary { margin-bottom: var(--s-2); }
 .pill.s-in-progress, .status.Invoiced, .status.Part { background: var(--warn-soft); color: var(--warn); }
 .pill.s-complete, .status.Paid { background: var(--ok-soft); color: var(--ok); }
 .pill.s-lost { background: var(--bad-soft); color: var(--bad); }
-.pill.s-on-hold, .pill.s-passed-on { background: var(--surface-2); color: var(--ink-2); }
+.pill.s-on-hold { background: var(--surface-2); color: var(--ink-2); }
 .pill.g-A { background: var(--ok-soft); color: var(--ok); }
 .pill.g-B { background: var(--info-soft); color: var(--info); }
 .pill.g-C { background: var(--warn-soft); color: var(--warn); }

@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 from . import ids
 
-STATUSES = ["Estimate", "Signed", "In Progress", "Complete", "Lost", "On Hold", "Passed on"]
+STATUSES = ["Estimate", "Signed", "In Progress", "Complete", "Lost", "On Hold"]
 JOB_TYPES = ["Kitchen", "Bathroom", "Addition / Enclosure", "Deck / Exterior", "Whole House",
              "Carpentry / Repair", "Aging in place", "Other"]
 EXPENSE_CATEGORIES = ["Materials", "Subcontractor", "Equipment Rental", "Permits & Fees", "Dump / Debris",
