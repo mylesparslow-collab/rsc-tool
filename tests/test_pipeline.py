@@ -37,7 +37,7 @@ def test_end_to_end_suggest_then_approve(conn, cfg):
 
     report = pipeline.process(conn, cfg, mails, model)
     assert (report.new, report.suggestions, report.skipped) == (4, 3, 1)
-    assert len(model.calls) == 4 and not any("newsletter" in c.lower() for c in model.calls), "the newsletter must never reach the model (3 emails read + 1 lead reply drafted)"
+    assert len(model.calls) == 5 and not any("newsletter" in c.lower() for c in model.calls), "the newsletter must never reach the model (3 emails read + 1 lead reply drafted + 1 rough range)"
 
     items = {s["kind"]: s for s in pipeline.pending(conn)}
     assert items["expense"]["data"]["charge_to"] == "1002"
@@ -59,7 +59,7 @@ def test_end_to_end_suggest_then_approve(conn, cfg):
 
     # Running again over the same mailbox does nothing twice.
     again = pipeline.process(conn, cfg, mails, model)
-    assert again.new == 0 and len(model.calls) == 4
+    assert again.new == 0 and len(model.calls) == 5
 
 
 def test_unmatched_receipt_waits_for_a_choice(conn, cfg):

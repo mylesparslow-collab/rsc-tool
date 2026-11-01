@@ -12,7 +12,7 @@ from pathlib import Path
 
 from flask import Flask, abort, flash, g, jsonify, redirect, render_template, request, send_file, session, url_for
 
-from . import autocheck, receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, next_web, ops_web, pipeline, prefs, qb_web, receipts, sheets, voice, workflow
+from . import autocheck, ballpark, receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, next_web, ops_web, pipeline, prefs, qb_web, receipts, sheets, voice, workflow
 from .config import Config, mail_password
 from .llm import ModelUnavailable, OllamaModel
 from .mail import GmailReader
@@ -314,7 +314,8 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
         return render_template("job_detail.html", job=job, payments=books.list_payments(c, number),
                                expenses=books.list_expenses(c, number), statuses=books.STATUSES,
                                job_types=books.JOB_TYPES, job_hours=crew.recent_hours(c, 8, number), guide_steps=guide.steps(c, job), guide_next=guide.next_step(c, job),
-                               job_hours_total=crew.hours_for_job(c, number), job_labor_cost=crew.labor_cost_for_job(c, number))
+                               job_hours_total=crew.hours_for_job(c, number), job_labor_cost=crew.labor_cost_for_job(c, number),
+                               ballpark=ballpark.for_job(c, number))
 
     @app.post("/jobs/<int:number>/payments")
     def payment_add(number):
