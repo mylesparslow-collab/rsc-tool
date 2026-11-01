@@ -9,7 +9,7 @@
   {% else %}<div>{% if last_ago %}<b>{{ last_ago }}</b>. {{ last_message }}{% else %}Not checked yet.{% endif %}</div>
   <form method="post" action="{{ url_for('new_owners_refresh') }}" class="inline">
     <input type="hidden" name="csrf" value="{{ csrf }}">
-    <div class="actions"><button class="btn{{ ' glow' if due }}">Check for new buyers</button> <span class="muted">{% if due %}Time for this month's check. {% endif %}Takes 5 to 10 minutes; you can keep working.</span></div>
+    <div class="actions"><button class="btn{{ ' glow' if due }}">Check for new buyers</button> <span class="muted">{% if due %}Time for this week's check. {% endif %}Takes 5 to 10 minutes; you can keep working.</span></div>
   </form>{% endif %}
 </div>
 
@@ -64,7 +64,7 @@
   </tr>{% endfor %}
 </table>
 {% else %}
-<div class="card muted">{% if counts.new %}No one matches. Try "Everyone" or another town.{% else %}No one waiting. Press "Check for new buyers" to read this month's county records.{% endif %}</div>
+<div class="card muted">{% if counts.new %}No one matches. Try "Everyone" or another town.{% else %}No one waiting. Press "Check for new buyers" to read the latest county records.{% endif %}</div>
 {% endif %}
 
 <h2 id="letter">The cards</h2>

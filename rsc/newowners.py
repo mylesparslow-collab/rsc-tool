@@ -84,7 +84,7 @@ Welcome to the neighborhood,
 LETTER_KEY = "newowner_letter"
 LAST_KEY = "newowner_last_at"
 LAST_MSG = "newowner_last_message"
-UA = "RSC-tool (local remodeling business; monthly public-records check)"
+UA = "RSC-tool (local remodeling business; weekly public-records check)"
 
 
 
@@ -408,7 +408,7 @@ def due(conn: sqlite3.Connection, today: date | None = None) -> bool:
     if not last:
         return True
     try:
-        return (today or date.today()) - datetime.fromisoformat(last).date() >= timedelta(days=28)
+        return (today or date.today()) - datetime.fromisoformat(last).date() >= timedelta(days=6)
     except ValueError:
         return True
 

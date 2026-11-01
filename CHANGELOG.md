@@ -13,6 +13,8 @@ New homeowners: the follow-through after the first letter.
   in, and that house gets no more cards. A "Got in touch" button does the same for people who call or text.
 - "This week's batch" puts due follow-ups first, then new welcome cards, up to 50. After the first batch, Home reminds
   Nick each week when cards are due. The CSV now has the card, code, link and words for a mailing service (Thanks.io).
+- The county records are now checked every Monday morning instead of once a month, so new buyers show up as soon as
+  the county map has them (re-run the installer to change the schedule).
 - Letters already marked mailed count as card 1, so their follow-up comes up on its own.
 - New dependency: `segno` (draws the QR codes on the Mac, no network). The usual update step installs it.
 - Website: new page `/welcome/` (not in the menu or sitemap, not indexed by search engines), using the same Formspree form.

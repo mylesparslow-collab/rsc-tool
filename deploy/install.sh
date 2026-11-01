@@ -237,7 +237,7 @@ PLISTEOF
   agent app '<key>RunAtLoad</key><true/><key>KeepAlive</key><true/>' "$RSC" serve --no-browser
   agent checkmail '<key>StartInterval</key><integer>600</integer>' "$RSC" check-mail
   agent weeklyreport '<key>StartCalendarInterval</key><dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>7</integer><key>Minute</key><integer>0</integer></dict>' "$RSC" weekly-report --send
-  agent newowners '<key>StartCalendarInterval</key><dict><key>Day</key><integer>2</integer><key>Hour</key><integer>6</integer><key>Minute</key><integer>30</integer></dict>' "$RSC" new-owners --if-due
+  agent newowners '<key>StartCalendarInterval</key><dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>6</integer><key>Minute</key><integer>30</integer></dict>' "$RSC" new-owners --if-due
   DAILY_SCHED=""; for wd in 1 2 3 4 5; do DAILY_SCHED="$DAILY_SCHED<dict><key>Weekday</key><integer>$wd</integer><key>Hour</key><integer>6</integer><key>Minute</key><integer>0</integer></dict>"; done
   agent dailysheet "<key>StartCalendarInterval</key><array>$DAILY_SCHED</array>" "$RSC" daily-sheet --send
   if [ "$OLLAMA_OURS" = 1 ] && [ -n "$OLLAMA_BIN" ]; then
