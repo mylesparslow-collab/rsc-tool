@@ -50,9 +50,11 @@
     · labor {{ money(check.rates.labor) }} · <b>${{ '%.0f'|format(check.rates.rate or 0) }} per crew-hour</b>
     {% if check.rates.gross_pct is not none %}· about {{ '%.0f'|format(check.rates.gross_pct * 100) }}% gross margin{% endif %}</div>
   {% for w in check.rates.warnings %}<div style="margin-top:6px">{{ w }}</div>{% else %}<div class="ok" style="margin-top:6px">Looks healthy.</div>{% endfor %}
+  {% if check.rates.summary %}<div style="margin-top:6px"><b>Suggested price: {{ money(check.rates.suggested_price) }}.</b> {{ check.rates.summary }}</div>{% endif %}
 </div>
 {% elif check and check.rates.warnings %}
-<div class="card tone-warn">{% for w in check.rates.warnings %}<div>{{ w }}</div>{% endfor %}</div>
+<div class="card tone-{{ check.rates.level }}">{% for w in check.rates.warnings %}<div>{{ w }}</div>{% endfor %}
+  {% if check.rates.summary %}<div style="margin-top:6px"><b>Suggested price: {{ money(check.rates.suggested_price) }}.</b> {{ check.rates.summary }}</div>{% endif %}</div>
 {% endif %}
 
 {% if est.assumptions %}

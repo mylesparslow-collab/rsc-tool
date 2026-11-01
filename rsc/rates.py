@@ -108,7 +108,8 @@ def analyze(est: dict, settings: dict | None = None, hours_logged: float | None 
     hours = hours_logged if use_logged else guessed
     out = {"headcount": heads, "days": days, "crew_hours": hours, "hours_are_logged": use_logged,
            "labor": est["labor"], "rate": None, "gross_pct": None, "warnings": [], "suggested_labor": None,
-           "price": t["total"], "level": "ok"}
+           "price": t["total"], "level": "ok", "labor_gap": 0.0, "markup_gap": 0.0, "suggested_price": None,
+           "summary": None}
     price = t["total"]
     if hours and est["labor"] > 0:
         out["rate"] = round(est["labor"] / hours, 2)
@@ -132,6 +133,12 @@ def analyze(est: dict, settings: dict | None = None, hours_logged: float | None 
         if out["level"] == "ok":
             out["level"] = "warn"
     if est["materials"] > 0 and est["markup_pct"] < s["default_markup"] - 0.5:
+        out["markup_gap"] = round(est["materials"] * (s["default_markup"] - est["markup_pct"]) / 100, 2)
+    if out["markup_gap"] and est["markup_pct"] <= 0:
+        warn.append(f"There is no markup on the ${est['materials']:,.0f} of materials, so you'd buy, haul and stand behind "
+                    f"them for nothing. At the industry-standard {s['default_markup']:g}% markup that's ${out['markup_gap']:,.0f} more.")
+        out["level"] = "bad"
+    elif out["markup_gap"]:
         warn.append(f"Materials markup is {est['markup_pct']:g}%. At {s['default_markup']:g}% you'd keep about a "
                     f"{s['gross_target']:.0f}% margin on materials after overhead.")
         if out["level"] == "ok":
@@ -140,6 +147,14 @@ def analyze(est: dict, settings: dict | None = None, hours_logged: float | None 
         warn.append(f"This job is ${price:,.0f}. Small jobs take the same driving, setup and paperwork; the usual minimum is ${s['job_minimum']:,.0f}.")
         if out["level"] == "ok":
             out["level"] = "warn"
+    if out["rate"] is not None and out["rate"] < s["target_rate"]:
+        out["labor_gap"] = round(out["suggested_labor"] - est["labor"], 2)
+    if out["labor_gap"] or out["markup_gap"]:
+        out["suggested_price"] = round(price + out["labor_gap"] + out["markup_gap"])
+        parts = ([f"${s['target_rate']:.0f} a crew-hour"] if out["labor_gap"] else []) + \
+                ([f"the industry-standard {s['default_markup']:g}% markup on materials"] if out["markup_gap"] else [])
+        out["summary"] = (f"At {' and '.join(parts)}, this job would be about ${out['suggested_price']:,.0f}, "
+                          f"${out['suggested_price'] - price:,.0f} more than the ${price:,.0f} it says now.")
     if not hours and est["labor"] > 0:
         warn.append("I can't tell how many crew-hours this is. Say how many people and how many days (the Crew and Duration lines).")
     return out
