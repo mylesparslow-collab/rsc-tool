@@ -31,6 +31,7 @@
     {{ item('followups_page', 'Follow-ups', 'followups', count=followups_due()) }}
   </nav>
   <nav class="nav-group"><span class="label">Jobs</span>
+    {{ item('leads_page', 'Leads', 'review', ['leads_page']) }}
     {{ item('jobs', 'All jobs', 'jobs', ['jobs', 'job_new', 'job_detail', 'estimate_edit', 'change_orders', 'change_order_view', 'sow', 'contract_view']) }}
     {{ item('room_models', 'Room modeler', 'model', ['room_models', 'job_model']) }}
     {{ item('playbook_page', 'Playbook', 'playbook') }}

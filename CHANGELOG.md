@@ -51,6 +51,11 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 - Pick how many letters to send this time (best first), then "Print these letters" (one welcome letter per page, about the quality of the work, no prices), "Download the mailing list" (CSV for labels or a print shop) and "I mailed these", so nobody gets two letters. "Don't mail" takes one house off. The letter text can be changed on the same page.
 - Mail only: no phone numbers, no calls or texts, nothing sent for you. The check runs in the background (5 to 10 minutes) and the installer adds a monthly check on the 2nd. Command line: `rsc new-owners --check --csv list.csv`.
 
+## Unreleased: Leads page
+
+- New **Leads** page (sidebar, under Jobs). Every open lead gets a grade, A, B, C or Pass, worked out in plain code from what the homeowner wrote: the kind of job (bathrooms, kitchens, porch enclosures, built-ins and restoration count most), any budget, how soon, the town, and whether they left a phone and an email. Each grade lists its reasons, and the best leads are at the top with the next thing to do ("Call today" for an A).
+- The page knows when the crew is booked: you set how many jobs the crew can run at once (2 to start), and it counts the Signed and In Progress jobs. When booked, good leads are told to get a start date instead of being let go.
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.

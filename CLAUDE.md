@@ -34,7 +34,7 @@ RSC tool. The app is small and local, and it handles real client money, so chang
 
 ## What it does (pages)
 
-Home (today's cards, What's next), To Review (email suggestions), Jobs, job page (estimate, SOW, contract, change
+Home (today's cards, What's next), To Review (email suggestions), Leads (grades and crew capacity; `funnel.py`), Jobs, job page (estimate, SOW, contract, change
 orders, hours, safety assessment, crew brief, progress, client update, room model), Expenses, Codes (RSC-100..900),
 Pricing, Crew (people, hours, insurance certificates, payroll cost), Today (daily crew sheet), Week (who is where),
 Owed (invoice aging and reminders), Playbook, New homeowners (recent buyers from public parcel records, welcome letters by mail), QuickBooks (CSV downloads; optional direct connection), Setup.
@@ -48,7 +48,7 @@ Python 3.11+ Flask app with Jinja templates, SQLite (WAL) for data, Ollama for m
 
 ```
 rsc/web.py            create_app(): routes for home, jobs, review, expenses, estimates; registers the *_web.py modules
-rsc/*_web.py          crew_web, daily_web, aging_web, playbook_web, receivables_web, client_update_web, schedule_web, qb_web, ops_web (Setup), next_web (job tracker, glow, Next task)
+rsc/*_web.py          crew_web, daily_web, aging_web, playbook_web, receivables_web, client_update_web, schedule_web, qb_web, ops_web (Setup), next_web (job tracker, glow, Next task), funnel_web (Leads)
 rsc/db.py             schema (CREATE TABLE IF NOT EXISTS) and _migrate() for added columns. Add tables here.
 rsc/books.py          jobs, payments, expenses, change orders' money effects. IDs: job number + code + payment seq (ids.py)
 rsc/estimates.py      estimate model, templates, SOW. assist.py = model drafts estimates/scopes. pricing.py, rates.py = price checks

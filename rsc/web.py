@@ -12,7 +12,7 @@ from pathlib import Path
 
 from flask import Flask, abort, flash, g, jsonify, redirect, render_template, request, send_file, session, url_for
 
-from . import autocheck, ballpark, receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, next_web, ops_web, pipeline, scorecard_web, prefs, qb_web, receipts, sheets, voice, workflow, newowners_web
+from . import autocheck, ballpark, receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, next_web, ops_web, pipeline, scorecard_web, prefs, qb_web, receipts, sheets, voice, workflow, newowners_web, funnel_web
 from .config import Config, mail_password
 from .llm import ModelUnavailable, OllamaModel
 from .mail import GmailReader
@@ -183,6 +183,7 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
     next_web.register(app, cfg, conn)
     scorecard_web.register(app, cfg, conn)
     newowners_web.register(app, cfg, conn)
+    funnel_web.register(app, cfg, conn)
 
     def _form(*names):
         return {n: request.form.get(n, "").strip() for n in names}
