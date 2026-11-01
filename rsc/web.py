@@ -12,7 +12,7 @@ from pathlib import Path
 
 from flask import Flask, abort, flash, g, jsonify, redirect, render_template, request, send_file, session, url_for
 
-from . import autocheck, ballpark, receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, next_web, ops_web, pipeline, scorecard_web, prefs, qb_web, receipts, sheets, voice, workflow, newowners_web, funnel_web, marketing_web
+from . import autocheck, ballpark, receivables, receivables_web, client_update_web, schedule_web, brand, daily_web, guide, playbook_web, aging_web, assist, backup, books, crew, crew_web, db, estimates, followups, margins, modeler, models, next_web, ops_web, pipeline, scorecard_web, prefs, qb_web, receipts, sheets, voice, workflow, newowners, newowners_web, funnel_web, marketing_web
 from .config import Config, mail_password
 from .llm import ModelUnavailable, OllamaModel
 from .mail import GmailReader
@@ -209,7 +209,7 @@ def create_app(cfg: Config, lan: bool = False, model=None, vision=None) -> Flask
                                due_followups=followups.due(c), late_invoices=[r for r in receivables.outstanding(c) if r["needs_reminder"]],
                                next_steps=[{"job": j, "step": guide.next_step(c, j)} for j in _needs_a_step(c)[:6]
                                            if guide.next_step(c, j)][:4],
-                               all_jobs_count=len(books.list_jobs(c)))
+                               all_jobs_count=len(books.list_jobs(c)), new_owner_mail=newowners.week_due(c))
 
     @app.post("/check-mail")
     def check_mail():

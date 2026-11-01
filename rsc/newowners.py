@@ -8,8 +8,12 @@ Where the names come from (all public, no login, read-only):
     assessor's full market value (and the property ZIP).
   - Warren County's parcel layer (Queensbury, Glens Falls) has the real sale date and price, months behind.
 
-Code decides everything here: which owners count, the score and the letter. No model is used, nothing is sent:
-Nick prints the letters (or hands the CSV to a printer) and presses "I mailed these".
+Code decides everything here: which owners count, the score, the cards and when each is due. No model is used,
+nothing is sent: Nick prints the cards (or hands the CSV to a mailing service) and presses "I mailed these".
+
+Each owner gets up to three cards: a welcome, a follow-up three weeks later, and a seasonal note about six weeks after
+that, worded for the season it goes out in. Every card carries a short code and a QR code for rscrafters.com/welcome, where they can ask
+for a free walkthrough; that request comes back tagged "new homeowner mail", and the cards stop for that house.
 Mail only. No phone numbers, no skip tracing, no texts.
 """
 import csv
@@ -358,6 +362,7 @@ def _lead(county, a, d, town, street, owner, year_built, sqft, value, price, sal
 
 def init(conn: sqlite3.Connection) -> None:
     conn.executescript(db.NEW_OWNERS)
+    db.migrate_new_owners(conn)
 
 
 def save(conn: sqlite3.Connection, leads: list[dict], today: date) -> int:
@@ -448,20 +453,215 @@ def towns(conn: sqlite3.Connection) -> list[str]:
 
 
 def set_status(conn: sqlite3.Connection, keys: list[str], status: str, today: date | None = None) -> int:
-    if status not in ("new", "mailed", "skip"):
+    """'mailed' sends each house its next card (see mark_mailed); 'replied' stops the cards; 'skip' takes it off; 'new' puts it back."""
+    if status == "mailed":
+        return mark_mailed(conn, keys, today)
+    if status not in ("new", "skip", "replied"):
         raise ValueError(status)
-    mailed = (today or date.today()).isoformat() if status == "mailed" else ""
+    today = today or date.today()
     n = 0
     for k in keys:
-        n += conn.execute("UPDATE new_owners SET status = ?, mailed_on = ? WHERE key = ?", (status, mailed, k)).rowcount
+        if status == "new":   # back on the list from the start
+            n += conn.execute("UPDATE new_owners SET status = 'new', mailed_on = '', step = 0, next_due = '', card2_on = '', "
+                              "card3_on = '', replied_on = '' WHERE key = ?", (k,)).rowcount
+        elif status == "replied":
+            n += conn.execute("UPDATE new_owners SET status = 'replied', replied_on = ?, next_due = '' WHERE key = ?",
+                              (today.isoformat(), k)).rowcount
+        else:
+            n += conn.execute("UPDATE new_owners SET status = 'skip', next_due = '' WHERE key = ?", (k,)).rowcount
     conn.commit()
     return n
 
 
+# ---------- the three cards: welcome, follow-up, seasonal ----------
+
+FOLLOW_UP_DAYS = 21          # card 2 goes about three weeks after the welcome
+SEASON_GAP_DAYS = 42         # card 3, the seasonal note, about six weeks after card 2 (its words follow the season it goes in)
+CARD_NAMES = {1: "Welcome", 2: "Follow-up", 3: "Seasonal"}
+WELCOME_URL = "https://rscrafters.com/welcome/"
+SHORT_LINK = "rscrafters.com/welcome"
+LAST_BATCH = "newowner_last_batch"
+CODE_ALPHABET = "23456789ABCDEFGHJKMNPQRSTUVWXYZ"   # no 0/O, 1/I/L: read off a card and typed by hand
+
+FOLLOW_UP_LETTER = """Dear {addressee},
+
+I wrote a few weeks ago to welcome you to {town}. By now you have probably found the things in the house you would like to change, and maybe a few you didn't expect.
+
+That is a good time for a walkthrough. I'll come by, look at the rooms you have in mind, and tell you plainly what is sound, what can wait, and what it would take to do the work well. There is no charge for the visit, and you get a clear written plan before any work starts.
+
+If now isn't the time, keep this card. We'll be glad to hear from you when you're ready.
+
+{owner}
+{business}
+{phone}"""
+
+SEASONAL_LETTER = """Dear {addressee},
+
+{season_note}
+
+If there is a project on your list, I'd be glad to walk through the house with you. There is no charge for the visit, and you get a plain written plan before anything starts.
+
+All the best in your new home,
+
+{owner}
+{business}
+{phone}"""
+
+SEASON_NOTES = {
+    "winter": "Winter is when a house tells you about itself: drafts at the windows, ice along the eaves, a stair that creaks a little more each year. It is also a good season to plan a kitchen or bathroom, so the design and the plan are settled before the work begins.",
+    "spring": "Spring is when last winter shows: soft trim, loose railings, steps the frost has pushed out of line. It is also when people start thinking about the porch and the deck.",
+    "summer": "Summer is porch and deck season, and a good time to plan the inside work you'd like done in the cooler months.",
+    "fall": "Fall is the time to look at gutters, trim and entry steps before the snow, and to plan the kitchen or bathroom you want done over the winter.",
+}
+DEFAULT_CARDS = {1: DEFAULT_LETTER, 2: FOLLOW_UP_LETTER, 3: SEASONAL_LETTER}
+
+
+def card_key(card: int) -> str:
+    return LETTER_KEY if card == 1 else f"{LETTER_KEY}_{card}"
+
+
+def season(d: date) -> str:
+    return {12: "winter", 1: "winter", 2: "winter", 3: "spring", 4: "spring", 5: "spring",
+            6: "summer", 7: "summer", 8: "summer"}.get(d.month, "fall")
+
+
+def next_due_after(card: int, sent: date) -> str:
+    """When the next card is due after this one went out ('' after the last card)."""
+    if card == 1:
+        return (sent + timedelta(days=FOLLOW_UP_DAYS)).isoformat()
+    if card == 2:
+        return (sent + timedelta(days=SEASON_GAP_DAYS)).isoformat()
+    return ""
+
+
+def _new_code(conn: sqlite3.Connection) -> str:
+    import secrets
+    while True:
+        code = "".join(secrets.choice(CODE_ALPHABET) for _ in range(5))
+        if not conn.execute("SELECT 1 FROM new_owners WHERE code = ?", (code,)).fetchone():
+            return code
+
+
+def ensure_codes(conn: sqlite3.Connection, keys: list[str]) -> None:
+    for k in keys:
+        conn.execute("UPDATE new_owners SET code = ? WHERE key = ? AND code = ''", (_new_code(conn), k))
+    conn.commit()
+
+
+def normal_code(text: str) -> str:
+    """What someone typed from the card ('k7m 2p') -> 'K7M2P'; '' if it can't be one of ours."""
+    code = re.sub(r"[^A-Za-z0-9]", "", text or "").upper()
+    return code if len(code) == 5 and all(ch in CODE_ALPHABET for ch in code) else ""
+
+
+def by_code(conn: sqlite3.Connection, code: str):
+    code = normal_code(code)
+    if not code:
+        return None
+    init(conn)
+    return conn.execute("SELECT * FROM new_owners WHERE code = ?", (code,)).fetchone()
+
+
+def mark_replied(conn: sqlite3.Connection, code: str, today: date | None = None):
+    """Someone answered a card (the welcome page form). Stop their cards. Returns the house row, or None."""
+    row = by_code(conn, code)
+    if row and row["status"] in ("new", "mailed"):
+        set_status(conn, [row["key"]], "replied", today)
+        row = conn.execute("SELECT * FROM new_owners WHERE key = ?", (row["key"],)).fetchone()
+    return row
+
+
+def mark_mailed(conn: sqlite3.Connection, keys: list[str], today: date | None = None) -> int:
+    """Each of these houses just got its next card. Returns how many were marked."""
+    today = today or date.today()
+    init(conn)
+    n = 0
+    for k in keys:
+        r = conn.execute("SELECT step, status FROM new_owners WHERE key = ?", (k,)).fetchone()
+        if not r or r["status"] not in ("new", "mailed") or r["step"] >= 3:
+            continue
+        card = r["step"] + 1
+        sets = {"status": "mailed", "step": card, "next_due": next_due_after(card, today)}
+        sets[{1: "mailed_on", 2: "card2_on", 3: "card3_on"}[card]] = today.isoformat()
+        conn.execute(f"UPDATE new_owners SET {', '.join(c + ' = ?' for c in sets)} WHERE key = ?", [*sets.values(), k])
+        n += 1
+    ensure_codes(conn, keys)
+    prefs.put(conn, LAST_BATCH, today.isoformat())
+    conn.commit()
+    return n
+
+
+def follow_ups_due(conn: sqlite3.Connection, today: date | None = None) -> list[sqlite3.Row]:
+    """Houses whose card 2 or 3 is due by today, oldest due first."""
+    init(conn)
+    return conn.execute("SELECT * FROM new_owners WHERE status = 'mailed' AND step BETWEEN 1 AND 2 AND next_due != '' "
+                        "AND next_due <= ? ORDER BY next_due, score DESC", ((today or date.today()).isoformat(),)).fetchall()
+
+
+def this_weeks_mail(conn: sqlite3.Connection, n: int | None = 50, grade: str = "A", town: str = "",
+                    today: date | None = None) -> list[sqlite3.Row]:
+    """This week's batch: every follow-up card that is due first, then new welcome cards (best first) up to n."""
+    due_now = follow_ups_due(conn, today)
+    if n and len(due_now) >= n:
+        return due_now[:n]
+    room = (n - len(due_now)) if n else None
+    if room == 0:
+        return due_now
+    return due_now + listing(conn, "new", grade, town, mailable=True, limit=room)
+
+
+def week_due(conn: sqlite3.Connection, today: date | None = None) -> dict | None:
+    """For the Home page: {'follow_ups': n, 'new': n} when a week has passed since the last batch, else None.
+    Only once Nick has started mailing (the first batch is his choice, from the New homeowners page)."""
+    today = today or date.today()
+    last = prefs.get(conn, LAST_BATCH)
+    if not last:
+        return None
+    try:
+        if today - date.fromisoformat(last) < timedelta(days=7):
+            return None
+    except ValueError:
+        pass
+    init(conn)
+    ups = len(follow_ups_due(conn, today))
+    new = conn.execute("SELECT COUNT(*) FROM new_owners WHERE status = 'new' AND zip != '' AND street != ''").fetchone()[0]
+    return {"follow_ups": ups, "new": new} if ups or new else None
+
+
+def in_the_mail(conn: sqlite3.Connection, limit: int = 100) -> list[sqlite3.Row]:
+    init(conn)
+    return conn.execute("SELECT * FROM new_owners WHERE status IN ('mailed', 'replied') "
+                        "ORDER BY (status = 'replied') DESC, COALESCE(NULLIF(replied_on, ''), NULLIF(card3_on, ''), "
+                        "NULLIF(card2_on, ''), mailed_on) DESC LIMIT ?", (limit,)).fetchall()
+
+
+def sequence_counts(conn: sqlite3.Connection, today: date | None = None) -> dict:
+    init(conn)
+    out = {"card1": 0, "card2": 0, "card3": 0, "replied": 0, "due": len(follow_ups_due(conn, today))}
+    for step, k in conn.execute("SELECT step, COUNT(*) FROM new_owners WHERE status = 'mailed' GROUP BY step"):
+        if step in (1, 2, 3):
+            out[f"card{step}"] = k
+    out["replied"] = conn.execute("SELECT COUNT(*) FROM new_owners WHERE status = 'replied'").fetchone()[0]
+    return out
+
+
+def qr_svg(url: str) -> str:
+    """The QR code as inline SVG, drawn here on the Mac (segno, no network). '' if segno isn't installed."""
+    try:
+        import segno
+    except ImportError:
+        return ""
+    return segno.make(url, error="m").svg_inline(scale=3, border=2)
+
+
+def card_link(row) -> str:
+    return f"{WELCOME_URL}?c={row['code']}" if row["code"] else WELCOME_URL
+
+
 # ---------- the letter and the mailing list ----------
 
-def letter_template(conn: sqlite3.Connection) -> str:
-    return prefs.get(conn, LETTER_KEY) or DEFAULT_LETTER
+def letter_template(conn: sqlite3.Connection, card: int = 1) -> str:
+    return prefs.get(conn, card_key(card)) or DEFAULT_CARDS[card]
 
 
 class _Blank(dict):
@@ -469,13 +669,20 @@ class _Blank(dict):
         return "{" + key + "}"
 
 
-def letter(conn: sqlite3.Connection, row) -> str:
+def next_card(row) -> int:
+    """Which card this house gets next: 1 for a new house, then 2, then 3."""
+    return min((row["step"] or 0) + 1, 3) if row["status"] in ("new", "mailed") else 1
+
+
+def letter(conn: sqlite3.Connection, row, card: int | None = None, today: date | None = None) -> str:
     b = brand.current()
     owner = prefs.get(conn, "owner_name") or b.get("owner", "")
     town = row["city"] or row["town"]
+    card = card or next_card(row)
     fields = _Blank(addressee=row["addressee"] or "Neighbor", street=_street_name(row["street"]), town=town,
-                    owner=owner, business=b["name"], region=b["region"], phone=b["phone"], email=b["email"])
-    return letter_template(conn).format_map(fields)
+                    owner=owner, business=b["name"], region=b["region"], phone=b["phone"], email=b["email"],
+                    season_note=SEASON_NOTES[season(today or date.today())], link=SHORT_LINK, code=row["code"])
+    return letter_template(conn, card).format_map(fields)
 
 
 def _street_name(street: str) -> str:
@@ -484,11 +691,15 @@ def _street_name(street: str) -> str:
 
 
 CSV_COLS = ["addressee", "owner_on_record", "street", "city", "state", "zip", "town", "county", "grade", "score",
-            "why", "year_built", "sale_date", "sale_price", "market_value", "deed", "key"]
+            "why", "year_built", "sale_date", "sale_price", "market_value", "deed", "key",
+            "card", "card_name", "code", "link", "message"]
 
 
 def mailing_csv(conn: sqlite3.Connection, rows) -> str:
-    """Mail-merge file: one line per letter, with the address lines a printer or Word mail merge expects."""
+    """Mail-merge file: one line per card, with the address lines a printer or Word mail merge expects, plus which
+    card it is, its code and link (for the QR code) and the card's words, for a mailing service such as Thanks.io."""
+    ensure_codes(conn, [r["key"] for r in rows])
+    rows = [conn.execute("SELECT * FROM new_owners WHERE key = ?", (r["key"],)).fetchone() for r in rows]
     out = io.StringIO()
     w = csv.writer(out)
     w.writerow(CSV_COLS)
@@ -496,5 +707,5 @@ def mailing_csv(conn: sqlite3.Connection, rows) -> str:
         w.writerow([r["addressee"], r["owner"], r["street"], r["city"], "NY", r["zip"], r["town"], r["county"],
                     r["grade"], r["score"], r["why"], r["year_built"] or "", r["sale_date"],
                     f"{r['sale_price']:.0f}" if r["sale_price"] else "", f"{r['market_value']:.0f}" if r["market_value"] else "",
-                    r["deed"], r["key"]])
+                    r["deed"], r["key"], next_card(r), CARD_NAMES[next_card(r)], r["code"], card_link(r), letter(conn, r)])
     return out.getvalue()

@@ -131,4 +131,101 @@ def test_page_buttons(cfg, conn, monkeypatch):
     r = c.post("/new-owners/mark", data={"csrf": tok, "status": "mailed", "all": "1", "grade": "C", "n": "25"}, follow_redirects=True)
     assert "Marked 2 as mailed" in r.get_data(as_text=True)   # the Warren house has no ZIP, so no letter
     r = c.post("/new-owners/letter", data={"csrf": tok, "letter": "Hello {addressee}"}, follow_redirects=True)
-    assert "Letter saved" in r.get_data(as_text=True)
+    assert "Welcome card saved" in r.get_data(as_text=True)
+
+
+# ---------- the three cards ----------
+
+def _two_mailable(conn):
+    newowners.refresh(conn, TODAY, post=fake_post())
+    return [r["key"] for r in newowners.listing(conn, "new", "C", mailable=True)]
+
+
+def test_card_sequence_dates_and_weekly_batch(conn):
+    keys = _two_mailable(conn)
+    assert len(keys) == 2
+    assert newowners.mark_mailed(conn, keys[:1], TODAY) == 1
+    r = conn.execute("SELECT * FROM new_owners WHERE key = ?", (keys[0],)).fetchone()
+    assert (r["step"], r["mailed_on"], r["next_due"]) == (1, "2026-11-01", "2026-11-22") and len(r["code"]) == 5
+    # before card 2 is due, the batch is just new welcome cards
+    assert [x["key"] for x in newowners.this_weeks_mail(conn, 50, "C", today=date(2026, 11, 10))] == keys[1:]
+    # once it's due, the follow-up comes first
+    batch = newowners.this_weeks_mail(conn, 50, "C", today=date(2026, 11, 23))
+    assert [x["key"] for x in batch] == keys and newowners.next_card(batch[0]) == 2 and newowners.next_card(batch[1]) == 1
+    assert "wrote a few weeks ago" in newowners.letter(conn, batch[0])
+    newowners.mark_mailed(conn, keys[:1], date(2026, 11, 23))
+    r = conn.execute("SELECT * FROM new_owners WHERE key = ?", (keys[0],)).fetchone()
+    assert (r["step"], r["card2_on"], r["next_due"]) == (2, "2026-11-23", "2027-01-04")
+
+
+def test_season_rules():
+    assert newowners.next_due_after(1, date(2026, 11, 1)) == "2026-11-22"
+    assert newowners.next_due_after(2, date(2026, 11, 23)) == "2027-01-04"
+    assert newowners.next_due_after(3, date(2026, 12, 1)) == ""
+    assert newowners.season(date(2027, 1, 5)) == "winter" and newowners.season(date(2026, 10, 1)) == "fall"
+
+
+def test_third_card_is_seasonal_and_last(conn):
+    k = _two_mailable(conn)[0]
+    for d in (date(2026, 9, 1), date(2026, 9, 22), date(2026, 12, 1)):  # Nick can mail late; the dates follow
+        newowners.mark_mailed(conn, [k], d)
+    r = conn.execute("SELECT * FROM new_owners WHERE key = ?", (k,)).fetchone()
+    assert (r["step"], r["card3_on"], r["next_due"]) == (3, "2026-12-01", "")
+    assert newowners.mark_mailed(conn, [k], date(2027, 1, 1)) == 0          # no fourth card
+    assert "Winter is when" in newowners.letter(conn, r, card=3, today=date(2026, 12, 1))
+
+
+def test_reply_by_code_stops_cards(conn):
+    k = _two_mailable(conn)[0]
+    newowners.mark_mailed(conn, [k], TODAY)
+    code = conn.execute("SELECT code FROM new_owners WHERE key = ?", (k,)).fetchone()[0]
+    row = newowners.mark_replied(conn, code.lower()[:2] + " " + code.lower()[2:], TODAY)
+    assert row["status"] == "replied" and row["next_due"] == ""
+    assert newowners.follow_ups_due(conn, date(2027, 1, 1)) == []
+    assert newowners.mark_replied(conn, "ZZZZZ") is None and newowners.normal_code("O0I1L") == ""
+
+
+def test_welcome_page_form_becomes_tagged_lead(cfg, conn):
+    from rsc import intake
+    k = _two_mailable(conn)[0]
+    newowners.mark_mailed(conn, [k], TODAY)
+    code = conn.execute("SELECT code FROM new_owners WHERE key = ?", (k,)).fetchone()[0]
+
+    class Mail:
+        subject = "New homeowner walkthrough"
+        sender = "noreply@formspree.io"
+        body = (f"name: Jane Smith\nreply to: jane@example.com\ncard code: {code}\nsource: new homeowner mail\n"
+                "message: Would love a walkthrough of the kitchen.")
+    s = intake.suggestion_from_form(conn, Mail(), "518-932-9919")
+    assert s.kind == "lead" and "new homeowner mail" in s.data["project"] and s.data["new_owner_code"] == code
+    assert s.data["address"].startswith("12 Maple Ave") and "cards are stopped" in s.match_note
+    assert conn.execute("SELECT status FROM new_owners WHERE key = ?", (k,)).fetchone()[0] == "replied"
+
+
+def test_old_mailed_rows_become_card_one(tmp_path):
+    import sqlite3
+    from rsc import db
+    c = sqlite3.connect(tmp_path / "old.db")
+    c.row_factory = sqlite3.Row
+    c.executescript(db.NEW_OWNERS)
+    c.execute("INSERT INTO new_owners (key, county, first_seen, status, mailed_on) VALUES ('a', 'Saratoga', '2026-10-01', 'mailed', '2026-10-05')")
+    db.migrate_new_owners(c)
+    r = c.execute("SELECT step, next_due FROM new_owners").fetchone()
+    assert (r["step"], r["next_due"]) == (1, "2026-10-26")
+
+
+def test_home_reminds_weekly(conn):
+    from rsc import prefs
+    keys = _two_mailable(conn)
+    assert newowners.week_due(conn, TODAY) is None           # nothing until the first batch is mailed
+    newowners.mark_mailed(conn, keys[:1], TODAY)
+    assert newowners.week_due(conn, date(2026, 11, 5)) is None
+    assert newowners.week_due(conn, date(2026, 11, 23)) == {"follow_ups": 1, "new": 1}
+
+
+def test_print_has_qr_and_code(cfg, conn):
+    _two_mailable(conn)
+    app = create_app(cfg)
+    html = app.test_client().get("/new-owners/letters?grade=C").get_data(as_text=True)
+    code = conn.execute("SELECT code FROM new_owners WHERE code != '' LIMIT 1").fetchone()[0]
+    assert "rscrafters.com/welcome" in html and code in html and "<svg" in html

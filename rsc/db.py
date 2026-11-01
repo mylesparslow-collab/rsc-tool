@@ -267,10 +267,29 @@ CREATE TABLE IF NOT EXISTS new_owners (
     grade TEXT NOT NULL DEFAULT 'C',
     why TEXT NOT NULL DEFAULT '',
     first_seen TEXT NOT NULL,
-    status TEXT NOT NULL DEFAULT 'new',   -- new, mailed, skip
-    mailed_on TEXT NOT NULL DEFAULT ''
+    status TEXT NOT NULL DEFAULT 'new',   -- new, mailed (cards going out), replied, skip
+    mailed_on TEXT NOT NULL DEFAULT ''    -- the day card 1 (the welcome) went out
 );
 """
+
+# Added in 0.3.1 for the three-card mailing (newowners.py): which card went last, when the next is due, the
+# code printed on each card (rscrafters.com/welcome?c=CODE) and when the owner got in touch.
+NEW_OWNER_COLUMNS = (("code", "TEXT NOT NULL DEFAULT ''"), ("step", "INTEGER NOT NULL DEFAULT 0"),
+                     ("next_due", "TEXT NOT NULL DEFAULT ''"), ("card2_on", "TEXT NOT NULL DEFAULT ''"),
+                     ("card3_on", "TEXT NOT NULL DEFAULT ''"), ("replied_on", "TEXT NOT NULL DEFAULT ''"))
+
+
+def migrate_new_owners(conn: sqlite3.Connection) -> None:
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(new_owners)")}
+    if not cols or all(c in cols for c, _ in NEW_OWNER_COLUMNS):
+        return
+    for col, ddl in NEW_OWNER_COLUMNS:
+        if col not in cols:
+            conn.execute(f"ALTER TABLE new_owners ADD COLUMN {col} {ddl}")
+    # letters marked mailed before the card sequence existed count as card 1; card 2 follows three weeks later
+    conn.execute("UPDATE new_owners SET step = 1, next_due = date(mailed_on, '+21 days') "
+                 "WHERE status = 'mailed' AND step = 0 AND mailed_on != ''")
+    conn.commit()
 
 
 def connect(path: str | Path) -> sqlite3.Connection:
@@ -301,6 +320,7 @@ def _migrate(conn: sqlite3.Connection) -> None:
     fu_cols = {r[1] for r in conn.execute("PRAGMA table_info(followups)")}
     if fu_cols and "round" not in fu_cols:
         conn.execute("ALTER TABLE followups ADD COLUMN round INTEGER NOT NULL DEFAULT 1")
+    migrate_new_owners(conn)
 
 
 def init(conn: sqlite3.Connection, first_job_number: int = 1001) -> None:

@@ -2,6 +2,21 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## 0.3.1 (2026-11-01)
+
+New homeowners: the follow-through after the first letter.
+
+- Each house now gets up to three cards by mail: the welcome, a follow-up three weeks later, and a seasonal note about
+  six weeks after that (its words follow the season it goes out in). All three can be edited on the page.
+- Every card prints with its own short code and a QR code for the new page **rscrafters.com/welcome**, which offers a free
+  walkthrough. A request from that page lands in To Review tagged "new homeowner mail" with the house's address filled
+  in, and that house gets no more cards. A "Got in touch" button does the same for people who call or text.
+- "This week's batch" puts due follow-ups first, then new welcome cards, up to 50. After the first batch, Home reminds
+  Nick each week when cards are due. The CSV now has the card, code, link and words for a mailing service (Thanks.io).
+- Letters already marked mailed count as card 1, so their follow-up comes up on its own.
+- New dependency: `segno` (draws the QR codes on the Mac, no network). The usual update step installs it.
+- Website: new page `/welcome/` (not in the menu or sitemap, not indexed by search engines), using the same Formspree form.
+
 ## 0.3.0 (2026-11-01)
 
 Everything from the open pull requests, merged together: website quote form, instant lead follow-up, pricing check, Google review reminders, rough range for new leads, Scorecard, QuickBooks Send estimate, email worker, Yelp/Houzz links, New homeowners, Leads page and Marketing page.

@@ -19,6 +19,7 @@ LABELS = {
     "contact": {"contact", "phone or email", "reply to", "best way to reach you"},
     "source": {"source", "heard from", "found us", "found us through", "how did you hear about us", "how did you find us",
                "referred by", "referral"},
+    "code": {"card code", "code from your card", "code on your card"},
     "message": {"message", "comments", "comment", "details", "project", "project details", "tell us about your project",
                 "how can we help", "how can we help you", "your message", "description", "project description", "notes",
                 "concern", "experience"},
@@ -112,6 +113,21 @@ def applicant_reply(name: str, owner: str, phone: str) -> str:
             f"fit, we can set up a time to talk.\n\n{owner}\n{brand.current()['name']}\n{phone}")
 
 
+NEW_OWNER_SOURCE = "new homeowner mail"
+
+
+def _new_owner_card(conn, code: str):
+    """The house a welcome-page request came from, by the code printed on its card. Its cards stop here (they've
+    answered), which only ever means less mail; the lead itself still waits in To Review for Nick."""
+    if not code:
+        return None
+    from . import newowners
+    try:
+        return newowners.mark_replied(conn, code)
+    except Exception:      # a bad code or an old database must never lose the lead
+        return None
+
+
 def suggestion_from_form(conn, mail, phone: str):
     """A Suggestion (lead or applicant) for a website form email, or None."""
     from .extract import Suggestion
@@ -128,8 +144,16 @@ def suggestion_from_form(conn, mail, phone: str):
         note = "job application sent through the website form"
     else:
         source = f.get("source", "").strip().rstrip(".")
+        house = _new_owner_card(conn, f.get("code", ""))
+        if house and not source:
+            source = NEW_OWNER_SOURCE
         project = (msg[:400] or mail.subject) + (f" (Found us: {source[:60]}.)" if source else "")
-        data = {"name": f.get("name", ""), "email": f["email"], "phone": f.get("phone", ""), "address": f.get("address", ""),
+        address = f.get("address", "") or (f"{house['street']}, {house['city'] or house['town']}" if house else "")
+        data = {"name": f.get("name", ""), "email": f["email"], "phone": f.get("phone", ""), "address": address,
                 "project": project}
+        if house:
+            data["new_owner_code"] = house["code"]
         note = "website contact form" + (f", came from {source[:60]}" if source else "")
+        if house:
+            note += f" (card code {house['code']}, {house['street']}; their cards are stopped)"
     return Suggestion("lead", data, note, 0.9)
