@@ -12,6 +12,7 @@ Pops's computer reads his email, spots receipts, payments and new customers, and
 3. **Jobs** ([jobs.png](jobs.png)) and a **job page** ([job.png](job.png)): contract total, payment schedule (1002-SMI-1, -2...), expenses on that job. Payment IDs double as QuickBooks invoice numbers.
 4. **Expenses** ([expenses.png](expenses.png)): every cost goes to a job number or an RSC code. **RSC Codes** ([codes.png](codes.png)) lists the business-cost codes.
 5. **Room model**: type wall sizes, windows and doors; get a dimensioned plan, a spinnable 3D view, and text to paste into ChatGPT for a pretty picture.
+6. **Marketing**: type or speak one line about a finished job and get a TikTok caption, a Facebook post and a Nextdoor post, with names, addresses, phone numbers, prices and unconfirmed claims taken out by code. Copy, post, press **Posted**. Below that, a checklist of every online listing (website, Google, Yelp, Houzz...) with what still needs fixing.
 
 ## What happens behind the scenes
 Every 30 minutes: Gmail (read-only) -> keyword filter drops junk -> the AI model on his Mac reads what's left -> plain rules pick the job (a "1002-SMI" on the receipt, or the address, or the client name) -> a card appears in To Review.

@@ -1,0 +1,87 @@
+{% extends "base.html" %}{% block title %}Marketing{% endblock %}
+{% block body %}
+<h1>Marketing</h1>
+<p class="muted">Posts about your real jobs, and where the business shows up online. Nothing here posts or changes anything by itself: you copy a draft into TikTok, Facebook or Nextdoor and press <b>Posted</b> when it's up.</p>
+
+<div class="card">
+  <h2>Post about a job</h2>
+  <form method="post" action="{{ url_for('marketing_draft') }}" data-busy="Writing...">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    {% if jobs %}<label>Which job (optional)
+      <select name="job_number"><option value="">No particular job</option>
+        {% for j in jobs %}<option value="{{ j.number }}"{% if pick == j.number %} selected{% endif %}>{{ j.job_id }} {{ j.last_name }}{% if j.job_type %}: {{ j.job_type }}{% endif %} ({{ j.status }})</option>{% endfor %}
+      </select></label>{% endif %}
+    <textarea name="note" data-voice rows="3" placeholder="Finished the walk-in shower. Took out the old tub, curbless tile floor, glass panel, grab bar by the bench."></textarea>
+    <button class="btn">Write the posts</button>
+  </form>
+  <p class="muted">Client names, street addresses, phone numbers, prices, and claims like "licensed", "insured" or "warranty" are taken out automatically. Only the town is kept.</p>
+</div>
+
+<h2 id="posts">Drafts and posts</h2>
+{% if not posts %}<p class="muted">No posts yet. A finished job with good photos is the best thing to post.</p>{% endif %}
+{% for p in posts %}
+<div class="card{% if p.posted_on %} flat{% endif %}">
+  <p>{% if p.posted_on %}<span class="pill s-complete">Posted {{ p.posted_on }}</span>{% else %}<span class="pill s-in-progress">Draft</span>{% endif %}
+    {% if p.job_number %}<span class="muted">Job {{ p.job_id or p.job_number }} {{ p.last_name or '' }} (the name is not in the post)</span>{% endif %}</p>
+  {% if p.photos %}<p class="muted">Photos from this job (right-click or long-press to save, then add them in the app):</p>
+    <div class="thumbs">{% for ph in p.photos[-6:] %}<a href="{{ url_for('client_update_photo', number=p.job_number, photo_id=ph.id) }}" target="_blank"><img src="{{ url_for('client_update_photo', number=p.job_number, photo_id=ph.id) }}" alt="Site photo from {{ ph.taken_on }}" width="110"></a>{% endfor %}</div>{% endif %}
+  <form method="post" action="{{ url_for('marketing_post', post_id=p.id) }}">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    {% for key, label in (('tiktok', 'TikTok caption'), ('facebook', 'Facebook'), ('nextdoor', 'Nextdoor')) %}
+    <label>{{ label }} <button class="btn secondary small" type="button" data-copy="p{{ p.id }}-{{ key }}">Copy</button>
+      <textarea id="p{{ p.id }}-{{ key }}" name="{{ key }}" rows="{{ 3 if key == 'tiktok' else 4 }}">{{ p[key] }}</textarea></label>
+    {% endfor %}
+    <div class="actions">
+      {% if not p.posted_on %}<button class="btn" name="action" value="posted">Posted</button>{% endif %}
+      <button class="btn secondary" name="action" value="save">Save changes</button>
+      <button class="btn secondary" name="action" value="delete">Remove</button>
+    </div>
+  </form>
+</div>
+{% endfor %}
+
+<div class="card" id="schedule">
+  <h2>Posting schedule</h2>
+  <p class="muted">So everyone knows the plan. The ad videos are queued in Buffer by Myles; your own job posts go up whenever you like.</p>
+  <form method="post" action="{{ url_for('marketing_schedule') }}" class="inline">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <input name="schedule" value="{{ schedule }}" style="min-width:60%"> <button class="btn secondary small">Save</button>
+  </form>
+  <p class="muted">{% if summary.last_posted %}Last job post marked posted {{ summary.days_since }} day(s) ago.{% else %}No job posts marked posted yet.{% endif %}</p>
+</div>
+
+<h2 id="listings">Where you show up online</h2>
+<div class="card">
+  <p>Every listing should show exactly the same name, phone and website (Google checks this):</p>
+  <p><b>{{ biz.name }}</b> · <b>{{ biz.phone }}</b>{% if website %} · <b>{{ website }}</b>{% endif %}</p>
+  <p class="muted">The name and phone come from the <a href="{{ url_for('setup_page') }}">Setup page</a>; the website from the Website row below. If a listing shows something different, fix one or the other so they match.</p>
+</div>
+<div class="card">
+{% for x in listings %}
+  <div style="padding:var(--s-2) 0;border-top:{{ '0' if loop.first else '1px solid var(--line)' }}">
+    <strong>{{ x.label }}</strong>
+    <span class="pill {{ {'Live': 's-complete', 'To fix': 's-in-progress', 'Not set up': 's-on-hold'}[x.status] }}">{{ x.status }}</span>
+    {% if x.url %}<a href="{{ x.url }}" target="_blank" rel="noopener">Open</a>{% endif %}
+    {% if x.todo %}<div class="muted">{{ x.todo }}</div>{% endif %}
+    <details><summary class="muted">Change</summary>
+      <form method="post" action="{{ url_for('marketing_listing', key=x.key) }}">
+        <input type="hidden" name="csrf" value="{{ csrf }}">
+        <label>Link <input name="url" value="{{ x.url }}" placeholder="https://..."></label>
+        <label>Still to fix (leave empty when it's all right) <textarea name="todo" rows="2">{{ x.todo }}</textarea></label>
+        <button class="btn secondary small">Save</button>
+      </form></details>
+  </div>
+{% endfor %}
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = document.getElementById(b.dataset.copy);
+    (navigator.clipboard ? navigator.clipboard.writeText(t.value) : Promise.reject()).catch(function () { t.select(); document.execCommand('copy'); });
+    b.textContent = 'Copied';
+    setTimeout(function () { b.textContent = 'Copy'; }, 1500);
+  });
+});
+</script>
+{% endblock %}

@@ -10,7 +10,7 @@ import sqlite3
 from datetime import date, timedelta
 from email.message import EmailMessage
 
-from . import receivables, books, brand, crew, estimates, followups, margins, pipeline, prefs, pricing
+from . import receivables, books, brand, crew, estimates, followups, margins, marketing, pipeline, prefs, pricing
 
 OPENING_SCHEMA = {"type": "object", "properties": {"message": {"type": "string"}}, "required": ["message"]}
 OPENING_PROMPT = ("Write ONE plain sentence (under 30 words) opening a weekly business report for a remodeling contractor. "
@@ -56,6 +56,7 @@ def build(conn: sqlite3.Connection, today: date | None = None) -> dict:
         "active": active, "spent": round(spent, 2), "flagged": flagged, "waiting": waiting,
         "to_review": len(pipeline.pending(conn)), "followups": followups.due(conn, today, ahead_days=7),
         "new_this_week": [j for j in jobs if (j["created_at"] or "")[:10] >= start],
+        "marketing": marketing.summary(conn, today),
     }
 
 
@@ -106,6 +107,16 @@ def render_text(r: dict, intro: str) -> str:
         L.append(f"  {r['to_review']} items from email waiting under To Review")
     if r["followups"]:
         L += ["", "FOLLOW-UPS DUE"] + [f"  {f['title']}: {f['first_name']} {f['last_name']} ({f['job_id']}), due {f['due_date']}" for f in r["followups"]]
+    m = r.get("marketing")
+    if m and (m["drafts"] or m["to_fix"] or m["jobs_to_post"] or m["last_posted"]):
+        L += ["", "MARKETING"]
+        if m["drafts"]:
+            L.append(f"  {m['drafts']} job post draft(s) waiting to go up (Marketing page)")
+        L.append(f"  Last job post: {m['days_since']} day(s) ago" if m["last_posted"] else "  No job posts marked posted yet")
+        if m["jobs_to_post"]:
+            L.append(f"  {m['jobs_to_post']} finished or underway job(s) never posted about")
+        if m["to_fix"]:
+            L.append("  Listings to fix: " + ", ".join(m["to_fix"]))
     return "\n".join(L) + "\n"
 
 

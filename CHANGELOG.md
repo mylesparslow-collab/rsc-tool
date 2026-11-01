@@ -2,6 +2,15 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## 0.2.9
+
+- New Marketing page (sidebar, under "Getting work").
+  - **Post about a job.** Pick a finished or underway job (optional), type or speak one line about the work, and the assistant drafts a TikTok caption, a Facebook post and a Nextdoor post. The client's name becomes "the homeowners". Street addresses are removed, and so are whole sentences with a phone number, an email, a price, or a claim like "licensed", "insured" or "warranty". Only the town is kept. TikTok gets hashtags, and Facebook and Nextdoor get the website. If the assistant is off, plain wording is used. Each draft has Copy buttons and the job's site photos. Press "Posted" when it's up. Nothing is posted from the app.
+  - **Posting schedule**, one line everyone can see (the TikTok ad times by default).
+  - **Where you show up online:** website, Google, Yelp, Houzz, Nextdoor, TikTok, Facebook and business email. Each shows its link, whether it's Live, To fix or Not set up, and what still needs fixing, plus the exact name, phone and website every listing should match. The app never visits those sites.
+- Monday report: a MARKETING section with drafts waiting, days since the last job post, jobs never posted about, and listings still to fix.
+- (0.2.8 is used by other open changes; whichever merges last takes the next number.)
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.
