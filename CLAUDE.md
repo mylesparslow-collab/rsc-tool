@@ -26,7 +26,7 @@ RSC tool. The app is small and local, and it handles real client money, so chang
 4. **Nothing is sent for him.** Emails open in Mail (`mailto:`) for him to read and send. The only things the app
    emails by itself are the Monday report and the weekday crew sheet, both to people he listed on the Setup page. One more, only when he presses it (Myles approved 2026-10-15): the **Send** button on the estimate preview emails the estimate PDF to the client from his Gmail, with a copy to him.
    Do not add automatic sending to clients, QuickBooks writes, or anything else that leaves the Mac without asking Myles.
-5. **Local first.** The AI runs in Ollama on this Mac. Nothing is sent to a cloud model. Don't add network calls.
+5. **Local first.** The AI runs in Ollama on this Mac. Nothing is sent to a cloud model. Don't add network calls. (One read-only exception Myles asked for, 2026-11-01: `newowners.py` reads public county and state parcel map services once a month.)
 6. **Professional wording.** Client-facing text is plain, polite, and never threatens (no fees or lawyers in
    payment reminders).
 
@@ -35,7 +35,7 @@ RSC tool. The app is small and local, and it handles real client money, so chang
 Home (today's cards, What's next), To Review (email suggestions), Jobs, job page (estimate, SOW, contract, change
 orders, hours, safety assessment, crew brief, progress, client update, room model), Expenses, Codes (RSC-100..900),
 Pricing, Crew (people, hours, insurance certificates, payroll cost), Today (daily crew sheet), Week (who is where),
-Owed (invoice aging and reminders), Playbook, QuickBooks (CSV downloads; optional direct connection), Setup.
+Owed (invoice aging and reminders), Playbook, New homeowners (recent buyers from public parcel records, welcome letters by mail), QuickBooks (CSV downloads; optional direct connection), Setup.
 
 Longer descriptions: `README.md`, `docs/how-it-works.md`, `docs/crew-pricing-aging.md`, `docs/nick-quick-start.md`,
 `docs/launch-checklist.md`, `docs/quickbooks-setup.md`.
@@ -54,6 +54,7 @@ rsc/contract.py       contract text (DRAFT, see Safe-change rules). changeorders
 rsc/pipeline.py       email -> model -> suggestions -> approve/dismiss. extract.py = prompts and parsing. mail.py = IMAP (read-only)
 rsc/intake.py         website-form and job-application emails (plain code, no model needed)
 rsc/leads.py, followups.py  reply drafts for new leads; review/check-in follow-ups
+rsc/newowners.py      new home buyers from public parcel maps (Saratoga, Warren, NYS points), scoring, letters, CSV. newowners_web.py = page
 rsc/receivables.py    invoice aging and polite reminder drafts. client_update.py = weekly note to the homeowner
 rsc/crew.py           people, hours, certificates, payroll cost. schedule.py = week plan. daily.py = daily crew sheet
 rsc/aging.py          aging-in-place assessment, dimension checks. playbook.py, guide.py = crew brief and What's next
@@ -100,7 +101,7 @@ is not in `~/RSC`.
 | Show reports without sending | `.venv/bin/rsc weekly-report`, `.venv/bin/rsc daily-sheet` |
 | Re-run installer after an update | double-click *Install RSC.command* (safe to repeat) |
 
-Background jobs (launchd, labels `com.reclaimedspacecrafters.<name>` for app, checkmail, weeklyreport, dailysheet,
+Background jobs (launchd, labels `com.reclaimedspacecrafters.<name>` for app, checkmail, weeklyreport, dailysheet, newowners,
 ollama): `launchctl list | grep reclaimed`. Plists are in `~/Library/LaunchAgents`. Restart the app after a code change:
 `launchctl kickstart -k gui/$(id -u)/com.reclaimedspacecrafters.app`. (If it isn't loaded, `rsc open` starts it.)
 Port in use: `lsof -nP -iTCP:5151 -sTCP:LISTEN`. A phone on the same Wi-Fi needs `access_pin` in `config.toml`

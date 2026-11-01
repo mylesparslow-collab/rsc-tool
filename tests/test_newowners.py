@@ -19,6 +19,8 @@ SARATOGA_ROWS = [
     {"OBJECTID": 4, "SWIS": "414800", "PRINT_KEY": "150.-3-9", "MUNI": "Wilton", "PROP_ADDR": "40 Ridge Rd",
      "OWNER": "O'BRIEN KATE", "DEED_BOOK": "2025", "DEED_PAGE": "41000", "PRP_CLS_CODE": "210",
      "MAIL_ADDR": "1 Elsewhere St", "MAIL_CITY": "ALBANY", "MAIL_ZIP": "12203"},
+    {"OBJECTID": 5, "SWIS": "413800", "PRINT_KEY": "1.-1-1", "MUNI": "Halfmoon", "PROP_ADDR": "1 Far Rd",
+     "OWNER": "Lee, Ann", "DEED_BOOK": "2026", "DEED_PAGE": "100", "PRP_CLS_CODE": "210"},
 ]
 STATE_ROWS = [
     {"OBJECTID": 11, "SWIS": "411500", "PRINT_KEY": "165.12-1-3", "YR_BLT": 1925, "SQFT_LIVING": 1800,
@@ -56,7 +58,7 @@ def fake_post(calls=None):
 
 def test_refresh_finds_families_scores_and_skips_builders(conn):
     msg = newowners.refresh(conn, TODAY, post=fake_post())
-    assert "Saratoga County: 4 deeds" in msg and "Warren County" in msg
+    assert "Saratoga County: 5 deeds" in msg and "3 houses in your towns" in msg and "Warren County" in msg
     rows = {r["street"]: r for r in conn.execute("SELECT * FROM new_owners")}
     smith = rows["12 Maple Ave"]
     assert smith["grade"] == "A" and smith["year_built"] == 1925 and smith["zip"] == "12866"
@@ -64,6 +66,7 @@ def test_refresh_finds_families_scores_and_skips_builders(conn):
     assert smith["status"] == "new" and smith["sale_date"] == "" and smith["deed"] == "2026-18233"
     assert rows["5 New Rd"]["status"] == "skip" and "company" in rows["5 New Rd"]["why"]
     assert "9 Field Ln" not in rows                          # land, not a house
+    assert "1 Far Rd" not in rows                            # Halfmoon isn't one of Nick's towns
     obrien = rows["40 Ridge Rd"]
     assert obrien["city"] == "Gansevoort" and obrien["addressee"] == "The O'Brien Household"
     doe = rows["212 Fifth St. Ext."]
@@ -93,6 +96,7 @@ def test_letter_and_csv(conn):
     newowners.refresh(conn, TODAY, post=fake_post())
     rows = newowners.listing(conn, "new", "C")
     assert [r["grade"] for r in rows] == sorted(r["grade"] for r in rows)
+    assert len(newowners.listing(conn, "new", "C", limit=1)) == 1 and newowners.listing(conn, "new", "A")
     smith = [r for r in rows if r["street"] == "12 Maple Ave"][0]
     text = newowners.letter(conn, smith)
     assert text.startswith("Dear The Smith Household,") and "Maple Ave" in text and "12 Maple" not in text
@@ -108,7 +112,7 @@ def test_addressee():
 
 
 def test_page_buttons(cfg, conn, monkeypatch):
-    monkeypatch.setattr(newowners, "_post", fake_post())
+    import time
     monkeypatch.setattr(newowners.refresh, "__defaults__", (None, fake_post()))
     app = create_app(cfg)
     c = app.test_client()
@@ -116,10 +120,15 @@ def test_page_buttons(cfg, conn, monkeypatch):
     assert "Check for new buyers" in html
     tok = re.search(r'name="csrf" value="([0-9a-f]+)"', html).group(1)
     r = c.post("/new-owners/refresh", data={"csrf": tok}, follow_redirects=True)
-    assert "12 Maple Ave" in r.get_data(as_text=True)
+    assert "5 to 10 minutes" in r.get_data(as_text=True)
+    for _ in range(50):          # the check runs in the background
+        if "12 Maple Ave" in c.get("/new-owners?grade=C").get_data(as_text=True):
+            break
+        time.sleep(0.1)
+    assert "12 Maple Ave" in c.get("/new-owners?grade=C").get_data(as_text=True)
     assert "Dear The Smith Household" in c.get("/new-owners/letters?grade=C").get_data(as_text=True)
     assert c.get("/new-owners/list.csv?grade=C").get_data(as_text=True).startswith("addressee,")
-    r = c.post("/new-owners/mark", data={"csrf": tok, "status": "mailed", "all": "1", "grade": "C"}, follow_redirects=True)
-    assert "Marked 3 as mailed" in r.get_data(as_text=True)
+    r = c.post("/new-owners/mark", data={"csrf": tok, "status": "mailed", "all": "1", "grade": "C", "n": "25"}, follow_redirects=True)
+    assert "Marked 2 as mailed" in r.get_data(as_text=True)   # the Warren house has no ZIP, so no letter
     r = c.post("/new-owners/letter", data={"csrf": tok, "letter": "Hello {addressee}"}, follow_redirects=True)
     assert "Letter saved" in r.get_data(as_text=True)

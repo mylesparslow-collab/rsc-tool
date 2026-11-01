@@ -2,6 +2,12 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## 0.2.8
+
+- New page: **New homeowners** (under Jobs). Once a month it reads the public property records and lists people who just bought a house in your towns. In Saratoga County that's the county's parcel map (owner and deed year, no price); in Queensbury and Glens Falls it's Warren County's (with the sale price, a few months behind). The state's parcel data adds the year built, value and ZIP. Each house gets a grade (A best fit) from its age, value, how recently it sold and the town. Companies, banks and new builds are left out.
+- Pick how many letters to send this time (best first), then "Print these letters" (one welcome letter per page, about the quality of the work, no prices), "Download the mailing list" (CSV for labels or a print shop) and "I mailed these", so nobody gets two letters. "Don't mail" takes one house off. The letter text can be changed on the same page.
+- Mail only: no phone numbers, no calls or texts, nothing sent for you. The check runs in the background (5 to 10 minutes) and the installer adds a monthly check on the 2nd. Command line: `rsc new-owners --check --csv list.csv`.
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.

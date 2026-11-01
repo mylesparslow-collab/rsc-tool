@@ -36,6 +36,12 @@ WARREN = "https://services6.arcgis.com/Fg3XpDIUTR3JZZES/arcgis/rest/services/WCN
 CORE_TOWNS = ("saratoga springs", "wilton", "malta", "ballston", "clifton park", "greenfield")
 NEAR_TOWNS = ("milton", "northumberland", "saratoga", "stillwater", "queensbury", "glens falls")
 WARREN_TOWNS = ("Queensbury", "Glens Falls")
+# The Saratoga County municipalities in Nick's area (others, like Halfmoon or Corinth, are left out).
+AREA = ("saratoga springs", "wilton", "malta", "ballston", "ballston spa", "milton", "clifton park", "greenfield",
+        "northumberland", "saratoga", "schuylerville", "victory", "stillwater", "round lake")
+# Villages and cities with one post office, for houses whose ZIP isn't in the state data.
+TOWN_ZIP = {"saratoga springs": "12866", "ballston spa": "12020", "schuylerville": "12871", "victory": "12884",
+            "round lake": "12151", "glens falls": "12801"}
 
 # Houses only: 1, 2 and 3 family, rural homes, estates, two houses on one lot. Not mobile homes, apartments, land.
 RESIDENTIAL = {"210", "215", "220", "230", "240", "241", "250", "280", "281", "283"}
@@ -249,22 +255,37 @@ def _months_between(earlier: date, later: date) -> int:
 
 
 def _city_zip(a: dict, detail: dict, street: str, town: str) -> tuple[str, str]:
-    """Post-office town and ZIP for the house. The state points give the ZIP; if the owner's mailing address is the
-    house itself, the county gives the exact post office too."""
+    """Post-office town and ZIP for the house. If the owner's mailing address is the house itself, the county has
+    the exact post office; otherwise the state points' ZIP, then the one ZIP of a city or village."""
     zip_ = str(_get(detail or {}, "LOC_ZIP"))[:5]
-    mail_street, mail_city, mail_zip = _mail(a, "ADD") or _mail(a, "STR"), _mail(a, "CITY"), _mail(a, "ZIP")[:5]
-    if mail_street and _addr(mail_street) == _addr(street):
+    mail_city, mail_zip = _mail(a, "CITY"), _mail(a, "ZIP")[:5]
+    lines = [v for k, v in a.items() if k.upper().startswith("MAIL") and ("ADD" in k.upper() or "STR" in k.upper()) and v]
+    if street and any(_addr(x) == _addr(street) for x in lines) and (mail_zip or zip_):
         return (mail_city.title() if mail_city else ZIP_CITY.get(mail_zip or zip_, "")), (mail_zip or zip_)
-    if not zip_ and town.lower().startswith("glens falls"):
-        zip_ = "12801"
+    zip_ = zip_ or TOWN_ZIP.get(town.strip().lower(), "")
     return ZIP_CITY.get(zip_, ""), zip_
+
+
+def _fill_zips(leads: list[dict]) -> None:
+    """A house with no ZIP takes the ZIP its neighbors on the same street (same town) have, when they all agree."""
+    seen: dict[tuple, set] = {}
+    for l in leads:
+        if l["zip"]:
+            seen.setdefault((l["town"].lower(), _street_name(l["street"]).upper()), set()).add(l["zip"])
+    for l in leads:
+        if not l["zip"]:
+            z = seen.get((l["town"].lower(), _street_name(l["street"]).upper()), set())
+            if len(z) == 1:
+                l["zip"] = z.pop()
+                l["city"] = ZIP_CITY.get(l["zip"], "")
 
 
 def saratoga_leads(today: date, post=_post) -> tuple[list[dict], str]:
     years = (today.year, today.year - 1)
     where = f"DEED_BOOK IN ({_sql_list(years)})"
     rows = fetch_all(SARATOGA, where, post=post)
-    houses = [a for a in rows if str(_get(a, "PRP_CLS_CODE", "PROP_CLASS_CODE", "PROP_CLASS"))[:3] in RESIDENTIAL]
+    houses = [a for a in rows if str(_get(a, "PRP_CLS_CODE", "PROP_CLASS_CODE", "PROP_CLASS"))[:3] in RESIDENTIAL
+              and str(_get(a, "MUNI", "MUNI_NAME")).strip().lower() in AREA]
     want = {}
     for a in houses:
         want.setdefault(str(_get(a, "SWIS")), set()).add(str(_get(a, "PRINT_KEY")).strip())
@@ -281,7 +302,8 @@ def saratoga_leads(today: date, post=_post) -> tuple[list[dict], str]:
         leads.append(_lead("Saratoga", a, d, town, street, owner, yb and int(yb), _num(_get(d, "SQFT_LIVING")),
                            _num(_get(d, "FULL_MARKET_VAL") or _get(a, "FULL_MARKET_VAL")), None, "",
                            f"{book}-{page}", deed_year, today))
-    return leads, f"Saratoga County: {len(rows)} deeds recorded {years[1]}-{years[0]}, {len(houses)} houses"
+    _fill_zips(leads)
+    return leads, f"Saratoga County: {len(rows)} deeds recorded {years[1]}-{years[0]}, {len(houses)} houses in your towns"
 
 
 def warren_leads(today: date, post=_post) -> tuple[list[dict], str]:
@@ -304,6 +326,7 @@ def warren_leads(today: date, post=_post) -> tuple[list[dict], str]:
                            _num(_get(a, "YR_BUILT")) and int(_num(_get(a, "YR_BUILT"))), _num(_get(a, "SQ_FT")),
                            _num(_get(a, "FULL_MARKE", "FULL_MARKET_VAL")), price, sale.isoformat(),
                            f"{_get(a, 'DEED_BOOK')}-{_get(a, 'DEED_PAGE')}", sale.year, today))
+    _fill_zips(leads)
     newest = max((l["sale_date"] for l in leads), default="none")
     return leads, f"Warren County: {len(houses)} house sales in the last year (newest {newest})"
 
@@ -385,18 +408,28 @@ def due(conn: sqlite3.Connection, today: date | None = None) -> bool:
         return True
 
 
-def listing(conn: sqlite3.Connection, status: str = "new", grade: str = "", town: str = "") -> list[sqlite3.Row]:
+def listing(conn: sqlite3.Connection, status: str = "new", grade: str = "", town: str = "",
+            mailable: bool = False, limit: int | None = None) -> list[sqlite3.Row]:
+    """Leads, best first. grade "A" = A only, "B" = A and B, "C" = everyone. mailable = only ones with a ZIP."""
     init(conn)
     sql, args = "SELECT * FROM new_owners WHERE status = ?", [status]
-    if grade in ("A", "B", "C"):
-        sql += " AND grade <= ?" if grade != "C" else " AND grade IN ('A','B','C')"
-        if grade != "C":
-            args.append(grade)
+    if grade in ("A", "B"):
+        sql += " AND grade <= ?"
+        args.append(grade)
     if town:
         sql += " AND town = ?"
         args.append(town)
-    sql += " ORDER BY score DESC, COALESCE(sale_date, '') DESC, deed DESC"
+    if mailable:
+        sql += " AND zip != '' AND street != ''"
+    sql += " ORDER BY score DESC, deed_year DESC, sale_date DESC, CAST(substr(deed, instr(deed, '-') + 1) AS INTEGER) DESC"
+    if limit:
+        sql += f" LIMIT {int(limit)}"
     return conn.execute(sql, args).fetchall()
+
+
+def no_zip(conn: sqlite3.Connection) -> int:
+    init(conn)
+    return conn.execute("SELECT COUNT(*) FROM new_owners WHERE status = 'new' AND zip = ''").fetchone()[0]
 
 
 def counts(conn: sqlite3.Connection) -> dict:
