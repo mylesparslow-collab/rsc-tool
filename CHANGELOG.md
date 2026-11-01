@@ -6,7 +6,7 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 
 New homeowners: the follow-through after the first letter.
 
-- Each house now gets up to three cards by mail: the welcome, a follow-up three weeks later, and a seasonal note about
+- Each house now gets up to three cards by mail (greeting "Dear Smith family"): the welcome, a follow-up three weeks later, and a seasonal note about
   six weeks after that (its words follow the season it goes out in). All three can be edited on the page.
 - Every card prints with its own short code and a QR code for the new page **rscrafters.com/welcome**, which offers a free
   walkthrough. A request from that page lands in To Review tagged "new homeowner mail" with the house's address filled

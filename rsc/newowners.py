@@ -68,15 +68,17 @@ ZIP_CITY = {
 
 DEFAULT_LETTER = """Dear {addressee},
 
-Congratulations on your new home on {street}, and welcome to {town}.
+Welcome to {town}, and congratulations on the house on {street}.
 
-My name is {owner}. I run {business}, a small design-build remodeling company based in {region}. We do kitchens, bathrooms, porches and four-season rooms, and the careful repair and finish work that older houses need.
+By now you have probably started a list: the bathroom you would do differently, the kitchen that almost works, the back steps that give a little underfoot. Most new owners have one.
 
-If there is a room you have been thinking about changing, this year or a few years from now, I would be glad to come by and walk through it with you. I'll listen to what you have in mind, tell you plainly what it would take, and give you a clear written plan before any work starts.
+I'm {owner}, and I run {business} here in {region}. We design and build kitchens, bathrooms, porches and four-season rooms, and we do the careful repair work older houses need, with trim, stairs and porches rebuilt to match what is already there.
 
-You can reach me at {phone} or {email}.
+When you're ready, I'll walk through the house with you at no charge. You'll get a straight answer on what needs doing now, what can wait, and what it would take to do it right. If you decide to go ahead, you get a written plan before any work starts.
 
-Welcome to the neighborhood,
+Scan the code below, or call or text me at {phone}.
+
+Welcome home,
 
 {owner}
 {business}"""
@@ -532,34 +534,33 @@ CODE_ALPHABET = "23456789ABCDEFGHJKMNPQRSTUVWXYZ"   # no 0/O, 1/I/L: read off a 
 
 FOLLOW_UP_LETTER = """Dear {addressee},
 
-I wrote a few weeks ago to welcome you to {town}. By now you have probably found the things in the house you would like to change, and maybe a few you didn't expect.
+A few weeks in, the house has probably shown you a thing or two the inspection didn't.
 
-That is a good time for a walkthrough. I'll come by, look at the rooms you have in mind, and tell you plainly what is sound, what can wait, and what it would take to do the work well. There is no charge for the visit, and you get a clear written plan before any work starts.
+That is the best time for a second set of eyes. I'll come by, look at whatever is on your list, and tell you plainly what is sound, what can wait, and what is worth doing first. The visit is free, and there is no pressure to hire us.
 
-If now isn't the time, keep this card. We'll be glad to hear from you when you're ready.
+If now isn't the time, hang on to this card. We'll be here when you're ready.
 
 {owner}
-{business}
-{phone}"""
+{business}, {phone}"""
 
 SEASONAL_LETTER = """Dear {addressee},
 
 {season_note}
 
-If there is a project on your list, I'd be glad to walk through the house with you. There is no charge for the visit, and you get a plain written plan before anything starts.
+If something on the house has been bothering you, or you're starting to picture a new kitchen or bathroom, I'd be glad to come take a look. The walkthrough is free, and you get a written plan before anything starts.
 
-All the best in your new home,
+All the best in the new place,
 
 {owner}
-{business}
-{phone}"""
+{business}, {phone}"""
 
 SEASON_NOTES = {
-    "winter": "Winter is when a house tells you about itself: drafts at the windows, ice along the eaves, a stair that creaks a little more each year. It is also a good season to plan a kitchen or bathroom, so the design and the plan are settled before the work begins.",
-    "spring": "Spring is when last winter shows: soft trim, loose railings, steps the frost has pushed out of line. It is also when people start thinking about the porch and the deck.",
-    "summer": "Summer is porch and deck season, and a good time to plan the inside work you'd like done in the cooler months.",
-    "fall": "Fall is the time to look at gutters, trim and entry steps before the snow, and to plan the kitchen or bathroom you want done over the winter.",
+    "winter": "Your first winter in a house teaches you a lot about it: which windows let the cold in, where ice builds up along the roof edge, which stair creaks. It is also the right time to plan a kitchen or bathroom, so the design is settled and the materials are chosen before the work starts.",
+    "spring": "Spring shows you what the winter did: trim gone soft, a railing that wobbles, steps the frost has pushed out of line. It is a good time to get those fixed, and to think about the porch or deck you want for summer.",
+    "summer": "Summer is when you live on the porch and the deck, and notice what needs work. It is also a good time to plan the inside projects you'd like done once the weather turns.",
+    "fall": "Before the snow, it is worth a look at the gutters, the trim and the entry steps, so small problems don't turn into spring repairs. Fall is also the time to plan a kitchen or bathroom you'd like done over the winter.",
 }
+
 DEFAULT_CARDS = {1: DEFAULT_LETTER, 2: FOLLOW_UP_LETTER, 3: SEASONAL_LETTER}
 
 
@@ -722,12 +723,18 @@ def next_card(row) -> int:
     return min((row["step"] or 0) + 1, 3) if row["status"] in ("new", "mailed") else 1
 
 
+def greeting(addressee: str) -> str:
+    """The name after "Dear": 'The Smith Household' (right on an envelope) reads 'Smith family' in a letter."""
+    m = re.fullmatch(r"The (.+) Household", addressee or "")
+    return f"{m.group(1)} family" if m else "Neighbor"
+
+
 def letter(conn: sqlite3.Connection, row, card: int | None = None, today: date | None = None) -> str:
     b = brand.current()
     owner = prefs.get(conn, "owner_name") or b.get("owner", "")
     town = row["city"] or row["town"]
     card = card or next_card(row)
-    fields = _Blank(addressee=row["addressee"] or "Neighbor", street=_street_name(row["street"]), town=town,
+    fields = _Blank(addressee=greeting(row["addressee"]), street=_street_name(row["street"]), town=town,
                     owner=owner, business=b["name"], region=b["region"], phone=b["phone"], email=b["email"],
                     season_note=SEASON_NOTES[season(today or date.today())], link=SHORT_LINK, code=row["code"])
     return letter_template(conn, card).format_map(fields)

@@ -99,7 +99,7 @@ def test_letter_and_csv(conn):
     assert len(newowners.listing(conn, "new", "C", limit=1)) == 1 and newowners.listing(conn, "new", "A")
     smith = [r for r in rows if r["street"] == "12 Maple Ave"][0]
     text = newowners.letter(conn, smith)
-    assert text.startswith("Dear The Smith Household,") and "Maple Ave" in text and "12 Maple" not in text
+    assert text.startswith("Dear Smith family,") and "Maple Ave" in text and "12 Maple" not in text
     assert "$" not in text and "{" not in text
     out = list(csv.DictReader(io.StringIO(newowners.mailing_csv(conn, rows))))
     assert out[0]["addressee"] and out[0]["state"] == "NY" and {"street", "city", "zip"} <= set(out[0])
@@ -109,6 +109,8 @@ def test_addressee():
     assert newowners.addressee("MCDONALD RUTH") == "The McDonald Household"
     assert newowners.addressee("Federal National Mortgage") == "Current Resident"
     assert newowners.addressee("") == "Current Resident"
+    assert newowners.greeting("The O'Brien Household") == "O'Brien family"
+    assert newowners.greeting("Current Resident") == "Neighbor"
 
 
 def test_page_buttons(cfg, conn, monkeypatch):
@@ -126,7 +128,7 @@ def test_page_buttons(cfg, conn, monkeypatch):
             break
         time.sleep(0.1)
     assert "12 Maple Ave" in c.get("/new-owners?grade=C").get_data(as_text=True)
-    assert "Dear The Smith Household" in c.get("/new-owners/letters?grade=C").get_data(as_text=True)
+    assert "Dear Smith family" in c.get("/new-owners/letters?grade=C").get_data(as_text=True)
     assert c.get("/new-owners/list.csv?grade=C").get_data(as_text=True).startswith("addressee,")
     r = c.post("/new-owners/mark", data={"csrf": tok, "status": "mailed", "all": "1", "grade": "C", "n": "25"}, follow_redirects=True)
     assert "Marked 2 as mailed" in r.get_data(as_text=True)   # the Warren house has no ZIP, so no letter
@@ -152,7 +154,7 @@ def test_card_sequence_dates_and_weekly_batch(conn):
     # once it's due, the follow-up comes first
     batch = newowners.this_weeks_mail(conn, 50, "C", today=date(2026, 11, 23))
     assert [x["key"] for x in batch] == keys and newowners.next_card(batch[0]) == 2 and newowners.next_card(batch[1]) == 1
-    assert "wrote a few weeks ago" in newowners.letter(conn, batch[0])
+    assert "A few weeks in" in newowners.letter(conn, batch[0])
     newowners.mark_mailed(conn, keys[:1], date(2026, 11, 23))
     r = conn.execute("SELECT * FROM new_owners WHERE key = ?", (keys[0],)).fetchone()
     assert (r["step"], r["card2_on"], r["next_due"]) == (2, "2026-11-23", "2027-01-04")
@@ -172,7 +174,7 @@ def test_third_card_is_seasonal_and_last(conn):
     r = conn.execute("SELECT * FROM new_owners WHERE key = ?", (k,)).fetchone()
     assert (r["step"], r["card3_on"], r["next_due"]) == (3, "2026-12-01", "")
     assert newowners.mark_mailed(conn, [k], date(2027, 1, 1)) == 0          # no fourth card
-    assert "Winter is when" in newowners.letter(conn, r, card=3, today=date(2026, 12, 1))
+    assert "Your first winter" in newowners.letter(conn, r, card=3, today=date(2026, 12, 1))
 
 
 def test_reply_by_code_stops_cards(conn):
