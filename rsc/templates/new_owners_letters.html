@@ -1,0 +1,14 @@
+{% extends "print_base.html" %}{% block title %}Welcome letters{% endblock %}
+{% block toolbar %}<span>{{ items|length }} letters, one per page. Print, sign, and use the mailing list file for envelope labels.</span>{% endblock %}
+{% block body %}
+{% for r, text in items %}
+<div class="{{ 'pagebreak' if not loop.first }}">
+  <p style="margin:0 0 4px"><b>{{ biz.name }}</b></p>
+  <p class="muted" style="margin:0 0 0.6in">{{ biz.address }}, {{ biz.city }} &middot; {{ biz.phone }} &middot; {{ biz.email }}</p>
+  <p style="margin:0 0 0.5in; line-height:1.3">{{ r.addressee }}<br>{% if r.addressee != 'Current Resident' %}or Current Resident<br>{% endif %}{{ r.street }}<br>{{ r.city or r.town }}, NY {{ r.zip }}</p>
+  <p class="muted">{{ today_long }}</p>
+  {% for para in text.split('\n\n') %}<p>{{ para|replace('\n', '<br>'|safe) }}</p>{% endfor %}
+</div>
+{% endfor %}
+{% if not items %}<p>No letters to print.</p>{% endif %}
+{% endblock %}

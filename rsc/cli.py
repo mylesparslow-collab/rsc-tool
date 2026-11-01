@@ -162,6 +162,28 @@ def cmd_check_mail(cfg: config.Config, _args) -> int:
     return 0
 
 
+def cmd_new_owners(cfg: config.Config, args) -> int:
+    """Read the county records for new home buyers (monthly schedule), and/or write this month's mailing list."""
+    from . import newowners
+    conn = db.connect(cfg.db_path)
+    db.init(conn, cfg.first_job_number)
+    if args.check or (args.if_due and newowners.due(conn)):
+        try:
+            print(newowners.refresh(conn))
+        except Exception as exc:
+            print(f"New homeowner check failed: {exc}", file=sys.stderr)
+            return 1
+    elif args.if_due:
+        print("Checked less than four weeks ago; nothing to do.")
+    rows = newowners.listing(conn, "new", args.grade)
+    c = newowners.counts(conn)
+    print(f"Waiting for a letter: {c['new']} ({c['A']} A, {c['B']} B, {c['C']} C); already mailed: {c['mailed']}")
+    if args.csv:
+        args.csv.write_text(newowners.mailing_csv(conn, rows))
+        print(f"Wrote {len(rows)} rows to {args.csv}")
+    return 0
+
+
 def cmd_weekly_report(cfg: config.Config, args) -> int:
     from . import report
     conn = db.connect(cfg.db_path)
@@ -292,6 +314,11 @@ def main(argv=None) -> int:
     p.add_argument("--send", action="store_true")
     p = sub.add_parser("daily-sheet", help="show today's work sheet (add --send to email it to the crew)")
     p.add_argument("--send", action="store_true")
+    p = sub.add_parser("new-owners", help="find people who just bought a house in your towns (add --check to read the county records)")
+    p.add_argument("--check", action="store_true", help="read the county records now")
+    p.add_argument("--if-due", action="store_true", help="read them only if the last check was 4+ weeks ago (for the schedule)")
+    p.add_argument("--grade", default="B", choices=["A", "B", "C"], help="A = best fit only, B = A and B, C = everyone")
+    p.add_argument("--csv", type=Path, help="also write the mailing list to this file")
     sub.add_parser("doctor", help="check that everything works and say how to fix what doesn't")
     sub.add_parser("backup", help="copy the database into the backups folder (done automatically each day)")
     sub.add_parser("open", help="open the app in the browser, starting it first if needed")
@@ -309,7 +336,7 @@ def main(argv=None) -> int:
     cfg = config.load(args.home)
     models.apply_choice(cfg)   # models picked on the Setup page win over config.toml
     handler = {"setup": cmd_setup, "set-password": cmd_set_password, "load-example": cmd_load_example, "voice-setup": cmd_voice_setup, "models": cmd_models, "serve": cmd_serve,
-               "check-mail": cmd_check_mail, "doctor": cmd_doctor, "daily-sheet": cmd_daily_sheet, "backup": cmd_backup, "open": cmd_open, "desktop": cmd_desktop, "weekly-report": cmd_weekly_report, "import": cmd_import, "export": cmd_export}[args.cmd]
+               "check-mail": cmd_check_mail, "doctor": cmd_doctor, "daily-sheet": cmd_daily_sheet, "backup": cmd_backup, "open": cmd_open, "desktop": cmd_desktop, "weekly-report": cmd_weekly_report, "new-owners": cmd_new_owners, "import": cmd_import, "export": cmd_export}[args.cmd]
     return handler(cfg, args)
 
 

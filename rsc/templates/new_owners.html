@@ -1,0 +1,76 @@
+{% extends "base.html" %}{% block title %}New homeowners{% endblock %}
+{% block body %}
+<h1>New homeowners</h1>
+<p class="muted">People who just bought a house in your towns, from the county's public property records. New owners often redo a kitchen or bathroom in their first year or two. Send each one a short welcome letter by mail. Nothing is sent for you, and there are no calls or texts.</p>
+
+<div class="card">
+  <div class="muted">Last checked</div>
+  <div>{% if last_ago %}<b>{{ last_ago }}</b>. {{ last_message }}{% else %}Not checked yet.{% endif %}</div>
+  <form method="post" action="{{ url_for('new_owners_refresh') }}" class="inline" data-busy="Reading the county records (about a minute)...">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <div class="actions"><button class="btn{{ ' glow' if due }}">Check for new buyers</button>{% if due %} <span class="muted">Time for this month's check.</span>{% endif %}</div>
+  </form>
+</div>
+
+<div class="card">
+  <div class="muted">Waiting for a letter</div>
+  <div class="big-number">{{ counts.new }}</div>
+  <div class="muted">{{ counts.A }} best fit (A) &middot; {{ counts.B }} good (B) &middot; {{ counts.C }} less likely (C) &middot; {{ counts.mailed }} already mailed</div>
+</div>
+
+<form method="get" action="{{ url_for('new_owners_page') }}" class="card">
+  <div class="grid">
+    <div><label>Show</label><select name="grade" onchange="this.form.submit()">
+      <option value="A" {{ 'selected' if grade == 'A' }}>Best fit only (A)</option>
+      <option value="B" {{ 'selected' if grade == 'B' }}>Good and best (A and B)</option>
+      <option value="C" {{ 'selected' if grade == 'C' }}>Everyone</option></select></div>
+    <div><label>Town</label><select name="town" onchange="this.form.submit()"><option value="">All towns</option>
+      {% for t in towns %}<option {{ 'selected' if t == town }}>{{ t }}</option>{% endfor %}</select></div>
+  </div>
+</form>
+
+{% if rows %}
+<div class="actions">
+  <a class="btn" href="{{ url_for('new_owners_letters', grade=grade, town=town) }}" target="_blank">Print these {{ rows|length }} letters</a>
+  <a class="btn secondary" href="{{ url_for('new_owners_csv', grade=grade, town=town) }}">Download the mailing list (CSV)</a>
+  <form method="post" action="{{ url_for('new_owners_mark') }}" class="inline" onsubmit="return confirm('Mark all {{ rows|length }} shown as mailed?')">
+    <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="status" value="mailed"><input type="hidden" name="all" value="1">
+    <input type="hidden" name="grade" value="{{ grade }}"><input type="hidden" name="town" value="{{ town }}">
+    <button class="btn secondary">I mailed these {{ rows|length }}</button></form>
+</div>
+<table>
+  <tr><th>Grade</th><th>Address</th><th>Owner on record</th><th>Bought</th><th>Why</th><th></th></tr>
+  {% for r in rows %}<tr>
+    <td><b>{{ r.grade }}</b> <span class="muted">{{ r.score }}</span></td>
+    <td>{{ r.street }}<div class="muted">{{ r.city or r.town }} {{ r.zip }}{% if not r.zip %} (no ZIP: check before mailing){% endif %}</div></td>
+    <td>{{ r.owner }}<div class="muted">{{ r.addressee }}</div></td>
+    <td>{% if r.sale_date %}{{ r.sale_date }}{% if r.sale_price %}<div class="muted">{{ money(r.sale_price) }}</div>{% endif %}{% else %}{{ r.deed_year }}<div class="muted">deed {{ r.deed }}</div>{% endif %}</td>
+    <td class="muted">{{ r.town }}, {{ r.county }}<br>{{ r.why }}</td>
+    <td><form method="post" action="{{ url_for('new_owners_mark') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}">
+      <input type="hidden" name="key" value="{{ r.key }}"><input type="hidden" name="status" value="skip">
+      <input type="hidden" name="grade" value="{{ grade }}"><input type="hidden" name="town" value="{{ town }}">
+      <button class="btn small secondary" title="Take off the list (a client already, asked not to get mail, or not a fit)">Don't mail</button></form></td>
+  </tr>{% endfor %}
+</table>
+{% else %}
+<div class="card muted">{% if counts.new %}No one matches. Try "Everyone" or another town.{% else %}No one waiting. Press "Check for new buyers" to read this month's county records.{% endif %}</div>
+{% endif %}
+
+<h2 id="letter">The letter</h2>
+<p class="muted">Words in curly brackets are filled in for each house: {addressee}, {street}, {town}, {owner}, {business}, {region}, {phone}, {email}. Keep it about the quality of the work and a friendly welcome. No prices or deadlines.</p>
+<form method="post" action="{{ url_for('new_owners_letter') }}" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <textarea name="letter" rows="18">{{ letter }}</textarea>
+  <div class="actions"><button class="btn">Save the letter</button>{% if letter != default_letter %} <button class="btn secondary" name="reset" value="1">Back to the original</button>{% endif %}</div>
+</form>
+
+{% if mailed %}
+<h2>Already mailed</h2>
+<table>
+  <tr><th>Mailed</th><th>Address</th><th>Owner</th></tr>
+  {% for r in mailed %}<tr><td>{{ r.mailed_on }}</td><td>{{ r.street }}, {{ r.city or r.town }}</td><td>{{ r.owner }}</td></tr>{% endfor %}
+</table>
+{% endif %}
+
+<p class="muted">Where this comes from: Saratoga County's parcel map (owner and deed, no price), New York State's tax parcel points (year built, value, ZIP) and Warren County's parcel map (Queensbury and Glens Falls, with sale price; a few months behind). The county records lag a little, so a buyer can show up a month or two after closing. Grades are a rough guess from the home's age, value, how recently it sold and the town.</p>
+{% endblock %}
