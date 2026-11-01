@@ -45,6 +45,8 @@ def fake_post(calls=None):
             if m:
                 keys = re.findall(r"'([^']*)'", m.group(2))
                 rows = [r for r in rows if r["SWIS"] == m.group(1) and r["PRINT_KEY"] in keys]
+        if "objectIds" not in params and not params.get("returnIdsOnly"):
+            return {"features": [{"attributes": r} for r in rows]}
         if params.get("returnIdsOnly"):
             return {"objectIds": [r["OBJECTID"] for r in rows]}
         ids = {int(x) for x in params["objectIds"].split(",")}

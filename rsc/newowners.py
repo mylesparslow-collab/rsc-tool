@@ -177,14 +177,18 @@ def _sql_list(values) -> str:
 
 
 def state_details(swis_keys: dict[str, set[str]], post=_post) -> dict[tuple, dict]:
-    """Year built, size, market value and ZIP from the state's parcel points, keyed by (swis, print key)."""
-    out = {}
+    """Year built, size, market value and ZIP from the state's parcel points, keyed by (swis, print key).
+    One request per few hundred houses (sent as a form, so a long list is fine)."""
+    out, fields = {}, "SWIS,PRINT_KEY,YR_BLT,SQFT_LIVING,FULL_MARKET_VAL,LOC_ZIP"
     for swis, keys in swis_keys.items():
         keys = sorted(k for k in keys if k)
-        for i in range(0, len(keys), 80):
-            where = f"SWIS = '{swis}' AND PRINT_KEY IN ({_sql_list(keys[i:i + 80])})"
+        for i in range(0, len(keys), 400):
+            where = f"SWIS = '{swis}' AND PRINT_KEY IN ({_sql_list(keys[i:i + 400])})"
             try:
-                rows = fetch_all(STATE, where, "SWIS,PRINT_KEY,YR_BLT,SQFT_LIVING,FULL_MARKET_VAL,LOC_ZIP,PARCEL_ADDR,PROP_CLASS", post=post)
+                part = post(STATE, {"where": where, "outFields": fields, "returnGeometry": "false"})
+                rows = [f.get("attributes", {}) for f in part.get("features", [])]
+                if part.get("exceededTransferLimit"):
+                    rows = fetch_all(STATE, where, fields, post=post)
             except RuntimeError:
                 continue      # extra detail only; the lead still counts without it
             for r in rows:
