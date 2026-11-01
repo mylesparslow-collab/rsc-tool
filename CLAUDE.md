@@ -37,7 +37,7 @@ RSC tool. The app is small and local, and it handles real client money, so chang
 Home (today's cards, What's next), To Review (email suggestions), Leads (grades and crew capacity; `funnel.py`), Jobs, job page (estimate, SOW, contract, change
 orders, hours, safety assessment, crew brief, progress, client update, room model), Expenses, Codes (RSC-100..900),
 Pricing, Crew (people, hours, insurance certificates, payroll cost), Today (daily crew sheet), Week (who is where),
-Owed (invoice aging and reminders), Playbook, New homeowners (recent buyers from public parcel records, welcome letters by mail), QuickBooks (CSV downloads; optional direct connection), Setup.
+Owed (invoice aging and reminders), Marketing (social post drafts from real jobs, listings checklist), Playbook, New homeowners (recent buyers from public parcel records, welcome letters by mail), QuickBooks (CSV downloads; optional direct connection), Setup.
 
 Longer descriptions: `README.md`, `docs/how-it-works.md`, `docs/crew-pricing-aging.md`, `docs/nick-quick-start.md`,
 `docs/launch-checklist.md`, `docs/quickbooks-setup.md`.
@@ -59,6 +59,7 @@ rsc/leads.py, followups.py  reply drafts for new leads; review/check-in follow-u
 rsc/newowners.py      new home buyers from public parcel maps (Saratoga, Warren, NYS points), scoring, letters, CSV. newowners_web.py = page
 rsc/receivables.py    invoice aging and polite reminder drafts. client_update.py = weekly note to the homeowner
 rsc/crew.py           people, hours, certificates, payroll cost. schedule.py = week plan. daily.py = daily crew sheet
+rsc/marketing.py      social post drafts (code scrubs names/addresses/claims), online listings checklist. marketing_web = /marketing
 rsc/aging.py          aging-in-place assessment, dimension checks. playbook.py, guide.py = crew brief and What's next
 rsc/margins.py, report.py  job margins, weekly report. doctor.py = health check. backup.py = daily DB copies
 rsc/brand.py          business name/owner/address/phone in ONE place (Setup page). Use `brand.current()`, never hard-code names
