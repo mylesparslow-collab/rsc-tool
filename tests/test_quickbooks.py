@@ -62,7 +62,7 @@ class FakeQBO:
     """Stands in for Intuit: remembers what was created, answers the few queries the client makes."""
 
     def __init__(self):
-        self.created, self.customers, self.invoices = [], {}, {}
+        self.created, self.customers, self.invoices, self.estimates = [], {}, {}, {}
 
     def __call__(self, cfg, conn, method, path, body=None, query=None):
         if path == "query":
@@ -75,6 +75,13 @@ class FakeQBO:
             if "from Invoice" in sql:
                 num = re.search(r"DocNumber = '(.*)'", sql).group(1)
                 return {"QueryResponse": {"Invoice": [{"Id": self.invoices[num]}] if num in self.invoices else []}}
+            if "from Estimate" in sql:
+                num = re.search(r"DocNumber = '(.*)'", sql).group(1)
+                return {"QueryResponse": {"Estimate": [{"Id": self.estimates[num]}] if num in self.estimates else []}}
+        if path == "estimate":
+            self.estimates[body["DocNumber"]] = str(300 + len(self.estimates))
+            self.created.append(("estimate", body))
+            return {"Estimate": {"Id": self.estimates[body["DocNumber"]]}}
         if path == "customer":
             self.customers[body["DisplayName"]] = str(100 + len(self.customers))
             return {"Customer": {"Id": self.customers[body["DisplayName"]]}}
@@ -113,6 +120,33 @@ def test_existing_invoice_is_not_duplicated(cfg, conn, smith, monkeypatch):
     assert qbo.send_invoice(cfg, conn, books.list_payments(conn)[0], "Jane Smith") == "42" and not fake.created
 
 
+def test_send_estimate_one_line_per_payment_and_change_orders_apart(cfg, conn, smith, monkeypatch):
+    fake = FakeQBO()
+    monkeypatch.setattr(qbo, "_call", fake)
+    job = books.get_job(conn, smith)
+    assert qbo.send_estimates(cfg, conn, job, books.list_payments(conn, smith), "Jane Smith") == ["1001-SMI"]
+    body = fake.created[0][1]
+    assert body["DocNumber"] == "1001-SMI" and [ln["Amount"] for ln in body["Line"]] == [5000, 2500, 2500]
+    assert body["Line"][1]["Description"] == "1001-SMI-2: Phase 1 (When Phase 1 is complete)"
+    assert qbo.send_estimates(cfg, conn, job, books.list_payments(conn, smith), "Jane Smith") == []  # pressing twice
+    books.add_payment(conn, smith, 800, "Change order 1: extra outlet", "With the next invoice", kind="change_order",
+                      change_order_id=11)
+    assert qbo.send_estimates(cfg, conn, job, books.list_payments(conn, smith), "Jane Smith") == ["1001-SMI-CO1"]
+    co = fake.created[-1][1]
+    assert [ln["Amount"] for ln in co["Line"]] == [800] and co["Line"][0]["Description"].startswith("1001-SMI-4:")
+    assert [k for k, _ in fake.created] == ["estimate", "estimate"]
+    assert qbo.estimates_synced(conn) == {smith: ["1001-SMI", "1001-SMI-CO1"]}
+
+
+def test_existing_estimate_is_not_duplicated(cfg, conn, smith, monkeypatch):
+    fake = FakeQBO()
+    fake.estimates["1001-SMI"] = "77"
+    monkeypatch.setattr(qbo, "_call", fake)
+    job = books.get_job(conn, smith)
+    assert qbo.send_estimates(cfg, conn, job, books.list_payments(conn, smith), "Jane Smith") == [] and not fake.created
+    assert qbo.estimates_synced(conn) == {smith: ["1001-SMI"]}
+
+
 def test_oauth_flow_and_pages(cfg, conn, smith, monkeypatch):
     cfg.quickbooks.client_id, cfg.quickbooks.client_secret = "id", "secret"
     app = create_app(cfg, model=FakeModel({}))
@@ -136,6 +170,10 @@ def test_oauth_flow_and_pages(cfg, conn, smith, monkeypatch):
     pk = books.list_payments(conn)[0]["id"]
     out = c.post(f"/quickbooks/send/{pk}", data={"csrf": tok}, follow_redirects=True).get_data(as_text=True)
     assert "1001-SMI-1 is in QuickBooks" in out and len(fake.created) == 1
+    assert f"/quickbooks/estimate/{smith}" in out
+    out = c.post(f"/quickbooks/estimate/{smith}", data={"csrf": tok}, follow_redirects=True).get_data(as_text=True)
+    assert "Estimate 1001-SMI is in QuickBooks" in out and f"/quickbooks/estimate/{smith}" not in out
+    assert c.post("/quickbooks/estimate/9999", data={"csrf": tok}).status_code == 404
     assert c.get("/quickbooks/invoices.csv").mimetype == "text/csv"
 
 

@@ -41,6 +41,10 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 - New Scorecard page (Money, Scorecard): one screen that shows whether attention is turning into paid jobs. This week's new leads, estimates sent, jobs won, money in, the win rate over 90 days, and labor dollars per crew-hour against the $65 floor and $72 target, then the last 8 weeks side by side and which lead sources (Google, Nextdoor, TikTok, referrals...) turned into signed work. It counts only what's already in the app, so there's nothing new to type. The source is read from the job notes, which the website form fills in ("Found us: nextdoor"). Estimates priced under the floor are listed with links. Website visits, TikTok views, Google profile calls and ad spend are shown as "not connected yet" rather than guessed.
 - The Monday report has a short "Leads and sales" section with the same numbers.
 
+## 0.2.8
+
+- QuickBooks: new **Send estimate** button on the QuickBooks page (direct connection only). It puts a job's estimate into QuickBooks with one line per payment on the schedule, each line starting with its Payment ID (for example "1002-SMI-3: Phase 3 (When Phase 3 is complete)"). The estimate number is the Job ID (1002-SMI). A signed change order goes in as its own estimate (1002-SMI-CO1), so the original stays as signed. Pressing twice never makes a second copy. Once the client signs, mark it Accepted in QuickBooks and make each phase's invoice from it, or keep using Send invoice. Nothing is sent until you press the button. Tested only against a stand-in for QuickBooks: try it on the sandbox company first.
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.
