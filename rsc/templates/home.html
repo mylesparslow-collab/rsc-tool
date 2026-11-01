@@ -36,7 +36,7 @@
 {% endif %}
 
 {% set bad_ins = ca|selectattr('level', 'equalto', 'bad')|list %}
-{% set has_todo = review_count or late_invoices or due_followups or ca or watch or next_steps or not (st.email and st.password) %}
+{% set has_todo = review_count or late_invoices or due_followups or new_owner_mail or ca or watch or next_steps or not (st.email and st.password) %}
 <h2 style="margin-top:0">Needs your attention</h2>
 {% if has_todo %}
 <div class="card todo">
@@ -44,6 +44,7 @@
   {% if review_count %}<div class="row"><span class="dot"></span><div class="what"><b>{{ review_count }} to review</b><span class="muted">Receipts, payments and new leads found in your email.</span></div><a class="btn" href="{{ url_for('review') }}">Review now</a></div>{% endif %}
   {% if late_invoices %}<div class="row warn"><span class="dot"></span><div class="what"><b>{{ late_invoices|length }} late invoice{{ 's' if late_invoices|length != 1 }}</b><span class="muted">{% for r in late_invoices[:3] %}{{ r.last_name }} {{ money(r.owed) }}, {{ r.days }} days{{ '; ' if not loop.last }}{% endfor %}</span></div><a class="btn" href="{{ url_for('owed_page') }}">Send reminders</a></div>{% endif %}
   {% if due_followups %}<div class="row"><span class="dot"></span><div class="what"><b>{{ due_followups|length }} follow-up{{ 's' if due_followups|length != 1 }} to send</b><span class="muted">{% for f in due_followups[:3] %}{{ f.first_name }} {{ f.last_name }}{{ '; ' if not loop.last }}{% endfor %}</span></div><a class="btn" href="{{ url_for('followups_page') }}">Open follow-ups</a></div>{% endif %}
+  {% if new_owner_mail %}<div class="row"><span class="dot"></span><div class="what"><b>This week's new-homeowner cards</b><span class="muted">{% if new_owner_mail.follow_ups %}{{ new_owner_mail.follow_ups }} follow-up card{{ 's' if new_owner_mail.follow_ups != 1 }} due, then {% endif %}new welcome cards from {{ new_owner_mail.new }} waiting. Print a batch and mark it mailed.</span></div><a class="btn secondary" href="{{ url_for('new_owners_page') }}">Open New homeowners</a></div>{% endif %}
   {% for n in next_steps %}<div class="row"><span class="dot"></span><div class="what"><b>{{ n.job.last_name }}: {{ n.step.title }}</b><span class="muted">{{ n.step.why }}</span></div><a class="btn secondary" href="{{ url_for(n.step.endpoint, **n.step.args) }}">{{ n.step.label }}</a></div>{% endfor %}
   {% if ca %}<div class="row {{ 'bad' if bad_ins else 'warn' }}"><span class="dot"></span><div class="what"><b>Insurance</b>{% for a in ca[:3] %}<span class="muted">{{ a.text }}</span>{% endfor %}</div><a class="btn secondary" href="{{ url_for('crew_page') }}">Open Crew</a></div>{% endif %}
   {% for m in watch %}<div class="row bad"><span class="dot"></span><div class="what"><b>{{ m.job.last_name }}: watch the margin</b><span class="muted">{{ m.why }}</span></div><a class="btn secondary" href="{{ url_for('job_detail', number=m.job.number) }}">Open job</a></div>{% endfor %}

@@ -99,7 +99,7 @@ def test_letter_and_csv(conn):
     assert len(newowners.listing(conn, "new", "C", limit=1)) == 1 and newowners.listing(conn, "new", "A")
     smith = [r for r in rows if r["street"] == "12 Maple Ave"][0]
     text = newowners.letter(conn, smith)
-    assert text.startswith("Dear The Smith Household,") and "Maple Ave" in text and "12 Maple" not in text
+    assert text.startswith("Dear Smith family,") and "Maple Ave" in text and "12 Maple" not in text
     assert "$" not in text and "{" not in text
     out = list(csv.DictReader(io.StringIO(newowners.mailing_csv(conn, rows))))
     assert out[0]["addressee"] and out[0]["state"] == "NY" and {"street", "city", "zip"} <= set(out[0])
@@ -109,6 +109,8 @@ def test_addressee():
     assert newowners.addressee("MCDONALD RUTH") == "The McDonald Household"
     assert newowners.addressee("Federal National Mortgage") == "Current Resident"
     assert newowners.addressee("") == "Current Resident"
+    assert newowners.greeting("The O'Brien Household") == "O'Brien family"
+    assert newowners.greeting("Current Resident") == "Neighbor"
 
 
 def test_page_buttons(cfg, conn, monkeypatch):
@@ -126,9 +128,161 @@ def test_page_buttons(cfg, conn, monkeypatch):
             break
         time.sleep(0.1)
     assert "12 Maple Ave" in c.get("/new-owners?grade=C").get_data(as_text=True)
-    assert "Dear The Smith Household" in c.get("/new-owners/letters?grade=C").get_data(as_text=True)
+    assert "Dear Smith family" in c.get("/new-owners/letters?grade=C").get_data(as_text=True)
     assert c.get("/new-owners/list.csv?grade=C").get_data(as_text=True).startswith("addressee,")
     r = c.post("/new-owners/mark", data={"csrf": tok, "status": "mailed", "all": "1", "grade": "C", "n": "25"}, follow_redirects=True)
     assert "Marked 2 as mailed" in r.get_data(as_text=True)   # the Warren house has no ZIP, so no letter
     r = c.post("/new-owners/letter", data={"csrf": tok, "letter": "Hello {addressee}"}, follow_redirects=True)
-    assert "Letter saved" in r.get_data(as_text=True)
+    assert "Welcome card saved" in r.get_data(as_text=True)
+
+
+# ---------- the three cards ----------
+
+def _two_mailable(conn):
+    newowners.refresh(conn, TODAY, post=fake_post())
+    return [r["key"] for r in newowners.listing(conn, "new", "C", mailable=True)]
+
+
+def test_card_sequence_dates_and_weekly_batch(conn):
+    keys = _two_mailable(conn)
+    assert len(keys) == 2
+    assert newowners.mark_mailed(conn, keys[:1], TODAY) == 1
+    r = conn.execute("SELECT * FROM new_owners WHERE key = ?", (keys[0],)).fetchone()
+    assert (r["step"], r["mailed_on"], r["next_due"]) == (1, "2026-11-01", "2026-11-22") and len(r["code"]) == 5
+    # before card 2 is due, the batch is just new welcome cards
+    assert [x["key"] for x in newowners.this_weeks_mail(conn, 50, "C", today=date(2026, 11, 10))] == keys[1:]
+    # once it's due, the follow-up comes first
+    batch = newowners.this_weeks_mail(conn, 50, "C", today=date(2026, 11, 23))
+    assert [x["key"] for x in batch] == keys and newowners.next_card(batch[0]) == 2 and newowners.next_card(batch[1]) == 1
+    assert "A few weeks in" in newowners.letter(conn, batch[0])
+    newowners.mark_mailed(conn, keys[:1], date(2026, 11, 23))
+    r = conn.execute("SELECT * FROM new_owners WHERE key = ?", (keys[0],)).fetchone()
+    assert (r["step"], r["card2_on"], r["next_due"]) == (2, "2026-11-23", "2027-01-04")
+
+
+def test_season_rules():
+    assert newowners.next_due_after(1, date(2026, 11, 1)) == "2026-11-22"
+    assert newowners.next_due_after(2, date(2026, 11, 23)) == "2027-01-04"
+    assert newowners.next_due_after(3, date(2026, 12, 1)) == ""
+    assert newowners.season(date(2027, 1, 5)) == "winter" and newowners.season(date(2026, 10, 1)) == "fall"
+
+
+def test_third_card_is_seasonal_and_last(conn):
+    k = _two_mailable(conn)[0]
+    for d in (date(2026, 9, 1), date(2026, 9, 22), date(2026, 12, 1)):  # Nick can mail late; the dates follow
+        newowners.mark_mailed(conn, [k], d)
+    r = conn.execute("SELECT * FROM new_owners WHERE key = ?", (k,)).fetchone()
+    assert (r["step"], r["card3_on"], r["next_due"]) == (3, "2026-12-01", "")
+    assert newowners.mark_mailed(conn, [k], date(2027, 1, 1)) == 0          # no fourth card
+    assert "Your first winter" in newowners.letter(conn, r, card=3, today=date(2026, 12, 1))
+
+
+def test_reply_by_code_stops_cards(conn):
+    k = _two_mailable(conn)[0]
+    newowners.mark_mailed(conn, [k], TODAY)
+    code = conn.execute("SELECT code FROM new_owners WHERE key = ?", (k,)).fetchone()[0]
+    row = newowners.mark_replied(conn, code.lower()[:2] + " " + code.lower()[2:], TODAY)
+    assert row["status"] == "replied" and row["next_due"] == ""
+    assert newowners.follow_ups_due(conn, date(2027, 1, 1)) == []
+    assert newowners.mark_replied(conn, "ZZZZZ") is None and newowners.normal_code("O0I1L") == ""
+
+
+def test_welcome_page_form_becomes_tagged_lead(cfg, conn):
+    from rsc import intake
+    k = _two_mailable(conn)[0]
+    newowners.mark_mailed(conn, [k], TODAY)
+    code = conn.execute("SELECT code FROM new_owners WHERE key = ?", (k,)).fetchone()[0]
+
+    class Mail:
+        subject = "New homeowner walkthrough"
+        sender = "noreply@formspree.io"
+        body = (f"name: Jane Smith\nreply to: jane@example.com\ncard code: {code}\nsource: new homeowner mail\n"
+                "message: Would love a walkthrough of the kitchen.")
+    s = intake.suggestion_from_form(conn, Mail(), "518-932-9919")
+    assert s.kind == "lead" and "new homeowner mail" in s.data["project"] and s.data["new_owner_code"] == code
+    assert s.data["address"].startswith("12 Maple Ave") and "cards are stopped" in s.match_note
+    assert conn.execute("SELECT status FROM new_owners WHERE key = ?", (k,)).fetchone()[0] == "replied"
+
+
+def test_old_mailed_rows_become_card_one(tmp_path):
+    import sqlite3
+    from rsc import db
+    c = sqlite3.connect(tmp_path / "old.db")
+    c.row_factory = sqlite3.Row
+    c.executescript(db.NEW_OWNERS)
+    c.execute("INSERT INTO new_owners (key, county, first_seen, status, mailed_on) VALUES ('a', 'Saratoga', '2026-10-01', 'mailed', '2026-10-05')")
+    db.migrate_new_owners(c)
+    r = c.execute("SELECT step, next_due FROM new_owners").fetchone()
+    assert (r["step"], r["next_due"]) == (1, "2026-10-26")
+
+
+def test_home_reminds_weekly(conn):
+    from rsc import prefs
+    keys = _two_mailable(conn)
+    assert newowners.week_due(conn, TODAY) is None           # nothing until the first batch is mailed
+    newowners.mark_mailed(conn, keys[:1], TODAY)
+    assert newowners.week_due(conn, date(2026, 11, 5)) is None
+    assert newowners.week_due(conn, date(2026, 11, 23)) == {"follow_ups": 1, "new": 1}
+
+
+def test_print_has_qr_and_code(cfg, conn):
+    _two_mailable(conn)
+    app = create_app(cfg)
+    html = app.test_client().get("/new-owners/letters?grade=C").get_data(as_text=True)
+    code = conn.execute("SELECT code FROM new_owners WHERE code != '' LIMIT 1").fetchone()[0]
+    assert "rscrafters.com/welcome" in html and code in html and "<svg" in html
+
+
+# ---------- no more mail ----------
+
+class _StopMail:
+    subject = "Stop mail"
+    sender = "noreply@formspree.io"
+    message_id = "stop-1"
+
+    def __init__(self, body):
+        self.body = body
+
+
+def test_stop_by_code_marks_never_mail_without_a_lead(cfg, conn):
+    from rsc import intake
+    k = _two_mailable(conn)[0]
+    newowners.mark_mailed(conn, [k], TODAY)
+    code = conn.execute("SELECT code FROM new_owners WHERE key = ?", (k,)).fetchone()[0]
+    note = intake.stop_mail_request(conn, _StopMail(f"card code: {code}\nrequest: No more mail"))
+    assert note.startswith("no more mail: 12 Maple Ave")
+    assert conn.execute("SELECT status FROM new_owners WHERE key = ?", (k,)).fetchone()[0] == "optout"
+    assert newowners.follow_ups_due(conn, date(2027, 1, 1)) == []
+    assert intake.suggestion_from_form(conn, _StopMail("card code: X\nrequest: No more mail"), "") is None   # no lead
+
+
+def test_stop_by_address_and_it_holds_after_the_next_check(conn):
+    _two_mailable(conn)
+    assert [r["street"] for r in newowners.stop_mail(conn, "", "12 maple ave., Saratoga Springs")] == ["12 Maple Ave"]
+    newowners.refresh(conn, TODAY, post=fake_post())
+    assert conn.execute("SELECT status FROM new_owners WHERE street = '12 Maple Ave'").fetchone()[0] == "optout"
+    assert newowners.set_status(conn, [conn.execute("SELECT key FROM new_owners WHERE street = '12 Maple Ave'").fetchone()[0]], "skip") == 0
+
+
+def test_unmatched_stop_request_is_kept_for_nick(cfg, conn):
+    _two_mailable(conn)
+    assert newowners.stop_mail(conn, "", "99 Nowhere Rd", TODAY) == []
+    assert newowners.stop_requests(conn) == [{"on": "2026-11-01", "code": "", "address": "99 Nowhere Rd"}]
+    app = create_app(cfg)
+    assert "99 Nowhere Rd" in app.test_client().get("/new-owners").get_data(as_text=True)
+
+
+def test_stop_request_email_is_skipped_by_the_mail_check(cfg, conn):
+    from rsc import pipeline
+    _two_mailable(conn)
+
+    from rsc.mail import Mail
+    m = Mail("stop-2", "INBOX", "noreply@formspree.io", "Formspree", "Stop mail", "2026-11-01",
+             "address: 12 Maple Ave\nrequest: No more mail")
+
+    class NoModel:
+        def extract(self, *a, **k):
+            raise AssertionError("the model must not be asked")
+    r = pipeline.process(conn, cfg, [m], NoModel())
+    assert r.skipped == 1 and r.suggestions == 0
+    assert conn.execute("SELECT status FROM new_owners WHERE street = '12 Maple Ave'").fetchone()[0] == "optout"
