@@ -52,9 +52,10 @@ class Mail:
 def _html_to_text(markup: str) -> str:
     markup = re.sub(r"(?is)<(script|style|head).*?</\1>", " ", markup)
     markup = re.sub(r"(?i)<br\s*/?>|</(p|div|tr|li|h\d)>", "\n", markup)
-    markup = re.sub(r"(?i)</t[dh]>", "  ", markup)
+    markup = re.sub(r"(?i)</t[dh]>", "\t", markup)
     text = html.unescape(re.sub(r"<[^>]+>", " ", markup))
-    text = re.sub(r"[ \t\xa0]+", " ", text)
+    text = re.sub(r"[ \xa0]+", " ", text)
+    text = re.sub(r" ?\t[ \t]*", "  ", text)  # table cells stay two spaces apart, so "name  Jane" reads as a form field
     return re.sub(r"\n\s*\n+", "\n\n", text).strip()
 
 

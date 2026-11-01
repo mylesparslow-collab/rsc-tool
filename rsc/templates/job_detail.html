@@ -33,6 +33,10 @@
 
 {% if guide_next %}<details class="more"><summary>Every step on this job</summary>
   <div class="muted" style="margin-top:6px">{% for label, done in guide_steps.list %}<span class="{{ 'ok' if done else '' }}">{{ '&#10003;'|safe if done else '&#9675;'|safe }} {{ label }}</span>{{ ' &middot; '|safe if not loop.last }}{% endfor %}</div></details>{% endif %}
+{% if guide_next and guide_next.draft %}<div class="card tone-accent"><strong>Follow-up note, ready to send</strong>
+  <textarea rows="7" style="margin-top:8px" aria-label="Follow-up note">{{ guide_next.draft }}</textarea>
+  <div class="actions">{% if job.email %}<a class="btn secondary small" href="mailto:{{ job.email }}?subject={{ guide_next.subject|urlencode }}&body={{ guide_next.draft|urlencode }}">Open in Mail</a>{% endif %}
+    {% if job.phone %}<a class="btn secondary small" href="sms:{{ job.phone }}?&body={{ guide_next.draft|urlencode }}">Text it</a>{% endif %}</div></div>{% endif %}
 <p class="actions" style="flex-wrap:wrap">
   <a class="btn secondary small" href="{{ url_for('estimate_edit', number=job.number) }}">Estimate &amp; contract</a>
   <a class="btn secondary small" href="{{ url_for('change_orders', number=job.number) }}">Change orders</a>
