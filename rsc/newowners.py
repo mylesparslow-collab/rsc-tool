@@ -17,6 +17,9 @@ import io
 import json
 import re
 import sqlite3
+import ssl
+import subprocess
+import sys
 import time
 import urllib.parse
 import urllib.request
@@ -77,13 +80,41 @@ UA = "RSC-tool (local remodeling business; monthly public-records check)"
 
 # ---------- fetching (public ArcGIS map services) ----------
 
+_CTX = None
+
+
+def _ssl_context():
+    """Python's own certificate list can miss a root that macOS trusts (Saratoga's map server hits this), so also
+    load certifi's list and, on a Mac, the system's root certificates. Checking stays on."""
+    global _CTX
+    if _CTX is not None:
+        return _CTX
+    ctx = ssl.create_default_context()
+    try:
+        import certifi
+        ctx.load_verify_locations(cafile=certifi.where())
+    except Exception:
+        pass
+    if sys.platform == "darwin":
+        for keychain in ("/System/Library/Keychains/SystemRootCertificates.keychain", "/Library/Keychains/System.keychain"):
+            try:
+                pem = subprocess.run(["/usr/bin/security", "find-certificate", "-a", "-p", keychain],
+                                     capture_output=True, text=True, timeout=20).stdout
+                if "BEGIN CERTIFICATE" in pem:
+                    ctx.load_verify_locations(cadata=pem)
+            except Exception:
+                pass
+    _CTX = ctx
+    return ctx
+
+
 def _post(url: str, params: dict, tries: int = 3) -> dict:
     data = urllib.parse.urlencode({**params, "f": "json"}).encode()
     last = None
     for i in range(tries):
         try:
             req = urllib.request.Request(url, data=data, headers={"User-Agent": UA})
-            with urllib.request.urlopen(req, timeout=60) as r:
+            with urllib.request.urlopen(req, timeout=60, context=_ssl_context()) as r:
                 out = json.loads(r.read().decode("utf-8", "replace"))
             if "error" in out:
                 raise RuntimeError(f"{url.split('/rest/')[0]} said: {out['error'].get('message', out['error'])}")
