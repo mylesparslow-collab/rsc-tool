@@ -32,14 +32,21 @@
   <p class="muted" style="margin-top:6px">Replies to new inquiries will offer: {% for s in slots %}{{ s }}{{ '; ' if not loop.last }}{% endfor %}.</p>
   <div class="actions"><button class="btn">Save</button></div>
 </form>
+<form method="post" action="{{ url_for('setup_lead_ack') }}" class="card" id="thanks">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <strong>Thank new customers right away</strong>
+  <p class="muted" style="margin:4px 0 8px">When someone sends a request through the website with an email address, the app can email them a short thank-you from your Gmail as soon as it checks your email (every 10 minutes while this Mac is on). You get a copy. Your own reply, with visit times, still waits in To Review for you to send. This is the only email the app sends a customer without you pressing a button.</p>
+  <label class="check"><input type="checkbox" name="on" value="1" {{ 'checked' if lead_ack }} onchange="this.form.submit()"> Send the thank-you by itself</label>
+  <details class="more" style="margin-top:8px"><summary>What it says</summary><pre style="white-space:pre-wrap;margin:8px 0 0">{{ ack_sample }}</pre></details>
+</form>
 {% if auto_mail.active or auto_mail.agent %}<div class="card"><strong>Checking your email</strong>
   {% if auto_mail.active %}
   <form method="post" action="{{ url_for('setup_auto_mail') }}" class="auto-row" id="email">
     <input type="hidden" name="csrf" value="{{ csrf }}">
-    <label class="check"><input type="checkbox" name="auto" value="1" {{ 'checked' if auto_mail.enabled }} onchange="this.form.submit()"> Check my email by myself every 30 minutes while RSC is open</label>
+    <label class="check"><input type="checkbox" name="auto" value="1" {{ 'checked' if auto_mail.enabled }} onchange="this.form.submit()"> Check my email by myself every 10 minutes while RSC is open</label>
     <p class="muted" style="margin:4px 0 0">{% if auto_mail.agent %}This Mac already checks in the background, so the app leaves it to that.{% elif not auto_mail.gmail %}Starts once the Gmail address and app password above are saved.{% elif auto_mail.last_ago %}Last checked {{ auto_mail.last_ago }}: {{ auto_mail.message }}{% else %}The first check happens a few seconds after the app opens. Anything it finds waits in To Review.{% endif %}</p>
   </form>
-  {% elif auto_mail.agent %}<p class="muted" style="margin:6px 0 0" id="email">This Mac checks your email in the background every 30 minutes.</p>{% endif %}
+  {% elif auto_mail.agent %}<p class="muted" style="margin:6px 0 0" id="email">This Mac checks your email in the background every 10 minutes.</p>{% endif %}
 </div>{% endif %}
 <div class="card" id="ai">
   <div class="ai-head"><span class="ai-dot {{ ai.state }}" aria-hidden="true"></span><strong>{{ ai.headline }}</strong></div>

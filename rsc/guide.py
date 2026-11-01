@@ -7,7 +7,7 @@ import re
 import sqlite3
 from datetime import date
 
-from . import books, brand, crew, daily, estimates, pricing
+from . import books, brand, crew, daily, estimates, leads, pricing
 
 
 def _days_since(iso: str | None) -> int | None:
@@ -86,9 +86,15 @@ def next_step(conn: sqlite3.Connection, job: dict) -> dict | None:
                     "target": [f"#f{fid} a.btn", f"#f{fid} button.btn"]}
         return None
     if not est:
-        return {"title": "Write the estimate", "why": "Tell me about the job in a few sentences. I draft the scope of work and the prices.",
+        step = {"title": "Write the estimate", "why": "Tell me about the job in a few sentences. I draft the scope of work and the prices.",
                 "endpoint": "estimate_edit", "args": {"number": n}, "label": "Start the estimate",
                 "target": ["textarea[name=description]"]}
+        days = _days_since(job.get("created_at"))
+        if job["status"] == "Estimate" and days is not None and days >= 7:  # a lead that may have gone quiet
+            step.update(why=f"{name} asked {days} days ago and there's no estimate yet. If you haven't been out to see it, "
+                            f"a short check-in is ready below.",
+                        draft=leads.lead_checkin(job, days), subject=f"Your {(job.get('job_type') or 'project').lower()} request")
+        return step
     if job["status"] == "Estimate":
         check = pricing.check_estimate(conn, n)
         rt = check["rates"]

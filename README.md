@@ -48,7 +48,7 @@ The big text boxes have a microphone button. The browser records a short clip, t
 
 ## How the email part works
 
-1. Every 30 minutes (and when Nick presses **Check email now**) the app opens his Gmail **read-only** over IMAP. It never marks mail read, moves, deletes or sends anything.
+1. Every 10 minutes (and when Nick presses **Check email now**) the app opens his Gmail **read-only** over IMAP. It never marks mail read, moves, deletes or sends anything. (One exception, off by default: the Setup switch *Thank new customers right away* sends a fixed thank-you to a new website request, over Gmail SMTP.)
 2. A keyword filter drops obvious non-business mail before the model sees it.
 3. The local model ([Ollama](https://ollama.com), default `llama3.1:8b`) classifies each remaining email and pulls out the fields, using a fixed JSON schema at temperature 0.
 4. Plain rules, not the model, decide which job something belongs to: a Job ID or Payment ID written in the email first (a Home Depot PO of `1002-SMI`, an invoice number `1002-SMI-2`), then a unique job address, then a unique client last name. Anything unclear is left for Nick to pick.
@@ -103,7 +103,7 @@ Then make it Nick-proof:
 cp deploy/RSC.command ~/Desktop/                     # double-click to open the app
 sed "s/USERNAME/$USER/g" deploy/com.reclaimedspacecrafters.checkmail.plist \
   > ~/Library/LaunchAgents/com.reclaimedspacecrafters.checkmail.plist
-launchctl load ~/Library/LaunchAgents/com.reclaimedspacecrafters.checkmail.plist   # checks mail every 30 min
+launchctl load ~/Library/LaunchAgents/com.reclaimedspacecrafters.checkmail.plist   # checks mail every 10 min
 ```
 
 Settings are in `~/RSC/config.toml` (see `config.example.toml`): starting job number, mailboxes, senders to ignore, and the model.

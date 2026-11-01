@@ -39,6 +39,7 @@
     <div><label>Phone</label><input name="phone" value="{{ d.phone }}"></div>
     <div><label>Address</label><input name="address" value="{{ d.address }}"></div>
     <div style="grid-column:1/-1"><label>{{ 'About them' if d.applicant else 'What they want' }}</label><input name="project" value="{{ d.project }}"></div>
+    {% if d.ack_sent %}<div style="grid-column:1/-1" class="muted"><span class="ok">Thank-you sent</span> at {{ d.ack_sent }}. Your reply below is still yours to send.</div>{% elif d.ack_error %}<div style="grid-column:1/-1" class="bad">{{ d.ack_error }}</div>{% endif %}
     {% if d.reply %}<div style="grid-column:1/-1"><label>{{ 'Reply, ready to send' if d.applicant else 'Reply, ready to send (offers your visit times)' }}</label>
       <textarea name="reply" rows="8">{{ d.reply }}</textarea>
       <div class="actions" style="margin-top:6px">{% if d.reply_to %}<a class="btn secondary" href="mailto:{{ d.reply_to }}?subject={{ d.reply_subject|urlencode }}&body={{ d.reply|urlencode }}">Open reply in Mail</a>{% endif %}

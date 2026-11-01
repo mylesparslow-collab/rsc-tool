@@ -5,7 +5,7 @@
 #
 # What it does, with no questions asked: gets Python (through uv), builds the app, installs Ollama if it's missing,
 # downloads the three local models (text, photos, speech) sized to this Mac's memory, writes the settings, keeps the
-# app running in the background (it starts at login), puts an "RSC" icon on the Desktop, checks email every 30
+# app running in the background (it starts at login), puts an "RSC" icon on the Desktop, checks email every 10
 # minutes, emails the weekly report on Monday mornings, and opens the app on its Setup page, where the Gmail
 # address and app password are entered once.
 #
@@ -17,7 +17,7 @@
 #   --skip-models       don't download models (Ollama and speech can be added later: rsc models --pull)
 #   --no-voice          skip voice typing (the microphone buttons)
 #   --no-launcher       no Desktop icon
-#   --no-schedule       no automatic email check every 30 minutes
+#   --no-schedule       no automatic email check every 10 minutes
 #   --yes               don't ask questions that have a sensible default
 set -Eeuo pipefail
 
@@ -208,7 +208,7 @@ fi
 # ------------------------------------------------------------------ 6. Background jobs
 if [ "$NO_SCHEDULE" = 0 ] && [ "$(uname -s)" = "Darwin" ]; then
   STEP="setting up the background jobs"
-  say "6. Keep it running (starts at login; checks email every 30 minutes; weekly report Monday 7 AM; crew work sheet weekdays 6 AM)"
+  say "6. Keep it running (starts at login; checks email every 10 minutes; weekly report Monday 7 AM; crew work sheet weekdays 6 AM)"
   AGENTS="$HOME/Library/LaunchAgents"; mkdir -p "$AGENTS"
   agent() { # agent LABEL "<schedule xml>" arg...   (the program is always $RSC, or /usr/bin/open for ollama)
     local label="$1" sched="$2"; shift 2
@@ -235,7 +235,7 @@ PLISTEOF
     launchctl bootstrap "gui/$(id -u)" "$plist" 2>/dev/null || warn "Couldn't start the $label job."
   }
   agent app '<key>RunAtLoad</key><true/><key>KeepAlive</key><true/>' "$RSC" serve --no-browser
-  agent checkmail '<key>StartInterval</key><integer>1800</integer>' "$RSC" check-mail
+  agent checkmail '<key>StartInterval</key><integer>600</integer>' "$RSC" check-mail
   agent weeklyreport '<key>StartCalendarInterval</key><dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>7</integer><key>Minute</key><integer>0</integer></dict>' "$RSC" weekly-report --send
   DAILY_SCHED=""; for wd in 1 2 3 4 5; do DAILY_SCHED="$DAILY_SCHED<dict><key>Weekday</key><integer>$wd</integer><key>Hour</key><integer>6</integer><key>Minute</key><integer>0</integer></dict>"; done
   agent dailysheet "<key>StartCalendarInterval</key><array>$DAILY_SCHED</array>" "$RSC" daily-sheet --send

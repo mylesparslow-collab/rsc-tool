@@ -60,7 +60,8 @@ def register(app, cfg, conn, get_model):
         return render_template("setup.html", address=cfg.mail.address, model_choices=models.choices(cfg), state=setup_state(c), ai=models.health(cfg),
                                auto_models=prefs.get(c, "auto_models") != "off", download=models.downloading(),
                                vals={k: prefs.get(c, k) for k in ("report_to", "daily_to", "review_url", "visit_when", "owner_name")},
-                               slots=leads.visit_slots(prefs.get(c, "visit_when")),
+                               slots=leads.visit_slots(prefs.get(c, "visit_when")), lead_ack=leads.ack_on(c),
+                               ack_sample=leads.ack_text("Jane Smith", "a new back deck", prefs.get(c, "owner_name") or brand.current()["owner"], cfg.business_phone),
                                health=doctor.run(cfg, include_app=False),
                                brand_fields=[(k, label, brand.current()[k]) for k, label in brand.LABELS])
 
@@ -97,6 +98,14 @@ def register(app, cfg, conn, get_model):
         prefs.put(conn(), "auto_mail", "on" if request.form.get("auto") else "off")
         flash("Saved.")
         return redirect(url_for("setup_page") + "#email")
+
+    @app.post("/setup/lead-ack")
+    def setup_lead_ack():
+        """The one automatic email to a customer: a fixed thank-you to a new website request. Off until Nick turns it on."""
+        on = bool(request.form.get("on"))
+        prefs.put(conn(), "lead_ack", "on" if on else "off")
+        flash("Saved. New website requests get a thank-you within minutes." if on else "Saved. No automatic thank-you.")
+        return redirect(url_for("setup_page") + "#thanks")
 
     @app.post("/setup/models/download")
     def setup_models_download():
