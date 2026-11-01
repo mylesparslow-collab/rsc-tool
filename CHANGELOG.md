@@ -36,6 +36,11 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 
 - Rough range for new leads. Every new-lead card in To Review now has a yellow box, for you only: a rough price range ("$15,500 to $32,000"), what kind of job it looks like, and up to six things to ask or check at the visit. If they sent a photo, the photo program says what it shows. The range is worked out in plain code at your Pricing page rates ($65-72 a crew-hour and the materials markup); once you have two or more past estimates of the same kind with crew and days filled in, it uses those jobs' hours repriced at those rates. It is never put in the reply and never sent. After "Start estimate" it stays on the job page and the estimate page, and the job type is filled in. Works with the AI off (word matching and a standard question list). The starting hours and materials per kind of job are drafts in `rsc/ballpark.py` for Nick to adjust.
 
+## Unreleased
+
+- New Scorecard page (Money, Scorecard): one screen that shows whether attention is turning into paid jobs. This week's new leads, estimates sent, jobs won, money in, the win rate over 90 days, and labor dollars per crew-hour against the $65 floor and $72 target, then the last 8 weeks side by side and which lead sources (Google, Nextdoor, TikTok, referrals...) turned into signed work. It counts only what's already in the app, so there's nothing new to type. The source is read from the job notes, which the website form fills in ("Found us: nextdoor"). Estimates priced under the floor are listed with links. Website visits, TikTok views, Google profile calls and ad spend are shown as "not connected yet" rather than guessed.
+- The Monday report has a short "Leads and sales" section with the same numbers.
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.

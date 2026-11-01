@@ -157,7 +157,7 @@ details.more[open] > summary { margin-bottom: var(--s-2); }
 /* ------------------------------------------------------------ feedback */
 .flash { padding: var(--s-3); border-radius: var(--radius-sm); margin-bottom: var(--s-3); background: var(--accent-soft); border: 1px solid var(--accent-line); }
 .flash.error { background: var(--bad-soft); border-color: var(--bad-line); color: var(--bad-ink); }
-.ok { color: var(--ok); font-weight: 600; } .bad { color: var(--bad); font-weight: 600; }
+.ok { color: var(--ok); font-weight: 600; } .bad { color: var(--bad); font-weight: 600; } .rate-warn { color: var(--warn); font-weight: 600; }
 .status, .pill { display: inline-block; font-size: var(--text-sm); font-weight: 600; padding: 2px 12px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
 .pill.s-signed { background: var(--info-soft); color: var(--info); }
 .pill.s-in-progress, .status.Invoiced, .status.Part { background: var(--warn-soft); color: var(--warn); }
