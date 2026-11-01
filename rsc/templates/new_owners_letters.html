@@ -12,7 +12,7 @@
     {% if qr %}<div style="flex:none">{{ qr|safe }}</div>{% endif %}
     <div><b>Free walkthrough of your new home</b><br>Scan the code, or go to <b>{{ short_link }}</b> and enter code <b style="letter-spacing:.08em">{{ r.code }}</b>.<br>Or call or text {{ biz.phone }}.</div>
   </div>
-  <p class="muted" style="font-size:8pt; margin-top:6px">Card {{ card }} of 3 &middot; Rather not get mail from us? Tell us on that page or by phone and we'll stop.</p>
+  <p class="muted" style="font-size:8pt; margin-top:6px">Card {{ card }} of 3 &middot; Rather not get mail from us? Press "No more mail" on {{ short_link }}, or call or text, and we'll stop.</p>
 </div>
 {% endfor %}
 {% if not items %}<p>No cards to print.</p>{% endif %}

@@ -377,6 +377,8 @@ def save(conn: sqlite3.Connection, leads: list[dict], today: date) -> int:
                          [l[c] for c in cols] + [l["key"]])
         else:
             status = "skip" if l["grade"] == "skip" else "new"
+            if status == "new" and _opted_out(conn, l):    # asked for no mail on an earlier record of this house
+                status = "optout"
             conn.execute(f"INSERT INTO new_owners (key, {', '.join(cols)}, first_seen, status) VALUES "
                          f"(?, {', '.join('?' for _ in cols)}, ?, ?)", [l["key"]] + [l[c] for c in cols] + [today.isoformat(), status])
             new += status == "new"
@@ -456,7 +458,7 @@ def set_status(conn: sqlite3.Connection, keys: list[str], status: str, today: da
     """'mailed' sends each house its next card (see mark_mailed); 'replied' stops the cards; 'skip' takes it off; 'new' puts it back."""
     if status == "mailed":
         return mark_mailed(conn, keys, today)
-    if status not in ("new", "skip", "replied"):
+    if status not in ("new", "skip", "replied", "optout"):
         raise ValueError(status)
     today = today or date.today()
     n = 0
@@ -467,10 +469,55 @@ def set_status(conn: sqlite3.Connection, keys: list[str], status: str, today: da
         elif status == "replied":
             n += conn.execute("UPDATE new_owners SET status = 'replied', replied_on = ?, next_due = '' WHERE key = ?",
                               (today.isoformat(), k)).rowcount
-        else:
-            n += conn.execute("UPDATE new_owners SET status = 'skip', next_due = '' WHERE key = ?", (k,)).rowcount
+        else:   # skip or optout ("never mail": they asked us to stop; it holds through later county checks)
+            n += conn.execute("UPDATE new_owners SET status = ?, next_due = '' WHERE key = ? AND status != 'optout'",
+                              (status, k)).rowcount
     conn.commit()
     return n
+
+
+# ---------- "no more mail" ----------
+
+STOP_UNMATCHED = "newowner_stop_unmatched"
+
+
+def _opted_out(conn: sqlite3.Connection, lead: dict) -> bool:
+    """Same house and same owner already asked for no mail (a corrected or re-recorded deed makes a new row)."""
+    for r in conn.execute("SELECT street, owner FROM new_owners WHERE status = 'optout' AND county = ? AND town = ?",
+                          (lead.get("county", ""), lead.get("town", ""))):
+        if _addr(r["street"]) == _addr(lead.get("street")) and _key(r["owner"]) == _key(lead.get("owner")):
+            return True
+    return False
+
+
+def stop_mail(conn: sqlite3.Connection, code: str = "", address: str = "", today: date | None = None) -> list:
+    """Someone asked for no more mail. Find the house by its card code, or else by the street address they typed,
+    and mark it never-mail. Returns the houses marked; when none match, the request is kept for Nick to see."""
+    init(conn)
+    rows = []
+    row = by_code(conn, code)
+    if row:
+        rows = [row]
+    elif address:
+        want = _addr(address.split(",")[0])
+        if want:
+            rows = [r for r in conn.execute("SELECT * FROM new_owners WHERE status != 'optout' AND street != ''")
+                    if _addr(r["street"]) == want]
+    if rows:
+        set_status(conn, [r["key"] for r in rows], "optout", today)
+    else:
+        pending = stop_requests(conn)
+        pending.append({"on": (today or date.today()).isoformat(), "code": code[:12], "address": address[:120]})
+        prefs.put(conn, STOP_UNMATCHED, json.dumps(pending[-50:]))
+    return rows
+
+
+def stop_requests(conn: sqlite3.Connection) -> list[dict]:
+    """Stop-mail requests that matched no house, for Nick to take off the list by hand."""
+    try:
+        return json.loads(prefs.get(conn, STOP_UNMATCHED) or "[]")
+    except ValueError:
+        return []
 
 
 # ---------- the three cards: welcome, follow-up, seasonal ----------
@@ -637,7 +684,8 @@ def in_the_mail(conn: sqlite3.Connection, limit: int = 100) -> list[sqlite3.Row]
 
 def sequence_counts(conn: sqlite3.Connection, today: date | None = None) -> dict:
     init(conn)
-    out = {"card1": 0, "card2": 0, "card3": 0, "replied": 0, "due": len(follow_ups_due(conn, today))}
+    out = {"card1": 0, "card2": 0, "card3": 0, "replied": 0, "due": len(follow_ups_due(conn, today)),
+           "optout": conn.execute("SELECT COUNT(*) FROM new_owners WHERE status = 'optout'").fetchone()[0]}
     for step, k in conn.execute("SELECT step, COUNT(*) FROM new_owners WHERE status = 'mailed' GROUP BY step"):
         if step in (1, 2, 3):
             out[f"card{step}"] = k

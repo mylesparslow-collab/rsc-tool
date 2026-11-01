@@ -21,7 +21,7 @@
 
 <div class="card">
   <div class="muted">Cards in the mail</div>
-  <div>{{ seq.card1 }} got the welcome &middot; {{ seq.card2 }} got the follow-up &middot; {{ seq.card3 }} got all three &middot; <b>{{ seq.replied }} got in touch</b></div>
+  <div>{{ seq.card1 }} got the welcome &middot; {{ seq.card2 }} got the follow-up &middot; {{ seq.card3 }} got all three &middot; <b>{{ seq.replied }} got in touch</b>{% if seq.optout %} &middot; {{ seq.optout }} asked for no more mail{% endif %}</div>
   <div class="muted">{% if seq.due %}<b>{{ seq.due }} follow-up card{{ 's' if seq.due != 1 }} due now.</b> They go first in this week's batch.{% else %}No follow-up cards due right now.{% endif %} Send one batch a week; the next cards come up here on their own.</div>
 </div>
 
@@ -78,9 +78,17 @@
 </form></details>
 {% endfor %}
 
+{% if stop_requests %}
+<div class="card tone-accent" id="mail"><b>{{ stop_requests|length }} "no more mail" request{{ 's' if stop_requests|length != 1 }} didn't match a house</b>
+  <p class="muted">Find each address below and press "Never mail" on it (or "Don't mail" if it hasn't had a card yet), then clear this list.</p>
+  <ul>{% for q in stop_requests %}<li>{{ q.on }}: {{ q.address or 'no address' }}{% if q.code %} (code {{ q.code }}){% endif %}</li>{% endfor %}</ul>
+  <form method="post" action="{{ url_for('new_owners_stop_clear') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small secondary">Done, clear this list</button></form>
+</div>
+{% endif %}
+
 {% if mailed %}
 <h2>In the mail</h2>
-<p class="muted">When someone asks for a walkthrough on the welcome page with their card's code, they're marked here on their own and get no more cards. If they call or text instead, press "Got in touch".</p>
+<p class="muted">When someone asks for a walkthrough on the welcome page with their card's code, they're marked here on their own and get no more cards. A "no more mail" request from that page marks the house "never mail" on its own too. If they call or text instead, press "Got in touch" or "Never mail".</p>
 <table>
   <tr><th>Address</th><th>Owner</th><th>Code</th><th>Cards sent</th><th>Next</th><th></th></tr>
   {% for r in mailed %}<tr><td>{{ r.street }}, {{ r.city or r.town }}</td><td>{{ r.owner }}</td><td>{{ r.code }}</td>
@@ -89,7 +97,11 @@
     <td>{% if r.status == 'mailed' %}<form method="post" action="{{ url_for('new_owners_mark') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}">
       <input type="hidden" name="key" value="{{ r.key }}"><input type="hidden" name="status" value="replied">
       <input type="hidden" name="grade" value="{{ grade }}"><input type="hidden" name="town" value="{{ town }}"><input type="hidden" name="n" value="{{ n }}">
-      <button class="btn small secondary" title="They called, texted or emailed: stop the cards">Got in touch</button></form>{% endif %}</td></tr>{% endfor %}
+      <button class="btn small secondary" title="They called, texted or emailed: stop the cards">Got in touch</button></form>
+      <form method="post" action="{{ url_for('new_owners_mark') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}">
+      <input type="hidden" name="key" value="{{ r.key }}"><input type="hidden" name="status" value="optout">
+      <input type="hidden" name="grade" value="{{ grade }}"><input type="hidden" name="town" value="{{ town }}"><input type="hidden" name="n" value="{{ n }}">
+      <button class="btn small secondary" title="They asked for no more mail. Holds for good.">Never mail</button></form>{% endif %}</td></tr>{% endfor %}
 </table>
 {% endif %}
 

@@ -15,6 +15,9 @@ New homeowners: the follow-through after the first letter.
   Nick each week when cards are due. The CSV now has the card, code, link and words for a mailing service (Thanks.io).
 - The county records are now checked every Monday morning instead of once a month, so new buyers show up as soon as
   the county map has them (re-run the installer to change the schedule).
+- "No more mail": the welcome page has a stop form (card code or street address, nothing else). The email check marks
+  that house "never mail" by itself, with no lead and nothing to approve, and it holds through later county checks.
+  Requests that match no house are listed on the page. A "Never mail" button does the same for phone requests.
 - Letters already marked mailed count as card 1, so their follow-up comes up on its own.
 - New dependency: `segno` (draws the QR codes on the Mac, no network). The usual update step installs it.
 - Website: new page `/welcome/` (not in the menu or sitemap, not indexed by search engines), using the same Formspree form.

@@ -50,7 +50,8 @@ def register(app, cfg, conn):
                                letters={k: newowners.letter_template(c, k) for k in (1, 2, 3)},
                                default_letters=newowners.DEFAULT_CARDS, card_names=newowners.CARD_NAMES,
                                next_card=newowners.next_card, seq=newowners.sequence_counts(c),
-                               mailed=newowners.in_the_mail(c), short_link=newowners.SHORT_LINK)
+                               mailed=newowners.in_the_mail(c), short_link=newowners.SHORT_LINK,
+                               stop_requests=newowners.stop_requests(c))
 
     @app.post("/new-owners/refresh")
     def new_owners_refresh():
@@ -92,9 +93,16 @@ def register(app, cfg, conn):
             n = 0
         flash({"mailed": f"Marked {n} as mailed. Each one's next card comes up here on its own when it's due.",
                "replied": f"Marked {n} as got in touch. No more cards go to them.",
+               "optout": f"Marked {n} as never mail. They won't get another card, even after the next county check.",
                "skip": f"Took {n} off the list.", "new": f"Put {n} back on the list."}.get(status, "Nothing changed."))
         grade, town, n_ = _filters()
         return redirect(url_for("new_owners_page", grade=grade, town=town, n=n_))
+
+    @app.post("/new-owners/stop-requests/clear")
+    def new_owners_stop_clear():
+        prefs.put(conn(), newowners.STOP_UNMATCHED, "")
+        flash("Cleared the list of stop requests.")
+        return redirect(url_for("new_owners_page") + "#mail")
 
     @app.post("/new-owners/letter")
     def new_owners_letter():

@@ -65,7 +65,7 @@
   <section class="faq" aria-labelledby="faq-h">
     <div class="container faq-in">
       <div><h2 id="faq-h">Questions</h2><p>What people usually ask about the card they got.</p></div>
-      <div class="qa-list"><details class="qa"><summary>Is there a charge for the walkthrough?</summary><p>No. The visit is free, and there is no obligation to hire us.</p></details><details class="qa"><summary>Do I need a project in mind?</summary><p>No. Plenty of people just want to know what the house needs and what can wait.</p></details><details class="qa"><summary>How did you get my address?</summary><p>From the county's public property records, which list recent home sales. We only send mail. If you would rather not get any more, say so on the form below or call us, and we will stop.</p></details></div>
+      <div class="qa-list"><details class="qa"><summary>Is there a charge for the walkthrough?</summary><p>No. The visit is free, and there is no obligation to hire us.</p></details><details class="qa"><summary>Do I need a project in mind?</summary><p>No. Plenty of people just want to know what the house needs and what can wait.</p></details><details class="qa"><summary>How did you get my address?</summary><p>From the county's public property records, which list recent home sales. We only send mail, never calls or texts. If you would rather not get any more, use the <a href="#stop">No more mail</a> form at the bottom of this page, or call us, and we will stop.</p></details></div>
     </div>
   </section>
 
@@ -88,6 +88,19 @@
         <p class="planner-note" role="status">We will only use this to set up your walkthrough.</p>
       </form>
     </div>
+  </section>
+
+  <section class="container" id="stop" aria-labelledby="stop-h" style="padding-top:48px;padding-bottom:48px">
+    <h2 id="stop-h" class="svc-h2">No more mail</h2>
+    <p>Rather not hear from us? Enter the code from your card, or your street address, and we will take you off our list. You will not get another card.</p>
+    <form class="planner" data-lead="Stop mail" novalidate style="max-width:560px">
+      <div class="field"><label for="xcode">Code from your card</label><input id="xcode" name="code" autocomplete="off" autocapitalize="characters" maxlength="8" placeholder="K7M2P" data-label="Card code"></div>
+      <div class="field"><label for="xaddr">Or your street address</label><input id="xaddr" name="address" autocomplete="street-address" placeholder="12 Maple Ave" data-label="Address"></div>
+      <input type="hidden" name="request" value="No more mail" data-label="Request">
+      <div class="hp" aria-hidden="true"><label for="xcompany">Company</label><input id="xcompany" name="company" tabindex="-1" autocomplete="off"></div>
+      <div class="planner-actions"><button class="btn btn-quiet" type="submit">Stop the mail</button></div>
+      <p class="planner-note" role="status">No name, phone or email needed.</p>
+    </form>
   </section>
 
 </main>
@@ -149,14 +162,15 @@
   /* Where form messages go. Set endpoint to a form service URL to send without opening email. */
   var LEADS = { endpoint: '', email: 'nfparslow@gmail.com' };
   /* the QR code on each card links to /welcome/?c=CODE: fill the code in so the RSC tool knows which house answered */
-  try { var c = new URLSearchParams(location.search).get('c'), box = document.getElementById('wcode'); if (c && box) box.value = c.replace(/[^A-Za-z0-9]/g, '').slice(0, 8).toUpperCase(); } catch (e) {}
+  try { var c = new URLSearchParams(location.search).get('c'); if (c) ['wcode', 'xcode'].forEach(function (id) { var box = document.getElementById(id); if (box) box.value = c.replace(/[^A-Za-z0-9]/g, '').slice(0, 8).toUpperCase(); }); } catch (e) {}
   Array.prototype.forEach.call(document.querySelectorAll('form[data-lead]'), function (form) {
     var note = form.querySelector('.planner-note'), btn = form.querySelector('button[type="submit"]');
     function say(m, k) { note.textContent = m; note.className = 'planner-note' + (k ? ' is-' + k : ''); }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var contact = form.elements.contact.value.trim();
-      if (contact.replace(/\D/g, '').length < 10 && contact.indexOf('@') < 1) { say('Add a phone number or email so we can reply.', 'error'); form.elements.contact.focus(); return; }
+      var contact = form.elements.contact ? form.elements.contact.value.trim() : '';
+      if (form.elements.contact && contact.replace(/\D/g, '').length < 10 && contact.indexOf('@') < 1) { say('Add a phone number or email so we can reply.', 'error'); form.elements.contact.focus(); return; }
+      if (!form.elements.contact && !form.elements.code.value.trim() && !form.elements.address.value.trim()) { say('Enter the code from your card or your street address.', 'error'); form.elements.code.focus(); return; }
       if (form.elements.company && form.elements.company.value) { say('Sent. Thank you.', 'ok'); return; }
       var lines = [], subject = form.getAttribute('data-lead'), fields = { _subject: subject };
       Array.prototype.forEach.call(form.querySelectorAll('[data-label]'), function (el) {
@@ -171,7 +185,7 @@
       if (LEADS.endpoint) {
         btn.disabled = true; say('Sending…');
         fetch(LEADS.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(fields) })
-          .then(function (r) { if (!r.ok) throw new Error(r.status); say('Sent. We will be in touch.', 'ok'); form.reset(); })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); say(form.elements.contact ? 'Sent. We will be in touch.' : 'Done. You will not get any more mail from us.', 'ok'); form.reset(); })
           .catch(function () { say('That didn’t go through. Call or text us at (518) 932-9919.', 'error'); })
           .then(function () { btn.disabled = false; });
       } else {

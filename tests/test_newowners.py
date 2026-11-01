@@ -229,3 +229,58 @@ def test_print_has_qr_and_code(cfg, conn):
     html = app.test_client().get("/new-owners/letters?grade=C").get_data(as_text=True)
     code = conn.execute("SELECT code FROM new_owners WHERE code != '' LIMIT 1").fetchone()[0]
     assert "rscrafters.com/welcome" in html and code in html and "<svg" in html
+
+
+# ---------- no more mail ----------
+
+class _StopMail:
+    subject = "Stop mail"
+    sender = "noreply@formspree.io"
+    message_id = "stop-1"
+
+    def __init__(self, body):
+        self.body = body
+
+
+def test_stop_by_code_marks_never_mail_without_a_lead(cfg, conn):
+    from rsc import intake
+    k = _two_mailable(conn)[0]
+    newowners.mark_mailed(conn, [k], TODAY)
+    code = conn.execute("SELECT code FROM new_owners WHERE key = ?", (k,)).fetchone()[0]
+    note = intake.stop_mail_request(conn, _StopMail(f"card code: {code}\nrequest: No more mail"))
+    assert note.startswith("no more mail: 12 Maple Ave")
+    assert conn.execute("SELECT status FROM new_owners WHERE key = ?", (k,)).fetchone()[0] == "optout"
+    assert newowners.follow_ups_due(conn, date(2027, 1, 1)) == []
+    assert intake.suggestion_from_form(conn, _StopMail("card code: X\nrequest: No more mail"), "") is None   # no lead
+
+
+def test_stop_by_address_and_it_holds_after_the_next_check(conn):
+    _two_mailable(conn)
+    assert [r["street"] for r in newowners.stop_mail(conn, "", "12 maple ave., Saratoga Springs")] == ["12 Maple Ave"]
+    newowners.refresh(conn, TODAY, post=fake_post())
+    assert conn.execute("SELECT status FROM new_owners WHERE street = '12 Maple Ave'").fetchone()[0] == "optout"
+    assert newowners.set_status(conn, [conn.execute("SELECT key FROM new_owners WHERE street = '12 Maple Ave'").fetchone()[0]], "skip") == 0
+
+
+def test_unmatched_stop_request_is_kept_for_nick(cfg, conn):
+    _two_mailable(conn)
+    assert newowners.stop_mail(conn, "", "99 Nowhere Rd", TODAY) == []
+    assert newowners.stop_requests(conn) == [{"on": "2026-11-01", "code": "", "address": "99 Nowhere Rd"}]
+    app = create_app(cfg)
+    assert "99 Nowhere Rd" in app.test_client().get("/new-owners").get_data(as_text=True)
+
+
+def test_stop_request_email_is_skipped_by_the_mail_check(cfg, conn):
+    from rsc import pipeline
+    _two_mailable(conn)
+
+    from rsc.mail import Mail
+    m = Mail("stop-2", "INBOX", "noreply@formspree.io", "Formspree", "Stop mail", "2026-11-01",
+             "address: 12 Maple Ave\nrequest: No more mail")
+
+    class NoModel:
+        def extract(self, *a, **k):
+            raise AssertionError("the model must not be asked")
+    r = pipeline.process(conn, cfg, [m], NoModel())
+    assert r.skipped == 1 and r.suggestions == 0
+    assert conn.execute("SELECT status FROM new_owners WHERE street = '12 Maple Ave'").fetchone()[0] == "optout"

@@ -20,6 +20,7 @@ LABELS = {
     "source": {"source", "heard from", "found us", "found us through", "how did you hear about us", "how did you find us",
                "referred by", "referral"},
     "code": {"card code", "code from your card", "code on your card"},
+    "request": {"request"},
     "message": {"message", "comments", "comment", "details", "project", "project details", "tell us about your project",
                 "how can we help", "how can we help you", "your message", "description", "project description", "notes",
                 "concern", "experience"},
@@ -126,6 +127,32 @@ def _new_owner_card(conn, code: str):
         return newowners.mark_replied(conn, code)
     except Exception:      # a bad code or an old database must never lose the lead
         return None
+
+
+STOP_WORDS = re.compile(r"(?im)^\s*\**\s*request\s*\**\s*[:\-]\s*\**\s*no more mail")
+
+
+def stop_mail_request(conn, mail) -> str | None:
+    """A "no more mail" request from the welcome page. Handled in code, never becomes a lead. Returns a note for the log."""
+    body = mail.body or ""
+    if not STOP_WORDS.search(body) and "stop mail" not in (mail.subject or "").lower():
+        return None
+    code = address = ""
+    for line in _one_line_fields(body):
+        m = FIELD.match(line)
+        if m:
+            label = m.group(1).strip().lower().replace("_", " ")
+            if label in LABELS["code"]:
+                code = m.group(2).strip()
+            elif label in LABELS["address"] and not address:
+                address = m.group(2).strip()
+    if not (code or address):
+        return None
+    from . import newowners
+    rows = newowners.stop_mail(conn, code, address)
+    if rows:
+        return "no more mail: " + "; ".join(r["street"] for r in rows)
+    return "no more mail: no matching house, listed on the New homeowners page"
 
 
 def suggestion_from_form(conn, mail, phone: str):

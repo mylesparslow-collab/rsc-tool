@@ -51,6 +51,16 @@ def process(conn: sqlite3.Connection, cfg: Config, mails: list[Mail], model: Mod
         form = None
         if mail.sender != (cfg.mail.address or "").lower():
             try:
+                stopped = intake.stop_mail_request(conn, mail)
+            except Exception as exc:
+                stopped = None
+                log.warning("Stop-mail request failed on %r: %s", mail.subject, exc)
+            if stopped:   # handled in code: the house is marked never-mail; no lead, nothing for Nick to approve
+                _record_email(conn, mail, stopped)
+                report.skipped += 1
+                conn.commit()
+                continue
+            try:
                 form = intake.suggestion_from_form(conn, mail, cfg.business_phone)
             except Exception as exc:  # a strange email must not stop the run
                 log.warning("Form parse failed on %r: %s", mail.subject, exc)
