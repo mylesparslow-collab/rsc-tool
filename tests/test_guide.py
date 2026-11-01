@@ -24,6 +24,9 @@ def test_a_job_walks_from_lead_to_finished(conn):
     assert _title(conn, n).startswith("Send the estimate")
     books.update_job(conn, n, estimate_sent=(date.today() - timedelta(days=9)).isoformat())
     assert _title(conn, n).startswith("Follow up")
+    step = guide.next_step(conn, books.get_job(conn, n))
+    assert "estimate" in step["draft"] and "$" not in step["draft"]
+    assert "one last time" in guide.estimate_followup(books.get_job(conn, n), 25)
     books.update_job(conn, n, estimate_sent=date.today().isoformat())
     assert _title(conn, n).startswith("Waiting on")
     estimates.approve(conn, n, date.today().isoformat())
@@ -47,3 +50,15 @@ def test_home_and_job_pages_show_the_next_step(cfg, conn):
 
 def test_empty_home_welcomes(cfg):
     assert b"how a job goes" in create_app(cfg).test_client().get("/").data
+
+
+def test_job_page_offers_the_estimate_follow_up_note(cfg, conn):
+    n = books.create_job(conn, "Okafor", first_name="Pat", status="Estimate", email="pat@example.com", phone="518-555-0100")
+    estimates.create(conn, n, "Kitchen")
+    est = estimates.get(conn, n)
+    estimates.save(conn, n, {"materials": 4000, "markup_pct": 43, "windows_doors": 0, "labor": 12000, "debris": 0, "hired_labor": 0,
+                             "upfront_pct": 10, "final_pct": 10},
+                   {"duration": "10 days", "crew": "1 general contractor, 1 skilled laborer"}, est["phases"], [])
+    books.update_job(conn, n, estimate_sent=(date.today() - timedelta(days=10)).isoformat())
+    page = create_app(cfg).test_client().get(f"/jobs/{n}").data
+    assert b"Follow up with Pat" in page and b"mailto:pat@example.com" in page and b"sms:518-555-0100" in page

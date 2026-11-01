@@ -3,6 +3,7 @@
 <h1><span class="id">{{ job.job_id }}</span> · Estimate and scope of work</h1>
 <p class="muted"><a href="{{ url_for('job_detail', number=job.number) }}">&larr; Back to the job</a> · {{ job.first_name }} {{ job.last_name }} · {{ job.address }}</p>
 
+{% if ballpark and not est %}{% with bp = ballpark %}{% include "_ballpark.html" %}{% endwith %}{% endif %}
 {% if not est %}
 <form method="post" action="{{ url_for('estimate_draft', number=job.number) }}" class="card ask" data-busy="Drafting the estimate... a minute or two">
   <input type="hidden" name="csrf" value="{{ csrf }}">
@@ -50,9 +51,11 @@
     · labor {{ money(check.rates.labor) }} · <b>${{ '%.0f'|format(check.rates.rate or 0) }} per crew-hour</b>
     {% if check.rates.gross_pct is not none %}· about {{ '%.0f'|format(check.rates.gross_pct * 100) }}% gross margin{% endif %}</div>
   {% for w in check.rates.warnings %}<div style="margin-top:6px">{{ w }}</div>{% else %}<div class="ok" style="margin-top:6px">Looks healthy.</div>{% endfor %}
+  {% if check.rates.summary %}<div style="margin-top:6px"><b>Suggested price: {{ money(check.rates.suggested_price) }}.</b> {{ check.rates.summary }}</div>{% endif %}
 </div>
 {% elif check and check.rates.warnings %}
-<div class="card tone-warn">{% for w in check.rates.warnings %}<div>{{ w }}</div>{% endfor %}</div>
+<div class="card tone-{{ check.rates.level }}">{% for w in check.rates.warnings %}<div>{{ w }}</div>{% endfor %}
+  {% if check.rates.summary %}<div style="margin-top:6px"><b>Suggested price: {{ money(check.rates.suggested_price) }}.</b> {{ check.rates.summary }}</div>{% endif %}</div>
 {% endif %}
 
 {% if est.assumptions %}

@@ -24,7 +24,7 @@ QuickBooks: the QuickBooks page downloads invoices (invoice number = Payment ID)
 
 - **Weekly report:** Monday 7 AM the app emails a one-page report (collected, owed, jobs underway, margin warnings, estimates waiting, follow-ups due) from the business Gmail to the addresses on the Setup page. Preview or send now at `/report`; from Terminal `rsc weekly-report [--send]`. The numbers come from the books; the model only writes the opening sentence.
 - **Lead replies:** a new inquiry in To Review comes with a reply already written that offers the next real visit times (set in plain words on Setup, like "Tuesdays and Thursdays at 4pm"). The reply is never sent for him: Open in Mail, or Copy.
-- **Follow-ups:** marking a job Complete queues a review request (3 days) and a one-year check-in. Each is drafted on demand, opens in Mail, and is marked sent by hand.
+- **Follow-ups:** marking a job Complete queues a review request (3 days, then one gentle reminder a week after it is marked sent) and a one-year check-in. Each is drafted on demand, opens in Mail or Messages, and is marked sent by hand.
 - **Job margins:** `/margins` compares spent with the estimate's direct-cost budget and projects the margin; warnings appear on Home. Set the target on the Pricing page.
 - **One-click install:** `Install RSC.command` asks nothing, then opens the Setup page. The app runs as a login item (launchd), so the Desktop icon just opens it.
 
@@ -48,7 +48,7 @@ The big text boxes have a microphone button. The browser records a short clip, t
 
 ## How the email part works
 
-1. Every 30 minutes (and when Nick presses **Check email now**) the app opens his Gmail **read-only** over IMAP. It never marks mail read, moves, deletes or sends anything.
+1. Every 10 minutes (and when Nick presses **Check email now**) the app opens his Gmail **read-only** over IMAP. It never marks mail read, moves, deletes or sends anything. (One exception, off by default: the Setup switch *Thank new customers right away* sends a fixed thank-you to a new website request, over Gmail SMTP.)
 2. A keyword filter drops obvious non-business mail before the model sees it.
 3. The local model ([Ollama](https://ollama.com), default `llama3.1:8b`) classifies each remaining email and pulls out the fields, using a fixed JSON schema at temperature 0.
 4. Plain rules, not the model, decide which job something belongs to: a Job ID or Payment ID written in the email first (a Home Depot PO of `1002-SMI`, an invoice number `1002-SMI-2`), then a unique job address, then a unique client last name. Anything unclear is left for Nick to pick.
@@ -103,7 +103,7 @@ Then make it Nick-proof:
 cp deploy/RSC.command ~/Desktop/                     # double-click to open the app
 sed "s/USERNAME/$USER/g" deploy/com.reclaimedspacecrafters.checkmail.plist \
   > ~/Library/LaunchAgents/com.reclaimedspacecrafters.checkmail.plist
-launchctl load ~/Library/LaunchAgents/com.reclaimedspacecrafters.checkmail.plist   # checks mail every 30 min
+launchctl load ~/Library/LaunchAgents/com.reclaimedspacecrafters.checkmail.plist   # checks mail every 10 min
 ```
 
 Settings are in `~/RSC/config.toml` (see `config.example.toml`): starting job number, mailboxes, senders to ignore, and the model.

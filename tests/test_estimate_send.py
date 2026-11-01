@@ -92,3 +92,19 @@ def test_an_address_typed_here_is_remembered(c, conn, monkeypatch):
     monkeypatch.setattr("rsc.estimate_mail.send", Outbox())
     c.post("/jobs/1001/sow/send", data={"csrf": token(c), "to": "new@example.com", "subject": "s", "body": "b"})
     assert books.get_job(conn, 1001)["email"] == "new@example.com"
+
+
+def test_send_page_warns_about_a_low_price_but_still_lets_him_send(c, conn):
+    estimates.save(conn, 1001, {"materials": 4000, "markup_pct": 0, "labor": 8480},
+                   {"crew": "1 general contractor, 1 skilled laborer", "duration": "10 days on-site"},
+                   [{"title": "A", "steps": []}], [])
+    page = c.get("/jobs/1001/sow/send").get_data(as_text=True)
+    assert "Before you send: check the price" in page and "$53 per crew-hour" in page
+    assert "Suggested price" in page and "Send to the client" in page
+
+
+def test_send_page_is_quiet_when_the_price_is_healthy(c, conn):
+    estimates.save(conn, 1001, {"materials": 4000, "markup_pct": 43, "labor": 12000},
+                   {"crew": "1 general contractor, 1 skilled laborer", "duration": "10 days on-site"},
+                   [{"title": "A", "steps": []}], [])
+    assert "Before you send" not in c.get("/jobs/1001/sow/send").get_data(as_text=True)

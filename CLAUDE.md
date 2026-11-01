@@ -25,17 +25,19 @@ RSC tool. The app is small and local, and it handles real client money, so chang
    Nothing touches the books until he presses the button.
 4. **Nothing is sent for him.** Emails open in Mail (`mailto:`) for him to read and send. The only things the app
    emails by itself are the Monday report and the weekday crew sheet, both to people he listed on the Setup page. One more, only when he presses it (Myles approved 2026-10-15): the **Send** button on the estimate preview emails the estimate PDF to the client from his Gmail, with a copy to him.
+   And one switch, **off by default** (Myles asked for instant lead replies 2026-10-20): *Thank new customers right away* on Setup sends a
+   fixed thank-you (template, no model, no prices or promised times) to a new website-form request with an email, once, with a copy to him.
    Do not add automatic sending to clients, QuickBooks writes, or anything else that leaves the Mac without asking Myles.
-5. **Local first.** The AI runs in Ollama on this Mac. Nothing is sent to a cloud model. Don't add network calls.
+5. **Local first.** The AI runs in Ollama on this Mac. Nothing is sent to a cloud model. Don't add network calls. (One read-only exception Myles asked for, 2026-11-01: `newowners.py` reads public county and state parcel map services once a month.)
 6. **Professional wording.** Client-facing text is plain, polite, and never threatens (no fees or lawyers in
    payment reminders).
 
 ## What it does (pages)
 
-Home (today's cards, What's next), To Review (email suggestions), Jobs, job page (estimate, SOW, contract, change
+Home (today's cards, What's next), To Review (email suggestions), Leads (grades and crew capacity; `funnel.py`), Jobs, job page (estimate, SOW, contract, change
 orders, hours, safety assessment, crew brief, progress, client update, room model), Expenses, Codes (RSC-100..900),
 Pricing, Crew (people, hours, insurance certificates, payroll cost), Today (daily crew sheet), Week (who is where),
-Owed (invoice aging and reminders), Playbook, QuickBooks (CSV downloads; optional direct connection), Setup.
+Owed (invoice aging and reminders), Marketing (social post drafts from real jobs, listings checklist), Playbook, New homeowners (recent buyers from public parcel records, welcome letters by mail), QuickBooks (CSV downloads; optional direct connection), Setup.
 
 Longer descriptions: `README.md`, `docs/how-it-works.md`, `docs/crew-pricing-aging.md`, `docs/nick-quick-start.md`,
 `docs/launch-checklist.md`, `docs/quickbooks-setup.md`.
@@ -46,7 +48,7 @@ Python 3.11+ Flask app with Jinja templates, SQLite (WAL) for data, Ollama for m
 
 ```
 rsc/web.py            create_app(): routes for home, jobs, review, expenses, estimates; registers the *_web.py modules
-rsc/*_web.py          crew_web, daily_web, aging_web, playbook_web, receivables_web, client_update_web, schedule_web, qb_web, ops_web (Setup), next_web (job tracker, glow, Next task)
+rsc/*_web.py          crew_web, daily_web, aging_web, playbook_web, receivables_web, client_update_web, schedule_web, qb_web, ops_web (Setup), next_web (job tracker, glow, Next task), funnel_web (Leads)
 rsc/db.py             schema (CREATE TABLE IF NOT EXISTS) and _migrate() for added columns. Add tables here.
 rsc/books.py          jobs, payments, expenses, change orders' money effects. IDs: job number + code + payment seq (ids.py)
 rsc/estimates.py      estimate model, templates, SOW. assist.py = model drafts estimates/scopes. pricing.py, rates.py = price checks
@@ -54,8 +56,10 @@ rsc/contract.py       contract text (DRAFT, see Safe-change rules). changeorders
 rsc/pipeline.py       email -> model -> suggestions -> approve/dismiss. extract.py = prompts and parsing. mail.py = IMAP (read-only)
 rsc/intake.py         website-form and job-application emails (plain code, no model needed)
 rsc/leads.py, followups.py  reply drafts for new leads; review/check-in follow-ups
+rsc/newowners.py      new home buyers from public parcel maps (Saratoga, Warren, NYS points), scoring, letters, CSV. newowners_web.py = page
 rsc/receivables.py    invoice aging and polite reminder drafts. client_update.py = weekly note to the homeowner
 rsc/crew.py           people, hours, certificates, payroll cost. schedule.py = week plan. daily.py = daily crew sheet
+rsc/marketing.py      social post drafts (code scrubs names/addresses/claims), online listings checklist. marketing_web = /marketing
 rsc/aging.py          aging-in-place assessment, dimension checks. playbook.py, guide.py = crew brief and What's next
 rsc/margins.py, report.py  job margins, weekly report. doctor.py = health check. backup.py = daily DB copies
 rsc/brand.py          business name/owner/address/phone in ONE place (Setup page). Use `brand.current()`, never hard-code names
@@ -76,6 +80,9 @@ field; redirects that take a `back` parameter must validate it is a local path. 
 - **Website:** `website/` is the public site at rscrafters.com (pages, blog posts, photos, build scripts). A GitHub
   Action builds it and uploads it to Cloudflare Pages: merging to the default branch makes it live, PRs get preview links. Read
   `website/CLAUDE.md` before changing it. It is separate from the app: no tests, no version bump, no `rsc` restart.
+- **Email worker:** `email-worker/` is a small Cloudflare program on the rscrafters.com addresses: it forwards each email to
+  Nick's Gmail, copies it to Myles, and sends Myles a summary of each lead. Read `email-worker/README.md` before changing it.
+  Separate from the app: no Python tests, no version bump, no `rsc` restart.
 - **Data:** `~/RSC` (or whatever `RSC_HOME` says): `rsc.db` (everything), `config.toml`, `backups/rsc-YYYY-MM-DD.db`
   (daily, 30 kept), `install.log`, and one log per background job: `app.log`, `checkmail.log`, `weeklyreport.log`,
   `dailysheet.log`.
@@ -100,7 +107,7 @@ is not in `~/RSC`.
 | Show reports without sending | `.venv/bin/rsc weekly-report`, `.venv/bin/rsc daily-sheet` |
 | Re-run installer after an update | double-click *Install RSC.command* (safe to repeat) |
 
-Background jobs (launchd, labels `com.reclaimedspacecrafters.<name>` for app, checkmail, weeklyreport, dailysheet,
+Background jobs (launchd, labels `com.reclaimedspacecrafters.<name>` for app, checkmail, weeklyreport, dailysheet, newowners,
 ollama): `launchctl list | grep reclaimed`. Plists are in `~/Library/LaunchAgents`. Restart the app after a code change:
 `launchctl kickstart -k gui/$(id -u)/com.reclaimedspacecrafters.app`. (If it isn't loaded, `rsc open` starts it.)
 Port in use: `lsof -nP -iTCP:5151 -sTCP:LISTEN`. A phone on the same Wi-Fi needs `access_pin` in `config.toml`
@@ -139,7 +146,7 @@ If pytest is missing: `.venv/bin/pip install pytest` (or `uv pip install --pytho
 4. **Contract text is not yours to change.** `rsc/contract.py` is a draft awaiting New York attorney review. If a fix
    touches wording, flag it to Nick/Myles as needing attorney review, don't "improve" legal language, and keep the
    `OPEN_ITEMS` list accurate. Don't claim the contract is legally sufficient.
-5. **No automatic sending or outside writes.** No new code that emails clients (beyond that one Send button), posts to QuickBooks, or calls the
+5. **No automatic sending or outside writes.** No new code that emails clients (beyond that Send button and the Setup thank-you switch), posts to QuickBooks, or calls the
    internet without Myles's say-so. Email drafts open in Mail.
 6. **Secrets stay in the Keychain.** Never log, print, commit, or paste passwords, app passwords, PINs, or QuickBooks keys.
 7. **Don't edit live data with raw SQL** unless Nick asks and you've backed up. Prefer the app's own pages.
@@ -181,8 +188,9 @@ When Nick or Myles asks you to update the app:
 
 - **Contract needs a New York attorney** (attorneys' fees, permits, termination days, license/insurance wording,
   deposits/cancellation/lien section 18 which cites NY GBL §771 as a placeholder). Not legal advice.
-- **Default markup is 43%** (`rates.py`), but Nick's own practice has been closer to 20%. Myles has not decided.
-  Don't change it without asking.
+- **Default markup is 43%** (`rates.py`), the industry standard (about a 30% gross margin). Nick's own practice has
+  been closer to 20%; Myles decided 2026-10-20 that the pricing check uses the industry standard. Don't change it
+  without asking.
 - **Hours vs expense double counting:** crew hours logged on the Crew page and labor entered as expenses can both
   count toward a job's cost. The Crew page notes this. Logged hours replace the estimate's guess only when higher.
 - **Crew pay setup is unconfirmed** (payroll, workers' comp, insurance). The Crew page payroll calculator is an estimate.

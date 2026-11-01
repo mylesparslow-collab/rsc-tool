@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 
 
-from . import brand, books, crew, prefs, extract, intake, leads, receipts
+from . import ballpark, brand, books, config, crew, prefs, extract, intake, leads, receipts
 from .config import Config
 from .llm import Model
 from .mail import Mail, lookback_start
@@ -58,8 +58,12 @@ def process(conn: sqlite3.Connection, cfg: Config, mails: list[Mail], model: Mod
             form.data.setdefault("reply", "")
             if not form.data["reply"]:
                 form.data["reply"] = leads.draft_reply(model, conn, form.data, cfg.business_phone)
-            form.data["reply_to"] = form.data["email"]
+            form.data["reply_to"] = form.data.get("email", "")
             form.data["reply_subject"] = "Re: " + mail.subject
+            if form.kind == "lead" and not form.data.get("applicant"):
+                _thank(conn, cfg, mail, form.data)
+            if not form.data.get("applicant"):
+                _add_ballpark(conn, form.data, mail, model, vision)
             email_id = _record_email(conn, mail, None)
             conn.execute("INSERT INTO suggestions (email_id, kind, data, match_note, confidence) VALUES (?, ?, ?, ?, ?)",
                          (email_id, form.kind, json.dumps(form.data), form.match_note, form.confidence))
@@ -88,6 +92,8 @@ def process(conn: sqlite3.Connection, cfg: Config, mails: list[Mail], model: Mod
             if suggestion.kind == "lead":
                 suggestion.data["reply_to"] = suggestion.data.get("email") or mail.sender
                 suggestion.data["reply_subject"] = "Re: " + mail.subject
+            if suggestion.kind == "lead" and not suggestion.data.get("applicant"):
+                _add_ballpark(conn, suggestion.data, mail, model, vision)
         email_id = _record_email(conn, mail, None if suggestions else "model: not business")
         for suggestion in suggestions:
             conn.execute("INSERT INTO suggestions (email_id, kind, data, match_note, confidence) "
@@ -99,6 +105,35 @@ def process(conn: sqlite3.Connection, cfg: Config, mails: list[Mail], model: Mod
             report.skipped += 1
         conn.commit()
     return report
+
+
+def _thank(conn: sqlite3.Connection, cfg: Config, mail: Mail, data: dict) -> None:
+    """The instant thank-you to a website request, only when Nick has switched it on in Setup. It is a fixed template
+    (no model), goes only to today's or yesterday's requests with an email address, at most once a day per address, and
+    never stops the email check if Gmail says no. Nick's personal reply is still drafted and waits in To Review."""
+    to = data.get("email", "")
+    if not (leads.ack_on(conn) and to and leads.ack_fresh(mail.received_at)):
+        return
+    if conn.execute("SELECT 1 FROM suggestions WHERE kind = 'lead' AND json_extract(data, '$.ack_to') = ? "
+                    "AND created_at >= datetime('now', '-1 day')", (to,)).fetchone():
+        return
+    owner = prefs.get(conn, "owner_name") or brand.current()["owner"]
+    body = leads.ack_text(data.get("name", ""), data.get("project", ""), owner, cfg.business_phone)
+    try:
+        leads.send_ack(cfg.mail.address, config.mail_password(cfg.mail.address), to, leads.ack_subject(), body)
+    except Exception as exc:  # no password, no network, Gmail said no: Nick still has the lead and the drafted reply
+        log.warning("Thank-you to %s not sent: %s", to, exc)
+        data["ack_error"] = "The automatic thank-you didn't go out, so reply soon."
+        return
+    data.update(ack_to=to, ack_sent=datetime.now().strftime("%-I:%M %p on %b %-d"), ack_text=body)
+
+
+def _add_ballpark(conn: sqlite3.Connection, data: dict, mail: Mail, model: Model, vision: Model | None) -> None:
+    """A rough range and site-visit questions, for Nick only (never in the reply). A failure here never loses the lead."""
+    try:
+        data["ballpark"] = ballpark.draft(model, conn, data, mail.attachment_images, vision)
+    except Exception as exc:
+        log.warning("No rough range for %r: %s", mail.subject, exc)
 
 
 def _read_mail(conn: sqlite3.Connection, mail: Mail, model: Model, vision: Model | None, prompt: str) -> list:
@@ -227,7 +262,8 @@ def approve(conn: sqlite3.Connection, suggestion_id: int, edits: dict) -> str:
         first_name = " ".join(name.split()[:-1])
         number = books.create_job(conn, last_name, first_name=first_name, email=data.get("email", ""),
                                   phone=data.get("phone", ""), address=data.get("address", ""),
-                                  status="Estimate", notes=data.get("project", ""))
+                                  status="Estimate", notes=data.get("project", ""),
+                                  job_type=(data.get("ballpark") or {}).get("job_type", ""))
         data["job_number"] = number
         msg = f"Started job {number}-{books.get_job(conn, number)['code']} for {name}"
 

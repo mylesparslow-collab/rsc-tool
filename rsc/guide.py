@@ -7,7 +7,7 @@ import re
 import sqlite3
 from datetime import date
 
-from . import books, crew, daily, estimates, pricing
+from . import books, brand, crew, daily, estimates, leads, pricing
 
 
 def _days_since(iso: str | None) -> int | None:
@@ -78,17 +78,23 @@ def next_step(conn: sqlite3.Connection, job: dict) -> dict | None:
             p = unpaid[0]
             return {"title": f"Waiting on payment {p['payment_id']}", "why": f"${p['amount'] - (p['amount_paid'] or 0):,.0f} invoiced. When it arrives, the email check suggests it for approval.",
                     "endpoint": "job_detail", "args": {"number": n}, "label": "Open the job", "wait": True, "target": _paid_target(p)}
-        row = conn.execute("SELECT id FROM followups WHERE job_number = ? AND status = 'pending' ORDER BY due_date", (n,)).fetchone()
+        row = conn.execute("SELECT id, kind, round FROM followups WHERE job_number = ? AND status = 'pending' ORDER BY due_date", (n,)).fetchone()
         if row:
             fid = row[0]
-            return {"title": "Ask for a review", "why": f"{name}'s job is done. A short note now brings reviews and the next job.",
+            return {"title": "Send the review reminder" if row["kind"] == "review" and row["round"] > 1 else "Ask for a review", "why": f"{name}'s job is done. A short note now brings reviews and the next job.",
                     "endpoint": "followups_page", "args": {}, "label": "Open follow-ups",
                     "target": [f"#f{fid} a.btn", f"#f{fid} button.btn"]}
         return None
     if not est:
-        return {"title": "Write the estimate", "why": "Tell me about the job in a few sentences. I draft the scope of work and the prices.",
+        step = {"title": "Write the estimate", "why": "Tell me about the job in a few sentences. I draft the scope of work and the prices.",
                 "endpoint": "estimate_edit", "args": {"number": n}, "label": "Start the estimate",
                 "target": ["textarea[name=description]"]}
+        days = _days_since(job.get("created_at"))
+        if job["status"] == "Estimate" and days is not None and days >= 7:  # a lead that may have gone quiet
+            step.update(why=f"{name} asked {days} days ago and there's no estimate yet. If you haven't been out to see it, "
+                            f"a short check-in is ready below.",
+                        draft=leads.lead_checkin(job, days), subject=f"Your {(job.get('job_type') or 'project').lower()} request")
+        return step
     if job["status"] == "Estimate":
         check = pricing.check_estimate(conn, n)
         rt = check["rates"]
@@ -100,8 +106,9 @@ def next_step(conn: sqlite3.Connection, job: dict) -> dict | None:
                     "endpoint": "sow", "args": {"number": n}, "label": "Preview and send", "target": ["a.btn.send"]}
         days = _days_since(job["estimate_sent"])
         if days is not None and days >= 7:
-            return {"title": f"Follow up with {name}", "why": f"The estimate went out {days} days ago with no answer yet. Call or email them.",
-                    "endpoint": "job_detail", "args": {"number": n}, "label": "Open the job", "target": [".tracker .contact a"]}
+            return {"title": f"Follow up with {name}", "why": f"The estimate went out {days} days ago with no answer yet. A short note is ready below.",
+                    "endpoint": "job_detail", "args": {"number": n}, "label": "Open the job", "target": [".tracker .contact a"],
+                    "draft": estimate_followup(job, days), "subject": f"Your {(job.get('job_type') or 'project').lower()} estimate"}
         return {"title": f"Waiting on {name}", "why": "When they say yes, open the estimate and press 'Contract signed'. That sets up the payments.",
                 "endpoint": "estimate_edit", "args": {"number": n}, "label": "Open the estimate", "wait": True}
     payments = books.list_payments(conn, n)
@@ -192,3 +199,19 @@ def next_task(conn: sqlite3.Connection, setup_ok: bool = True) -> dict | None:
         if step and not step.get("wait"):
             return {**step, "title": f"{job['last_name']}: {step['title']}"}
     return None
+
+
+def estimate_followup(job: dict, days: int) -> str:
+    """A polite check-in on an estimate that has had no answer. Plain template: it names no price and never pushes."""
+    b = brand.current()
+    first = job.get("first_name") or job.get("last_name") or "there"
+    what = (job.get("job_type") or "project").lower()
+    if days < 21:
+        body = (f"I wanted to make sure the estimate for your {what} reached you, and see if any questions came up. "
+                f"Happy to go over it by phone or walk through it again in person, and to adjust the scope if something "
+                f"doesn't fit your budget or timing.")
+    else:
+        body = (f"Checking in one last time on the estimate for your {what}. If the timing isn't right or you've gone another "
+                f"way, no problem at all, just let me know so I can plan my schedule. If you'd still like to go ahead, "
+                f"I can hold a spot for you.")
+    return f"Hi {first},\n\n{body}\n\n{b['owner']}\n{b['name']}\n{b['phone']}"

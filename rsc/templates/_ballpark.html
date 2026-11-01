@@ -1,0 +1,9 @@
+{# Rough range and site-visit questions for a lead. For Nick only: never in the reply to the homeowner. #}
+<div class="card tone-accent ballpark">
+  <div class="muted">Rough range, for you only (not a quote, not in the reply)</div>
+  <div class="big-number">${{ '{:,.0f}'.format(bp.low) }} to ${{ '{:,.0f}'.format(bp.high) }}</div>
+  <div class="muted">Looks like: {{ bp.label }}{% if bp.photos %} · read from their {{ 'photo' if bp.photos == 1 else bp.photos ~ ' photos' }}{% endif %}. {{ bp.basis }}</div>
+  {% if bp.photo %}<p style="margin:8px 0 0"><strong>Photo:</strong> {{ bp.photo }}</p>{% endif %}
+  {% if bp.questions %}<p style="margin:12px 0 0"><strong>Ask or check at the visit</strong></p>
+  <ul class="note-list">{% for q in bp.questions %}<li>{{ q }}</li>{% endfor %}</ul>{% endif %}
+</div>

@@ -117,6 +117,7 @@ CREATE TABLE IF NOT EXISTS followups (
     draft      TEXT NOT NULL DEFAULT '',
     status     TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'sent', 'skipped')),
     done_at    TEXT,
+    round      INTEGER NOT NULL DEFAULT 1,  -- review: 1 = the request, 2 = the reminder a week after it went out
     UNIQUE (job_number, kind)
 );
 
@@ -243,6 +244,35 @@ DEFAULT_RSC_CODES = [
 ]
 
 
+# New homeowners from public parcel records (newowners.py), for welcome letters. One row per purchase.
+NEW_OWNERS = """
+CREATE TABLE IF NOT EXISTS new_owners (
+    key TEXT PRIMARY KEY,          -- county|swis|print key|deed or sale, so a resale later is a new row
+    county TEXT NOT NULL,
+    town TEXT NOT NULL DEFAULT '',
+    street TEXT NOT NULL DEFAULT '',
+    city TEXT NOT NULL DEFAULT '',
+    zip TEXT NOT NULL DEFAULT '',
+    owner TEXT NOT NULL DEFAULT '',
+    addressee TEXT NOT NULL DEFAULT '',
+    prop_class TEXT NOT NULL DEFAULT '',
+    year_built INTEGER,
+    sqft INTEGER,
+    market_value REAL,
+    sale_price REAL,
+    sale_date TEXT NOT NULL DEFAULT '',
+    deed TEXT NOT NULL DEFAULT '',
+    deed_year INTEGER,
+    score INTEGER NOT NULL DEFAULT 0,
+    grade TEXT NOT NULL DEFAULT 'C',
+    why TEXT NOT NULL DEFAULT '',
+    first_seen TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'new',   -- new, mailed, skip
+    mailed_on TEXT NOT NULL DEFAULT ''
+);
+"""
+
+
 def connect(path: str | Path) -> sqlite3.Connection:
     conn = sqlite3.connect(str(path), detect_types=0)
     conn.row_factory = sqlite3.Row
@@ -268,10 +298,14 @@ def _migrate(conn: sqlite3.Connection) -> None:
                      ("version", "INTEGER NOT NULL DEFAULT 1"), ("version_date", "TEXT NOT NULL DEFAULT ''")):
         if col not in est_cols:
             conn.execute(f"ALTER TABLE estimates ADD COLUMN {col} {ddl}")
+    fu_cols = {r[1] for r in conn.execute("PRAGMA table_info(followups)")}
+    if fu_cols and "round" not in fu_cols:
+        conn.execute("ALTER TABLE followups ADD COLUMN round INTEGER NOT NULL DEFAULT 1")
 
 
 def init(conn: sqlite3.Connection, first_job_number: int = 1001) -> None:
     conn.executescript(SCHEMA)
+    conn.executescript(NEW_OWNERS)
     _migrate(conn)
     conn.executemany("INSERT OR IGNORE INTO rsc_codes VALUES (?, ?, ?)", DEFAULT_RSC_CODES)
     conn.execute("INSERT OR IGNORE INTO settings VALUES ('first_job_number', ?)", (str(first_job_number),))

@@ -31,20 +31,26 @@
     {{ item('followups_page', 'Follow-ups', 'followups', count=followups_due()) }}
   </nav>
   <nav class="nav-group"><span class="label">Jobs</span>
+    {{ item('leads_page', 'Leads', 'review', ['leads_page']) }}
     {{ item('jobs', 'All jobs', 'jobs', ['jobs', 'job_new', 'job_detail', 'estimate_edit', 'change_orders', 'change_order_view', 'sow', 'contract_view']) }}
     {{ item('room_models', 'Room modeler', 'model', ['room_models', 'job_model']) }}
     {{ item('playbook_page', 'Playbook', 'playbook') }}
+    {{ item('new_owners_page', 'New homeowners', 'letter', ['new_owners_page']) }}
   </nav>
   <nav class="nav-group"><span class="label">Money</span>
     {{ item('owed_page', 'Money owed', 'owed') }}
     {{ item('expenses', 'Expenses', 'expenses') }}
     {{ item('pricing_page', 'Pricing and margins', 'pricing', ['pricing_page', 'margins_page', 'report_page']) }}
+    {{ item('scorecard_page', 'Scorecard', 'chart') }}
     {{ item('quickbooks_page', 'QuickBooks', 'books') }}
     {{ item('codes', biz.short ~ ' codes', 'codes') }}
   </nav>
   <nav class="nav-group"><span class="label">Crew</span>
     {{ item('crew_page', 'Crew and hours', 'crew', count=bad_alerts) }}
     {{ item('week_page', 'The week', 'week') }}
+  </nav>
+  <nav class="nav-group"><span class="label">Getting work</span>
+    {{ item('marketing_page', 'Marketing', 'megaphone') }}
   </nav>
   <nav class="nav-group rail-foot">
     {{ item('setup_page', 'Setup', 'setup') }}

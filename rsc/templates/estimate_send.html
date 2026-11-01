@@ -4,6 +4,16 @@
 <p class="muted"><a href="{{ url_for('sow', number=job.number) }}">&larr; Back to the estimate preview</a> · {{ job.job_id }} · {{ job.first_name }} {{ job.last_name }} · total {{ money(total) }}</p>
 
 {% if sent %}<div class="card tone-warn">This estimate was already marked sent on {{ sent }}. Sending again is fine; it just updates the date.</div>{% endif %}
+{% if rates and rates.level != 'ok' %}
+<div class="card tone-{{ rates.level }}">
+  <strong>Before you send: check the price</strong>
+  {% if rates.rate %}<div>{{ '%g'|format(rates.crew_hours) }} crew-hours · labor {{ money(rates.labor) }} · <b>${{ '%.0f'|format(rates.rate) }} per crew-hour</b></div>{% endif %}
+  {% for w in rates.warnings %}<div style="margin-top:6px">{{ w }}</div>{% endfor %}
+  {% if rates.summary %}<div style="margin-top:6px"><b>Suggested price: {{ money(rates.suggested_price) }}.</b> {{ rates.summary }}</div>{% endif %}
+  <div class="actions"><a class="btn secondary" href="{{ url_for('estimate_edit', number=job.number) }}">Change the price first</a></div>
+  <p class="muted" style="margin:8px 0 0">This is only a check. You can still send it as it is.</p>
+</div>
+{% endif %}
 {% if not ready %}
 <div class="card tone-bad"><strong>Email isn't set up yet.</strong> {{ why }} <a class="btn" href="{{ url_for('setup_page') }}">Set up email first</a></div>
 {% endif %}

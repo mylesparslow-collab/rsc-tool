@@ -1,0 +1,23 @@
+# Cloudflare Email Worker for rscrafters.com (Myles's Cloudflare account). Deploy: see README.md.
+name = "rscrafters-email"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+account_id = "3fef926cd8533ba6109643650cce9c94"
+workers_dev = false
+
+[vars]
+# Every email goes to Nick's Gmail (the inbox the RSC tool reads) ...
+FORWARD_TO = "nfparslow@gmail.com"
+# ... and a copy of every email goes here. Leave empty ("") to stop the copies.
+COPY_TO = "mzpprojects1@gmail.com"
+# Lead summaries: from an rscrafters.com address (no mailbox needed) to this inbox. Empty LEAD_SUMMARY_TO stops them.
+LEAD_SUMMARY_FROM = "leads@rscrafters.com"
+LEAD_SUMMARY_TO = "mzpprojects1@gmail.com"
+
+# Sending is only allowed to addresses verified in Email Routing > Destination addresses.
+[[send_email]]
+name = "LEADS"
+allowed_destination_addresses = ["mzpprojects1@gmail.com"]
+
+[observability]
+enabled = true

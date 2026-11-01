@@ -4,7 +4,7 @@ from datetime import date
 
 from flask import Response, abort, current_app, flash, redirect, render_template, request, url_for
 
-from . import assist, books, changeorders, config, contract, estimate_mail, estimates, pricing, rates
+from . import assist, ballpark, books, changeorders, config, contract, estimate_mail, estimates, pricing, rates
 from .llm import ModelUnavailable
 
 
@@ -32,7 +32,7 @@ def register(app, conn, get_model):
         c = conn()
         job = job_or_404(number)
         est = estimates.get(c, number)
-        ctx = {"job": job, "est": est, "templates": list(estimates.TEMPLATES)}
+        ctx = {"job": job, "est": est, "templates": list(estimates.TEMPLATES), "ballpark": ballpark.for_job(c, number)}
         if est:
             t = estimates.totals(est)
             ctx.update(totals=t, schedule=estimates.build_schedule(est) if t["total"] > 0 else [],
@@ -171,7 +171,8 @@ def register(app, conn, get_model):
                                subject=estimate_mail.default_subject(job),
                                body=estimate_mail.default_body(job, ctx["totals"]["total"]),
                                pdf_name=estimate_mail.filename(job), total=ctx["totals"]["total"],
-                               sent=job.get("estimate_sent"))
+                               sent=job.get("estimate_sent"),
+                               rates=(pricing.check_estimate(conn(), number) or {}).get("rates"))
 
     @app.post("/jobs/<int:number>/sow/send")
     def sow_send(number):

@@ -1,8 +1,8 @@
 {% extends "base.html" %}{% block title %}Follow-ups{% endblock %}
 {% block body %}
 <div class="page-head"><div><div class="eyebrow">After the job is done</div><h1>Follow-ups</h1></div></div>
-<p class="muted">When a job is marked Complete, a review request is queued for 3 days later and a check-in for a year later. Open one to see the message already written, send it from your own email, then mark it sent.</p>
-{% if not review_url %}<div class="card"><span class="bad">No review link yet.</span> Add your Google review link on the <a href="{{ url_for('setup_page') }}">Setup page</a> so the request has somewhere to send people.</div>{% endif %}
+<p class="muted">When a job is marked Complete, a review request is queued for 3 days later and a check-in for a year later. Open one to see the message already written, send it by email or text, then mark it sent. A gentle reminder comes back a week after the review request, unless you mark that they already left one.</p>
+{% if not review_url %}<div class="card"><span class="bad">Add your review link.</span> Until it's on the <a href="{{ url_for('setup_page') }}">Setup page</a>, review requests ask people to reply with a few words instead. Once your Google Business Profile is set up, copy its "Ask for reviews" link and paste it there; drafts already written pick it up.</div>{% endif %}
 {% for f in items %}
 <div class="card" id="f{{ f.id }}">
   <div><strong>{{ f.title }}</strong> · {{ f.first_name }} {{ f.last_name }} <span class="muted">({{ f.job_id }}) · due {{ f.due_date }}{% if f.due_date <= today %} <span class="bad">now</span>{% endif %}</span></div>
@@ -10,11 +10,14 @@
   <textarea rows="7" style="margin-top:8px" readonly onclick="this.select()">{{ f.draft }}</textarea>
   <div class="actions">
     {% if f.email %}<a class="btn" href="mailto:{{ f.email }}?subject={{ f.subject|urlencode }}&body={{ f.draft|urlencode }}">Open in Mail</a>{% endif %}
+    {% if f.sms %}<a class="btn{{ ' secondary' if f.email }}" href="sms:{{ f.sms }}?&body={{ f.draft|urlencode }}">Send as a text</a>{% endif %}
     <form method="post" action="{{ url_for('followup_mark', fid=f.id, status='sent') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn secondary">Mark sent</button></form>
+    {% if f.kind == 'review' and f.round > 1 %}<form method="post" action="{{ url_for('followup_mark', fid=f.id, status='reviewed') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn quiet">They left a review</button></form>{% endif %}
     <form method="post" action="{{ url_for('followup_mark', fid=f.id, status='skipped') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn quiet">Skip</button></form>
   </div>
   {% else %}
   <div class="actions"><form method="post" action="{{ url_for('followup_draft', fid=f.id) }}" class="inline" data-busy="Writing it..."><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn">Write the message</button></form>
+    {% if f.kind == 'review' and f.round > 1 %}<form method="post" action="{{ url_for('followup_mark', fid=f.id, status='reviewed') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn quiet">They left a review</button></form>{% endif %}
     <form method="post" action="{{ url_for('followup_mark', fid=f.id, status='skipped') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn quiet">Skip</button></form></div>
   {% endif %}
 </div>

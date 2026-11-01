@@ -13,7 +13,7 @@ from pathlib import Path
 
 from . import backup, brand, config, models
 
-AGENTS = {"app": "keeps the app running", "checkmail": "checks email every 30 minutes",
+AGENTS = {"app": "keeps the app running", "checkmail": "checks email every 10 minutes",
           "weeklyreport": "sends the Monday report", "dailysheet": "sends the weekday work sheet"}
 
 

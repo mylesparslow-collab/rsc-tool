@@ -1,0 +1,27 @@
+{% extends "base.html" %}{% block title %}Leads{% endblock %}
+{% block body %}
+<h1>Leads</h1>
+<p class="muted">Every open lead gets a grade from what they wrote: the kind of job, its size, how soon, the town and how to reach them. The best ones are at the top, so they get the fastest reply.</p>
+
+{% set cap = s.capacity %}
+<div class="grid">
+  <div class="card"><div class="muted">Crew</div>
+    <div class="big-number">{{ cap.running }} of {{ cap.slots }}</div>
+    <div class="{{ 'bad' if cap.booked else 'ok' }}">{{ 'Booked: offer start dates' if cap.booked else cap.open ~ ' open' }}</div>
+    <form method="post" action="{{ url_for('leads_slots') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}">
+      <label>Jobs the crew can run at once <input name="crew_slots" value="{{ cap.slots }}" size="3" inputmode="numeric"></label> <button class="btn small secondary">Save</button></form>
+  </div>
+  <div class="card"><div class="muted">Open leads by grade</div>
+    <div>{% for g, n in s.by_grade.items() %}<span class="pill g-{{ g }}">{{ g }}: {{ n }}</span> {% endfor %}</div></div>
+</div>
+
+{% for j in leads %}{% set sc = j.score %}
+<div class="card" id="lead{{ j.number }}">
+  <strong><span class="pill g-{{ sc.grade }}">{{ sc.grade }}</span> <a href="{{ url_for('job_detail', number=j.number) }}">{{ j.first_name }} {{ j.last_name }}</a> <span class="id muted">{{ j.job_id }}</span></strong>
+  <div>{{ (j.notes or j.job_type or 'No details yet')[:300] }}</div>
+  <div class="muted">Why {{ sc.grade }}: {{ sc.reasons|join('; ') }}.</div>
+  <div><b>{{ j.route.why }}</b></div>
+  <div class="actions">{% if j.phone %}<a class="btn secondary" href="tel:{{ j.phone }}">Call {{ j.phone }}</a>{% endif %}<a class="btn{{ ' secondary' if sc.grade != 'A' }}" href="{{ url_for('job_detail', number=j.number) }}">Open the job</a></div>
+</div>
+{% else %}<div class="card muted">No open leads. When you approve a new lead in To Review it shows up here with its grade.</div>{% endfor %}
+{% endblock %}
