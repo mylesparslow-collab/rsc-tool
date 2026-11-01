@@ -2,6 +2,16 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## Unreleased: Leads and partner referrals
+
+- New **Leads** page (sidebar, under Jobs). Every open lead gets a grade, A, B, C or Pass, worked out in plain code from what the homeowner wrote: the kind of job (bathrooms, kitchens, porch enclosures, built-ins and restoration count most), any budget, how soon, the town, and whether they left a phone and an email. Each grade lists its reasons.
+- The page knows when the crew is booked: you set how many jobs the crew can run at once (2 to start), and it counts the Signed and In Progress jobs.
+- When the crew is booked, or a job is a trade you don't do, it suggests passing the lead to a partner. That only works once the homeowner has said yes: the new optional box on the website form, or you writing down how they said yes on the phone or by email. Leads from Google Local Services can never be passed on (Google's rule).
+- New **Partners** page: contractors you trust, with their trades, towns, insurance date and referral fee (a percent of their contract). A partner without an email or with expired insurance can't get leads. "Pass to ..." opens two emails in Mail, one introducing the partner to the homeowner and one giving the partner the details. Nothing is sent for you.
+- Referral ledger on the Partners page: Sent, Won (with their contract amount; the fee is worked out by the app), Didn't get it, Fee paid.
+- New job status "Passed on", so a passed lead stops showing follow-ups.
+- Website quote form: an optional, unticked box, "If you're booked, it's OK to pass my request to one contractor you trust." The wording needs a New York attorney's review before any lead is passed on for a fee.
+
 ## 0.2.7
 
 - Harder to get lost. Every job page now starts with a tracker: the job's five stages (Write the estimate, Send it, Get it signed, Do the work and get paid, Wrap up) with a check on the finished ones, "Stage 3 of 5" in words, and the one next thing to do with a big button.

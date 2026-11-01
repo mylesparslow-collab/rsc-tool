@@ -64,7 +64,7 @@ def next_step(conn: sqlite3.Connection, job: dict) -> dict | None:
     'target' lists CSS selectors (first match wins) for the field or button to glow on that page. 'wait' marks a step where
     the next move is someone else's (the client answering, a payment arriving): it's shown, but nothing glows for it."""
     n, name = job["number"], job.get("first_name") or job.get("last_name") or "the client"
-    if job["status"] in ("Lost",):
+    if job["status"] in ("Lost", "Passed on"):
         return None
     est = estimates.get(conn, n)
     if job["status"] == "Complete":

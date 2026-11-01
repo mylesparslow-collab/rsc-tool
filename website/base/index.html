@@ -574,6 +574,8 @@ p{text-wrap:pretty}
 .field--full{grid-column:1/-1}
 .field input,.field textarea{font:400 16px/1.4 var(--text);color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:2px;padding:13px 14px;width:100%;resize:vertical}
 .field input:focus,.field textarea:focus{outline:2px solid var(--ink);outline-offset:-1px}
+.field label.check{display:flex;gap:10px;align-items:flex-start;font:400 15px/1.45 var(--text);color:var(--ink);margin:0;cursor:pointer}
+.field label.check input{width:20px;height:20px;padding:0;margin:2px 0 0;flex:none;accent-color:var(--ink)}
 .planner-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px}
 .planner-note{grid-column:1/-1;margin:0;font-size:14px;color:var(--moss)}
 .planner-note.is-error{color:var(--barn);font-weight:600}
@@ -903,6 +905,7 @@ html.notes-off .draft-in{padding-block:4px}
       <div class="field"><label for="pname">Your name</label><input id="pname" name="pname" autocomplete="name"></div>
       <div class="field field--full"><label for="pcontact">Phone or email, so we can reply</label><input id="pcontact" name="pcontact" autocomplete="tel" required></div>
       <div class="field field--full"><label for="pmsg">One line about the project</label><textarea id="pmsg" name="pmsg" rows="3" placeholder="New composite deck off the back of a 1940s cape"></textarea></div>
+      <div class="field field--full"><label class="check"><input type="checkbox" id="pshare" name="pshare" value="yes"> <span>If you’re booked, it’s OK to pass my request to one contractor you trust. (Optional. Leave it blank and only we will contact you.)</span></label></div>
       <div class="hp" aria-hidden="true"><label for="pcompany">Company</label><input id="pcompany" name="company" tabindex="-1" autocomplete="off"></div>
       <div class="planner-actions">
         <button class="btn btn-primary" type="submit" id="sendBtn">Send request</button>
@@ -1160,7 +1163,7 @@ html.notes-off .draft-in{padding-block:4px}
     var type = form.querySelector('input[name="ptype"]:checked').value;
     var when = form.querySelector('input[name="pwhen"]:checked').value;
     var town = form.ptown.value.trim(), name = form.pname.value.trim(), msg = form.pmsg.value.trim();
-    text = 'Hello' + (name ? ', this is ' + name : '') + '. I’m planning ' + type + (town ? ' in ' + town : '') + ', ' + when + '.' + (msg ? ' ' + msg + (/[.!?]$/.test(msg) ? '' : '.') : '') + (source ? ' Found you through ' + source + '.' : ' Found you through your website.');
+    text = 'Hello' + (name ? ', this is ' + name : '') + '. I’m planning ' + type + (town ? ' in ' + town : '') + ', ' + when + '.' + (msg ? ' ' + msg + (/[.!?]$/.test(msg) ? '' : '.') : '') + (source ? ' Found you through ' + source + '.' : ' Found you through your website.') + (form.pshare && form.pshare.checked ? ' If you’re booked, it’s OK to pass my request to one contractor you trust.' : '');
     sms.href = 'sms:+15189329919?&body=' + encodeURIComponent(text);
   }
   function say(msg, kind) { note.textContent = msg; note.className = 'planner-note' + (kind ? ' is-' + kind : ''); }
@@ -1174,7 +1177,7 @@ html.notes-off .draft-in{padding-block:4px}
     /* field names match what the RSC tool reads from the notification email (rsc/intake.py); keep "message" last */
     var isEmail = contact.indexOf('@') > 0;
     var payload = { _subject: 'Quote request from the website', name: form.pname.value.trim(), email: isEmail ? contact : '',
-      phone: isEmail ? '' : contact, town: form.ptown.value.trim(), source: source || 'website', message: text };
+      phone: isEmail ? '' : contact, town: form.ptown.value.trim(), source: source || 'website', share_ok: form.pshare && form.pshare.checked ? 'yes' : 'no', message: text };
     var lines = ['Name: ' + payload.name, (isEmail ? 'Email: ' : 'Phone: ') + contact, 'Town: ' + payload.town, 'Source: ' + payload.source, 'Message: ' + text];
     if (LEADS.endpoint) {
       sendBtn.disabled = true; say('Sending…');

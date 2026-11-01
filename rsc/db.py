@@ -197,6 +197,48 @@ CREATE TABLE IF NOT EXISTS certificates (
     created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
+-- Contractors Nick trusts with work he can't take (overflow). Nothing is sent to them by the app: handoffs open in Mail.
+CREATE TABLE IF NOT EXISTS partners (
+    id                INTEGER PRIMARY KEY AUTOINCREMENT,
+    name              TEXT NOT NULL,
+    company           TEXT NOT NULL DEFAULT '',
+    email             TEXT NOT NULL DEFAULT '',
+    phone             TEXT NOT NULL DEFAULT '',
+    trades            TEXT NOT NULL DEFAULT '',
+    towns             TEXT NOT NULL DEFAULT '',
+    license           TEXT NOT NULL DEFAULT '',
+    insurance_expires TEXT NOT NULL DEFAULT '',
+    fee_pct           REAL NOT NULL DEFAULT 4,
+    notes             TEXT NOT NULL DEFAULT '',
+    active            INTEGER NOT NULL DEFAULT 1,
+    created_at        TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- The homeowner's OK to be passed to a partner: when, how, and what they agreed to. One row per yes.
+CREATE TABLE IF NOT EXISTS lead_consent (
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    job_number INTEGER NOT NULL REFERENCES jobs(number),
+    how        TEXT NOT NULL,
+    note       TEXT NOT NULL DEFAULT '',
+    said_on    TEXT NOT NULL DEFAULT (date('now')),
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- Leads passed to a partner, and the referral fee when the partner wins the job.
+CREATE TABLE IF NOT EXISTS partner_referrals (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    job_number      INTEGER NOT NULL REFERENCES jobs(number),
+    partner_id      INTEGER NOT NULL REFERENCES partners(id),
+    status          TEXT NOT NULL DEFAULT 'Sent' CHECK (status IN ('Sent', 'Won', 'Lost')),
+    sent_on         TEXT NOT NULL DEFAULT (date('now')),
+    consent         TEXT NOT NULL DEFAULT '',
+    contract_amount REAL,
+    fee_pct         REAL NOT NULL DEFAULT 0,
+    fee_due         REAL NOT NULL DEFAULT 0,
+    fee_paid_on     TEXT,
+    created_at      TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
 -- Every email the tool has looked at, so nothing is read or suggested twice.
 CREATE TABLE IF NOT EXISTS emails (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -4,13 +4,13 @@
 <section class="tracker" aria-label="Where this job is">
   <div class="tracker-top">
     <a class="tracker-job" href="{{ url_for('job_detail', number=j.number) }}"><span class="id">{{ j.job_id }}</span> {{ j.first_name }} {{ j.last_name }}</a>
-    <span class="tracker-where">{% if t.status == 'Lost' %}This job was lost{% elif t.status == 'On Hold' %}On hold{% else %}Stage {{ t.number }} of {{ t.count }}: <b>{{ t.label }}</b>{% endif %}</span>
+    <span class="tracker-where">{% if t.status == 'Lost' %}This job was lost{% elif t.status == 'Passed on' %}Passed to a partner contractor{% elif t.status == 'On Hold' %}On hold{% else %}Stage {{ t.number }} of {{ t.count }}: <b>{{ t.label }}</b>{% endif %}</span>
     {% if j.phone or j.email %}<span class="contact">{% if j.phone %}<a href="tel:{{ j.phone }}">Call {{ j.phone }}</a>{% endif %}{% if j.email %}<a href="mailto:{{ j.email }}">Email {{ j.first_name or 'them' }}</a>{% endif %}</span>{% endif %}
   </div>
-  {% if t.status != 'Lost' %}
+  {% if t.status not in ('Lost', 'Passed on') %}
   <ol class="stages">{% for s in t.stages %}<li class="{{ s.state }}"{% if s.state == 'current' %} aria-current="step"{% endif %}><span class="n">{{ '&#10003;'|safe if s.state == 'done' else loop.index }}</span><span class="lbl">{{ s.label }}</span></li>{% endfor %}</ol>
   {% endif %}
-  {% if nx and t.status != 'Lost' %}
+  {% if nx and t.status not in ('Lost', 'Passed on') %}
   <div class="tracker-next{{ ' wait' if nx.wait }}">
     <div class="what"><b>Next: {{ nx.title }}</b><span class="muted">{% if nx.wait %}Nothing to press until then. {% endif %}{{ nx.why }}</span></div>
     {% if nx.wait %}{% if not (nx.endpoint == request.endpoint and nx.args == request.view_args) %}<a class="btn secondary" href="{{ url_for(nx.endpoint, **nx.args) }}">{{ nx.label }}</a>{% endif %}
