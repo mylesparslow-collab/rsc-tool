@@ -195,7 +195,7 @@ def chrome_top(up: str, title: str, head_extra: str) -> str:
 {head_extra}
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#F5F6F3">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231C2420'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='40' fill='%23F5F6F3'%3ER%3C/text%3E%3Crect x='14' y='51' width='36' height='3' fill='%238C2F22'/%3E%3C/svg%3E">
+<link rel="icon" href="{up}images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Franklin:wght@400;500;600&display=swap">
@@ -216,7 +216,7 @@ def chrome_header(up: str) -> str:
 <header class="site-head">
   <div class="container head-in">
     <a class="mark" href="{up}index.html" aria-label="{NAME} home">
-      <span class="mark-name">{NAME_PH}</span>
+      <img class="mark-logo" src="{up}images/logo.svg" width="117" height="44" alt="">
       <span class="mark-sub">Design and build in Saratoga Springs, NY</span>
     </a>
     <nav class="nav" aria-label="Main">{nav}</nav>
@@ -229,7 +229,7 @@ def chrome_header(up: str) -> str:
 </header>
 
 <div class="menu" id="menu" hidden>
-  <div class="menu-top"><span class="mark-name">{NAME}</span><button class="menu-close" id="menuClose" type="button">Close</button></div>
+  <div class="menu-top"><img class="mark-logo" src="{up}images/logo.svg" width="117" height="44" alt="{NAME}"><button class="menu-close" id="menuClose" type="button">Close</button></div>
   <nav aria-label="Menu"><a href="{up}index.html">Home</a>{nav.replace(' aria-current="page"', '')}<a href="{up}#faq">FAQ</a><a href="{up}#contact">Get a quote</a></nav>
   <div class="menu-foot">
     <a class="tel" href="tel:{TEL}">{PHONE}</a>
@@ -242,7 +242,7 @@ def chrome_header(up: str) -> str:
 def chrome_footer(up: str) -> str:
     return f"""<footer class="foot">
   <div class="container">
-    <p class="foot-mark">{NAME_PH}</p>
+    <p class="foot-mark"><img src="{up}images/logo.svg" width="2317" height="870" alt="{NAME}" loading="lazy"></p>
     <div class="foot-grid">
       <div><h3>Contact</h3><p><a href="tel:{TEL}">{PHONE}</a><br>Call or text<br>Saratoga Springs, NY</p></div>
       <div><h3>Services</h3><ul><li><a href="{up}decks-and-stairs/index.html">Decks + stairs</a></li><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Bathrooms</a></li><li><a href="{up}restoration-and-built-ins/index.html">Restoration + built-ins</a></li><li><a href="{up}bulkheads-and-outdoor/index.html">Bulkheads + outdoor jobs</a></li><li><a href="{up}safe-at-home/index.html">Safe at Home (coming soon)</a></li></ul></div>

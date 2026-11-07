@@ -456,3 +456,12 @@ html.notes-off .draft-in{padding-block:4px}
 .nearby a{font:500 15px var(--text);border:1px solid var(--line);border-radius:999px;padding:10px 16px;text-decoration:none}
 .nearby a:hover{border-color:var(--ink)}
 @media (max-width:640px){.hire-in .btn{width:100%}.draft-toggle{margin-left:0}}
+
+/* 2026-11: Nick's logo and its red become the brand */
+:root{--barn:#B5342F;--barn-dk:#93291F;--slate:#6D6E71;--expo:cubic-bezier(.19,1,.22,1);--inout:cubic-bezier(.77,0,.175,1)}
+.mark{flex-direction:row;align-items:center;gap:16px}
+.mark-logo{height:44px;width:auto;display:block}
+.mark-sub{margin-top:0;max-width:160px;line-height:1.35;padding-left:16px;border-left:1px solid var(--line)}
+.menu-top .mark-logo{height:40px}
+.foot-mark img{width:min(560px,72vw);height:auto;display:block}
+@media (max-width:640px){.mark-logo{height:38px}}
