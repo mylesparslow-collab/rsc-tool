@@ -23,7 +23,7 @@ If the live site needs republishing without a change: Actions › Website › Ru
 
 | Path | What |
 |---|---|
-| `base/` | The site's own pages: home `index.html`, services (`decks-and-stairs/`, `kitchens/`, `bathrooms/`, `restoration-and-built-ins/`, `bulkheads-and-outdoor/`), towns (`saratoga-springs/`, `wilton/`, `capital-region/`), `safe-at-home/`, `work-with-us/` (on hold) and `styles.css` |
+| `base/` | The site's own pages: home `index.html`, portfolio `work/` (every project, with category buttons), services (`decks-and-stairs/`, `kitchens/`, `bathrooms/`, `restoration-and-built-ins/`, `bulkheads-and-outdoor/`), towns (`saratoga-springs/`, `wilton/`, `capital-region/`), `safe-at-home/`, `work-with-us/` (on hold) and `styles.css` |
 | `posts/<slug>.md` | Blog posts. Each needs a row in `keyword-plan.md`. Read `WRITING-BRIEF.md` before writing one |
 | `images/` | Photos: `name.jpg` plus `name-480.webp`, `name-800.webp` (and larger) copies |
 | `build_blog.py` | Builds `dist/`: posts, blog index, "Guides" lists on pages, sitemap, robots.txt |

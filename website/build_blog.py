@@ -205,7 +205,7 @@ def chrome_top(up: str, title: str, head_extra: str) -> str:
 
 
 def chrome_header(up: str) -> str:
-    nav = (f'<a href="{up}#work">Work</a><a href="{up}#services">Services</a><a href="{up}#about">About</a>'
+    nav = (f'<a href="{up}work/index.html">Work</a><a href="{up}#services">Services</a><a href="{up}#about">About</a>'
            f'<a href="{up}safe-at-home/index.html">Safe at Home</a>'
            f'<a href="{up}blog/index.html" aria-current="page">Blog</a><a href="{up}work-with-us/index.html">Hiring</a>')
     return f"""</head>
@@ -247,7 +247,7 @@ def chrome_footer(up: str) -> str:
       <div><h3>Contact</h3><p><a href="tel:{TEL}">{PHONE}</a><br>Call or text<br>Saratoga Springs, NY</p></div>
       <div><h3>Services</h3><ul><li><a href="{up}decks-and-stairs/index.html">Decks + stairs</a></li><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Bathrooms</a></li><li><a href="{up}restoration-and-built-ins/index.html">Restoration + built-ins</a></li><li><a href="{up}bulkheads-and-outdoor/index.html">Bulkheads + outdoor jobs</a></li><li><a href="{up}safe-at-home/index.html">Safe at Home (coming soon)</a></li></ul></div>
       <div><h3>Where we work</h3><ul><li><a href="{up}saratoga-springs/index.html">Saratoga Springs</a></li><li><a href="{up}wilton/index.html">Wilton</a></li><li><a href="{up}capital-region/index.html">Capital Region</a></li></ul></div>
-      <div><h3>More</h3><ul><li><a href="{up}#work">Work</a></li><li><a href="{up}#faq">FAQ</a></li><li><a href="{up}blog/index.html">Blog</a></li><li><a href="{up}work-with-us/index.html">Work with us</a></li><li><a href="{NEXTDOOR}" target="_blank" rel="noopener">Nextdoor</a></li><li><a href="{YELP}" target="_blank" rel="noopener">Yelp</a></li><li><a href="{HOUZZ}" target="_blank" rel="noopener">Houzz</a></li></ul></div>
+      <div><h3>More</h3><ul><li><a href="{up}work/index.html">Work</a></li><li><a href="{up}#faq">FAQ</a></li><li><a href="{up}blog/index.html">Blog</a></li><li><a href="{up}work-with-us/index.html">Work with us</a></li><li><a href="{NEXTDOOR}" target="_blank" rel="noopener">Nextdoor</a></li><li><a href="{YELP}" target="_blank" rel="noopener">Yelp</a></li><li><a href="{HOUZZ}" target="_blank" rel="noopener">Houzz</a></li></ul></div>
     </div>
     <p class="foot-legal">© <span id="yr">2026</span> {NAME}. Design and build across Saratoga County and the Capital Region.</p>
   </div>
@@ -575,7 +575,7 @@ def main():
     (DIST / "styles.css").write_text(css, encoding="utf-8")
 
     pages = ["", "decks-and-stairs/", "kitchens/", "bathrooms/", "restoration-and-built-ins/", "bulkheads-and-outdoor/",
-             "safe-at-home/", "saratoga-springs/", "wilton/", "capital-region/", "work-with-us/", "blog/"]
+             "work/", "safe-at-home/", "saratoga-springs/", "wilton/", "capital-region/", "work-with-us/", "blog/"]
     urls = [(f"{SITE}/{p}", "2026-10-18") for p in pages] + [(f"{SITE}/blog/{p['slug']}/", PUBLISHED) for p in posts]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     sitemap += [f"  <url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in urls]
