@@ -49,7 +49,7 @@ Most built-ins are cabinet boxes, often cabinet-grade plywood, with solid wood f
 
 The order on most jobs goes like this. Site visit and measuring, including how far out the walls and floor are. Drawings with the layout, shelf spacing and trim details. Electrical rough-in by a licensed electrician. Building the boxes, shelves and doors. Setting and scribing. Then trim, filling nail holes, sanding, and paint or finish.
 
-Built-ins are cabinetry, so a lot of the decisions overlap with kitchen cabinets. If the kitchen's on your list too, our post on whether to [reface or replace kitchen cabinets](/blog/kitchen-cabinets-reface-or-replace/) covers the same ground. And because the drawing and the building are so tangled together on this kind of work, it goes smoother when one team does both; see [design-build vs hiring an architect and contractor](/blog/design-build-vs-architect-and-contractor/).
+Built-ins are cabinetry, so a lot of the decisions overlap with kitchen cabinets. If the kitchen's on your list too, our post on whether to [reface or replace kitchen cabinets](/blog/kitchen-cabinets-reface-or-replace/) covers the same ground. And because the drawing and the building are so tangled together on this kind of work, it goes smoother when one team does both; see [Design+Build vs hiring an architect and contractor](/blog/design-build-vs-architect-and-contractor/).
 
 ## Frequently asked questions
 

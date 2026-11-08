@@ -1,15 +1,15 @@
 ---
 slug: design-build-vs-architect-and-contractor
 title: Design-Build vs Architect and Contractor
-h1: Design-build or architect and contractor: which fits your remodel?
+h1: Design+Build or architect and contractor: which fits your remodel?
 description: Design build contractor or a separate architect and builder? How each approach works for a Saratoga Springs remodel, the trade-offs, and when you need both.
-summary: The difference between hiring one design-build firm and hiring an architect and a contractor separately, and how to tell which suits your project.
+summary: The difference between hiring one Design+Build firm and hiring an architect and a contractor separately, and how to tell which suits your project.
 flags:
 ---
 
-A design-build contractor does the design and the construction of your remodel under one agreement, with one team responsible all the way through, starting with the tape measure on the first visit. The traditional route is to hire an architect or designer to draw plans, then hire a contractor separately to build them. For kitchens, bathrooms, decks and most renovations of existing houses in Saratoga Springs and the towns around it, design-build is the simpler path, because the design and the price get worked out together. Hire a separate architect for a big addition, complicated structural work, or when you want an independent professional watching the builder.
+A Design+Build contractor does the design and the construction of your remodel under one agreement, with one team responsible all the way through, starting with the tape measure on the first visit. The traditional route is to hire an architect or designer to draw plans, then hire a contractor separately to build them. For kitchens, bathrooms, decks and most renovations of existing houses in Saratoga Springs and the towns around it, Design+Build is the simpler path, because the design and the price get worked out together. Hire a separate architect for a big addition, complicated structural work, or when you want an independent professional watching the builder.
 
-## Design-build, start to finish
+## Design+Build, start to finish
 
 The same people come to the house, hear what you want, measure, draw it up, price it and build it. Since whoever is drawing the plan also knows what each choice costs and how it goes together, you find out a tile or a moved wall blows the budget while you're still choosing, not after a full set of drawings is done.
 
@@ -27,7 +27,7 @@ The cost is time, plus the risk that the design gets finished before anyone has 
 
 ## Side by side
 
-| Question | Design-build | Architect and contractor |
+| Question | Design+Build | Architect and contractor |
 |---|---|---|
 | Who is your main contact? | One team for design and construction | Architect for design, contractor for construction |
 | When is cost known? | Developed alongside the design | After plans are finished and bid |
@@ -39,7 +39,7 @@ The cost is time, plus the risk that the design gets finished before anyone has 
 
 Certain projects need drawings stamped by a licensed architect or professional engineer no matter who builds them. That can include larger additions, structural changes like taking out a load-bearing wall, and anything the building department decides a plain sketch won't cover. It depends on the project and on New York State and local rules, so ask your building department early.
 
-This isn't either-or. A design-build contractor can bring in an engineer to size a beam or a footing and still run the job. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) explains what typically triggers a permit.
+This isn't either-or. A Design+Build contractor can bring in an engineer to size a beam or a footing and still run the job. Our post on [building permits in Saratoga Springs](/blog/do-i-need-a-permit-saratoga-springs/) explains what typically triggers a permit.
 
 Historic houses add a step. Exterior changes in Saratoga Springs historic districts can need Design Review Commission approval, and that review may call for more detailed drawings than an interior remodel would.
 
@@ -49,21 +49,21 @@ Whichever way you go, the protections are the same. Get a written scope that des
 
 ## Our take for a typical Saratoga Springs job
 
-A kitchen in a downtown Victorian, a bathroom in a 1990s colonial out in a subdivision, a new deck, a wall of office built-ins: design-build. The drawing and the price grow up together, and there's one team to hold accountable when something's off. Our [kitchen remodel guide for Saratoga Springs](/blog/kitchen-remodel-saratoga-springs-guide/) shows how that plays out on one of the most common remodels in the city.
+A kitchen in a downtown Victorian, a bathroom in a 1990s colonial out in a subdivision, a new deck, a wall of office built-ins: Design+Build. The drawing and the price grow up together, and there's one team to hold accountable when something's off. Our [kitchen remodel guide for Saratoga Springs](/blog/kitchen-remodel-saratoga-springs-guide/) shows how that plays out on one of the most common remodels in the city.
 
 A two-story addition, a major structural change, or a job where you want someone independent keeping an eye on the builder: hire the architect, and accept the extra time and fee.
 
 ## Frequently asked questions
 
-### Is design-build more expensive?
+### Is Design+Build more expensive?
 
 Not by nature. Putting design and construction under one agreement can cut the time spent redrawing plans that came in over budget. What a project costs depends mostly on scope and materials, not on how it's delivered.
 
-### Can I bring my own designer to a design-build contractor?
+### Can I bring my own designer to a Design+Build contractor?
 
-Often, yes. Plenty of design-build contractors will work from a homeowner's own plans, or bring an outside designer in for certain pieces like cabinetry or tile. Bring it up at the first meeting.
+Often, yes. Plenty of Design+Build contractors will work from a homeowner's own plans, or bring an outside designer in for certain pieces like cabinetry or tile. Bring it up at the first meeting.
 
-### Do I lose control of the design with design-build?
+### Do I lose control of the design with Design+Build?
 
 No. You still decide the layout, materials and finishes. The difference is you work them out with the people who'll build them, instead of locking in a design before anyone has priced it.
 
