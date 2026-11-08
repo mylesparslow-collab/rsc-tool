@@ -77,7 +77,7 @@ CAT_BLURB = {
     "Safe at Home": "Aging in place: making a home safer for the years ahead. Our Safe at Home service is in preparation.",
 }
 SERVICE_NAMES = {
-    "/decks-and-stairs/": "Decks and stairs", "/kitchens/": "Kitchens", "/bathrooms/": "Bathrooms",
+    "/decks-and-stairs/": "Decks", "/kitchens/": "Kitchens", "/bathrooms/": "Baths",
     "/restoration-and-built-ins/": "Restoration and built-ins", "/bulkheads-and-outdoor/": "Bulkheads and outdoor projects",
     "/safe-at-home/": "Safe at Home", "/saratoga-springs/": "Saratoga Springs", "/wilton/": "Wilton",
     "/capital-region/": "the Capital Region",
@@ -245,7 +245,7 @@ def chrome_footer(up: str) -> str:
     <p class="foot-mark"><img src="{up}images/logo.svg" width="2317" height="870" alt="{NAME}" loading="lazy"></p>
     <div class="foot-grid">
       <div><h3>Contact</h3><p><a href="tel:{TEL}">{PHONE}</a><br>Call or text<br>Saratoga Springs, NY</p></div>
-      <div><h3>Services</h3><ul><li><a href="{up}decks-and-stairs/index.html">Decks + stairs</a></li><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Bathrooms</a></li><li><a href="{up}restoration-and-built-ins/index.html">Restoration + built-ins</a></li><li><a href="{up}bulkheads-and-outdoor/index.html">Bulkheads + outdoor jobs</a></li><li><a href="{up}safe-at-home/index.html">Safe at Home (coming soon)</a></li></ul></div>
+      <div><h3>Services</h3><ul><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Baths</a></li><li><a href="{up}decks-and-stairs/index.html">Decks</a></li><li><a href="{up}work/index.html#stairs">Stairs &amp; Rails</a></li><li><a href="{up}restoration-and-built-ins/index.html">Built-ins</a></li><li><a href="{up}restoration-and-built-ins/index.html">Restoration</a></li><li><a href="{up}bulkheads-and-outdoor/index.html">Bulkheads + outdoor jobs</a></li><li><a href="{up}safe-at-home/index.html">Safe at Home (coming soon)</a></li></ul></div>
       <div><h3>Where we work</h3><ul><li><a href="{up}saratoga-springs/index.html">Saratoga Springs</a></li><li><a href="{up}wilton/index.html">Wilton</a></li><li><a href="{up}capital-region/index.html">Capital Region</a></li></ul></div>
       <div><h3>More</h3><ul><li><a href="{up}work/index.html">Work</a></li><li><a href="{up}#faq">FAQ</a></li><li><a href="{up}blog/index.html">Blog</a></li><li><a href="{up}work-with-us/index.html">Work with us</a></li><li><a href="{NEXTDOOR}" target="_blank" rel="noopener">Nextdoor</a></li><li><a href="{YELP}" target="_blank" rel="noopener">Yelp</a></li><li><a href="{HOUZZ}" target="_blank" rel="noopener">Houzz</a></li></ul></div>
     </div>
@@ -504,7 +504,7 @@ def render_index(posts) -> str:
         <p>You can also request an estimate using the form on our home page.</p>
         <a class="btn btn-primary" href="{up}#contact">Open the quote form</a>
         <h3>Services</h3>
-        <ul><li><a href="{up}decks-and-stairs/index.html">Decks and stairs</a></li><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Bathrooms</a></li><li><a href="{up}restoration-and-built-ins/index.html">Restoration and built-ins</a></li><li><a href="{up}bulkheads-and-outdoor/index.html">Bulkheads and outdoor projects</a></li><li><a href="{up}safe-at-home/index.html">Safe at Home (coming soon)</a></li></ul>
+        <ul><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Baths</a></li><li><a href="{up}decks-and-stairs/index.html">Decks</a></li><li><a href="{up}work/index.html#stairs">Stairs &amp; Rails</a></li><li><a href="{up}restoration-and-built-ins/index.html">Built-ins</a></li><li><a href="{up}bulkheads-and-outdoor/index.html">Bulkheads + outdoor jobs</a></li><li><a href="{up}safe-at-home/index.html">Safe at Home (coming soon)</a></li></ul>
       </div>
     </div>
   </section>
