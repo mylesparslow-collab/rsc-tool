@@ -217,20 +217,19 @@ def chrome_header(up: str) -> str:
   <div class="container head-in">
     <a class="mark" href="{up}index.html" aria-label="{NAME} home">
       <img class="mark-logo" src="{up}images/logo.svg" width="117" height="44" alt="">
-      <span class="mark-sub">Design and build in Saratoga Springs, NY</span>
+      <span class="mark-sub">Design+Build · Saratoga Springs, NY</span>
     </a>
     <nav class="nav" aria-label="Main">{nav}</nav>
     <div class="head-cta">
       <a class="head-tel" href="tel:{TEL}">{PHONE}</a>
-      <a class="btn btn-primary" href="{up}#contact">Get a quote</a>
     </div>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true"><path d="M0 1h22M0 8h22M0 15h22" stroke="currentColor" stroke-width="2"/></svg></button>
   </div>
 </header>
 
 <div class="menu" id="menu" hidden>
   <div class="menu-top"><img class="mark-logo" src="{up}images/logo.svg" width="117" height="44" alt="{NAME}"><button class="menu-close" id="menuClose" type="button">Close</button></div>
-  <nav aria-label="Menu"><a href="{up}index.html">Home</a>{nav.replace(' aria-current="page"', '')}<a href="{up}#faq">FAQ</a><a href="{up}#contact">Get a quote</a></nav>
+  <nav aria-label="Menu"><a href="{up}index.html">Home</a>{nav.replace(' aria-current="page"', '').replace('>Work<', '>Portfolio<', 1)}<a href="{up}#faq">FAQ</a><a href="{up}#contact">Get a quote</a></nav>
   <div class="menu-foot">
     <a class="tel" href="tel:{TEL}">{PHONE}</a>
     <a class="btn btn-primary" href="{up}#contact">Get a quote</a>
@@ -244,12 +243,12 @@ def chrome_footer(up: str) -> str:
   <div class="container">
     <p class="foot-mark"><img src="{up}images/logo.svg" width="2317" height="870" alt="{NAME}" loading="lazy"></p>
     <div class="foot-grid">
-      <div><h3>Contact</h3><p><a href="tel:{TEL}">{PHONE}</a><br>Call or text<br>Saratoga Springs, NY</p></div>
-      <div><h3>Services</h3><ul><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Baths</a></li><li><a href="{up}decks-and-stairs/index.html">Decks</a></li><li><a href="{up}work/index.html#stairs">Stairs &amp; Rails</a></li><li><a href="{up}restoration-and-built-ins/index.html">Built-ins</a></li><li><a href="{up}restoration-and-built-ins/index.html">Restoration</a></li><li><a href="{up}bulkheads-and-outdoor/index.html">Bulkheads + outdoor jobs</a></li><li><a href="{up}safe-at-home/index.html">Safe at Home (coming soon)</a></li></ul></div>
-      <div><h3>Where we work</h3><ul><li><a href="{up}saratoga-springs/index.html">Saratoga Springs</a></li><li><a href="{up}wilton/index.html">Wilton</a></li><li><a href="{up}capital-region/index.html">Capital Region</a></li></ul></div>
-      <div><h3>More</h3><ul><li><a href="{up}work/index.html">Work</a></li><li><a href="{up}#faq">FAQ</a></li><li><a href="{up}blog/index.html">Blog</a></li><li><a href="{up}work-with-us/index.html">Work with us</a></li><li><a href="{NEXTDOOR}" target="_blank" rel="noopener">Nextdoor</a></li><li><a href="{YELP}" target="_blank" rel="noopener">Yelp</a></li><li><a href="{HOUZZ}" target="_blank" rel="noopener">Houzz</a></li></ul></div>
+      <div><h3>Contact</h3><p><a href="tel:{TEL}">{PHONE}</a><br>Saratoga Springs, NY</p></div>
+      <div><h3>Services</h3><ul><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Baths</a></li><li><a href="{up}decks-and-stairs/index.html">Decks</a></li><li><a href="{up}work/index.html#stairs">Stairs &amp; Rails</a></li><li><a href="{up}restoration-and-built-ins/index.html">Built-Ins</a></li></ul></div>
+      <div><h3>Where we work</h3><ul><li><a href="{up}saratoga-springs/index.html">Saratoga Springs</a></li><li><a href="{up}capital-region/index.html">Capital District</a></li></ul></div>
+      <div><h3>More</h3><ul><li><a href="{up}work/index.html">Work</a></li><li><a href="{up}#faq">FAQ</a></li><li><a href="{up}work-with-us/index.html">Work with us</a></li><li><a href="{NEXTDOOR}" target="_blank" rel="noopener">Nextdoor</a></li><li><a href="{YELP}" target="_blank" rel="noopener">Yelp</a></li><li><a href="{HOUZZ}" target="_blank" rel="noopener">Houzz</a></li></ul></div>
     </div>
-    <p class="foot-legal">© <span id="yr">2026</span> {NAME}. Design and build across Saratoga County and the Capital Region.</p>
+    <p class="foot-legal">© <span id="yr">2026</span> {NAME}. Design+Build.</p>
   </div>
 </footer>
 
@@ -444,7 +443,7 @@ def render_index(posts) -> str:
     up = "../"
     url = f"{SITE}/blog/"
     title = f"Home Repair and Remodeling Guides for Saratoga County | {NAME}"
-    desc = ("Guides from a Saratoga Springs design-build contractor on repair timing, decks, kitchens, bathrooms, old "
+    desc = ("Guides from a Saratoga Springs Design+Build contractor on repair timing, decks, kitchens, bathrooms, old "
             "houses and aging in place across the Capital Region.")
     graph = [
         {"@type": "Blog", "@id": f"{url}#blog", "url": url, "name": f"{NAME} blog", "description": desc,
@@ -479,7 +478,7 @@ def render_index(posts) -> str:
   <section class="container blog-hero">
     <div>
       <h1>Home repair and remodeling guides for Saratoga County</h1>
-      <p class="lede">When things need attention in a Capital Region house, how projects are planned and built, and what to ask before you hire. Written by the design-build team at {NAME} in Saratoga Springs.</p>
+      <p class="lede">When things need attention in a Capital Region house, how projects are planned and built, and what to ask before you hire. Written by the Design+Build team at {NAME} in Saratoga Springs.</p>
     </div>
     <div class="blog-start">
       <h2>Start here</h2>
@@ -504,7 +503,7 @@ def render_index(posts) -> str:
         <p>You can also request an estimate using the form on our home page.</p>
         <a class="btn btn-primary" href="{up}#contact">Open the quote form</a>
         <h3>Services</h3>
-        <ul><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Baths</a></li><li><a href="{up}decks-and-stairs/index.html">Decks</a></li><li><a href="{up}work/index.html#stairs">Stairs &amp; Rails</a></li><li><a href="{up}restoration-and-built-ins/index.html">Built-ins</a></li><li><a href="{up}bulkheads-and-outdoor/index.html">Bulkheads + outdoor jobs</a></li><li><a href="{up}safe-at-home/index.html">Safe at Home (coming soon)</a></li></ul>
+        <ul><li><a href="{up}kitchens/index.html">Kitchens</a></li><li><a href="{up}bathrooms/index.html">Baths</a></li><li><a href="{up}decks-and-stairs/index.html">Decks</a></li><li><a href="{up}work/index.html#stairs">Stairs &amp; Rails</a></li><li><a href="{up}restoration-and-built-ins/index.html">Built-Ins</a></li><li><a href="{up}bulkheads-and-outdoor/index.html">Bulkheads + outdoor jobs</a></li><li><a href="{up}safe-at-home/index.html">Safe at Home (coming soon)</a></li></ul>
       </div>
     </div>
   </section>
@@ -546,11 +545,7 @@ def main():
         rel = src.relative_to(BASE)
         page = src.read_text(encoding="utf-8")
         if rel.parts[0] == "index.html":
-            picks = [p for p in posts if p["slug"] in (
-                "home-maintenance-schedule-saratoga-county", "when-do-stairs-need-a-handrail",
-                "kitchen-remodel-saratoga-springs-guide", "bathroom-remodel-saratoga-springs-guide",
-                "what-a-remodeling-estimate-should-include", "aging-in-place-saratoga-county")]
-            page = inject_guides(page, guides_block(picks, "", "Guides for homeowners"), '<section class="faq" id="faq">')
+            pass  # Nick's spec (Nov 2026): no guides section on the homepage; the blog stays in the menu and sitemap
         else:
             path = "/" + rel.parts[0] + "/"
             if path == "/work-with-us/":

@@ -58,7 +58,7 @@ These are the ones we'd want answered if we were on your side of the table:
 - Who's my point of contact while the work is going on?
 - Does it need a permit, and who pulls it?
 
-If the job needs both design and construction, it helps to understand [design-build versus hiring an architect and a contractor separately](/blog/design-build-vs-architect-and-contractor/) before the visit.
+If the job needs both design and construction, it helps to understand [Design+Build versus hiring an architect and a contractor separately](/blog/design-build-vs-architect-and-contractor/) before the visit.
 
 ## If you've got a list
 
