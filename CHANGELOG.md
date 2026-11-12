@@ -2,6 +2,11 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## Unreleased
+
+- Nick's website is now rscbuilds.com and his email nick@rscbuilds.com (Nick, 2026-11-12). The Marketing page's
+  listings checklist and post drafts use the new address. The old rscrafters.com redirects to it.
+
 ## 0.3.0 (2026-11-01)
 
 Everything from the open pull requests, merged together: website quote form, instant lead follow-up, pricing check, Google review reminders, rough range for new leads, Scorecard, QuickBooks Send estimate, email worker, Yelp/Houzz links, New homeowners, Leads page and Marketing page.

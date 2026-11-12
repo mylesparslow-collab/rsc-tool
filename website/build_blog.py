@@ -19,7 +19,7 @@ import markdown
 
 ROOT = Path(__file__).parent
 BASE, POSTS, DIST = ROOT / "base", ROOT / "posts", ROOT / "dist"
-SITE = "https://rscrafters.com"  # registered 2026-10-18 (Cloudflare)
+SITE = "https://rscbuilds.com"  # Nick's domain since Nov 2026; rscrafters.com redirects here
 NAME = "Refined Space Crafters"
 PHONE, TEL = "(518) 932-9919", "+15189329919"
 PUBLISHED = "2026-10-18"

@@ -46,7 +46,7 @@ def test_draft_with_model_is_scrubbed_and_tagged(conn):
         assert "Dana" not in p[k] and "Hartwell" not in p[k] and "Maple" not in p[k] and "518" not in p[k]
     assert "insured" not in p["facebook"] and "Bright new tile." in p["facebook"]
     assert "#Wilton" in p["tiktok"] and "#bathroomremodel" in p["tiktok"]
-    assert "rscrafters.com" in p["facebook"] and "rscrafters.com" in p["nextdoor"]
+    assert "rscbuilds.com" in p["facebook"] and "rscbuilds.com" in p["nextdoor"]
 
 
 def test_draft_without_model_uses_template(conn):
@@ -60,7 +60,7 @@ def test_draft_without_model_uses_template(conn):
 def test_listings_defaults_edit_and_status(conn):
     ls = {x["key"]: x for x in marketing.listings(conn)}
     assert ls["website"]["status"] == "Live" and ls["houzz"]["status"] == "To fix" and ls["google"]["status"] == "Not set up"
-    assert marketing.website(conn) == "rscrafters.com"
+    assert marketing.website(conn) == "rscbuilds.com"
     assert marketing.save_listing(conn, "houzz", ls["houzz"]["url"], "")
     assert marketing.save_listing(conn, "google", "g.page/refined", "")
     ls = {x["key"]: x for x in marketing.listings(conn)}
