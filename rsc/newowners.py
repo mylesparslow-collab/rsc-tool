@@ -12,7 +12,7 @@ Code decides everything here: which owners count, the score, the cards and when 
 nothing is sent: Nick prints the cards (or hands the CSV to a mailing service) and presses "I mailed these".
 
 Each owner gets up to three cards: a welcome, a follow-up three weeks later, and a seasonal note about six weeks after
-that, worded for the season it goes out in. Every card carries a short code and a QR code for rscrafters.com/welcome, where they can ask
+that, worded for the season it goes out in. Every card carries a short code and a QR code for rscbuilds.com/welcome, where they can ask
 for a free walkthrough; that request comes back tagged "new homeowner mail", and the cards stop for that house.
 Mail only. No phone numbers, no skip tracing, no texts.
 """
@@ -527,8 +527,8 @@ def stop_requests(conn: sqlite3.Connection) -> list[dict]:
 FOLLOW_UP_DAYS = 21          # card 2 goes about three weeks after the welcome
 SEASON_GAP_DAYS = 42         # card 3, the seasonal note, about six weeks after card 2 (its words follow the season it goes in)
 CARD_NAMES = {1: "Welcome", 2: "Follow-up", 3: "Seasonal"}
-WELCOME_URL = "https://rscrafters.com/welcome/"
-SHORT_LINK = "rscrafters.com/welcome"
+WELCOME_URL = "https://rscbuilds.com/welcome/"
+SHORT_LINK = "rscbuilds.com/welcome"
 LAST_BATCH = "newowner_last_batch"
 CODE_ALPHABET = "23456789ABCDEFGHJKMNPQRSTUVWXYZ"   # no 0/O, 1/I/L: read off a card and typed by hand
 

@@ -2,13 +2,18 @@
 
 Newest first. Each entry says what changed in plain words. Version numbers match `rsc/__init__.py` and `pyproject.toml`.
 
+## Unreleased
+
+- Nick's website is now rscbuilds.com and his email nick@rscbuilds.com (Nick, 2026-11-12). The Marketing page's
+  listings checklist and post drafts use the new address. The old rscrafters.com redirects to it.
+
 ## 0.3.1 (2026-11-01)
 
 New homeowners: the follow-through after the first letter.
 
 - Each house now gets up to three cards by mail (greeting "Dear Smith family"): the welcome, a follow-up three weeks later, and a seasonal note about
   six weeks after that (its words follow the season it goes out in). All three can be edited on the page.
-- Every card prints with its own short code and a QR code for the new page **rscrafters.com/welcome**, which offers a free
+- Every card prints with its own short code and a QR code for the new page **rscbuilds.com/welcome**, which offers a free
   walkthrough. A request from that page lands in To Review tagged "new homeowner mail" with the house's address filled
   in, and that house gets no more cards. A "Got in touch" button does the same for people who call or text.
 - "This week's batch" puts due follow-ups first, then new welcome cards, up to 50. After the first batch, Home reminds

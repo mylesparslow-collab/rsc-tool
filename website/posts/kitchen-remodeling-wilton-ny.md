@@ -79,4 +79,4 @@ Most of the time, yes. You gain storage and the ceiling reads taller. Some soffi
 
 If the cabinets are being replaced, that's the time. In an open-plan Wilton house the kitchen floor usually runs into other rooms, so decide early where the new flooring will stop.
 
-We design and build kitchens in [Wilton](/wilton/) and across Saratoga County, and the people who draw your kitchen are the ones who build it. If you're wondering how that compares with hiring separately, read [design-build versus an architect and contractor](/blog/design-build-vs-architect-and-contractor/), or see finished work on our [kitchens](/kitchens/) page.
+We design and build kitchens in [Wilton](/wilton/) and across Saratoga County, and the people who draw your kitchen are the ones who build it. If you're wondering how that compares with hiring separately, read [Design+Build versus an architect and contractor](/blog/design-build-vs-architect-and-contractor/), or see finished work on our [kitchens](/kitchens/) page.

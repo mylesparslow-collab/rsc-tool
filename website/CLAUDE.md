@@ -1,4 +1,4 @@
-# CLAUDE.md: the website (rscrafters.com)
+# CLAUDE.md: the website (rscbuilds.com)
 
 Read this first when a change touches the website. You are probably on Nick Parslow's Mac, helping him change the
 site for Refined Space Crafters. Nick is 66 and not a programmer: explain in plain words, one step at a time, and do
@@ -8,7 +8,7 @@ the editing for him. Myles (his son) approves what goes live. The rules in the t
 
 GitHub Actions (`.github/workflows/website.yml`) builds this folder and runs its checks on every PR that touches it,
 then uploads the result to the Cloudflare Pages project `rscrafters` (Myles's account). Merging to the default branch
-publishes rscrafters.com; a PR gets its own preview link. Cloudflare runs no builds itself.
+publishes rscbuilds.com (rscrafters.com redirects there); a PR gets its own preview link. Cloudflare runs no builds itself.
 
 1. Make the change on a branch (on Nick's Mac: `nick-mac-fixes-YYYY-MM-DD`, never the default branch).
 2. `python3 build.py` (needs `pip install -r requirements.txt` once). It must end without errors.
@@ -23,7 +23,7 @@ If the live site needs republishing without a change: Actions › Website › Ru
 
 | Path | What |
 |---|---|
-| `base/` | The site's own pages: home `index.html`, services (`decks-and-stairs/`, `kitchens/`, `bathrooms/`, `restoration-and-built-ins/`, `bulkheads-and-outdoor/`), towns (`saratoga-springs/`, `wilton/`, `capital-region/`), `safe-at-home/`, `work-with-us/` (on hold) and `styles.css` |
+| `base/` | The site's own pages: home `index.html`, portfolio `work/` (every project, with category buttons), services (`decks-and-stairs/`, `kitchens/`, `bathrooms/`, `restoration-and-built-ins/`, `bulkheads-and-outdoor/`), towns (`saratoga-springs/`, `wilton/`, `capital-region/`), `safe-at-home/`, `work-with-us/` (on hold) and `styles.css` |
 | `posts/<slug>.md` | Blog posts. Each needs a row in `keyword-plan.md`. Read `WRITING-BRIEF.md` before writing one |
 | `images/` | Photos: `name.jpg` plus `name-480.webp`, `name-800.webp` (and larger) copies |
 | `build_blog.py` | Builds `dist/`: posts, blog index, "Guides" lists on pages, sitemap, robots.txt |
@@ -53,4 +53,5 @@ be made in all of them (`grep -rn` first).
 5. **Small changes.** Don't redesign, reformat, or rename pages or files. Match the surrounding HTML.
 6. **Forms** post to Myles's Formspree form (default in `make_deploy.py`; `FORMSPREE_URL` in Cloudflare's build
    settings overrides it). Keep the form's field names: the RSC tool reads them (`rsc/intake.py`). No tracking or new services.
-7. **Domain** is `https://rscrafters.com` (`SITE` in `build_blog.py`). Don't hard-code other domains.
+7. **Domain** is `https://rscbuilds.com` (`SITE` in `build_blog.py`; Nick's choice, Nov 2026). The old rscrafters.com
+   redirects to it. Don't hard-code other domains. Email on the site: nick@rscbuilds.com.

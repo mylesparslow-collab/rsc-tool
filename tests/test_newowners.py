@@ -230,7 +230,7 @@ def test_print_has_qr_and_code(cfg, conn):
     app = create_app(cfg)
     html = app.test_client().get("/new-owners/letters?grade=C").get_data(as_text=True)
     code = conn.execute("SELECT code FROM new_owners WHERE code != '' LIMIT 1").fetchone()[0]
-    assert "rscrafters.com/welcome" in html and code in html and "<svg" in html
+    assert "rscbuilds.com/welcome" in html and code in html and "<svg" in html
 
 
 # ---------- no more mail ----------

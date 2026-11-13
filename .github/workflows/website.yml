@@ -1,7 +1,7 @@
 name: Website
-# Builds rscrafters.com from website/ and runs its checks (broken links, banned claims) on every change to it.
+# Builds rscbuilds.com from website/ and runs its checks (broken links, banned claims) on every change to it.
 # A PR gets a preview link (in the run's summary); a merge to the default branch publishes the live site.
-# Publishing is a direct upload to the Cloudflare Pages project "rscrafters" (the one that holds rscrafters.com),
+# Publishing is a direct upload to the Cloudflare Pages project "rscrafters" (the one that holds rscbuilds.com and the old rscrafters.com),
 # so Cloudflare runs no build of its own. Needs the repo secret CLOUDFLARE_API_TOKEN (Account > Cloudflare Pages > Edit).
 on:
   workflow_dispatch:   # "Run workflow" on the default branch republishes the live site by hand
@@ -52,7 +52,7 @@ jobs:
         run: |
           echo "Preview of this PR: ${{ steps.preview.outputs.deployment-url }}" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Publish rscrafters.com
+      - name: Publish rscbuilds.com
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/claude/project-thread-9kkubi'
         uses: cloudflare/wrangler-action@v3
         with:
@@ -64,8 +64,8 @@ jobs:
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/claude/project-thread-9kkubi'
         run: |
           for i in 1 2 3 4 5 6; do
-            curl -fsS "https://rscrafters.com/?v=$GITHUB_SHA" | grep -q "$GITHUB_SHA" && { echo "rscrafters.com is serving this build"; exit 0; }
+            curl -fsS "https://rscbuilds.com/?v=$GITHUB_SHA" | grep -q "$GITHUB_SHA" && { echo "rscbuilds.com is serving this build"; exit 0; }
             sleep 20
           done
-          echo "::error::rscrafters.com isn't serving this build yet. In Cloudflare, check that the rscrafters project's production branch is main."
+          echo "::error::rscbuilds.com isn't serving this build yet. In Cloudflare, check that the rscrafters project's production branch is main."
           exit 1

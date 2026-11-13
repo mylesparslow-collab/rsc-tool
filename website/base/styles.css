@@ -47,18 +47,17 @@ p{text-wrap:pretty}
 .head-in{height:var(--head);display:flex;align-items:center;gap:28px}
 .mark{display:flex;flex-direction:column;text-decoration:none;line-height:1.05;margin-right:auto}
 .mark-name{font-family:var(--display);font-size:25px;letter-spacing:-.01em}
-.mark-sub{font-size:12.5px;color:var(--moss);margin-top:4px}
-.nav{display:flex;gap:30px}
+.mark-sub{font-size:12.5px;color:var(--moss);margin-top:4px;white-space:nowrap}
+.nav{display:none}
 .nav a{font-weight:500;font-size:15px;text-decoration:none;padding-block:6px;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .3s var(--ease)}
 .nav a:hover{background-size:100% 1px}
-.head-cta{display:flex;align-items:center;gap:20px}
+.head-cta{display:flex;align-items:center;gap:20px;margin-left:auto;margin-right:8px}
 .head-tel{font-weight:600;font-size:15px;text-decoration:none;font-variant-numeric:tabular-nums}
 .head-tel:hover{text-decoration:underline;text-underline-offset:4px}
 .head-cta .btn{padding:13px 18px}
-.menu-btn{display:none;font:600 15px var(--text);color:var(--ink);background:transparent;border:1px solid var(--ink);border-radius:2px;padding:10px 16px;cursor:pointer}
-@media (max-width:1100px){.nav{display:none}.menu-btn{display:inline-flex}}
-@media (max-width:860px){.head-tel{display:none}}
-@media (max-width:640px){.head-cta{display:none}.mark-sub{display:none}.mark-name{font-size:21px}:root{--head:64px}}
+.menu-btn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;margin-right:-12px;color:var(--ink);background:transparent;border:0;border-radius:2px;padding:0;cursor:pointer}
+.menu-btn:hover{background:rgba(0,0,0,.05)}
+@media (max-width:640px){.head-tel{font-size:14px}.mark-sub{display:none}.mark-name{font-size:21px}:root{--head:64px}}
 
 /* mobile menu */
 .menu{position:fixed;inset:0;z-index:60;background:var(--ink);color:var(--on-ink);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 12px) var(--gutter) calc(env(safe-area-inset-bottom,0px) + 28px);overflow:auto}
@@ -456,3 +455,12 @@ html.notes-off .draft-in{padding-block:4px}
 .nearby a{font:500 15px var(--text);border:1px solid var(--line);border-radius:999px;padding:10px 16px;text-decoration:none}
 .nearby a:hover{border-color:var(--ink)}
 @media (max-width:640px){.hire-in .btn{width:100%}.draft-toggle{margin-left:0}}
+
+/* 2026-11: Nick's logo and its red become the brand */
+:root{--barn:#B5342F;--barn-dk:#93291F;--slate:#6D6E71;--expo:cubic-bezier(.19,1,.22,1);--inout:cubic-bezier(.77,0,.175,1)}
+.mark{flex-direction:row;align-items:center;gap:16px}
+.mark-logo{height:44px;width:auto;display:block}
+.mark-sub{margin-top:0;line-height:1.35;padding-left:16px;border-left:1px solid var(--line)}
+.menu-top .mark-logo{height:40px}
+.foot-mark img{width:min(560px,72vw);height:auto;display:block}
+@media (max-width:640px){.mark-logo{height:38px}}
