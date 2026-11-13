@@ -77,7 +77,7 @@ field; redirects that take a `back` parameter must validate it is a local path. 
 ## Where things live
 
 - **Code:** the `rsc-tool` folder (this one), with its own `.venv`. Don't move it.
-- **Website:** `website/` is the public site at rscrafters.com (pages, blog posts, photos, build scripts). A GitHub
+- **Website:** `website/` is the public site at rscbuilds.com (rscrafters.com redirects there) (pages, blog posts, photos, build scripts). A GitHub
   Action builds it and uploads it to Cloudflare Pages: merging to the default branch makes it live, PRs get preview links. Read
   `website/CLAUDE.md` before changing it. It is separate from the app: no tests, no version bump, no `rsc` restart.
 - **Email worker:** `email-worker/` is a small Cloudflare program on the rscrafters.com addresses: it forwards each email to

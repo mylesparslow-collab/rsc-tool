@@ -18,19 +18,19 @@ from . import books, brand, prefs
 # Where the business shows up online, with what was known when this was written (2026-10-29). Nick's edits on the
 # Marketing page are stored in the database and win over these.
 LISTINGS = [
-    ("website", "Website", "https://rscrafters.com", ""),
+    ("website", "Website", "https://rscbuilds.com", ""),
     ("google", "Google Business Profile", "",
      "Not set up yet. Waits for the business name and LLC, then create it under that exact name."),
     ("yelp", "Yelp", "https://www.yelp.com/biz/refined-space-crafters-saratoga-springs",
      "Hide the home address (you go to customers). Add your hours, the website, and the towns you work in."),
     ("houzz", "Houzz", "https://www.houzz.com/professionals/general-contractors/refined-space-crafters-pfvwus-pf~1862971900",
-     "Website shows rscbuilds.com: change it to rscrafters.com. Hide the home address. Says 13 years in business "
+     "Hide the home address. Says 13 years in business "
      "but Yelp says 12: make them match."),
     ("nextdoor", "Nextdoor", "https://nextdoor.com/pages/reclaimed-space-crafters-saratoga-springs-ny/",
      "Still under the old name. Rename it once the new name is settled."),
     ("tiktok", "TikTok", "https://www.tiktok.com/@rscrafters", ""),
     ("facebook", "Facebook and Instagram", "", "Not set up yet. Needed before posting there."),
-    ("email", "Business email", "", "nick@rscrafters.com is planned but not working yet. Until then use your Gmail."),
+    ("email", "Business email", "", "nick@rscbuilds.com (GoDaddy). Use it on every listing."),
 ]
 SCHEDULE_DEFAULT = "TikTok every day: weekdays at 6:30 PM, weekends at 10 AM (queued ahead in Buffer)."
 
@@ -99,7 +99,7 @@ def save_listing(conn: sqlite3.Connection, key: str, url: str, todo: str) -> boo
 
 
 def website(conn: sqlite3.Connection) -> str:
-    """The website as people should type it ("rscrafters.com"), from the listings checklist."""
+    """The website as people should type it ("rscbuilds.com"), from the listings checklist."""
     url = next((x["url"] for x in listings(conn) if x["key"] == "website"), "")
     return re.sub(r"^https?://(www\.)?", "", url).rstrip("/")
 
