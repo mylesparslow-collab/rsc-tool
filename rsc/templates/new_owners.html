@@ -1,7 +1,7 @@
 {% extends "base.html" %}{% block title %}New homeowners{% endblock %}
 {% block body %}
 <h1>New homeowners</h1>
-<p class="muted">People who just bought a house in your towns, from the county's public property records. New owners often redo a kitchen or bathroom in their first year or two. Send each one a short welcome letter by mail. Nothing is sent for you, and there are no calls or texts.</p>
+<p class="muted">People who just bought a house in your towns, from the county's public property records. New owners often redo a kitchen or bathroom in their first year or two. Each house gets up to three cards by mail: a welcome, a follow-up three weeks later, and a seasonal note six weeks after that. Every card has a QR code and a short code for {{ short_link }}, where they can ask for a free walkthrough. Nothing is sent for you, and there are no calls or texts.</p>
 
 <div class="card">
   <div class="muted">Last checked</div>
@@ -9,14 +9,20 @@
   {% else %}<div>{% if last_ago %}<b>{{ last_ago }}</b>. {{ last_message }}{% else %}Not checked yet.{% endif %}</div>
   <form method="post" action="{{ url_for('new_owners_refresh') }}" class="inline">
     <input type="hidden" name="csrf" value="{{ csrf }}">
-    <div class="actions"><button class="btn{{ ' glow' if due }}">Check for new buyers</button> <span class="muted">{% if due %}Time for this month's check. {% endif %}Takes 5 to 10 minutes; you can keep working.</span></div>
+    <div class="actions"><button class="btn{{ ' glow' if due }}">Check for new buyers</button> <span class="muted">{% if due %}Time for this week's check. {% endif %}Takes 5 to 10 minutes; you can keep working.</span></div>
   </form>{% endif %}
 </div>
 
 <div class="card">
   <div class="muted">Waiting for a letter</div>
   <div class="big-number">{{ counts.new }}</div>
-  <div class="muted">{{ counts.A }} best fit (A) &middot; {{ counts.B }} good (B) &middot; {{ counts.C }} less likely (C) &middot; {{ counts.mailed }} already mailed{% if no_zip %} &middot; {{ no_zip }} have no ZIP in the records and are left out of the letters{% endif %}</div>
+  <div class="muted">{{ counts.A }} best fit (A) &middot; {{ counts.B }} good (B) &middot; {{ counts.C }} less likely (C){% if no_zip %} &middot; {{ no_zip }} have no ZIP in the records and are left out of the letters{% endif %}</div>
+</div>
+
+<div class="card">
+  <div class="muted">Cards in the mail</div>
+  <div>{{ seq.card1 }} got the welcome &middot; {{ seq.card2 }} got the follow-up &middot; {{ seq.card3 }} got all three &middot; <b>{{ seq.replied }} got in touch</b>{% if seq.optout %} &middot; {{ seq.optout }} asked for no more mail{% endif %}</div>
+  <div class="muted">{% if seq.due %}<b>{{ seq.due }} follow-up card{{ 's' if seq.due != 1 }} due now.</b> They go first in this week's batch.{% else %}No follow-up cards due right now.{% endif %} Send one batch a week; the next cards come up here on their own.</div>
 </div>
 
 <form method="get" action="{{ url_for('new_owners_page') }}" class="card">
@@ -30,21 +36,22 @@
     <div><label>Letters this time</label><select name="n" onchange="this.form.submit()">
       {% for b in batches %}<option value="{{ b }}" {{ 'selected' if b == n }}>{{ b if b else 'All ' ~ matching }}</option>{% endfor %}</select></div>
   </div>
-  <p class="muted">Best first. {{ matching }} match; this batch is the top {{ rows|length }}. Each mailing is a stamp and a letter, so start small and send more next month.</p>
+  <p class="muted">This week's batch: follow-up cards that are due come first, then new welcome cards, best first ({{ matching }} new match). Who and Town only change the new ones. Each card is a stamp, so 50 a week is plenty.</p>
 </form>
 
 {% if rows %}
 <div class="actions">
-  <a class="btn" href="{{ url_for('new_owners_letters', grade=grade, town=town, n=n) }}" target="_blank">Print these {{ rows|length }} letters</a>
+  <a class="btn" href="{{ url_for('new_owners_letters', grade=grade, town=town, n=n) }}" target="_blank">Print these {{ rows|length }} cards</a>
   <a class="btn secondary" href="{{ url_for('new_owners_csv', grade=grade, town=town, n=n) }}">Download the mailing list (CSV)</a>
-  <form method="post" action="{{ url_for('new_owners_mark') }}" class="inline" onsubmit="return confirm('Mark these {{ rows|length }} as mailed?')">
+  <form method="post" action="{{ url_for('new_owners_mark') }}" class="inline" onsubmit="return confirm('Mark these {{ rows|length }} cards as mailed?')">
     <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="status" value="mailed"><input type="hidden" name="all" value="1">
     <input type="hidden" name="grade" value="{{ grade }}"><input type="hidden" name="town" value="{{ town }}"><input type="hidden" name="n" value="{{ n }}">
     <button class="btn secondary">I mailed these {{ rows|length }}</button></form>
 </div>
 <table>
-  <tr><th>Grade</th><th>Address</th><th>Owner on record</th><th>Bought</th><th>Why</th><th></th></tr>
+  <tr><th>Card</th><th>Grade</th><th>Address</th><th>Owner on record</th><th>Bought</th><th>Why</th><th></th></tr>
   {% for r in rows %}<tr>
+    <td><b>{{ card_names[next_card(r)] }}</b>{% if r.status == 'mailed' %}<div class="muted">due {{ r.next_due }}</div>{% endif %}</td>
     <td><b>{{ r.grade }}</b> <span class="muted">{{ r.score }}</span></td>
     <td>{{ r.street }}<div class="muted">{{ r.city or r.town }} {{ r.zip }}</div></td>
     <td>{{ r.owner }}<div class="muted">{{ r.addressee }}</div></td>
@@ -57,22 +64,44 @@
   </tr>{% endfor %}
 </table>
 {% else %}
-<div class="card muted">{% if counts.new %}No one matches. Try "Everyone" or another town.{% else %}No one waiting. Press "Check for new buyers" to read this month's county records.{% endif %}</div>
+<div class="card muted">{% if counts.new %}No one matches. Try "Everyone" or another town.{% else %}No one waiting. Press "Check for new buyers" to read the latest county records.{% endif %}</div>
 {% endif %}
 
-<h2 id="letter">The letter</h2>
-<p class="muted">Words in curly brackets are filled in for each house: {addressee}, {street}, {town}, {owner}, {business}, {region}, {phone}, {email}. Keep it about the quality of the work and a friendly welcome. No prices or deadlines.</p>
-<form method="post" action="{{ url_for('new_owners_letter') }}" class="card">
-  <input type="hidden" name="csrf" value="{{ csrf }}">
-  <textarea name="letter" rows="18">{{ letter }}</textarea>
-  <div class="actions"><button class="btn">Save the letter</button>{% if letter != default_letter %} <button class="btn secondary" name="reset" value="1">Back to the original</button>{% endif %}</div>
-</form>
+<h2 id="letter">The cards</h2>
+<p class="muted">Words in curly brackets are filled in for each house: {addressee}, {street}, {town}, {owner}, {business}, {region}, {phone}, {email}. The seasonal card also has {season_note}, a line about the season it goes out in. The QR code, {{ short_link }} and the house's code are printed under every card on their own. Keep it about the quality of the work and a friendly welcome. No prices or deadlines.</p>
+{% for k in (1, 2, 3) %}
+<details class="card"{{ ' open' if k == 1 }}><summary><b>Card {{ k }}: {{ card_names[k] }}</b> <span class="muted">{{ {1: 'goes first', 2: 'three weeks after the welcome', 3: 'about six weeks after the follow-up, worded for the season'}[k] }}</span></summary>
+<form method="post" action="{{ url_for('new_owners_letter') }}">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="card" value="{{ k }}">
+  <textarea name="letter" rows="16">{{ letters[k] }}</textarea>
+  <div class="actions"><button class="btn">Save card {{ k }}</button>{% if letters[k] != default_letters[k] %} <button class="btn secondary" name="reset" value="1">Back to the original</button>{% endif %}</div>
+</form></details>
+{% endfor %}
+
+{% if stop_requests %}
+<div class="card tone-accent" id="mail"><b>{{ stop_requests|length }} "no more mail" request{{ 's' if stop_requests|length != 1 }} didn't match a house</b>
+  <p class="muted">Find each address below and press "Never mail" on it (or "Don't mail" if it hasn't had a card yet), then clear this list.</p>
+  <ul>{% for q in stop_requests %}<li>{{ q.on }}: {{ q.address or 'no address' }}{% if q.code %} (code {{ q.code }}){% endif %}</li>{% endfor %}</ul>
+  <form method="post" action="{{ url_for('new_owners_stop_clear') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small secondary">Done, clear this list</button></form>
+</div>
+{% endif %}
 
 {% if mailed %}
-<h2>Already mailed</h2>
+<h2>In the mail</h2>
+<p class="muted">When someone asks for a walkthrough on the welcome page with their card's code, they're marked here on their own and get no more cards. A "no more mail" request from that page marks the house "never mail" on its own too. If they call or text instead, press "Got in touch" or "Never mail".</p>
 <table>
-  <tr><th>Mailed</th><th>Address</th><th>Owner</th></tr>
-  {% for r in mailed %}<tr><td>{{ r.mailed_on }}</td><td>{{ r.street }}, {{ r.city or r.town }}</td><td>{{ r.owner }}</td></tr>{% endfor %}
+  <tr><th>Address</th><th>Owner</th><th>Code</th><th>Cards sent</th><th>Next</th><th></th></tr>
+  {% for r in mailed %}<tr><td>{{ r.street }}, {{ r.city or r.town }}</td><td>{{ r.owner }}</td><td>{{ r.code }}</td>
+    <td class="muted">{{ r.mailed_on }}{% if r.card2_on %}, {{ r.card2_on }}{% endif %}{% if r.card3_on %}, {{ r.card3_on }}{% endif %}</td>
+    <td>{% if r.status == 'replied' %}<b>Got in touch {{ r.replied_on }}</b>{% elif r.next_due %}{{ card_names[r.step + 1] }} due {{ r.next_due }}{% else %}<span class="muted">All three sent</span>{% endif %}</td>
+    <td>{% if r.status == 'mailed' %}<form method="post" action="{{ url_for('new_owners_mark') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}">
+      <input type="hidden" name="key" value="{{ r.key }}"><input type="hidden" name="status" value="replied">
+      <input type="hidden" name="grade" value="{{ grade }}"><input type="hidden" name="town" value="{{ town }}"><input type="hidden" name="n" value="{{ n }}">
+      <button class="btn small secondary" title="They called, texted or emailed: stop the cards">Got in touch</button></form>
+      <form method="post" action="{{ url_for('new_owners_mark') }}" class="inline"><input type="hidden" name="csrf" value="{{ csrf }}">
+      <input type="hidden" name="key" value="{{ r.key }}"><input type="hidden" name="status" value="optout">
+      <input type="hidden" name="grade" value="{{ grade }}"><input type="hidden" name="town" value="{{ town }}"><input type="hidden" name="n" value="{{ n }}">
+      <button class="btn small secondary" title="They asked for no more mail. Holds for good.">Never mail</button></form>{% endif %}</td></tr>{% endfor %}
 </table>
 {% endif %}
 

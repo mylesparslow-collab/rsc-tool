@@ -7,6 +7,26 @@ Newest first. Each entry says what changed in plain words. Version numbers match
 - Nick's website is now rscbuilds.com and his email nick@rscbuilds.com (Nick, 2026-11-12). The Marketing page's
   listings checklist and post drafts use the new address. The old rscrafters.com redirects to it.
 
+## 0.3.1 (2026-11-01)
+
+New homeowners: the follow-through after the first letter.
+
+- Each house now gets up to three cards by mail (greeting "Dear Smith family"): the welcome, a follow-up three weeks later, and a seasonal note about
+  six weeks after that (its words follow the season it goes out in). All three can be edited on the page.
+- Every card prints with its own short code and a QR code for the new page **rscbuilds.com/welcome**, which offers a free
+  walkthrough. A request from that page lands in To Review tagged "new homeowner mail" with the house's address filled
+  in, and that house gets no more cards. A "Got in touch" button does the same for people who call or text.
+- "This week's batch" puts due follow-ups first, then new welcome cards, up to 50. After the first batch, Home reminds
+  Nick each week when cards are due. The CSV now has the card, code, link and words for a mailing service (Thanks.io).
+- The county records are now checked every Monday morning instead of once a month, so new buyers show up as soon as
+  the county map has them (re-run the installer to change the schedule).
+- "No more mail": the welcome page has a stop form (card code or street address, nothing else). The email check marks
+  that house "never mail" by itself, with no lead and nothing to approve, and it holds through later county checks.
+  Requests that match no house are listed on the page. A "Never mail" button does the same for phone requests.
+- Letters already marked mailed count as card 1, so their follow-up comes up on its own.
+- New dependency: `segno` (draws the QR codes on the Mac, no network). The usual update step installs it.
+- Website: new page `/welcome/` (not in the menu or sitemap, not indexed by search engines), using the same Formspree form.
+
 ## 0.3.0 (2026-11-01)
 
 Everything from the open pull requests, merged together: website quote form, instant lead follow-up, pricing check, Google review reminders, rough range for new leads, Scorecard, QuickBooks Send estimate, email worker, Yelp/Houzz links, New homeowners, Leads page and Marketing page.

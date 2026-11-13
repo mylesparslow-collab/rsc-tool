@@ -163,7 +163,7 @@ def cmd_check_mail(cfg: config.Config, _args) -> int:
 
 
 def cmd_new_owners(cfg: config.Config, args) -> int:
-    """Read the county records for new home buyers (monthly schedule), and/or write this month's mailing list."""
+    """Read the county records for new home buyers (weekly schedule), and/or write this's mailing list."""
     from . import newowners
     conn = db.connect(cfg.db_path)
     db.init(conn, cfg.first_job_number)

@@ -8,8 +8,12 @@ Where the names come from (all public, no login, read-only):
     assessor's full market value (and the property ZIP).
   - Warren County's parcel layer (Queensbury, Glens Falls) has the real sale date and price, months behind.
 
-Code decides everything here: which owners count, the score and the letter. No model is used, nothing is sent:
-Nick prints the letters (or hands the CSV to a printer) and presses "I mailed these".
+Code decides everything here: which owners count, the score, the cards and when each is due. No model is used,
+nothing is sent: Nick prints the cards (or hands the CSV to a mailing service) and presses "I mailed these".
+
+Each owner gets up to three cards: a welcome, a follow-up three weeks later, and a seasonal note about six weeks after
+that, worded for the season it goes out in. Every card carries a short code and a QR code for rscbuilds.com/welcome, where they can ask
+for a free walkthrough; that request comes back tagged "new homeowner mail", and the cards stop for that house.
 Mail only. No phone numbers, no skip tracing, no texts.
 """
 import csv
@@ -64,15 +68,17 @@ ZIP_CITY = {
 
 DEFAULT_LETTER = """Dear {addressee},
 
-Congratulations on your new home on {street}, and welcome to {town}.
+Welcome to {town}, and congratulations on the house on {street}.
 
-My name is {owner}. I run {business}, a small design-build remodeling company based in {region}. We do kitchens, bathrooms, porches and four-season rooms, and the careful repair and finish work that older houses need.
+By now you have probably started a list: the bathroom you would do differently, the kitchen that almost works, the back steps that give a little underfoot. Most new owners have one.
 
-If there is a room you have been thinking about changing, this year or a few years from now, I would be glad to come by and walk through it with you. I'll listen to what you have in mind, tell you plainly what it would take, and give you a clear written plan before any work starts.
+I'm {owner}, and I run {business} here in {region}. We design and build kitchens, bathrooms, porches and four-season rooms, and we do the careful repair work older houses need, with trim, stairs and porches rebuilt to match what is already there.
 
-You can reach me at {phone} or {email}.
+When you're ready, I'll walk through the house with you at no charge. You'll get a straight answer on what needs doing now, what can wait, and what it would take to do it right. If you decide to go ahead, you get a written plan before any work starts.
 
-Welcome to the neighborhood,
+Scan the code below, or call or text me at {phone}.
+
+Welcome home,
 
 {owner}
 {business}"""
@@ -80,7 +86,7 @@ Welcome to the neighborhood,
 LETTER_KEY = "newowner_letter"
 LAST_KEY = "newowner_last_at"
 LAST_MSG = "newowner_last_message"
-UA = "RSC-tool (local remodeling business; monthly public-records check)"
+UA = "RSC-tool (local remodeling business; weekly public-records check)"
 
 
 
@@ -358,6 +364,7 @@ def _lead(county, a, d, town, street, owner, year_built, sqft, value, price, sal
 
 def init(conn: sqlite3.Connection) -> None:
     conn.executescript(db.NEW_OWNERS)
+    db.migrate_new_owners(conn)
 
 
 def save(conn: sqlite3.Connection, leads: list[dict], today: date) -> int:
@@ -372,6 +379,8 @@ def save(conn: sqlite3.Connection, leads: list[dict], today: date) -> int:
                          [l[c] for c in cols] + [l["key"]])
         else:
             status = "skip" if l["grade"] == "skip" else "new"
+            if status == "new" and _opted_out(conn, l):    # asked for no mail on an earlier record of this house
+                status = "optout"
             conn.execute(f"INSERT INTO new_owners (key, {', '.join(cols)}, first_seen, status) VALUES "
                          f"(?, {', '.join('?' for _ in cols)}, ?, ?)", [l["key"]] + [l[c] for c in cols] + [today.isoformat(), status])
             new += status == "new"
@@ -403,7 +412,7 @@ def due(conn: sqlite3.Connection, today: date | None = None) -> bool:
     if not last:
         return True
     try:
-        return (today or date.today()) - datetime.fromisoformat(last).date() >= timedelta(days=28)
+        return (today or date.today()) - datetime.fromisoformat(last).date() >= timedelta(days=6)
     except ValueError:
         return True
 
@@ -448,20 +457,260 @@ def towns(conn: sqlite3.Connection) -> list[str]:
 
 
 def set_status(conn: sqlite3.Connection, keys: list[str], status: str, today: date | None = None) -> int:
-    if status not in ("new", "mailed", "skip"):
+    """'mailed' sends each house its next card (see mark_mailed); 'replied' stops the cards; 'skip' takes it off; 'new' puts it back."""
+    if status == "mailed":
+        return mark_mailed(conn, keys, today)
+    if status not in ("new", "skip", "replied", "optout"):
         raise ValueError(status)
-    mailed = (today or date.today()).isoformat() if status == "mailed" else ""
+    today = today or date.today()
     n = 0
     for k in keys:
-        n += conn.execute("UPDATE new_owners SET status = ?, mailed_on = ? WHERE key = ?", (status, mailed, k)).rowcount
+        if status == "new":   # back on the list from the start
+            n += conn.execute("UPDATE new_owners SET status = 'new', mailed_on = '', step = 0, next_due = '', card2_on = '', "
+                              "card3_on = '', replied_on = '' WHERE key = ?", (k,)).rowcount
+        elif status == "replied":
+            n += conn.execute("UPDATE new_owners SET status = 'replied', replied_on = ?, next_due = '' WHERE key = ?",
+                              (today.isoformat(), k)).rowcount
+        else:   # skip or optout ("never mail": they asked us to stop; it holds through later county checks)
+            n += conn.execute("UPDATE new_owners SET status = ?, next_due = '' WHERE key = ? AND status != 'optout'",
+                              (status, k)).rowcount
     conn.commit()
     return n
 
 
+# ---------- "no more mail" ----------
+
+STOP_UNMATCHED = "newowner_stop_unmatched"
+
+
+def _opted_out(conn: sqlite3.Connection, lead: dict) -> bool:
+    """Same house and same owner already asked for no mail (a corrected or re-recorded deed makes a new row)."""
+    for r in conn.execute("SELECT street, owner FROM new_owners WHERE status = 'optout' AND county = ? AND town = ?",
+                          (lead.get("county", ""), lead.get("town", ""))):
+        if _addr(r["street"]) == _addr(lead.get("street")) and _key(r["owner"]) == _key(lead.get("owner")):
+            return True
+    return False
+
+
+def stop_mail(conn: sqlite3.Connection, code: str = "", address: str = "", today: date | None = None) -> list:
+    """Someone asked for no more mail. Find the house by its card code, or else by the street address they typed,
+    and mark it never-mail. Returns the houses marked; when none match, the request is kept for Nick to see."""
+    init(conn)
+    rows = []
+    row = by_code(conn, code)
+    if row:
+        rows = [row]
+    elif address:
+        want = _addr(address.split(",")[0])
+        if want:
+            rows = [r for r in conn.execute("SELECT * FROM new_owners WHERE status != 'optout' AND street != ''")
+                    if _addr(r["street"]) == want]
+    if rows:
+        set_status(conn, [r["key"] for r in rows], "optout", today)
+    else:
+        pending = stop_requests(conn)
+        pending.append({"on": (today or date.today()).isoformat(), "code": code[:12], "address": address[:120]})
+        prefs.put(conn, STOP_UNMATCHED, json.dumps(pending[-50:]))
+    return rows
+
+
+def stop_requests(conn: sqlite3.Connection) -> list[dict]:
+    """Stop-mail requests that matched no house, for Nick to take off the list by hand."""
+    try:
+        return json.loads(prefs.get(conn, STOP_UNMATCHED) or "[]")
+    except ValueError:
+        return []
+
+
+# ---------- the three cards: welcome, follow-up, seasonal ----------
+
+FOLLOW_UP_DAYS = 21          # card 2 goes about three weeks after the welcome
+SEASON_GAP_DAYS = 42         # card 3, the seasonal note, about six weeks after card 2 (its words follow the season it goes in)
+CARD_NAMES = {1: "Welcome", 2: "Follow-up", 3: "Seasonal"}
+WELCOME_URL = "https://rscbuilds.com/welcome/"
+SHORT_LINK = "rscbuilds.com/welcome"
+LAST_BATCH = "newowner_last_batch"
+CODE_ALPHABET = "23456789ABCDEFGHJKMNPQRSTUVWXYZ"   # no 0/O, 1/I/L: read off a card and typed by hand
+
+FOLLOW_UP_LETTER = """Dear {addressee},
+
+A few weeks in, the house has probably shown you a thing or two the inspection didn't.
+
+That is the best time for a second set of eyes. I'll come by, look at whatever is on your list, and tell you plainly what is sound, what can wait, and what is worth doing first. The visit is free, and there is no pressure to hire us.
+
+If now isn't the time, hang on to this card. We'll be here when you're ready.
+
+{owner}
+{business}, {phone}"""
+
+SEASONAL_LETTER = """Dear {addressee},
+
+{season_note}
+
+If something on the house has been bothering you, or you're starting to picture a new kitchen or bathroom, I'd be glad to come take a look. The walkthrough is free, and you get a written plan before anything starts.
+
+All the best in the new place,
+
+{owner}
+{business}, {phone}"""
+
+SEASON_NOTES = {
+    "winter": "Your first winter in a house teaches you a lot about it: which windows let the cold in, where ice builds up along the roof edge, which stair creaks. It is also the right time to plan a kitchen or bathroom, so the design is settled and the materials are chosen before the work starts.",
+    "spring": "Spring shows you what the winter did: trim gone soft, a railing that wobbles, steps the frost has pushed out of line. It is a good time to get those fixed, and to think about the porch or deck you want for summer.",
+    "summer": "Summer is when you live on the porch and the deck, and notice what needs work. It is also a good time to plan the inside projects you'd like done once the weather turns.",
+    "fall": "Before the snow, it is worth a look at the gutters, the trim and the entry steps, so small problems don't turn into spring repairs. Fall is also the time to plan a kitchen or bathroom you'd like done over the winter.",
+}
+
+DEFAULT_CARDS = {1: DEFAULT_LETTER, 2: FOLLOW_UP_LETTER, 3: SEASONAL_LETTER}
+
+
+def card_key(card: int) -> str:
+    return LETTER_KEY if card == 1 else f"{LETTER_KEY}_{card}"
+
+
+def season(d: date) -> str:
+    return {12: "winter", 1: "winter", 2: "winter", 3: "spring", 4: "spring", 5: "spring",
+            6: "summer", 7: "summer", 8: "summer"}.get(d.month, "fall")
+
+
+def next_due_after(card: int, sent: date) -> str:
+    """When the next card is due after this one went out ('' after the last card)."""
+    if card == 1:
+        return (sent + timedelta(days=FOLLOW_UP_DAYS)).isoformat()
+    if card == 2:
+        return (sent + timedelta(days=SEASON_GAP_DAYS)).isoformat()
+    return ""
+
+
+def _new_code(conn: sqlite3.Connection) -> str:
+    import secrets
+    while True:
+        code = "".join(secrets.choice(CODE_ALPHABET) for _ in range(5))
+        if not conn.execute("SELECT 1 FROM new_owners WHERE code = ?", (code,)).fetchone():
+            return code
+
+
+def ensure_codes(conn: sqlite3.Connection, keys: list[str]) -> None:
+    for k in keys:
+        conn.execute("UPDATE new_owners SET code = ? WHERE key = ? AND code = ''", (_new_code(conn), k))
+    conn.commit()
+
+
+def normal_code(text: str) -> str:
+    """What someone typed from the card ('k7m 2p') -> 'K7M2P'; '' if it can't be one of ours."""
+    code = re.sub(r"[^A-Za-z0-9]", "", text or "").upper()
+    return code if len(code) == 5 and all(ch in CODE_ALPHABET for ch in code) else ""
+
+
+def by_code(conn: sqlite3.Connection, code: str):
+    code = normal_code(code)
+    if not code:
+        return None
+    init(conn)
+    return conn.execute("SELECT * FROM new_owners WHERE code = ?", (code,)).fetchone()
+
+
+def mark_replied(conn: sqlite3.Connection, code: str, today: date | None = None):
+    """Someone answered a card (the welcome page form). Stop their cards. Returns the house row, or None."""
+    row = by_code(conn, code)
+    if row and row["status"] in ("new", "mailed"):
+        set_status(conn, [row["key"]], "replied", today)
+        row = conn.execute("SELECT * FROM new_owners WHERE key = ?", (row["key"],)).fetchone()
+    return row
+
+
+def mark_mailed(conn: sqlite3.Connection, keys: list[str], today: date | None = None) -> int:
+    """Each of these houses just got its next card. Returns how many were marked."""
+    today = today or date.today()
+    init(conn)
+    n = 0
+    for k in keys:
+        r = conn.execute("SELECT step, status FROM new_owners WHERE key = ?", (k,)).fetchone()
+        if not r or r["status"] not in ("new", "mailed") or r["step"] >= 3:
+            continue
+        card = r["step"] + 1
+        sets = {"status": "mailed", "step": card, "next_due": next_due_after(card, today)}
+        sets[{1: "mailed_on", 2: "card2_on", 3: "card3_on"}[card]] = today.isoformat()
+        conn.execute(f"UPDATE new_owners SET {', '.join(c + ' = ?' for c in sets)} WHERE key = ?", [*sets.values(), k])
+        n += 1
+    ensure_codes(conn, keys)
+    prefs.put(conn, LAST_BATCH, today.isoformat())
+    conn.commit()
+    return n
+
+
+def follow_ups_due(conn: sqlite3.Connection, today: date | None = None) -> list[sqlite3.Row]:
+    """Houses whose card 2 or 3 is due by today, oldest due first."""
+    init(conn)
+    return conn.execute("SELECT * FROM new_owners WHERE status = 'mailed' AND step BETWEEN 1 AND 2 AND next_due != '' "
+                        "AND next_due <= ? ORDER BY next_due, score DESC", ((today or date.today()).isoformat(),)).fetchall()
+
+
+def this_weeks_mail(conn: sqlite3.Connection, n: int | None = 50, grade: str = "A", town: str = "",
+                    today: date | None = None) -> list[sqlite3.Row]:
+    """This week's batch: every follow-up card that is due first, then new welcome cards (best first) up to n."""
+    due_now = follow_ups_due(conn, today)
+    if n and len(due_now) >= n:
+        return due_now[:n]
+    room = (n - len(due_now)) if n else None
+    if room == 0:
+        return due_now
+    return due_now + listing(conn, "new", grade, town, mailable=True, limit=room)
+
+
+def week_due(conn: sqlite3.Connection, today: date | None = None) -> dict | None:
+    """For the Home page: {'follow_ups': n, 'new': n} when a week has passed since the last batch, else None.
+    Only once Nick has started mailing (the first batch is his choice, from the New homeowners page)."""
+    today = today or date.today()
+    last = prefs.get(conn, LAST_BATCH)
+    if not last:
+        return None
+    try:
+        if today - date.fromisoformat(last) < timedelta(days=7):
+            return None
+    except ValueError:
+        pass
+    init(conn)
+    ups = len(follow_ups_due(conn, today))
+    new = conn.execute("SELECT COUNT(*) FROM new_owners WHERE status = 'new' AND zip != '' AND street != ''").fetchone()[0]
+    return {"follow_ups": ups, "new": new} if ups or new else None
+
+
+def in_the_mail(conn: sqlite3.Connection, limit: int = 100) -> list[sqlite3.Row]:
+    init(conn)
+    return conn.execute("SELECT * FROM new_owners WHERE status IN ('mailed', 'replied') "
+                        "ORDER BY (status = 'replied') DESC, COALESCE(NULLIF(replied_on, ''), NULLIF(card3_on, ''), "
+                        "NULLIF(card2_on, ''), mailed_on) DESC LIMIT ?", (limit,)).fetchall()
+
+
+def sequence_counts(conn: sqlite3.Connection, today: date | None = None) -> dict:
+    init(conn)
+    out = {"card1": 0, "card2": 0, "card3": 0, "replied": 0, "due": len(follow_ups_due(conn, today)),
+           "optout": conn.execute("SELECT COUNT(*) FROM new_owners WHERE status = 'optout'").fetchone()[0]}
+    for step, k in conn.execute("SELECT step, COUNT(*) FROM new_owners WHERE status = 'mailed' GROUP BY step"):
+        if step in (1, 2, 3):
+            out[f"card{step}"] = k
+    out["replied"] = conn.execute("SELECT COUNT(*) FROM new_owners WHERE status = 'replied'").fetchone()[0]
+    return out
+
+
+def qr_svg(url: str) -> str:
+    """The QR code as inline SVG, drawn here on the Mac (segno, no network). '' if segno isn't installed."""
+    try:
+        import segno
+    except ImportError:
+        return ""
+    return segno.make(url, error="m").svg_inline(scale=3, border=2)
+
+
+def card_link(row) -> str:
+    return f"{WELCOME_URL}?c={row['code']}" if row["code"] else WELCOME_URL
+
+
 # ---------- the letter and the mailing list ----------
 
-def letter_template(conn: sqlite3.Connection) -> str:
-    return prefs.get(conn, LETTER_KEY) or DEFAULT_LETTER
+def letter_template(conn: sqlite3.Connection, card: int = 1) -> str:
+    return prefs.get(conn, card_key(card)) or DEFAULT_CARDS[card]
 
 
 class _Blank(dict):
@@ -469,13 +718,26 @@ class _Blank(dict):
         return "{" + key + "}"
 
 
-def letter(conn: sqlite3.Connection, row) -> str:
+def next_card(row) -> int:
+    """Which card this house gets next: 1 for a new house, then 2, then 3."""
+    return min((row["step"] or 0) + 1, 3) if row["status"] in ("new", "mailed") else 1
+
+
+def greeting(addressee: str) -> str:
+    """The name after "Dear": 'The Smith Household' (right on an envelope) reads 'Smith family' in a letter."""
+    m = re.fullmatch(r"The (.+) Household", addressee or "")
+    return f"{m.group(1)} family" if m else "Neighbor"
+
+
+def letter(conn: sqlite3.Connection, row, card: int | None = None, today: date | None = None) -> str:
     b = brand.current()
     owner = prefs.get(conn, "owner_name") or b.get("owner", "")
     town = row["city"] or row["town"]
-    fields = _Blank(addressee=row["addressee"] or "Neighbor", street=_street_name(row["street"]), town=town,
-                    owner=owner, business=b["name"], region=b["region"], phone=b["phone"], email=b["email"])
-    return letter_template(conn).format_map(fields)
+    card = card or next_card(row)
+    fields = _Blank(addressee=greeting(row["addressee"]), street=_street_name(row["street"]), town=town,
+                    owner=owner, business=b["name"], region=b["region"], phone=b["phone"], email=b["email"],
+                    season_note=SEASON_NOTES[season(today or date.today())], link=SHORT_LINK, code=row["code"])
+    return letter_template(conn, card).format_map(fields)
 
 
 def _street_name(street: str) -> str:
@@ -484,11 +746,15 @@ def _street_name(street: str) -> str:
 
 
 CSV_COLS = ["addressee", "owner_on_record", "street", "city", "state", "zip", "town", "county", "grade", "score",
-            "why", "year_built", "sale_date", "sale_price", "market_value", "deed", "key"]
+            "why", "year_built", "sale_date", "sale_price", "market_value", "deed", "key",
+            "card", "card_name", "code", "link", "message"]
 
 
 def mailing_csv(conn: sqlite3.Connection, rows) -> str:
-    """Mail-merge file: one line per letter, with the address lines a printer or Word mail merge expects."""
+    """Mail-merge file: one line per card, with the address lines a printer or Word mail merge expects, plus which
+    card it is, its code and link (for the QR code) and the card's words, for a mailing service such as Thanks.io."""
+    ensure_codes(conn, [r["key"] for r in rows])
+    rows = [conn.execute("SELECT * FROM new_owners WHERE key = ?", (r["key"],)).fetchone() for r in rows]
     out = io.StringIO()
     w = csv.writer(out)
     w.writerow(CSV_COLS)
@@ -496,5 +762,5 @@ def mailing_csv(conn: sqlite3.Connection, rows) -> str:
         w.writerow([r["addressee"], r["owner"], r["street"], r["city"], "NY", r["zip"], r["town"], r["county"],
                     r["grade"], r["score"], r["why"], r["year_built"] or "", r["sale_date"],
                     f"{r['sale_price']:.0f}" if r["sale_price"] else "", f"{r['market_value']:.0f}" if r["market_value"] else "",
-                    r["deed"], r["key"]])
+                    r["deed"], r["key"], next_card(r), CARD_NAMES[next_card(r)], r["code"], card_link(r), letter(conn, r)])
     return out.getvalue()
